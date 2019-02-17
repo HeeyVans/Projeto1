@@ -1,4 +1,4 @@
-package dados;
+package basicas;
 
 public class Treino {
 	

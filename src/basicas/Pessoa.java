@@ -1,4 +1,4 @@
-package dados;
+package basicas;
 
 import java.util.Date;
 

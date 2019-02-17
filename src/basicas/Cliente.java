@@ -1,4 +1,6 @@
-package dados;
+package basicas;
+
+import java.util.Date;
 
 public class Cliente extends Pessoa{
 	
@@ -7,6 +9,11 @@ public class Cliente extends Pessoa{
 	
 	public Cliente() {
 		
+	}
+
+	public Cliente(String nome, Endereco endereco, String cpf, Date dataDeNasc, int matricula) {
+		super(nome, endereco, cpf, dataDeNasc, matricula);
+		// TODO Auto-generated constructor stub
 	}
 
 	public Cliente(String pagamento, String objetivo) {

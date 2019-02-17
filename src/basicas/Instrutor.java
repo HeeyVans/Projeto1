@@ -1,4 +1,6 @@
-package dados;
+package basicas;
+
+import java.util.Date;
 
 public class Instrutor extends Pessoa {
 	
@@ -7,6 +9,11 @@ public class Instrutor extends Pessoa {
 	
 	public Instrutor() {
 		
+	}
+
+	public Instrutor(String nome, Endereco endereco, String cpf, Date dataDeNasc, int matricula) {
+		super(nome, endereco, cpf, dataDeNasc, matricula);
+		// TODO Auto-generated constructor stub
 	}
 
 	public Instrutor(String cargo, String horaTrab) {
