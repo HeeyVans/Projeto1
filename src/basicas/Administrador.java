@@ -1,5 +1,5 @@
 package basicas;
-
+//ops
 import java.util.Date;
 
 public class Administrador extends Pessoa{
