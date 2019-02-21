@@ -40,7 +40,7 @@ public class RepositorioClienteArrays implements IRepositorioCliente, Serializab
 
 	@Override
 	public void remover(int matricula) {
-		
+		//
 	}
 
 	@Override
