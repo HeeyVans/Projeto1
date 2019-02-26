@@ -1,7 +1,8 @@
-package basicas;
+package repositorios;
 
 import java.io.Serializable;
 
+import basicas.Cliente;
 import interfaces.IRepositorioCliente;
 
 public class RepositorioClienteArrays implements IRepositorioCliente, Serializable {
