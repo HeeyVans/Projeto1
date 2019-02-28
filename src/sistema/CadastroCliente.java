@@ -1,6 +1,7 @@
 package sistema;
 
 import basicas.Cliente;
+import excecoes.ClienteJaCadastrado;
 import interfaces.IRepositorioCliente;
 
 public class CadastroCliente {
@@ -8,19 +9,18 @@ public class CadastroCliente {
 	private IRepositorioCliente repositorio;
 
 	public CadastroCliente(IRepositorioCliente repositorio) {
-		super();
 		this.repositorio = repositorio;
 	}
 	
-	public void inserir(Cliente cliente) {
+	public void inserir(Cliente cliente) throws ClienteJaCadastrado {
 		repositorio.inserir(cliente);
 	}
 	
-	public Cliente procurar(int matricula) /*throws MatriculaNaoEncontradaException*/ {
+	public Cliente procurar(String matricula) /*throws MatriculaNaoEncontradaException*/ {
 		return repositorio.procurar(matricula);
 	}
 	
-	public void remover(int matricula) /*throws MatriculaNaoEncontradaException*/ {
+	public void remover(String matricula) /*throws MatriculaNaoEncontradaException*/ {
 		repositorio.remover(matricula);
 	}
 	

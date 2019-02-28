@@ -1,6 +1,7 @@
 package sistema;
 
 import basicas.Cliente;
+import excecoes.ClienteJaCadastrado;
 import interfaces.IRepositorioCliente;
 import repositorios.RepositorioClienteArrays;
 
@@ -30,13 +31,13 @@ public class Fachada {
 	
 	//INICIO CRUD DE CLIENTE
 	
-	public void cadastrarCliente(Cliente cliente) {
+	public void cadastrarCliente(Cliente cliente) throws ClienteJaCadastrado {
 		this.cliente.inserir(cliente);
 	}
-	public Cliente procurarCliente(int matricula) {
+	public Cliente procurarCliente(String matricula) {
 		return cliente.procurar(matricula);
 	}
-	public void removerCliente(int matricula) {
+	public void removerCliente(String matricula) {
 		cliente.remover(matricula);
 	}
 	public void atualizar(Cliente cliente) {

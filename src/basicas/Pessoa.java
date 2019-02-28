@@ -8,13 +8,13 @@ public class Pessoa {
 	private Endereco endereco;
 	private String cpf;
 	private Date dataDeNasc;
-	private int matricula;
+	private String matricula;
 	
 	public Pessoa() {
 		
 	}
 
-	public Pessoa(String nome, Endereco endereco, String cpf, Date dataDeNasc, int matricula) {
+	public Pessoa(String nome, Endereco endereco, String cpf, Date dataDeNasc, String matricula) {
 		super();
 		this.nome = nome;
 		this.endereco = endereco;
@@ -56,11 +56,11 @@ public class Pessoa {
 		this.dataDeNasc = dataDeNasc;
 	}
 
-	public int getMatricula() {
+	public String getMatricula() {
 		return matricula;
 	}
 
-	public void setMatricula(int matricula) {
+	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
 
@@ -71,7 +71,7 @@ public class Pessoa {
 		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
 		result = prime * result + ((dataDeNasc == null) ? 0 : dataDeNasc.hashCode());
 		result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
-		result = prime * result + matricula;
+		result = prime * result + ((matricula == null) ? 0 : matricula.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		return result;
 	}
