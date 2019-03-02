@@ -1,13 +1,13 @@
 package interfaces;
 
-import basicas.Cliente;
+
 import basicas.Instrutor;
 
 public interface IRepositorioInstrutor {
 	
 	public void inserir(Instrutor instrutor);
-	public Cliente procurar(int matricula);
-	public void remover(int matricula);
+	public Instrutor procurar(String matricula);
+	public void remover(String matricula);
 	public void atualizar(Instrutor instrutor);
 	//listar
 
