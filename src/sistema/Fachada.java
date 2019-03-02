@@ -1,9 +1,12 @@
 package sistema;
 
 import basicas.Cliente;
+import basicas.Instrutor;
 import excecoes.ClienteJaCadastrado;
 import interfaces.IRepositorioCliente;
+import interfaces.IRepositorioInstrutor;
 import repositorios.RepositorioClienteArrays;
+import repositorios.RepositorioInstrutorArrays;
 
 public class Fachada {
 	
@@ -13,6 +16,7 @@ public class Fachada {
 	public Fachada() {
 		//Repositórios Array
 		
+		IRepositorioInstrutor repInstrutor = new RepositorioInstrutorArrays();
 		IRepositorioCliente repCliente = new RepositorioClienteArrays();
 		
 		//Repositórios Arquivo
