@@ -9,7 +9,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 import basicas.Cliente;
-import excecoes.ClienteJaCadastrado;
+import excecoes.ClienteJaCadastradoException;
 import interfaces.IRepositorioCliente;
 
 public class RepositorioClienteArrays implements IRepositorioCliente, Serializable {
@@ -84,7 +84,7 @@ public class RepositorioClienteArrays implements IRepositorioCliente, Serializab
 	}
 	
 	@Override
-	public void inserir(Cliente cliente) throws ClienteJaCadastrado {
+	public void inserir(Cliente cliente) throws ClienteJaCadastradoException {
 		//Criar uma exceção para caso o cliente já esteja cadastrado
 		/*if () {
 			//throw new ClienteJaCadastrado("Cliente: "+cliente.getNome()+" já está cadastrado!");

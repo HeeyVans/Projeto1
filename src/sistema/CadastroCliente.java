@@ -1,7 +1,7 @@
 package sistema;
 
 import basicas.Cliente;
-import excecoes.ClienteJaCadastrado;
+import excecoes.ClienteJaCadastradoException;
 import interfaces.IRepositorioCliente;
 
 public class CadastroCliente {
@@ -12,7 +12,7 @@ public class CadastroCliente {
 		this.repositorio = repositorio;
 	}
 	
-	public void inserir(Cliente cliente) throws ClienteJaCadastrado {
+	public void inserir(Cliente cliente) throws ClienteJaCadastradoException {
 		repositorio.inserir(cliente);
 	}
 	

@@ -1,12 +1,12 @@
 package sistema;
 
 import basicas.Cliente;
-import excecoes.ClienteJaCadastrado;
+import excecoes.ClienteJaCadastradoException;
 import repositorios.RepositorioClienteArrays;
 
 public class Testes {
 
-	public static void main(String[] args) throws ClienteJaCadastrado {
+	public static void main(String[] args) throws ClienteJaCadastradoException {
 
 		RepositorioClienteArrays clientes = new RepositorioClienteArrays();
 		

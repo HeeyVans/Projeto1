@@ -2,7 +2,7 @@ package sistema;
 
 import basicas.Cliente;
 import basicas.Instrutor;
-import excecoes.ClienteJaCadastrado;
+import excecoes.ClienteJaCadastradoException;
 import interfaces.IRepositorioCliente;
 import interfaces.IRepositorioInstrutor;
 import repositorios.RepositorioClienteArrays;
@@ -35,7 +35,7 @@ public class Fachada {
 	
 	//INICIO CRUD DE CLIENTE
 	
-	public void cadastrarCliente(Cliente cliente) throws ClienteJaCadastrado {
+	public void cadastrarCliente(Cliente cliente) throws ClienteJaCadastradoException {
 		this.cliente.inserir(cliente);
 	}
 	public Cliente procurarCliente(String matricula) {
