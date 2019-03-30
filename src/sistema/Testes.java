@@ -4,6 +4,7 @@ import basicas.Cliente;
 import excecoes.ClienteJaCadastradoException;
 import repositorios.RepositorioClienteArrays;
 
+//teste
 public class Testes {
 
 	public static void main(String[] args) throws ClienteJaCadastradoException {
