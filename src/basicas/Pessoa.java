@@ -2,7 +2,7 @@ package basicas;
 
 import java.util.Date;
 
-public class Pessoa {
+public abstract class Pessoa {
 	
 	private String nome;
 	private Endereco endereco;
@@ -15,7 +15,6 @@ public class Pessoa {
 	}
 
 	public Pessoa(String nome, Endereco endereco, String cpf, Date dataDeNasc, String matricula) {
-		super();
 		this.nome = nome;
 		this.endereco = endereco;
 		this.cpf = cpf;
