@@ -3,6 +3,7 @@ package sistema;
 import basicas.Cliente;
 import basicas.Instrutor;
 import excecoes.ClienteJaCadastradoException;
+import excecoes.InstrutorJaCadastradoException;
 import interfaces.IRepositorioCliente;
 import interfaces.IRepositorioInstrutor;
 import repositorios.RepositorioClienteArrays;
@@ -12,6 +13,7 @@ public class Fachada {
 	
 	private static Fachada instance;
 	private CadastroCliente cliente;
+	private CadastroInstrutor instrutor;
 	
 	public Fachada() {
 		//Repositórios Array
@@ -50,5 +52,21 @@ public class Fachada {
 	//listar();
 	
 	//FIM DE CRUD DE CLIENTE
+	
+	public void cadastrarInstrutor(Instrutor instrutor) throws InstrutorJaCadastradoException{
+		this.instrutor.inserir(instrutor);
+	}
+	
+	public Instrutor procurarInstrutor(String matricula) {
+		return instrutor.procurar(matricula);
+	}
 
+	public void removerInstrutor(String matricula) {
+		instrutor.remover(matricula);
+	}
+	
+	public void atualizar(Instrutor instrutor) {
+		this.instrutor.atualizar(instrutor);
+	}
+	//listar();
 }
