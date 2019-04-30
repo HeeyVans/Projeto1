@@ -53,6 +53,7 @@ public class Fachada {
 	
 	//FIM DE CRUD DE CLIENTE
 	
+	//INICIO DE CRUD DO INSTRUTOR
 	public void cadastrarInstrutor(Instrutor instrutor) throws InstrutorJaCadastradoException{
 		this.instrutor.inserir(instrutor);
 	}
@@ -69,4 +70,6 @@ public class Fachada {
 		this.instrutor.atualizar(instrutor);
 	}
 	//listar();
+	
+	//FIM DE CRUD DO INSTRUTOR
 }

@@ -89,9 +89,10 @@ public class RepositorioClienteArrays implements IRepositorioCliente, Serializab
 		/*if () {
 			//throw new ClienteJaCadastrado("Cliente: "+cliente.getNome()+" já está cadastrado!");
 		} else { */
+		if(cliente != null) {
 		this.cliente[indice] = cliente;
 		this.indice = this.indice +1;
-		
+		}
 	}
 
 	@Override
