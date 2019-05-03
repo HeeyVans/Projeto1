@@ -122,5 +122,9 @@ public class RepositorioClienteArrays implements IRepositorioCliente, Serializab
 		clienteAtualizado = cliente;
 		
 	}
+	
+	public Cliente[] listar() {
+		return cliente;
+	}
 
 }

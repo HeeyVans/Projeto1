@@ -9,7 +9,6 @@ public interface IRepositorioCliente {
 	public Cliente procurar(String matricula);
 	public void remover(String matricula);
 	public void atualizar(Cliente cliente);
-	//listar
+	public Cliente[] listar();
 	
-
 }
