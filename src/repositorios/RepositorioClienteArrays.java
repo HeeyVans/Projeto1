@@ -11,6 +11,7 @@ import java.io.Serializable;
 import basicas.Cliente;
 import excecoes.ClienteJaCadastradoException;
 import excecoes.NaoEncontradoException;
+import excecoes.ParametroNuloException;
 import interfaces.IRepositorioCliente;
 
 public class RepositorioClienteArrays implements IRepositorioCliente, Serializable {
@@ -97,7 +98,10 @@ public class RepositorioClienteArrays implements IRepositorioCliente, Serializab
 	}
 
 	@Override
-	public Cliente procurar(String matricula) throws NaoEncontradoException {
+	public Cliente procurar(String matricula) throws NaoEncontradoException, ParametroNuloException {
+		if(matricula.equals("")) {
+			throw new ParametroNuloException(matricula);
+		}
 		for (int i = 0; i < indice; i++) {
 			if (cliente != null && cliente[i].getMatricula().equals(matricula)) {
 				return cliente[i];
@@ -118,9 +122,9 @@ public class RepositorioClienteArrays implements IRepositorioCliente, Serializab
 	}
 
 	@Override
-	public void atualizar(Cliente cliente) throws NaoEncontradoException {
-		Cliente clienteAtualizado = procurar(cliente.getMatricula());
-		clienteAtualizado = cliente;
+	public void atualizar(Cliente cliente) throws NaoEncontradoException, ParametroNuloException {
+		//Cliente clienteAtualizado = procurar(cliente.getMatricula());
+		//clienteAtualizado = cliente;
 		
 	}
 	
