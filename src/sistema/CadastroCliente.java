@@ -2,6 +2,7 @@ package sistema;
 
 import basicas.Cliente;
 import excecoes.ClienteJaCadastradoException;
+import excecoes.NaoEncontradoException;
 import interfaces.IRepositorioCliente;
 
 public class CadastroCliente {
@@ -16,7 +17,7 @@ public class CadastroCliente {
 		repositorio.inserir(cliente);
 	}
 	
-	public Cliente procurar(String matricula) /*throws MatriculaNaoEncontradaException*/ {
+	public Cliente procurar(String matricula) throws NaoEncontradoException /*throws MatriculaNaoEncontradaException*/ {
 		return repositorio.procurar(matricula);
 	}
 	
@@ -24,7 +25,7 @@ public class CadastroCliente {
 		repositorio.remover(matricula);
 	}
 	
-	public void atualizar(Cliente cliente) {
+	public void atualizar(Cliente cliente) throws NaoEncontradoException {
 		repositorio.atualizar(cliente);
 	}
 

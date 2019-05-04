@@ -4,6 +4,7 @@ import basicas.Cliente;
 import basicas.Instrutor;
 import excecoes.ClienteJaCadastradoException;
 import excecoes.InstrutorJaCadastradoException;
+import excecoes.NaoEncontradoException;
 import interfaces.IRepositorioCliente;
 import interfaces.IRepositorioInstrutor;
 import repositorios.RepositorioClienteArrays;
@@ -40,13 +41,13 @@ public class Fachada {
 	public void cadastrarCliente(Cliente cliente) throws ClienteJaCadastradoException {
 		this.cliente.inserir(cliente);
 	}
-	public Cliente procurarCliente(String matricula) {
+	public Cliente procurarCliente(String matricula) throws NaoEncontradoException {
 		return cliente.procurar(matricula);
 	}
 	public void removerCliente(String matricula) {
 		cliente.remover(matricula);
 	}
-	public void atualizar(Cliente cliente) {
+	public void atualizar(Cliente cliente) throws NaoEncontradoException {
 		this.cliente.atualizar(cliente);
 	}
 	//listar();
