@@ -86,14 +86,13 @@ public class RepositorioClienteArrays implements IRepositorioCliente, Serializab
 	}
 	
 	@Override
-	public void inserir(Cliente cliente) throws ClienteJaCadastradoException {
-		//Criar uma exceção para caso o cliente já esteja cadastrado
-		/*if () {
-			//throw new ClienteJaCadastrado("Cliente: "+cliente.getNome()+" já está cadastrado!");
-		} else { */
-		if(cliente != null) {
-		this.cliente[indice] = cliente;
-		this.indice = this.indice +1;
+	public void inserir(Cliente clientes) throws ClienteJaCadastradoException {
+		
+		for(int i = 0; i < indice; i++) {
+			if(cliente[i] == null) {
+				cliente[i] = clientes;
+				return;
+			}
 		}
 	}
 
