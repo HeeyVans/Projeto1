@@ -112,7 +112,7 @@ public class RepositorioClienteArrays implements IRepositorioCliente, Serializab
 
 	@Override
 	public void remover(String matricula) throws NaoEncontradoException {
-		for (int i = 0; i < cliente.length - 1; i++) {
+		for (int i = 0; i < indice; i++) {
 			if (cliente[i] != null && cliente[i].getMatricula().equals(matricula)) {
 				cliente[i] = null;
 				return;
