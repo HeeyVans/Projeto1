@@ -121,8 +121,13 @@ public class RepositorioClienteArrays implements IRepositorioCliente, Serializab
 	}
 
 	@Override
-	public void atualizar(Cliente cliente) throws NaoEncontradoException, ParametroNuloException {
-         //Implementar		
+	public void atualizar(Cliente clienteAtualizado) throws NaoEncontradoException, ParametroNuloException {
+         for (int i = 0; i < indice; i++) {
+        	 if(clienteAtualizado.getMatricula().equals(cliente[i].getMatricula())) {
+        		 cliente[i] = clienteAtualizado;
+        	 }
+			
+		}		
 	}
 	
 	public Cliente[] listar() {

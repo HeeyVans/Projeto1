@@ -13,8 +13,6 @@ public class ProgramaTestes {
 		
 		Cliente c1 = new Cliente("João", null, "1528258", null, "");
 		RepositorioClienteArrays.getInstance().inserir(c1);
-		RepositorioClienteArrays.getInstance().salvarArquivo();
-		RepositorioClienteArrays.getInstance().lerDoArquivo();
 	}
 
 }
