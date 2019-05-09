@@ -87,13 +87,13 @@ public class RepositorioClienteArrays implements IRepositorioCliente, Serializab
 	
 	@Override
 	public void inserir(Cliente clientes) throws ClienteJaCadastradoException {
-		
 		for(int i = 0; i < indice; i++) {
 			if(cliente[i] == null) {
 				cliente[i] = clientes;
 				return;
 			}
 		}
+		
 	}
 
 	@Override
@@ -122,9 +122,7 @@ public class RepositorioClienteArrays implements IRepositorioCliente, Serializab
 
 	@Override
 	public void atualizar(Cliente cliente) throws NaoEncontradoException, ParametroNuloException {
-		//Cliente clienteAtualizado = procurar(cliente.getMatricula());
-		//clienteAtualizado = cliente;
-		
+         //Implementar		
 	}
 	
 	public Cliente[] listar() {
