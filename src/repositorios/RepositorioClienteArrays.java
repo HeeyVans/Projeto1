@@ -111,14 +111,14 @@ public class RepositorioClienteArrays implements IRepositorioCliente, Serializab
 	} 
 
 	@Override
-	public void remover(String matricula) {
-		for (int i = 0; i < indice; i++) {
-			if (cliente[i].getMatricula().equals(matricula)) {
-				cliente[i] = cliente[this.indice];
-				this.indice--;
+	public void remover(String matricula) throws NaoEncontradoException {
+		for (int i = 0; i < cliente.length - 1; i++) {
+			if (cliente[i] != null && cliente[i].getMatricula().equals(matricula)) {
+				cliente[i] = null;
+				return;
 			}
-
 		}
+		throw new NaoEncontradoException(matricula);
 	}
 
 	@Override

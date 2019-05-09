@@ -22,7 +22,7 @@ public class CadastroCliente {
 		return repositorio.procurar(matricula);
 	}
 	
-	public void remover(String matricula) /*throws MatriculaNaoEncontradaException*/ {
+	public void remover(String matricula) throws NaoEncontradoException /*throws MatriculaNaoEncontradaException*/ {
 		repositorio.remover(matricula);
 	}
 	

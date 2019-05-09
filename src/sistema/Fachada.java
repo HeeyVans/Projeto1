@@ -24,6 +24,7 @@ public class Fachada {
 		IRepositorioCliente repCliente = new RepositorioClienteArrays();
 		
 		//Repositórios Arquivo
+		
 	}
 	
 	public static Fachada getInstance(){
@@ -45,7 +46,7 @@ public class Fachada {
 	public Cliente procurarCliente(String matricula) throws NaoEncontradoException, ParametroNuloException {
 		return cliente.procurar(matricula);
 	}
-	public void removerCliente(String matricula) {
+	public void removerCliente(String matricula) throws NaoEncontradoException {
 		cliente.remover(matricula);
 	}
 	public void atualizar(Cliente cliente) throws NaoEncontradoException, ParametroNuloException {
