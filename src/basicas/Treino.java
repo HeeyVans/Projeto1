@@ -1,71 +1,84 @@
 package basicas;
 
+import repositorios.RepositorioExercicioArrays;
+
 public class Treino {
 	
-	private String obs;
-	private int serie;
-	private int tempoDescanso;
-	private double porcentagem;
 	private Instrutor instrutor;
 	private Cliente cliente;
 	private Exercicio exercicio;
+	private RepositorioExercicioArrays repExer;
+	private int id;
 	
+	
+	public Treino(Instrutor instrutor, Cliente cliente, Exercicio exercicio, RepositorioExercicioArrays repExer,
+			int id) {
+		
+		this.instrutor = instrutor;
+		this.cliente = cliente;
+		this.exercicio = exercicio;
+		this.repExer = repExer;
+		this.id = id;
+	}
+
+
 	public Treino() {
 		
 	}
-	
-	public Treino(String obs, int serie, int tempoDescanso, double porcentagem, Instrutor instrutor, Cliente cliente,
-			Exercicio exercicio) {
-		this.obs = obs;
-		this.serie = serie;
-		this.tempoDescanso = tempoDescanso;
-		this.porcentagem = porcentagem;
-		this.instrutor = instrutor;
-		this.cliente = cliente;
-		this.exercicio = exercicio;
-	}
-	public String getObs() {
-		return obs;
-	}
-	public void setObs(String obs) {
-		this.obs = obs;
-	}
-	public int getSerie() {
-		return serie;
-	}
-	public void setSerie(int serie) {
-		this.serie = serie;
-	}
-	public int getTempoDescanso() {
-		return tempoDescanso;
-	}
-	public void setTempoDescanso(int tempoDescanso) {
-		this.tempoDescanso = tempoDescanso;
-	}
-	public double getPorcentagem() {
-		return porcentagem;
-	}
-	public void setPorcentagem(double porcentagem) {
-		this.porcentagem = porcentagem;
-	}
+
+
 	public Instrutor getInstrutor() {
 		return instrutor;
 	}
+
+
 	public void setInstrutor(Instrutor instrutor) {
 		this.instrutor = instrutor;
 	}
+
+
 	public Cliente getCliente() {
 		return cliente;
 	}
+
+
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+
+
 	public Exercicio getExercicio() {
 		return exercicio;
 	}
+
+
 	public void setExercicio(Exercicio exercicio) {
 		this.exercicio = exercicio;
 	}
+
+
+	public RepositorioExercicioArrays getRepExer() {
+		return repExer;
+	}
+
+
+	public void setRepExer(RepositorioExercicioArrays repExer) {
+		this.repExer = repExer;
+	}
+
+
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	
+	
+	/*
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -118,6 +131,6 @@ public class Treino {
 			return false;
 		return true;
 	}
-	
+	*/
 	
 }

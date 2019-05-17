@@ -7,10 +7,10 @@ import basicas.Treino;
 
 public interface IRepositorioTreino {
 	
-	public void inserir(Treino treino, Cliente cliente, Instrutor instrutor);
-	public Treino procurar(Treino treino, Cliente cliente, Instrutor instrutor);
-	public void remover(Treino treino, Cliente cliente, Instrutor instrutor);
-	public void atualizar(Treino treino, Cliente cliente, Instrutor instrutor);
+	public void inserir(Treino treino);
+	public Treino procurar(int id);
+	public void remover(int id);
+	public void atualizar(Treino treino);
 	//listar
 
 }

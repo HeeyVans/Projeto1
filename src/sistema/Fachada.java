@@ -1,29 +1,37 @@
 package sistema;
 
 import basicas.Cliente;
+import basicas.Exercicio;
 import basicas.Instrutor;
+import basicas.Treino;
 import excecoes.ClienteJaCadastradoException;
 import excecoes.InstrutorJaCadastradoException;
 import excecoes.NaoEncontradoException;
 import excecoes.ParametroNuloException;
 import interfaces.IRepositorioCliente;
+import interfaces.IRepositorioExercicio;
 import interfaces.IRepositorioInstrutor;
+import interfaces.IRepositorioTreino;
 import repositorios.RepositorioClienteArrays;
+import repositorios.RepositorioExercicioArrays;
 import repositorios.RepositorioInstrutorArrays;
+import repositorios.RepositorioTreinoArrays;
 
 public class Fachada {
 	
 	private static Fachada instance;
 	private CadastroCliente cliente;
 	private CadastroInstrutor instrutor;
+	private CadastroExercicio exercicio;
+	private CadastroTreino treino;
 	
 	public Fachada() {
-		//Repositórios Array
+		//Repositórios ArrayArquivo
 		
 		IRepositorioInstrutor repInstrutor = new RepositorioInstrutorArrays();
 		IRepositorioCliente repCliente = new RepositorioClienteArrays();
-		
-		//Repositórios Arquivo
+		IRepositorioExercicio repExercicio = new RepositorioExercicioArrays();
+		IRepositorioTreino repTreino = new RepositorioTreinoArrays();
 		
 	}
 	
@@ -75,4 +83,26 @@ public class Fachada {
 	//listar();
 	
 	//FIM DE CRUD DO INSTRUTOR
+	//INICIO DE CRUD EXERCICIO
+	public void inserirExercicio(Exercicio exercicio) {
+		this.exercicio.inserir(exercicio);
+	}
+	//FIM DE CRUD EXERCICIO
+	//INICIO DE CRUD TREINO
+	public void inserirTreino(Treino treino) {
+		this.treino.inserir(treino);
+	}
+	
+	public Treino procurarTreino(int id) {
+		return this.treino.procurar(id);
+	}
+	
+	public void removerTreino(int id) {
+		this.treino.remover(id);
+	}
+	
+	public void atualizarTreino(Treino treino) {
+		this.treino.atualizar(treino);
+	}
+	//FIM DE CRUD TREINO
 }
