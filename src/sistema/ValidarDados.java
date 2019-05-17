@@ -112,6 +112,7 @@ public class ValidarDados {
         	}
         }
         
+        //ValidaLoginDeCliente
         public static boolean validarLoginCliente(String cpf, String matricula) {
         	try {
         		cliente = Fachada.getInstance().procurarCliente(matricula);
