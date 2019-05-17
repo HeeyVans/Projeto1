@@ -10,11 +10,10 @@ public class Administrador extends Pessoa{
 	}
 
 	public Administrador(String nome, Endereco endereco, String cpf, Date dataDeNasc, String matricula,
-			String identificador) {
-		super(nome, endereco, cpf, dataDeNasc, matricula, identificador);
+			String identificador, String email) {
+		super(nome, endereco, cpf, dataDeNasc, matricula, identificador, email);
 		// TODO Auto-generated constructor stub
 	}
 
-	
 
 }

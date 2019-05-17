@@ -20,9 +20,9 @@ public class Cliente extends Pessoa{
 	}
 
 
-	public Cliente(String nome, Endereco endereco, String cpf, Date dataDeNasc, String matricula,
-			String identificador) {
-		super(nome, endereco, cpf, dataDeNasc, matricula, identificador);
+	public Cliente(String nome, Endereco endereco, String cpf, Date dataDeNasc, String matricula, String identificador,
+			String email) {
+		super(nome, endereco, cpf, dataDeNasc, matricula, identificador, email);
 		// TODO Auto-generated constructor stub
 	}
 

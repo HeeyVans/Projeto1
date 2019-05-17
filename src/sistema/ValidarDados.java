@@ -7,6 +7,7 @@ import basicas.Cliente;
 import basicas.Instrutor;
 import excecoes.CPFInvalidoException;
 import excecoes.CampoVazioException;
+import excecoes.EmailInvalidoException;
 import excecoes.MatriculaInvalidaException;
 import excecoes.NaoEncontradoException;
 import excecoes.ParametroNuloException;
@@ -97,6 +98,7 @@ public class ValidarDados {
             CPF.substring(6, 9) + "-" + CPF.substring(9, 11));
         }
         
+        //Identifica qual destes está fazendo o Login e o direciona para a tela correta
         public static String identificadorLogin() {
         	switch(pessoa.getIdentificador()) {
         	
@@ -112,7 +114,7 @@ public class ValidarDados {
         	}
         }
         
-        //ValidaLoginDeCliente
+        //Valida Login De Cliente
         public static boolean validarLoginCliente(String cpf, String matricula) {
         	try {
         		cliente = Fachada.getInstance().procurarCliente(matricula);
@@ -127,6 +129,21 @@ public class ValidarDados {
         	} 
         	return true;
         }
+        
+        //Para Validar o Email
+        public static boolean validarEmail(String email){
+    		try{
+    			if(!email.matches("[\\w\\d]+@[^0-9]+(\\.com$|\\.br$)")){
+    				EmailInvalidoException eie = new EmailInvalidoException();
+    				throw eie;
+    			}
+    			
+    		}catch(EmailInvalidoException eie ){
+    			PopUps.emailInvalido(eie);
+    			return false;
+    		}
+    		return true;
+    	}
     }
 
 

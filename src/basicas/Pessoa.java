@@ -10,21 +10,23 @@ public abstract class Pessoa {
 	private Date dataDeNasc;
 	private String matricula;
 	private String identificador;
+	private String email;
 	
 	public Pessoa() {
 		
 	}
 
-	public Pessoa(String nome, Endereco endereco, String cpf, Date dataDeNasc, String matricula
-			, String identificador) {
+	public Pessoa(String nome, Endereco endereco, String cpf, Date dataDeNasc, String matricula, String identificador,
+			String email) {
+		super();
 		this.nome = nome;
 		this.endereco = endereco;
 		this.cpf = cpf;
 		this.dataDeNasc = dataDeNasc;
 		this.matricula = matricula;
 		this.identificador = identificador;
+		this.email = email;
 	}
-
 
 	public String getNome() {
 		return nome;
@@ -72,6 +74,14 @@ public abstract class Pessoa {
 
 	public void setIdentificador(String identificador) {
 		this.identificador = identificador;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	@Override

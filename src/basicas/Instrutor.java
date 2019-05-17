@@ -11,8 +11,11 @@ public class Instrutor extends Pessoa {
 		
 	}
 
-	public Instrutor(String nome, Endereco endereco, String cpf, Date dataDeNasc, String matricula) {
-		super(nome, endereco, cpf, dataDeNasc, matricula);
+
+
+	public Instrutor(String nome, Endereco endereco, String cpf, Date dataDeNasc, String matricula,
+			String identificador, String email) {
+		super(nome, endereco, cpf, dataDeNasc, matricula, identificador, email);
 		// TODO Auto-generated constructor stub
 	}
 

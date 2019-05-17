@@ -7,6 +7,7 @@ public class Mensagem {
 	public static final String INSTRUTORJACADASTRADO = " já foi cadastrado como instrutor!";
 	public static final String MATRICULAINVALIDA = "Esta matrícula é inválida!";
 	public static final String CPFINVALIDO = "Este CPF é inválido!";
+	public static final String EMAILINVALIDO = "Este email é inválido!";
 	
 	//Exceptions para PopUps
 	private static final String MSGALERT = "Mensagem de alerta";
