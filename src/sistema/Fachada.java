@@ -6,6 +6,7 @@ import basicas.Instrutor;
 import basicas.Treino;
 import excecoes.ClienteJaCadastradoException;
 import excecoes.InstrutorJaCadastradoException;
+import excecoes.MatriculaInvalidaException;
 import excecoes.NaoEncontradoException;
 import excecoes.ParametroNuloException;
 import interfaces.IRepositorioCliente;
@@ -51,7 +52,7 @@ public class Fachada {
 	public void cadastrarCliente(Cliente cliente) throws ClienteJaCadastradoException {
 		this.cliente.inserir(cliente);
 	}
-	public Cliente procurarCliente(String matricula) throws NaoEncontradoException, ParametroNuloException {
+	public Cliente procurarCliente(String matricula) throws MatriculaInvalidaException {
 		return cliente.procurar(matricula);
 	}
 	public void removerCliente(String matricula) throws NaoEncontradoException {

@@ -2,6 +2,7 @@ package sistema;
 
 import basicas.Cliente;
 import excecoes.ClienteJaCadastradoException;
+import excecoes.MatriculaInvalidaException;
 import excecoes.NaoEncontradoException;
 import excecoes.ParametroNuloException;
 import interfaces.IRepositorioCliente;
@@ -18,7 +19,7 @@ public class CadastroCliente {
 		repositorio.inserir(cliente);
 	}
 	
-	public Cliente procurar(String matricula) throws NaoEncontradoException /*throws MatriculaNaoEncontradaException*/, ParametroNuloException {
+	public Cliente procurar(String matricula) throws MatriculaInvalidaException {
 		return repositorio.procurar(matricula);
 	}
 	

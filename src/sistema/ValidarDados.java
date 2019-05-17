@@ -2,10 +2,24 @@ package sistema;
 
 import java.util.InputMismatchException;
 
+import basicas.Pessoa;
+import basicas.Cliente;
+import basicas.Instrutor;
+import excecoes.CPFInvalidoException;
 import excecoes.CampoVazioException;
+import excecoes.MatriculaInvalidaException;
+import excecoes.NaoEncontradoException;
+import excecoes.ParametroNuloException;
 import gui.PopUps;
 
 public class ValidarDados {
+	
+	public static Pessoa pessoa;
+	public static Cliente cliente;
+	public static Instrutor instrutor;
+	public static final String Instrutor = "Instrutor";
+	public static final String Cliente = "Cliente";
+	public static final String ADM = "Administrador";
 	
 	//VALIDAÇÃO DE CAMPOVAZIO COM 4 CAMPOS
 	public static boolean validarCampoVazio(String arg0, String arg1, String arg2, String arg3) {
@@ -81,6 +95,36 @@ public class ValidarDados {
         public static String imprimeCPF(String CPF) {
             return(CPF.substring(0, 3) + "." + CPF.substring(3, 6) + "." +
             CPF.substring(6, 9) + "-" + CPF.substring(9, 11));
+        }
+        
+        public static String identificadorLogin() {
+        	switch(pessoa.getIdentificador()) {
+        	
+        	case Instrutor:
+        		return Instrutor;
+        	case Cliente:
+        		return Cliente;
+        	case ADM:
+        		return ADM;
+        	default:
+        		return null;
+        	
+        	}
+        }
+        
+        public static boolean validarLoginCliente(String cpf, String matricula) {
+        	try {
+        		cliente = Fachada.getInstance().procurarCliente(matricula);
+        		if(!cliente.getCpf().equals(cpf)) {
+        			MatriculaInvalidaException mie = new MatriculaInvalidaException();
+        			throw mie;
+        		}
+        	}catch(MatriculaInvalidaException mie) {
+        		PopUps.matriculaInvalida(mie);
+        		return false;
+        		
+        	} 
+        	return true;
         }
     }
 
