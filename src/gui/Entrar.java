@@ -60,7 +60,7 @@ public class Entrar {
 	 */
 	private void initialize() {
 		TelaDeEntrada = new JFrame();
-		TelaDeEntrada.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Ricardo\\Documents\\UFRPE\\PROGRAMA\u00C7\u00C3O\\JAVA\\Projeto - Programa\u00E7\u00E3o\\biceps png.png"));
+		TelaDeEntrada.setIconImage(Toolkit.getDefaultToolkit().getImage(Entrar.class.getResource("/imagens/biceps png.png")));
 		TelaDeEntrada.setTitle("Sistema de Login da MFit");
 		TelaDeEntrada.getContentPane().setBackground(Color.WHITE);
 		TelaDeEntrada.getContentPane().setLayout(null);
@@ -87,7 +87,7 @@ public class Entrar {
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.setBackground(new Color(0, 128, 0));
 		btnEntrar.setForeground(new Color(255, 255, 255));
-		btnEntrar.setIcon(new ImageIcon("C:\\Users\\Ricardo\\Documents\\UFRPE\\PROGRAMA\u00C7\u00C3O\\JAVA\\Projeto - Programa\u00E7\u00E3o\\login.png"));
+		btnEntrar.setIcon(new ImageIcon(Entrar.class.getResource("/imagens/login.png")));
 		btnEntrar.setFont(new Font("Arial", Font.BOLD, 14));
 		btnEntrar.setBounds(246, 304, 114, 34);
 		TelaDeEntrada.getContentPane().add(btnEntrar);
@@ -95,7 +95,7 @@ public class Entrar {
 		JButton btnSair = new JButton("Sair");
 		btnSair.setForeground(new Color(255, 255, 255));
 		btnSair.setBackground(new Color(0, 128, 0));
-		btnSair.setIcon(new ImageIcon("C:\\Users\\Ricardo\\Documents\\UFRPE\\PROGRAMA\u00C7\u00C3O\\JAVA\\Projeto - Programa\u00E7\u00E3o\\sair-menu-2.png"));
+		btnSair.setIcon(new ImageIcon(Entrar.class.getResource("/imagens/sair-menu-2.png")));
 		btnSair.setFont(new Font("Arial", Font.BOLD, 14));
 		btnSair.setBounds(383, 304, 114, 34);
 		TelaDeEntrada.getContentPane().add(btnSair);
@@ -121,7 +121,7 @@ public class Entrar {
 		TelaDeEntrada.getContentPane().add(lblMatrcula);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Ricardo\\Documents\\UFRPE\\PROGRAMA\u00C7\u00C3O\\JAVA\\Projeto - Programa\u00E7\u00E3o\\pessoas-saudaveis-carregando-icones-diferentes_53876-43069 novo.jpg"));
+		lblNewLabel.setIcon(new ImageIcon(Entrar.class.getResource("/imagens/pessoas-saudaveis-carregando-icones-diferentes_53876-43069 novo.jpg")));
 		lblNewLabel.setBounds(10, 114, 211, 255);
 		TelaDeEntrada.getContentPane().add(lblNewLabel);
 		
