@@ -91,7 +91,7 @@ public class TelaCadastroCliente {
 		frmTelaDeCadastro = new JFrame();
 		frmTelaDeCadastro.getContentPane().setBackground(new Color(255, 255, 255));
 		frmTelaDeCadastro.setIconImage(Toolkit.getDefaultToolkit().getImage(TelaCadastroCliente.class.getResource("/imagens/biceps png.png")));
-		frmTelaDeCadastro.setTitle("Tela de Cadastro - MFit");
+		frmTelaDeCadastro.setTitle("Tela de Cadastro de Cliente - MFit");
 		frmTelaDeCadastro.setBounds(100, 100, 755, 412);
 		frmTelaDeCadastro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTelaDeCadastro.getContentPane().setLayout(null);
