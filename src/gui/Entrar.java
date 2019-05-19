@@ -93,6 +93,11 @@ public class Entrar {
 		TelaDeEntrada.getContentPane().add(btnEntrar);
 		
 		JButton btnSair = new JButton("Sair");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
+			}
+		});
 		btnSair.setForeground(new Color(255, 255, 255));
 		btnSair.setBackground(new Color(0, 128, 0));
 		btnSair.setIcon(new ImageIcon(Entrar.class.getResource("/imagens/sair-menu-2.png")));
