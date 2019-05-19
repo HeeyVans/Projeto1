@@ -19,6 +19,16 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 import javax.swing.JTextPane;
+import java.awt.ScrollPane;
+import javax.swing.border.TitledBorder;
+import java.awt.Panel;
+import javax.swing.BoxLayout;
+import java.awt.TextField;
+import javax.swing.JTextArea;
+import java.awt.Canvas;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
+import javax.swing.JFormattedTextField;
+import javax.swing.JButton;
 
 public class TelaCadastroCliente {
 
@@ -127,5 +137,17 @@ public class TelaCadastroCliente {
 		label.setIcon(new ImageIcon(TelaCadastroCliente.class.getResource("/imagens/foto perfil cadastro cliente novo novo.jpg")));
 		label.setBounds(572, 8, 157, 186);
 		frmTelaDeCadastro.getContentPane().add(label);
+		
+		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setIcon(new ImageIcon(TelaCadastroCliente.class.getResource("/imagens/btn-novo.png")));
+		btnCadastrar.setBackground(new Color(152, 251, 152));
+		btnCadastrar.setBounds(621, 333, 108, 29);
+		frmTelaDeCadastro.getContentPane().add(btnCadastrar);
+		
+		JButton btnLimpar = new JButton("Limpar");
+		btnLimpar.setIcon(new ImageIcon(TelaCadastroCliente.class.getResource("/imagens/delete_remove_bin_icon-icons.com_72400.png")));
+		btnLimpar.setBackground(new Color(255, 99, 71));
+		btnLimpar.setBounds(505, 333, 108, 29);
+		frmTelaDeCadastro.getContentPane().add(btnLimpar);
 	}
 }
