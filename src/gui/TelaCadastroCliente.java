@@ -29,6 +29,11 @@ import java.awt.Canvas;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import javax.swing.JFormattedTextField;
 import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JRadioButton;
+import javax.swing.border.LineBorder;
+import javax.swing.UIManager;
 
 public class TelaCadastroCliente {
 
@@ -37,6 +42,14 @@ public class TelaCadastroCliente {
 	private JTextField textField_1;
 	private JTextField textField_3;
 	private JTextField textField_4;
+	private JTextField textField_2;
+	private JTextField textField_5;
+	private JTextField textField_6;
+	private JTextField textField_7;
+	private JTextField textField_8;
+	private JTextField textField_9;
+	private JTextField textField_10;
+	private JTextField textField_11;
 
 	/**
 	 * Launch the application.
@@ -125,14 +138,6 @@ public class TelaCadastroCliente {
 		textField_4.setBounds(219, 58, 186, 29);
 		frmTelaDeCadastro.getContentPane().add(textField_4);
 		
-		JSpinner spinner_1 = new JSpinner();
-		spinner_1.setBounds(84, 100, 51, 29);
-		frmTelaDeCadastro.getContentPane().add(spinner_1);
-		
-		JSpinner spinner = new JSpinner();
-		spinner.setBounds(145, 100, 51, 29);
-		frmTelaDeCadastro.getContentPane().add(spinner);
-		
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(TelaCadastroCliente.class.getResource("/imagens/foto perfil cadastro cliente novo novo.jpg")));
 		label.setBounds(572, 8, 157, 186);
@@ -149,5 +154,104 @@ public class TelaCadastroCliente {
 		btnLimpar.setBackground(new Color(255, 99, 71));
 		btnLimpar.setBounds(505, 333, 108, 29);
 		frmTelaDeCadastro.getContentPane().add(btnLimpar);
+		
+		JLabel lblSexo = new JLabel("Objetivo:");
+		lblSexo.setBounds(10, 143, 59, 14);
+		frmTelaDeCadastro.getContentPane().add(lblSexo);
+		
+		JPanel panel = new JPanel();
+		panel.setForeground(new Color(0, 0, 0));
+		panel.setToolTipText("");
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Endere\u00E7o", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel.setBounds(235, 107, 327, 215);
+		frmTelaDeCadastro.getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblRua = new JLabel("Rua:");
+		lblRua.setBounds(10, 25, 46, 14);
+		panel.add(lblRua);
+		
+		textField_2 = new JTextField();
+		textField_2.setHorizontalAlignment(SwingConstants.LEFT);
+		textField_2.setColumns(10);
+		textField_2.setBounds(10, 42, 186, 29);
+		panel.add(textField_2);
+		
+		JLabel lblNmero = new JLabel("N\u00FAmero:");
+		lblNmero.setBounds(214, 25, 71, 14);
+		panel.add(lblNmero);
+		
+		textField_5 = new JTextField();
+		textField_5.setColumns(10);
+		textField_5.setBounds(214, 42, 86, 29);
+		panel.add(textField_5);
+		
+		JLabel lblBairro = new JLabel("Bairro:");
+		lblBairro.setBounds(10, 82, 46, 14);
+		panel.add(lblBairro);
+		
+		textField_6 = new JTextField();
+		textField_6.setHorizontalAlignment(SwingConstants.LEFT);
+		textField_6.setColumns(10);
+		textField_6.setBounds(10, 100, 186, 29);
+		panel.add(textField_6);
+		
+		JLabel lblCidade = new JLabel("Complemento:");
+		lblCidade.setBounds(10, 140, 86, 14);
+		panel.add(lblCidade);
+		
+		textField_7 = new JTextField();
+		textField_7.setHorizontalAlignment(SwingConstants.LEFT);
+		textField_7.setColumns(10);
+		textField_7.setBounds(10, 160, 186, 29);
+		panel.add(textField_7);
+		
+		JLabel lblComplemento = new JLabel("Cidade:");
+		lblComplemento.setBounds(214, 82, 76, 14);
+		panel.add(lblComplemento);
+		
+		textField_9 = new JTextField();
+		textField_9.setColumns(10);
+		textField_9.setBounds(214, 100, 86, 29);
+		panel.add(textField_9);
+		
+		textField_8 = new JTextField();
+		textField_8.setColumns(10);
+		textField_8.setBounds(85, 100, 108, 29);
+		frmTelaDeCadastro.getContentPane().add(textField_8);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(255, 255, 255));
+		panel_1.setBorder(new TitledBorder(null, "Sexo", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_1.setBounds(415, 8, 145, 79);
+		frmTelaDeCadastro.getContentPane().add(panel_1);
+		panel_1.setLayout(null);
+		
+		JRadioButton rdbtnMasculino = new JRadioButton("Masculino");
+		rdbtnMasculino.setBounds(6, 23, 109, 23);
+		panel_1.add(rdbtnMasculino);
+		rdbtnMasculino.setBackground(new Color(255, 255, 255));
+		
+		JRadioButton rdbtnFeminino = new JRadioButton("Feminino");
+		rdbtnFeminino.setBounds(6, 49, 83, 23);
+		panel_1.add(rdbtnFeminino);
+		rdbtnFeminino.setBackground(new Color(255, 255, 255));
+		
+		textField_10 = new JTextField();
+		textField_10.setHorizontalAlignment(SwingConstants.LEFT);
+		textField_10.setColumns(10);
+		textField_10.setBounds(10, 165, 217, 29);
+		frmTelaDeCadastro.getContentPane().add(textField_10);
+		
+		JLabel lblPagamento = new JLabel("Pagamento:");
+		lblPagamento.setBounds(10, 205, 83, 14);
+		frmTelaDeCadastro.getContentPane().add(lblPagamento);
+		
+		textField_11 = new JTextField();
+		textField_11.setHorizontalAlignment(SwingConstants.LEFT);
+		textField_11.setColumns(10);
+		textField_11.setBounds(10, 230, 217, 29);
+		frmTelaDeCadastro.getContentPane().add(textField_11);
 	}
 }
