@@ -253,5 +253,10 @@ public class TelaCadastroCliente {
 		textField_11.setColumns(10);
 		textField_11.setBounds(10, 230, 217, 29);
 		frmTelaDeCadastro.getContentPane().add(textField_11);
+		
+		JLabel label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon(TelaCadastroCliente.class.getResource("/imagens/MFit logotipo redemensionada.jpg")));
+		label_1.setBounds(10, 281, 253, 63);
+		frmTelaDeCadastro.getContentPane().add(label_1);
 	}
 }

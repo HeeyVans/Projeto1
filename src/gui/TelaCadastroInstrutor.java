@@ -233,6 +233,11 @@ public class TelaCadastroInstrutor {
 		lblNewLabel.setIcon(new ImageIcon(TelaCadastroInstrutor.class.getResource("/imagens/instrutor..jpg")));
 		lblNewLabel.setBounds(580, 18, 186, 208);
 		frmTelaDeCadastro.getContentPane().add(lblNewLabel);
+		
+		JLabel label_10 = new JLabel("");
+		label_10.setIcon(new ImageIcon(TelaCadastroInstrutor.class.getResource("/imagens/MFit logotipo redemensionada.jpg")));
+		label_10.setBounds(7, 282, 260, 68);
+		frmTelaDeCadastro.getContentPane().add(label_10);
 	}
 
 }
