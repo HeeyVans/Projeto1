@@ -70,7 +70,7 @@ public class TelaEscolha {
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(79, 0, 340, 117);
 		panel.add(lblNewLabel);
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Ricardo\\Downloads\\free_horizontal_on_white_by_logaster.png"));
+		lblNewLabel.setIcon(new ImageIcon(TelaEscolha.class.getResource("/imagens/MFit logotipo.png")));
 		
 		JLabel lblEscolhaUmaDas = new JLabel("Escolha uma das op\u00E7\u00F5es acima para que possa prosseguir");
 		lblEscolhaUmaDas.setHorizontalAlignment(SwingConstants.CENTER);
