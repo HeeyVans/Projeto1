@@ -10,11 +10,14 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
+
+import com.toedter.calendar.JDateChooser;
+
 import javax.swing.JRadioButton;
 import javax.swing.UIManager;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
-import com.toedter.calendar.JDateChooser;
+//import com.toedter.calendar.JDateChooser;
 
 public class TelaCadastroInstrutor {
 
