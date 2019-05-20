@@ -34,22 +34,22 @@ import javax.swing.JTable;
 import javax.swing.JRadioButton;
 import javax.swing.border.LineBorder;
 import javax.swing.UIManager;
+import com.toedter.calendar.JDateChooser;
 
 public class TelaCadastroCliente {
 
 	private JFrame frmTelaDeCadastro;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_2;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField_9;
-	private JTextField textField_10;
-	private JTextField textField_11;
+	private JTextField textFieldMatricula;
+	private JTextField textFieldNome;
+	private JTextField textFieldCPF;
+	private JTextField textFieldEmail;
+	private JTextField textFieldRua;
+	private JTextField textFieldNumero;
+	private JTextField textFieldBairro;
+	private JTextField textFieldComplemento;
+	private JTextField textFieldCidade;
+	private JTextField textFieldObjetivo;
+	private JTextField textFieldPagamento;
 
 	/**
 	 * Launch the application.
@@ -96,24 +96,24 @@ public class TelaCadastroCliente {
 		frmTelaDeCadastro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTelaDeCadastro.getContentPane().setLayout(null);
 		
-		JLabel lblMatrcula = new JLabel("Matr\u00EDcula:");
-		lblMatrcula.setBounds(10, 15, 59, 14);
-		frmTelaDeCadastro.getContentPane().add(lblMatrcula);
+		JLabel lblMatricula = new JLabel("Matr\u00EDcula:");
+		lblMatricula.setBounds(10, 15, 59, 14);
+		frmTelaDeCadastro.getContentPane().add(lblMatricula);
 		
-		textField = new JTextField();
-		textField.setBounds(62, 8, 108, 29);
-		frmTelaDeCadastro.getContentPane().add(textField);
-		textField.setColumns(10);
+		textFieldMatricula = new JTextField();
+		textFieldMatricula.setBounds(62, 8, 108, 29);
+		frmTelaDeCadastro.getContentPane().add(textFieldMatricula);
+		textFieldMatricula.setColumns(10);
 		
 		JLabel lblNome = new JLabel("Nome:");
 		lblNome.setBounds(180, 15, 47, 14);
 		frmTelaDeCadastro.getContentPane().add(lblNome);
 		
-		textField_1 = new JTextField();
-		textField_1.setHorizontalAlignment(SwingConstants.LEFT);
-		textField_1.setColumns(10);
-		textField_1.setBounds(219, 8, 186, 29);
-		frmTelaDeCadastro.getContentPane().add(textField_1);
+		textFieldNome = new JTextField();
+		textFieldNome.setHorizontalAlignment(SwingConstants.LEFT);
+		textFieldNome.setColumns(10);
+		textFieldNome.setBounds(219, 8, 186, 29);
+		frmTelaDeCadastro.getContentPane().add(textFieldNome);
 		
 		JLabel lblNascimento = new JLabel("Nascimento:");
 		lblNascimento.setBounds(10, 107, 83, 14);
@@ -123,20 +123,20 @@ public class TelaCadastroCliente {
 		lblCpf.setBounds(10, 61, 59, 14);
 		frmTelaDeCadastro.getContentPane().add(lblCpf);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(62, 54, 108, 29);
-		frmTelaDeCadastro.getContentPane().add(textField_3);
+		textFieldCPF = new JTextField();
+		textFieldCPF.setColumns(10);
+		textFieldCPF.setBounds(62, 54, 108, 29);
+		frmTelaDeCadastro.getContentPane().add(textFieldCPF);
 		
 		JLabel lblEmail = new JLabel("Email:");
 		lblEmail.setBounds(180, 61, 59, 14);
 		frmTelaDeCadastro.getContentPane().add(lblEmail);
 		
-		textField_4 = new JTextField();
-		textField_4.setHorizontalAlignment(SwingConstants.LEFT);
-		textField_4.setColumns(10);
-		textField_4.setBounds(219, 58, 186, 29);
-		frmTelaDeCadastro.getContentPane().add(textField_4);
+		textFieldEmail = new JTextField();
+		textFieldEmail.setHorizontalAlignment(SwingConstants.LEFT);
+		textFieldEmail.setColumns(10);
+		textFieldEmail.setBounds(219, 58, 186, 29);
+		frmTelaDeCadastro.getContentPane().add(textFieldEmail);
 		
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(TelaCadastroCliente.class.getResource("/imagens/foto perfil cadastro cliente novo novo.jpg")));
@@ -155,9 +155,9 @@ public class TelaCadastroCliente {
 		btnLimpar.setBounds(505, 333, 108, 29);
 		frmTelaDeCadastro.getContentPane().add(btnLimpar);
 		
-		JLabel lblSexo = new JLabel("Objetivo:");
-		lblSexo.setBounds(10, 143, 59, 14);
-		frmTelaDeCadastro.getContentPane().add(lblSexo);
+		JLabel lblObjetivo = new JLabel("Objetivo:");
+		lblObjetivo.setBounds(10, 143, 59, 14);
+		frmTelaDeCadastro.getContentPane().add(lblObjetivo);
 		
 		JPanel panel = new JPanel();
 		panel.setForeground(new Color(0, 0, 0));
@@ -172,54 +172,49 @@ public class TelaCadastroCliente {
 		lblRua.setBounds(10, 25, 46, 14);
 		panel.add(lblRua);
 		
-		textField_2 = new JTextField();
-		textField_2.setHorizontalAlignment(SwingConstants.LEFT);
-		textField_2.setColumns(10);
-		textField_2.setBounds(10, 42, 186, 29);
-		panel.add(textField_2);
+		textFieldRua = new JTextField();
+		textFieldRua.setHorizontalAlignment(SwingConstants.LEFT);
+		textFieldRua.setColumns(10);
+		textFieldRua.setBounds(10, 42, 186, 29);
+		panel.add(textFieldRua);
 		
 		JLabel lblNmero = new JLabel("N\u00FAmero:");
 		lblNmero.setBounds(214, 25, 71, 14);
 		panel.add(lblNmero);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(214, 42, 86, 29);
-		panel.add(textField_5);
+		textFieldNumero = new JTextField();
+		textFieldNumero.setColumns(10);
+		textFieldNumero.setBounds(214, 42, 86, 29);
+		panel.add(textFieldNumero);
 		
 		JLabel lblBairro = new JLabel("Bairro:");
 		lblBairro.setBounds(10, 82, 46, 14);
 		panel.add(lblBairro);
 		
-		textField_6 = new JTextField();
-		textField_6.setHorizontalAlignment(SwingConstants.LEFT);
-		textField_6.setColumns(10);
-		textField_6.setBounds(10, 100, 186, 29);
-		panel.add(textField_6);
+		textFieldBairro = new JTextField();
+		textFieldBairro.setHorizontalAlignment(SwingConstants.LEFT);
+		textFieldBairro.setColumns(10);
+		textFieldBairro.setBounds(10, 100, 186, 29);
+		panel.add(textFieldBairro);
 		
 		JLabel lblCidade = new JLabel("Complemento:");
 		lblCidade.setBounds(10, 140, 86, 14);
 		panel.add(lblCidade);
 		
-		textField_7 = new JTextField();
-		textField_7.setHorizontalAlignment(SwingConstants.LEFT);
-		textField_7.setColumns(10);
-		textField_7.setBounds(10, 160, 186, 29);
-		panel.add(textField_7);
+		textFieldComplemento = new JTextField();
+		textFieldComplemento.setHorizontalAlignment(SwingConstants.LEFT);
+		textFieldComplemento.setColumns(10);
+		textFieldComplemento.setBounds(10, 160, 186, 29);
+		panel.add(textFieldComplemento);
 		
 		JLabel lblComplemento = new JLabel("Cidade:");
 		lblComplemento.setBounds(214, 82, 76, 14);
 		panel.add(lblComplemento);
 		
-		textField_9 = new JTextField();
-		textField_9.setColumns(10);
-		textField_9.setBounds(214, 100, 86, 29);
-		panel.add(textField_9);
-		
-		textField_8 = new JTextField();
-		textField_8.setColumns(10);
-		textField_8.setBounds(85, 100, 108, 29);
-		frmTelaDeCadastro.getContentPane().add(textField_8);
+		textFieldCidade = new JTextField();
+		textFieldCidade.setColumns(10);
+		textFieldCidade.setBounds(214, 100, 86, 29);
+		panel.add(textFieldCidade);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(255, 255, 255));
@@ -238,25 +233,29 @@ public class TelaCadastroCliente {
 		panel_1.add(rdbtnFeminino);
 		rdbtnFeminino.setBackground(new Color(255, 255, 255));
 		
-		textField_10 = new JTextField();
-		textField_10.setHorizontalAlignment(SwingConstants.LEFT);
-		textField_10.setColumns(10);
-		textField_10.setBounds(10, 165, 217, 29);
-		frmTelaDeCadastro.getContentPane().add(textField_10);
+		textFieldObjetivo = new JTextField();
+		textFieldObjetivo.setHorizontalAlignment(SwingConstants.LEFT);
+		textFieldObjetivo.setColumns(10);
+		textFieldObjetivo.setBounds(10, 165, 217, 29);
+		frmTelaDeCadastro.getContentPane().add(textFieldObjetivo);
 		
 		JLabel lblPagamento = new JLabel("Pagamento:");
 		lblPagamento.setBounds(10, 205, 83, 14);
 		frmTelaDeCadastro.getContentPane().add(lblPagamento);
 		
-		textField_11 = new JTextField();
-		textField_11.setHorizontalAlignment(SwingConstants.LEFT);
-		textField_11.setColumns(10);
-		textField_11.setBounds(10, 230, 217, 29);
-		frmTelaDeCadastro.getContentPane().add(textField_11);
+		textFieldPagamento = new JTextField();
+		textFieldPagamento.setHorizontalAlignment(SwingConstants.LEFT);
+		textFieldPagamento.setColumns(10);
+		textFieldPagamento.setBounds(10, 230, 217, 29);
+		frmTelaDeCadastro.getContentPane().add(textFieldPagamento);
 		
 		JLabel label_1 = new JLabel("");
 		label_1.setIcon(new ImageIcon(TelaCadastroCliente.class.getResource("/imagens/MFit logotipo redemensionada.jpg")));
 		label_1.setBounds(10, 281, 253, 63);
 		frmTelaDeCadastro.getContentPane().add(label_1);
+		
+		JDateChooser dateChooserNascimento = new JDateChooser();
+		dateChooserNascimento.setBounds(82, 101, 145, 29);
+		frmTelaDeCadastro.getContentPane().add(dateChooserNascimento);
 	}
 }
