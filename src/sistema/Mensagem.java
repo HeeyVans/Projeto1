@@ -8,6 +8,7 @@ public class Mensagem {
 	public static final String MATRICULAINVALIDA = "Esta matrícula é inválida!";
 	public static final String CPFINVALIDO = "Este CPF é inválido!";
 	public static final String EMAILINVALIDO = "Este email é inválido!";
+	public static final String CAMPOVAZIO = "Por favor, preencha todos os campos em branco!";
 	
 	//Exceptions para PopUps
 	private static final String MSGALERT = "Mensagem de alerta";

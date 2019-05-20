@@ -4,7 +4,6 @@ import basicas.Cliente;
 import excecoes.ClienteJaCadastradoException;
 import excecoes.MatriculaInvalidaException;
 import excecoes.NaoEncontradoException;
-import excecoes.ParametroNuloException;
 import interfaces.IRepositorioCliente;
 
 public class CadastroCliente {
@@ -27,7 +26,7 @@ public class CadastroCliente {
 		repositorio.remover(matricula);
 	}
 	
-	public void atualizar(Cliente cliente) throws NaoEncontradoException, ParametroNuloException {
+	public void atualizar(Cliente cliente) throws NaoEncontradoException{
 		repositorio.atualizar(cliente);
 	}
 

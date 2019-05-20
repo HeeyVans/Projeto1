@@ -10,7 +10,6 @@ import excecoes.CampoVazioException;
 import excecoes.EmailInvalidoException;
 import excecoes.MatriculaInvalidaException;
 import excecoes.NaoEncontradoException;
-import excecoes.ParametroNuloException;
 import gui.PopUps;
 
 public class ValidarDados {

@@ -15,5 +15,5 @@ public class ClienteJaCadastradoException extends Exception{
 		return cliente + Mensagem.CLIENTEJACADASTRADO;
 		
 	}
-  //Deixar pra a exceção ser tratada dentro da classe RepositorioClienteArrays ou aqui
+  
 }

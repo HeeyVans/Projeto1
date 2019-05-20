@@ -97,7 +97,7 @@ public class RepositorioClienteArrays implements IRepositorioCliente, Serializab
 	}
 
 	@Override
-	public Cliente procurar(String matricula) throws NaoEncontradoException, ParametroNuloException {
+	public Cliente procurar(String matricula) throws ParametroNuloException {
 		if(matricula.equals("")) {
 			throw new ParametroNuloException(matricula);
 		}

@@ -8,7 +8,6 @@ import excecoes.ClienteJaCadastradoException;
 import excecoes.InstrutorJaCadastradoException;
 import excecoes.MatriculaInvalidaException;
 import excecoes.NaoEncontradoException;
-import excecoes.ParametroNuloException;
 import interfaces.IRepositorioCliente;
 import interfaces.IRepositorioExercicio;
 import interfaces.IRepositorioInstrutor;
@@ -58,7 +57,7 @@ public class Fachada {
 	public void removerCliente(String matricula) throws NaoEncontradoException {
 		cliente.remover(matricula);
 	}
-	public void atualizar(Cliente cliente) throws NaoEncontradoException, ParametroNuloException {
+	public void atualizar(Cliente cliente) throws NaoEncontradoException{
 		this.cliente.atualizar(cliente);
 	}
 	//listar();
