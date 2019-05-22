@@ -15,6 +15,12 @@ public abstract class Pessoa {
 	public Pessoa() {
 		
 	}
+	//CONSTRUTOR PARA TESTES
+	public Pessoa(String nome, Endereco endereco, String cpf) {
+		this.nome = nome;
+		this.endereco = endereco;
+		this.cpf = cpf;		
+	}
 
 	public Pessoa(String nome, Endereco endereco, String cpf, Date dataDeNasc, String matricula, String identificador,
 			String email) {

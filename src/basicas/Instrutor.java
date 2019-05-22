@@ -10,8 +10,11 @@ public class Instrutor extends Pessoa {
 	public Instrutor() {
 		
 	}
-
-
+	//CONSTRUTOR PARA TESTES
+	public Instrutor(String nome, Endereco endereco, String cpf) {
+		super(nome, endereco, cpf);
+		
+	}
 
 	public Instrutor(String nome, Endereco endereco, String cpf, Date dataDeNasc, String matricula,
 			String identificador, String email) {
