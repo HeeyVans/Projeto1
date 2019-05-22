@@ -11,54 +11,38 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail.SimpleEmail;
+
 public class TesteEmail {
 	
-	public void enviarEmail(String senha, String remetente, String destinatario, String msg,String assunto) {
-		Properties props = new Properties();
+	public void enviarEmail() {
 		
-		props.put("mail.smtp.user", remetente);
-		props.put("mail.smtp.host", "smtp.gmail.com");
-		props.put("mail.smtp.port", "25");
-		props.put("mail.debug", "true");
-		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.smtp.EnableSSL.enable", "true");
+		SimpleEmail email = new SimpleEmail(); 
 		
-		props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-		props.setProperty("mail.smtp.socketFactory.fallback", "false");
-		props.setProperty("mail.smtp.port", "465");
-		props.setProperty("mail.smtp.socketFactory.port", "465");
-		
-		Session session = Session.getDefaultInstance(props, 
-				new javax.mail.Authenticator(){
-			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(remetente, senha);
-			}
-		});
-		
-		session.setDebug(true);
-		
-		
-		try {
-			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(remetente));
+		try {  
 			
-			Address[] toUser = InternetAddress
-					.parse(destinatario);
-			
-			message.setRecipients(Message.RecipientType.TO, toUser);
-			message.setSubject(assunto);
-			message.setText(msg);
-			Transport.send(message);
-		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			email.setHostName("smtp.gmail.com"); // o servidor SMTP para envio do e-mail
+			email.addTo("diogosz111@gmail.com", "Nome"); //destinatário
+			email.setFrom("digsuk360@gmail.com", "Nome"); // remetente
+			email.setSubject("Teste -> Email simples"); // assunto do e-mail
+			email.setMsg("Teste de Email utilizando commons-email"); //conteudo do e-mail
+			email.setAuthentication("digsuk360@gmail.com", "");
+			email.setSmtpPort(465);
+			email.setSSL(true);
+			email.setTLS(true);
+			email.send();
+
+		      } catch (EmailException e) {  
+
+		      System.out.println(e.getMessage());  
+
+		      }   
 	}
 
 	public static void main(String[] args) {
 		
-		new TesteEmail().enviarEmail("", "", "", "oi", "vlw");
+		new TesteEmail().enviarEmail();
 
 	}
 

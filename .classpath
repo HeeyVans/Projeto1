@@ -14,5 +14,11 @@
 	<classpathentry kind="lib" path="lib/mailapi.jar"/>
 	<classpathentry kind="lib" path="lib/pop3.jar"/>
 	<classpathentry kind="lib" path="lib/smtp.jar"/>
+	<classpathentry kind="lib" path="lib/commons-email-1.5-javadoc.jar"/>
+	<classpathentry kind="lib" path="lib/commons-email-1.5-sources.jar"/>
+	<classpathentry kind="lib" path="lib/commons-email-1.5-test-sources.jar"/>
+	<classpathentry kind="lib" path="lib/commons-email-1.5-tests.jar"/>
+	<classpathentry kind="lib" path="lib/commons-email-1.5.jar"/>
+	<classpathentry kind="lib" path="lib/mail.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
