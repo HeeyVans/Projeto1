@@ -1,6 +1,11 @@
 package sistema;
 
 import java.util.InputMismatchException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 
 import basicas.Pessoa;
 import basicas.Cliente;
@@ -142,7 +147,8 @@ public class ValidarDados {
     			return false;
     		}
     		return true;
-    	}
+    	}      
+              
     }
 
 

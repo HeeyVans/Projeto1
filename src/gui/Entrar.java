@@ -157,6 +157,7 @@ public class Entrar {
 						if(ValidarDados.validarEmail(email)) {
 							matricula = Assistente.gerarMatricula();
 							Assistente.enviarEmail(email, matricula);
+							PopUps.emailEnviado();
 							break;
 						}
 						email = "";

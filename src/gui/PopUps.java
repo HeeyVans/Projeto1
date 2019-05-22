@@ -28,5 +28,10 @@ public class PopUps {
 	public static void emailInvalido(EmailInvalidoException eie) {
 		JOptionPane.showMessageDialog(null, eie.getMessage(), Mensagem.getMsgalert(), JOptionPane.WARNING_MESSAGE);
 	}
+	
+	//CONFIRMAÇÕES
+	public static void emailEnviado() {
+		JOptionPane.showMessageDialog(null, Mensagem.EMAILENVIADO);
+	}
 
 }

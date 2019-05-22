@@ -14,7 +14,7 @@ import excecoes.NaoEncontradoException;
 import excecoes.ParametroNuloException;
 import interfaces.IRepositorioCliente;
 
-public class RepositorioClienteArrays implements IRepositorioCliente, Serializable {
+public class RepositorioClienteArquivo implements IRepositorioCliente, Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -22,22 +22,22 @@ public class RepositorioClienteArrays implements IRepositorioCliente, Serializab
 	private int indice;
 	
 	private final static int TAMANHO = 100;
-	public static RepositorioClienteArrays instance;
+	public static RepositorioClienteArquivo instance;
 	
-	public RepositorioClienteArrays() {
+	public RepositorioClienteArquivo() {
 		this.cliente = new Cliente[TAMANHO];
 		this.indice = 0;
 	}
 	
-	public static RepositorioClienteArrays getInstance() {
+	public static RepositorioClienteArquivo getInstance() {
 	    if (instance == null) {
 	      instance = lerDoArquivo();
 	    }
 	    return instance;
 	  }
 	
-	public static RepositorioClienteArrays lerDoArquivo() {
-		RepositorioClienteArrays instanciaLocal = null;
+	public static RepositorioClienteArquivo lerDoArquivo() {
+		RepositorioClienteArquivo instanciaLocal = null;
 
 	    File in = new File("clientes.dat");
 	    FileInputStream fis = null;
@@ -46,9 +46,9 @@ public class RepositorioClienteArrays implements IRepositorioCliente, Serializab
 	      fis = new FileInputStream(in);
 	      ois = new ObjectInputStream(fis);
 	      Object o = ois.readObject();
-	      instanciaLocal = (RepositorioClienteArrays) o;
+	      instanciaLocal = (RepositorioClienteArquivo) o;
 	    } catch (Exception e) {
-	      instanciaLocal = new RepositorioClienteArrays();
+	      instanciaLocal = new RepositorioClienteArquivo();
 	    } finally {
 	      if (ois != null) {
 	        try {

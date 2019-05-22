@@ -12,61 +12,45 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail.SimpleEmail;
+
 public class Assistente {
 	
 	//Envia um email com uma mensagem.
-		public static void enviarEmail(String email, String matricula){
+		public static void enviarEmail(String email1, String matricula){
+			
 			final String MFitEmail = "MFit.Academia10@gmail.com";
 			final String MFitSenha = "mfit1010";
-			Properties props = new Properties();
-	        /** Parâmetros de conexão com servidor Gmail */
-			props.put("mail.smtp.user", MFitEmail);
-			props.put("mail.smtp.host", "smtp.gmail.com");
-			props.put("mail.smtp.port", "25");
-			props.put("mail.debug", "true");
-			props.put("mail.smtp.starttls.enable", "true");
-			props.put("mail.smtp.EnableSSL.enable", "true");
 			
-            props.setProperty("mail.smtp.socketFactory.port", "465");
-            props.setProperty("mail.smtp.socketFactory.fallback", "false");
-            props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-            //props.setProperty("mail.smtp.auth", "true");
-            props.setProperty("mail.smtp.port", "465");
- 
-            Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
- 
-                   protected PasswordAuthentication getPasswordAuthentication() {
-                          return new PasswordAuthentication(MFitEmail, MFitSenha);
-                   }
-	                    });
+			SimpleEmail email = new SimpleEmail(); 
+			
+			try {  
+				
+				email.setHostName("smtp.gmail.com"); // o servidor SMTP para envio do e-mail
+				email.addTo(email1); //destinatário
+				email.setFrom(MFitEmail); // remetente
+				email.setSubject(Mensagem.NOVAMATRICULA); // assunto do e-mail
+				email.setMsg(Mensagem.NOVAMATRICULAGERADA + matricula); //conteudo do e-mail
+				email.setAuthentication(MFitEmail, MFitSenha);
+				email.setSmtpPort(465);
+				email.setSSL(true);
+				email.setTLS(true);
+				email.send();
 
-	        /** Ativa Debug para sessão */
-	        session.setDebug(true);
+			      } catch (EmailException e) {  
 
-	        try {
-	              Message message = new MimeMessage(session);
-	              message.setFrom(new InternetAddress(MFitEmail)); //Remetente
+			      System.out.println(e.getMessage());  
 
-	              Address[] toUser = InternetAddress //Destinatário(s)
-	                         .parse(email);  
-
-	              message.setRecipients(Message.RecipientType.TO, toUser);
-	              message.setSubject(Mensagem.NOVAMATRICULA);//Assunto
-	              message.setText(Mensagem.NOVAMATRICULAGERADA + matricula);
-
-	              /**Método para enviar a mensagem criada*/
-	              Transport.send(message);
-
-	         } catch (MessagingException e) {
-	              throw new RuntimeException(e);
-	        }
+			      }   
 		}
+		
 		
 		//Gera uma senha de 10 caracteres, através da conversão de 
 		//valores inteiros aleatóriso em caracteres.
 		public static String gerarMatricula(){
 			final Random random = new Random();
-			final int TAMANHO = 10;
+			final int TAMANHO = 4;
 			
 			char[] caracter = new char[TAMANHO];
 	        for (int i = 0; i<TAMANHO; i++)

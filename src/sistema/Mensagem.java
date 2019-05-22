@@ -25,9 +25,10 @@ public class Mensagem {
 	}
 	
 	//ClasseAssistente
-	public static final String NOVAMATRICULA = "Esqueci a matrícula - Nova Matrícula!";
-	public static final String NOVAMATRICULAGERADA = "Sua nova matrícula foi gerada!";
+	public static final String NOVAMATRICULA = "MFit Academia - Nova Matrícula!";
+	public static final String NOVAMATRICULAGERADA = "Sua nova matrícula é ";
 	
 	//TelaLogin
 	public static final String INFORMAEMAIL = "Qual seu email cadastrado?";
+	public static final String EMAILENVIADO = "Email enviado com sucesso!";
 }

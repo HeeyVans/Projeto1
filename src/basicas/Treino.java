@@ -1,17 +1,17 @@
 package basicas;
 
-import repositorios.RepositorioExercicioArrays;
+import repositorios.RepositorioExercicioArquivo;
 
 public class Treino {
 	
 	private Instrutor instrutor;
 	private Cliente cliente;
 	private Exercicio exercicio;
-	private RepositorioExercicioArrays repExer;
+	private RepositorioExercicioArquivo repExer;
 	private int id;
 	
 	
-	public Treino(Instrutor instrutor, Cliente cliente, Exercicio exercicio, RepositorioExercicioArrays repExer,
+	public Treino(Instrutor instrutor, Cliente cliente, Exercicio exercicio, RepositorioExercicioArquivo repExer,
 			int id) {
 		
 		this.instrutor = instrutor;
@@ -57,12 +57,12 @@ public class Treino {
 	}
 
 
-	public RepositorioExercicioArrays getRepExer() {
+	public RepositorioExercicioArquivo getRepExer() {
 		return repExer;
 	}
 
 
-	public void setRepExer(RepositorioExercicioArrays repExer) {
+	public void setRepExer(RepositorioExercicioArquivo repExer) {
 		this.repExer = repExer;
 	}
 

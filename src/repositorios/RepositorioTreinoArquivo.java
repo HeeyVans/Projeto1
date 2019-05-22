@@ -13,7 +13,7 @@ import basicas.Instrutor;
 import basicas.Treino;
 import interfaces.IRepositorioTreino;
 
-public class RepositorioTreinoArrays implements IRepositorioTreino, Serializable {
+public class RepositorioTreinoArquivo implements IRepositorioTreino, Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -21,22 +21,22 @@ public class RepositorioTreinoArrays implements IRepositorioTreino, Serializable
 	private int indice;
 
 	private final static int TAMANHO = 100;
-	public static RepositorioTreinoArrays instance;
+	public static RepositorioTreinoArquivo instance;
 	
-	public RepositorioTreinoArrays() {
+	public RepositorioTreinoArquivo() {
 		this.treino = new Treino[TAMANHO];
 		this.indice = 0;
 	}
 	
-	public static RepositorioTreinoArrays getInstance() {
+	public static RepositorioTreinoArquivo getInstance() {
 	    if (instance == null) {
 	      instance = lerDoArquivo();
 	    }
 	    return instance;
 	  }
 	
-	public static RepositorioTreinoArrays lerDoArquivo() {
-		RepositorioTreinoArrays instanciaLocal = null;
+	public static RepositorioTreinoArquivo lerDoArquivo() {
+		RepositorioTreinoArquivo instanciaLocal = null;
 
 	    File in = new File("treino.dat");
 	    FileInputStream fis = null;
@@ -45,9 +45,9 @@ public class RepositorioTreinoArrays implements IRepositorioTreino, Serializable
 	      fis = new FileInputStream(in);
 	      ois = new ObjectInputStream(fis);
 	      Object o = ois.readObject();
-	      instanciaLocal = (RepositorioTreinoArrays) o;
+	      instanciaLocal = (RepositorioTreinoArquivo) o;
 	    } catch (Exception e) {
-	      instanciaLocal = new RepositorioTreinoArrays();
+	      instanciaLocal = new RepositorioTreinoArquivo();
 	    } finally {
 	      if (ois != null) {
 	        try {

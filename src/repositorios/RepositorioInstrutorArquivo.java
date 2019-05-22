@@ -11,7 +11,7 @@ import java.io.Serializable;
 import basicas.Instrutor;
 import interfaces.IRepositorioInstrutor;
 
-public class RepositorioInstrutorArrays implements IRepositorioInstrutor, Serializable {
+public class RepositorioInstrutorArquivo implements IRepositorioInstrutor, Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -19,22 +19,22 @@ public class RepositorioInstrutorArrays implements IRepositorioInstrutor, Serial
 	private int indice;
 
 	private final static int TAMANHO = 100;
-	public static RepositorioInstrutorArrays instance;
+	public static RepositorioInstrutorArquivo instance;
 	
-	public RepositorioInstrutorArrays() {
+	public RepositorioInstrutorArquivo() {
 		this.instrutor = new Instrutor[TAMANHO];
 		this.indice = 0;
 	}
 	
-	public static RepositorioInstrutorArrays getInstance() {
+	public static RepositorioInstrutorArquivo getInstance() {
 	    if (instance == null) {
 	      instance = lerDoArquivo();
 	    }
 	    return instance;
 	  }
 	
-	public static RepositorioInstrutorArrays lerDoArquivo() {
-		RepositorioInstrutorArrays instanciaLocal = null;
+	public static RepositorioInstrutorArquivo lerDoArquivo() {
+		RepositorioInstrutorArquivo instanciaLocal = null;
 
 	    File in = new File("instrutor.dat");
 	    FileInputStream fis = null;
@@ -43,9 +43,9 @@ public class RepositorioInstrutorArrays implements IRepositorioInstrutor, Serial
 	      fis = new FileInputStream(in);
 	      ois = new ObjectInputStream(fis);
 	      Object o = ois.readObject();
-	      instanciaLocal = (RepositorioInstrutorArrays) o;
+	      instanciaLocal = (RepositorioInstrutorArquivo) o;
 	    } catch (Exception e) {
-	      instanciaLocal = new RepositorioInstrutorArrays();
+	      instanciaLocal = new RepositorioInstrutorArquivo();
 	    } finally {
 	      if (ois != null) {
 	        try {

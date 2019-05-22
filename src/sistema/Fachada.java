@@ -12,10 +12,10 @@ import interfaces.IRepositorioCliente;
 import interfaces.IRepositorioExercicio;
 import interfaces.IRepositorioInstrutor;
 import interfaces.IRepositorioTreino;
-import repositorios.RepositorioClienteArrays;
-import repositorios.RepositorioExercicioArrays;
-import repositorios.RepositorioInstrutorArrays;
-import repositorios.RepositorioTreinoArrays;
+import repositorios.RepositorioClienteArquivo;
+import repositorios.RepositorioExercicioArquivo;
+import repositorios.RepositorioInstrutorArquivo;
+import repositorios.RepositorioTreinoArquivo;
 
 public class Fachada {
 	
@@ -28,10 +28,10 @@ public class Fachada {
 	public Fachada() {
 		//Repositórios ArrayArquivo
 		
-		IRepositorioInstrutor repInstrutor = new RepositorioInstrutorArrays();
-		IRepositorioCliente repCliente = new RepositorioClienteArrays();
-		IRepositorioExercicio repExercicio = new RepositorioExercicioArrays();
-		IRepositorioTreino repTreino = new RepositorioTreinoArrays();
+		IRepositorioInstrutor repInstrutor = new RepositorioInstrutorArquivo();
+		IRepositorioCliente repCliente = new RepositorioClienteArquivo();
+		IRepositorioExercicio repExercicio = new RepositorioExercicioArquivo();
+		IRepositorioTreino repTreino = new RepositorioTreinoArquivo();
 		
 	}
 	
