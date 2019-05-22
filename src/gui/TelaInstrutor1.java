@@ -1,22 +1,22 @@
 package gui;
 
-import java.awt.BorderLayout;
+
 import java.awt.Dimension;
 import java.awt.EventQueue;
 
-import javax.swing.ButtonGroup;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.util.ArrayList;
+
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
-import basicas.Cliente;
+
+
 import sistema.ModeloTabelaInstrutor;
 
 import javax.swing.ListSelectionModel;
@@ -26,10 +26,7 @@ public class TelaInstrutor1 extends JFrame {
 	private JPanel contentPane;
 	private JTable tableCliente;
 	private static TelaInstrutor1 instance;
-	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private ModeloTabelaInstrutor modeloInstrutor;
-	private Cliente cliente;
-	private ArrayList<Cliente> produtoVendido = new ArrayList();
+	private ModeloTabelaInstrutor modeloInstrutor;	
 	
 	public static TelaInstrutor1 getInstance() {
 		if(instance == null) {
@@ -38,11 +35,6 @@ public class TelaInstrutor1 extends JFrame {
 		}else {
 			return instance;
 		}
-	}
-	
-	public void limparCampos() {
-		dispose();
-		TelaInstrutor1.getInstance().setVisible(true);
 	}
 
 	/**
