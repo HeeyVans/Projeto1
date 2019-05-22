@@ -58,7 +58,7 @@ public class TesteEmail {
 
 	public static void main(String[] args) {
 		
-		new TesteEmail().enviarEmail("", "", " ", "oi", "vlw");
+		new TesteEmail().enviarEmail("", "", "", "oi", "vlw");
 
 	}
 
