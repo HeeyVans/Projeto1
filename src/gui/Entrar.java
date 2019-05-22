@@ -10,9 +10,16 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import excecoes.CampoVazioException;
+import sistema.Assistente;
+import sistema.Mensagem;
+import sistema.ValidarDados;
+
 import java.awt.Font;
 import javax.swing.JTextPane;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
 
@@ -136,6 +143,32 @@ public class Entrar {
 		lblEsqueciASenha.setFont(new Font("Arial", Font.BOLD, 11));
 		lblEsqueciASenha.setBounds(320, 276, 145, 14);
 		TelaDeEntrada.getContentPane().add(lblEsqueciASenha);
+		
+		JButton btnEsqueciSenha = new JButton("Esqueci");
+		btnEsqueciSenha.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String email, matricula = "";
+				do {
+					email = JOptionPane.showInputDialog(Mensagem.INFORMAEMAIL);
+					
+					if(email == null) {
+						break;
+					}else if(!email.equals("")){
+						if(ValidarDados.validarEmail(email)) {
+							matricula = Assistente.gerarMatricula();
+							Assistente.enviarEmail(email, matricula);
+							break;
+						}
+						email = "";
+						continue;
+					}
+					PopUps.campoVazio(new CampoVazioException());
+					
+				}while(matricula.equals(""));
+			}
+		});
+		btnEsqueciSenha.setBounds(231, 276, 89, 23);
+		TelaDeEntrada.getContentPane().add(btnEsqueciSenha);
 		TelaDeEntrada.setBounds(100, 100, 535, 454);
 		TelaDeEntrada.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}

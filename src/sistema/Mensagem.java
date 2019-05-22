@@ -23,4 +23,11 @@ public class Mensagem {
 	public static String getMsginfo() {
 		return MSGINFO;
 	}
+	
+	//ClasseAssistente
+	public static final String NOVAMATRICULA = "Esqueci a matrícula - Nova Matrícula!";
+	public static final String NOVAMATRICULAGERADA = "Sua nova matrícula foi gerada!";
+	
+	//TelaLogin
+	public static final String INFORMAEMAIL = "Qual seu email cadastrado?";
 }
