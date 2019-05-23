@@ -1,16 +1,18 @@
 package interfaces;
 
+import java.sql.ResultSet;
+import java.util.List;
+
 import basicas.Cliente;
 import excecoes.ClienteJaCadastradoException;
-import excecoes.MatriculaInvalidaException;
-import excecoes.NaoEncontradoException;
+import excecoes.ClienteNaoEncontradoException;
 
 public interface IRepositorioCliente {
 	
 	public void inserir(Cliente cliente) throws ClienteJaCadastradoException;
-	public Cliente procurar(String matricula) throws MatriculaInvalidaException;
-	public void remover(String matricula) throws NaoEncontradoException;
-	public void atualizar(Cliente cliente) throws NaoEncontradoException;
-	public Cliente[] listar();
+	public Cliente procurar(String cpf);
+	public void remover(String cpf);
+	public void atualizar(Cliente cliente) throws ClienteNaoEncontradoException;
+	public List listar();
 	
 }

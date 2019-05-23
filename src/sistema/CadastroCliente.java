@@ -1,9 +1,11 @@
 package sistema;
 
+import java.sql.ResultSet;
+import java.util.List;
+
 import basicas.Cliente;
 import excecoes.ClienteJaCadastradoException;
-import excecoes.MatriculaInvalidaException;
-import excecoes.NaoEncontradoException;
+import excecoes.ClienteNaoEncontradoException;
 import interfaces.IRepositorioCliente;
 
 public class CadastroCliente {
@@ -18,16 +20,20 @@ public class CadastroCliente {
 		repositorio.inserir(cliente);
 	}
 	
-	public Cliente procurar(String matricula) throws MatriculaInvalidaException {
-		return repositorio.procurar(matricula);
+	public Cliente procurar(String cpf)  {
+		return repositorio.procurar(cpf);
 	}
 	
-	public void remover(String matricula) throws NaoEncontradoException /*throws MatriculaNaoEncontradaException*/ {
-		repositorio.remover(matricula);
+	public void remover(String cpf)  {
+		repositorio.remover(cpf);
 	}
 	
-	public void atualizar(Cliente cliente) throws NaoEncontradoException{
+	public void atualizar(Cliente cliente) throws ClienteNaoEncontradoException{
 		repositorio.atualizar(cliente);
+	}
+	
+	public List listar(String cpf) {
+		return repositorio.listar();
 	}
 
 }

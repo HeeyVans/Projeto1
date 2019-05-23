@@ -13,8 +13,7 @@ import basicas.Instrutor;
 import excecoes.CPFInvalidoException;
 import excecoes.CampoVazioException;
 import excecoes.EmailInvalidoException;
-import excecoes.MatriculaInvalidaException;
-import excecoes.NaoEncontradoException;
+import excecoes.MatriculaNaoEncontradaException;
 import gui.PopUps;
 
 public class ValidarDados {
@@ -121,13 +120,13 @@ public class ValidarDados {
         //Valida Login De Cliente
         public static boolean validarLoginCliente(String cpf, String matricula) {
         	try {
-        		cliente = Fachada.getInstance().procurarCliente(matricula);
-        		if(!cliente.getCpf().equals(cpf)) {
-        			MatriculaInvalidaException mie = new MatriculaInvalidaException();
-        			throw mie;
+        		cliente = Fachada.getInstance().procurarCliente(cpf);
+        		if(!cliente.getMatricula().equals(matricula)) {
+        			MatriculaNaoEncontradaException mnee = new MatriculaNaoEncontradaException();
+        			throw mnee;
         		}
-        	}catch(MatriculaInvalidaException mie) {
-        		PopUps.matriculaInvalida(mie);
+        	}catch(MatriculaNaoEncontradaException mnee) {
+        		PopUps.matriculaInvalida(mnee);
         		return false;
         		
         	} 

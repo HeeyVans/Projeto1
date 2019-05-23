@@ -4,8 +4,9 @@ public class Mensagem {
 	
 	//Exceptions	
 	public static final String CLIENTEJACADASTRADO = " já foi cadastrado como cliente!";
+	public static final String CLIENTENAOENCONTRADO = "Este cliente não foi encontrado!";
 	public static final String INSTRUTORJACADASTRADO = " já foi cadastrado como instrutor!";
-	public static final String MATRICULAINVALIDA = "Esta matrícula é inválida!";
+	public static final String MATRICULANAOENCONTRADA = "Esta matrícula não foi encontrada!";
 	public static final String CPFINVALIDO = "Este CPF é inválido!";
 	public static final String EMAILINVALIDO = "Este email é inválido!";
 	public static final String CAMPOVAZIO = "Por favor, preencha todos os campos em branco!";

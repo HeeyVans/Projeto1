@@ -1,18 +1,20 @@
 package sistema;
 
+import java.util.List;
+
 import basicas.Cliente;
 import basicas.Exercicio;
 import basicas.Instrutor;
 import basicas.Treino;
 import excecoes.ClienteJaCadastradoException;
+import excecoes.ClienteNaoEncontradoException;
 import excecoes.InstrutorJaCadastradoException;
-import excecoes.MatriculaInvalidaException;
-import excecoes.NaoEncontradoException;
 import interfaces.IRepositorioCliente;
 import interfaces.IRepositorioExercicio;
 import interfaces.IRepositorioInstrutor;
 import interfaces.IRepositorioTreino;
 import repositorios.RepositorioClienteArquivo;
+import repositorios.RepositorioClienteArray;
 import repositorios.RepositorioExercicioArquivo;
 import repositorios.RepositorioInstrutorArquivo;
 import repositorios.RepositorioTreinoArquivo;
@@ -26,12 +28,22 @@ public class Fachada {
 	private CadastroTreino treino;
 	
 	public Fachada() {
-		//Repositórios ArrayArquivo
 		
+		//Repositórios ArrayArquivo		
 		IRepositorioInstrutor repInstrutor = new RepositorioInstrutorArquivo();
-		IRepositorioCliente repCliente = new RepositorioClienteArquivo();
+		//IRepositorioCliente repCliente = new RepositorioClienteArquivo();
 		IRepositorioExercicio repExercicio = new RepositorioExercicioArquivo();
 		IRepositorioTreino repTreino = new RepositorioTreinoArquivo();
+		
+		//IRepositorioInstrutor repInstrutor = new RepositorioInstrutorArray();
+		IRepositorioCliente repCliente = new RepositorioClienteArray();
+		//IRepositorioExercicio repExercicio = new RepositorioExercicioArray();
+		//IRepositorioTreino repTreino = new RepositorioTreinoArray();
+		
+		cliente = new CadastroCliente(repCliente);
+		instrutor = new CadastroInstrutor(repInstrutor);
+		exercicio = new CadastroExercicio(repExercicio);
+		treino = new CadastroTreino(repTreino);
 		
 	}
 	
@@ -51,14 +63,17 @@ public class Fachada {
 	public void cadastrarCliente(Cliente cliente) throws ClienteJaCadastradoException {
 		this.cliente.inserir(cliente);
 	}
-	public Cliente procurarCliente(String matricula) throws MatriculaInvalidaException {
-		return cliente.procurar(matricula);
+	public Cliente procurarCliente(String cpf) {
+		return cliente.procurar(cpf);
 	}
-	public void removerCliente(String matricula) throws NaoEncontradoException {
-		cliente.remover(matricula);
+	public void removerCliente(String cpf) {
+		cliente.remover(cpf);
 	}
-	public void atualizar(Cliente cliente) throws NaoEncontradoException{
+	public void atualizar(Cliente cliente) throws ClienteNaoEncontradoException{
 		this.cliente.atualizar(cliente);
+	}
+	public List listarCliente(String cpf) {
+		return this.cliente.listar(cpf);
 	}
 	//listar();
 	

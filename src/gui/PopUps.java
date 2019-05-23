@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 import excecoes.CPFInvalidoException;
 import excecoes.CampoVazioException;
 import excecoes.EmailInvalidoException;
-import excecoes.MatriculaInvalidaException;
+import excecoes.MatriculaNaoEncontradaException;
 import sistema.Mensagem;
 
 public class PopUps {
@@ -17,8 +17,8 @@ public class PopUps {
 		JOptionPane.showMessageDialog(null, cve.getMessage(),Mensagem.getMsgalert(),JOptionPane.WARNING_MESSAGE);
 	}
 	
-	public static void matriculaInvalida(MatriculaInvalidaException mie) {
-		JOptionPane.showMessageDialog(null, mie.getMessage(), Mensagem.getMsgalert(),JOptionPane.WARNING_MESSAGE);
+	public static void matriculaInvalida(MatriculaNaoEncontradaException mnee) {
+		JOptionPane.showMessageDialog(null, mnee.getMessage(), Mensagem.getMsgalert(),JOptionPane.WARNING_MESSAGE);
 	}
 	
 	public static void cpfInvalido(CPFInvalidoException cie) {

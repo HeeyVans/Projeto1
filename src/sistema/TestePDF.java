@@ -63,7 +63,7 @@ public class TestePDF extends JFrame {
 					
 					Exercicio exer = new Exercicio("Nenhuma", "Supino", 3, "1'", 0);
 					Endereco endCliente = new Endereco("Boa vista", "Cordeiro", "Recife", "", 2020);
-					Cliente cliente = new Cliente("Diogo", endCliente, "700000000", "Hipertrofia");
+					Cliente cliente = new Cliente("Diogo", "700000000", "Hipertrofia");
 					Endereco endInstru = new Endereco("Boa viagem", "Boa viagem", "Recife", "", 2520);
 					Instrutor instr = new Instrutor("Vanessa", endInstru, "7000526156");
 					PdfWriter.getInstance(document, new FileOutputStream("PDF.pdf"));

@@ -16,9 +16,8 @@ public abstract class Pessoa {
 		
 	}
 	//CONSTRUTOR PARA TESTES
-	public Pessoa(String nome, Endereco endereco, String cpf) {
+	public Pessoa(String nome, String cpf) {
 		this.nome = nome;
-		this.endereco = endereco;
 		this.cpf = cpf;		
 	}
 

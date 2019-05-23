@@ -18,9 +18,9 @@ public class Cliente extends Pessoa{
 		this.pagamento = pagamento;
 		this.objetivo = objetivo;
 	}
-	//CONSTRUTOR PARA TESTES
-	public Cliente(String nome, Endereco endereco, String cpf, String objetivo) {
-		super(nome, endereco, cpf);
+	//CONSTRUTOR PARA TESTESa
+	public Cliente(String nome, String cpf, String objetivo) {
+		super(nome, cpf);
 		this.objetivo = objetivo;
 	}
 

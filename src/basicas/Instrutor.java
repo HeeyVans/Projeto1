@@ -12,7 +12,7 @@ public class Instrutor extends Pessoa {
 	}
 	//CONSTRUTOR PARA TESTES
 	public Instrutor(String nome, Endereco endereco, String cpf) {
-		super(nome, endereco, cpf);
+		super(nome, cpf);
 		
 	}
 
