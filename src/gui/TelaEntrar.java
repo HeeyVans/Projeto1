@@ -23,7 +23,7 @@ import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
 
-public class TelaEntrar {
+public class TelaEntrar extends JFrame{
 
 	JFrame TelaDeEntrada;
 	private JTextField textFieldMatricula;
@@ -50,6 +50,8 @@ public class TelaEntrar {
 	
 	public static void main(String[] args) {
 		try {
+			
+			
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -64,6 +66,10 @@ public class TelaEntrar {
 				try {
 					TelaEntrar window = new TelaEntrar();
 					window.TelaDeEntrada.setVisible(true);
+					
+					//gerando user ADM
+					Assistente.gerarAdm();
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -130,7 +136,9 @@ public class TelaEntrar {
 							break;
 							
 						case ValidarDados.ADM:
-							
+							TelaADM.getInstance().setVisible(true);
+							System.exit(0);
+							break;
 						default:
 							System.exit(0);
 							break;

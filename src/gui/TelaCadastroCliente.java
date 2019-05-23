@@ -47,7 +47,7 @@ import sistema.ValidarDados;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class TelaCadastroCliente {
+public class TelaCadastroCliente extends JFrame{
 
     JFrame frmTelaDeCadastro;
 	private JTextField textFieldTelefone;
@@ -61,9 +61,9 @@ public class TelaCadastroCliente {
 	private JTextField textFieldCidade;
 	private JTextField textFieldObjetivo;
 	private JTextField textFieldPagamento;
-	JDateChooser dateNascimento;
-	JRadioButton rdbtnMasculino;
-	JRadioButton rdbtnFeminino;
+	JDateChooser dataNascimento = new JDateChooser();
+	JRadioButton rdbtnMasculino = new JRadioButton();
+	JRadioButton rdbtnFeminino = new JRadioButton();
 	private static TelaCadastroCliente instance;
 	
 	public static TelaCadastroCliente getInstance() {
@@ -89,6 +89,18 @@ public class TelaCadastroCliente {
 		textFieldCidade.setText("");
 		textFieldObjetivo.setText("");
 		textFieldPagamento.setText("");
+	}
+	
+	public String radioSelect() {
+		
+		if(rdbtnMasculino.isSelected()) {
+			return "Masculino";
+		}else if(rdbtnFeminino.isSelected()) {
+			return "Feminino";
+		}else {
+			return null;
+		}
+		
 	}
 	
 	public static void main(String[] args) {
@@ -191,18 +203,13 @@ public class TelaCadastroCliente {
 						
 						Endereco end = new Endereco(textFieldRua.getText(), textFieldBairro.getText()
 								, textFieldCidade.getText(), textFieldComplemento.getText(), textFieldNumero.getText());
-						
-						/*String genero = " ";
-						if(rdbtnMasculino.isEnabled() == true) {
-							genero = "Masculino";
-						}else if(rdbtnFeminino.isEnabled() == true) {
-							genero = "Feminino";
-						}*/
-						
+												
 						String matricula = Assistente.gerarMatricula();
 						Cliente clienteCadastrar;
-						Cliente cliente = new Cliente(textFieldNome.getText(), textFieldCPF.getText()
-								, matricula, "masculino", textFieldEmail.getText());
+						Cliente cliente = new Cliente(textFieldNome.getText(), end, textFieldCPF.getText(),
+								dataNascimento.getDate() , matricula, "Cliente", textFieldEmail.getText(), 
+								textFieldTelefone.getText(), radioSelect(), textFieldPagamento.getText(),
+								textFieldObjetivo.getText());
 						
 						clienteCadastrar = Fachada.getInstance().procurarCliente(textFieldCPF.getText());
 						

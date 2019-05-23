@@ -18,7 +18,7 @@ import gui.PopUps;
 
 public class ValidarDados {
 	
-	public static Pessoa pessoa;
+	public static Cliente cliente1;
 	public static Cliente cliente;
 	public static Instrutor instrutor;
 	public static final String Instrutor = "Instrutor";
@@ -134,7 +134,7 @@ public class ValidarDados {
         
         //Identifica qual destes está fazendo o Login e o direciona para a tela correta
         public static String identificadorLogin() {
-        	switch(pessoa.getIdentificador()) {
+        	switch(cliente1.getIdentificador()) {
         	
         	case Instrutor:
         		return Instrutor;
@@ -143,8 +143,7 @@ public class ValidarDados {
         	case ADM:
         		return ADM;
         	default:
-        		return null;
-        	
+        		return null;        	
         	}
         }
         

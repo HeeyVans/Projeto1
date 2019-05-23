@@ -17,15 +17,7 @@ public abstract class Pessoa {
 	public Pessoa() {
 		
 	}
-	//CONSTRUTOR PARA TESTES
-	public Pessoa(String nome, String cpf, String matricula, String genero, String email) {
-		this.nome = nome;
-		this.cpf = cpf;	
-		this.matricula = matricula;
-		this.genero = genero;
-		this.email = email;
-	}
-	
+	//CONSTRUTOR PARA TESTES	
 	public Pessoa(String nome, Endereco endereco, String cpf, Date dataDeNasc, String matricula, String identificador,
 			String email, String telefone, String genero) {
 		
@@ -39,6 +31,14 @@ public abstract class Pessoa {
 		this.telefone = telefone;
 		this.genero = genero;
 	}
+	
+	public Pessoa(String cpf, String matricula, String identificador) {
+		this.cpf = cpf;
+		this.matricula = matricula;
+		this.identificador = identificador;
+		
+	}
+	
 	public String getNome() {
 		return nome;
 	}

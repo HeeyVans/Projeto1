@@ -15,11 +15,17 @@ import java.awt.Font;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-
-
+import basicas.Cliente;
+import sistema.Fachada;
 import sistema.ModeloTabelaInstrutor;
 
 import javax.swing.ListSelectionModel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+import java.awt.event.ActionEvent;
 
 public class TelaInstrutor1 extends JFrame {
 
@@ -27,6 +33,7 @@ public class TelaInstrutor1 extends JFrame {
 	private JTable tableCliente;
 	private static TelaInstrutor1 instance;
 	private ModeloTabelaInstrutor modeloInstrutor;	
+	private JTextField textFieldNome;
 	
 	public static TelaInstrutor1 getInstance() {
 		if(instance == null) {
@@ -79,5 +86,43 @@ public class TelaInstrutor1 extends JFrame {
 		JScrollPane scrollPaneCliente = new JScrollPane(tableCliente);
 		scrollPaneCliente.setBounds(10, 76, 414, 110);
 		contentPane.add(scrollPaneCliente);
+		
+		JLabel lblNome = new JLabel("Nome do Cliente:");
+		lblNome.setBounds(10, 209, 92, 14);
+		contentPane.add(lblNome);
+		
+		textFieldNome = new JTextField();
+		textFieldNome.setBounds(98, 206, 86, 20);
+		contentPane.add(textFieldNome);
+		textFieldNome.setColumns(10);
+		
+		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				while(modeloInstrutor.getRowCount()>0) {
+					modeloInstrutor.removeClienteAt(0);
+				}
+				
+				String nome = textFieldNome.getText();
+				
+				ArrayList<Cliente> lista = new ArrayList();
+				List relatorio = new ArrayList();
+				
+				lista = (ArrayList<Cliente>) Fachada.getInstance().listarCliente(nome);
+				
+				if(!lista.isEmpty()) {
+					for(Cliente c:lista) {
+						c.getNome();
+						c.getObjetivo();
+						c.getDataDeNasc();
+						relatorio.add(c);
+					}
+					modeloInstrutor.addClienteList(relatorio);
+				}
+				
+			}
+		});
+		btnBuscar.setBounds(194, 205, 89, 23);
+		contentPane.add(btnBuscar);
 	}
 }

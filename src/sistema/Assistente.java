@@ -1,5 +1,6 @@
 package sistema;
 
+import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 
@@ -14,6 +15,8 @@ import javax.mail.internet.MimeMessage;
 
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
+
+import basicas.Administrador;
 
 public class Assistente {
 	
@@ -67,5 +70,16 @@ public class Assistente {
 	        else
 	            return (char)(index + 61); //os chars 97 a 122 representam [a - z]
 	    }
+		
+		//Montando Tabelas
+		public static void montarTabela(List clientes, ModeloTabelaInstrutor modelo) {
+			modelo.addClienteList(clientes);
+		}
+		
+		//GERAR ADM
+		public static void gerarAdm() {
+			Administrador adm = new Administrador("44343918360", "AAAA", "Administrador");
+			Fachada.getInstance().cadastrarCliente(adm);
+		}
 
 }

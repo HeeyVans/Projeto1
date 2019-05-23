@@ -21,15 +21,7 @@ public class Instrutor extends Pessoa {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Instrutor(String nome, String cpf, String matricula, String genero, String email) {
-		super(nome, cpf, matricula, genero, email);
-		// TODO Auto-generated constructor stub
-	}
-
-
-
-
-	public Instrutor(String cargo, String horaTrab) {
+		public Instrutor(String cargo, String horaTrab) {
 		this.cargo = cargo;
 		this.horaTrab = horaTrab;
 	}

@@ -75,8 +75,8 @@ public class Fachada {
 	public void atualizar(Cliente cliente) throws ClienteNaoEncontradoException{
 		this.cliente.atualizar(cliente);
 	}
-	public List listarCliente(String cpf) {
-		return this.cliente.listar(cpf);
+	public List listarCliente(String nome) {
+		return this.cliente.listar(nome);
 	}
 	//listar();
 	
