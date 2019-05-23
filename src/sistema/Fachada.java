@@ -16,8 +16,11 @@ import interfaces.IRepositorioTreino;
 import repositorios.RepositorioClienteArquivo;
 import repositorios.RepositorioClienteArray;
 import repositorios.RepositorioExercicioArquivo;
+import repositorios.RepositorioExercicioArray;
 import repositorios.RepositorioInstrutorArquivo;
+import repositorios.RepositorioInstrutorArray;
 import repositorios.RepositorioTreinoArquivo;
+import repositorios.RepositorioTreinoArray;
 
 public class Fachada {
 	
@@ -30,15 +33,15 @@ public class Fachada {
 	public Fachada() {
 		
 		//Repositórios ArrayArquivo		
-		IRepositorioInstrutor repInstrutor = new RepositorioInstrutorArquivo();
+		//IRepositorioInstrutor repInstrutor = new RepositorioInstrutorArquivo();
 		//IRepositorioCliente repCliente = new RepositorioClienteArquivo();
-		IRepositorioExercicio repExercicio = new RepositorioExercicioArquivo();
-		IRepositorioTreino repTreino = new RepositorioTreinoArquivo();
+		//IRepositorioExercicio repExercicio = new RepositorioExercicioArquivo();
+		//IRepositorioTreino repTreino = new RepositorioTreinoArquivo();
 		
-		//IRepositorioInstrutor repInstrutor = new RepositorioInstrutorArray();
+		IRepositorioInstrutor repInstrutor = new RepositorioInstrutorArray();
 		IRepositorioCliente repCliente = new RepositorioClienteArray();
-		//IRepositorioExercicio repExercicio = new RepositorioExercicioArray();
-		//IRepositorioTreino repTreino = new RepositorioTreinoArray();
+		IRepositorioExercicio repExercicio = new RepositorioExercicioArray();
+		IRepositorioTreino repTreino = new RepositorioTreinoArray();
 		
 		cliente = new CadastroCliente(repCliente);
 		instrutor = new CadastroInstrutor(repInstrutor);
@@ -60,7 +63,7 @@ public class Fachada {
 	
 	//INICIO CRUD DE CLIENTE
 	
-	public void cadastrarCliente(Cliente cliente) throws ClienteJaCadastradoException {
+	public void cadastrarCliente(Cliente cliente)  {
 		this.cliente.inserir(cliente);
 	}
 	public Cliente procurarCliente(String cpf) {
@@ -84,12 +87,12 @@ public class Fachada {
 		this.instrutor.inserir(instrutor);
 	}
 	
-	public Instrutor procurarInstrutor(String matricula) {
-		return instrutor.procurar(matricula);
+	public Instrutor procurarInstrutor(String cpf) {
+		return instrutor.procurar(cpf);
 	}
 
-	public void removerInstrutor(String matricula) {
-		instrutor.remover(matricula);
+	public void removerInstrutor(String cpf) {
+		instrutor.remover(cpf);
 	}
 	
 	public void atualizar(Instrutor instrutor) {

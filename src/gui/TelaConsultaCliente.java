@@ -21,7 +21,15 @@ public class TelaConsultaCliente extends JFrame {
 
 	private JPanel contentPane;
 	private JTable tableTreino;
-	private ModeloTabelaTreino modeloTreino;	
+	private ModeloTabelaTreino modeloTreino;
+	public static TelaConsultaCliente instance;
+	
+	public static TelaConsultaCliente getInstance() {
+		if(instance == null) {
+			instance = new TelaConsultaCliente();
+		}
+		return instance;
+	}
 
 	/**
 	 * Launch the application.

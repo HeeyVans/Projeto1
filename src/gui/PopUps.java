@@ -33,5 +33,13 @@ public class PopUps {
 	public static void emailEnviado() {
 		JOptionPane.showMessageDialog(null, Mensagem.EMAILENVIADO);
 	}
+	public static void clienteCadastrado() {
+		JOptionPane.showMessageDialog(null, Mensagem.CLIENTECADASTRADO);
+	}
+	
+	//ERROS
+	public static void ErroCadastro() {
+		JOptionPane.showMessageDialog(null, Mensagem.ERROCADASTRO, Mensagem.getMsgerror(), JOptionPane.WARNING_MESSAGE);
+	}
 
 }

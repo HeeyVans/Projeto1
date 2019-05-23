@@ -39,6 +39,37 @@ public class ValidarDados {
 		return true;
 	}
 	
+	//VALIDAÇÃO DE CAMPOVAZIO COM 2 CAMPOS
+		public static boolean validarCampoVazio(String arg0, String arg1) {
+			try {
+				if (arg0.equals("") || arg1.equals("")) {
+					CampoVazioException cve = new CampoVazioException();
+					throw cve;
+				}
+			} catch (CampoVazioException cve) {
+				PopUps.campoVazio(cve);
+				return false;
+			}
+			return true;
+		}
+		
+		//VALIDAÇÃO DE CAMPOVAZIO COM 10 CAMPOS
+				public static boolean validarCampoVazio(String arg0, String arg1, String arg2, String arg3
+						, String arg4, String arg5, String arg6, String arg7, String arg8, String arg9) {
+					try {
+						if (arg0.equals("") || arg1.equals("") || arg2.equals("") || arg3.equals("")
+								|| arg4.equals("") || arg5.equals("") || arg6.equals("") || arg7.equals("")
+								|| arg8.equals("") || arg9.equals("")) {
+							CampoVazioException cve = new CampoVazioException();
+							throw cve;
+						}
+					} catch (CampoVazioException cve) {
+						PopUps.campoVazio(cve);
+						return false;
+					}
+					return true;
+				}
+	
 	//VALIDAÇÃO DE CPF
 	public static boolean isCPF(String CPF) {
         // considera-se erro CPF's formados por uma sequencia de numeros iguais

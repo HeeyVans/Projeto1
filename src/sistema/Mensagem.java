@@ -25,6 +25,9 @@ public class Mensagem {
 		return MSGINFO;
 	}
 	
+	//Erros
+	public static final String ERROCADASTRO = "Erro ao Cadastrar!";
+	
 	//ClasseAssistente
 	public static final String NOVAMATRICULA = "MFit Academia - Nova Matrícula!";
 	public static final String NOVAMATRICULAGERADA = "Sua nova matrícula é ";
@@ -32,4 +35,7 @@ public class Mensagem {
 	//TelaLogin
 	public static final String INFORMAEMAIL = "Qual seu email cadastrado?";
 	public static final String EMAILENVIADO = "Email enviado com sucesso!";
+	
+	//TelaCadastroCliente
+	public static final String CLIENTECADASTRADO = "Cliente cadastrado com sucesso!";
 }

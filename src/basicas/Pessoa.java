@@ -11,19 +11,24 @@ public abstract class Pessoa {
 	private String matricula;
 	private String identificador;
 	private String email;
+	private String telefone;
+	private String genero;
 	
 	public Pessoa() {
 		
 	}
 	//CONSTRUTOR PARA TESTES
-	public Pessoa(String nome, String cpf) {
+	public Pessoa(String nome, String cpf, String matricula, String genero, String email) {
 		this.nome = nome;
-		this.cpf = cpf;		
+		this.cpf = cpf;	
+		this.matricula = matricula;
+		this.genero = genero;
+		this.email = email;
 	}
-
+	
 	public Pessoa(String nome, Endereco endereco, String cpf, Date dataDeNasc, String matricula, String identificador,
-			String email) {
-		super();
+			String email, String telefone, String genero) {
+		
 		this.nome = nome;
 		this.endereco = endereco;
 		this.cpf = cpf;
@@ -31,8 +36,9 @@ public abstract class Pessoa {
 		this.matricula = matricula;
 		this.identificador = identificador;
 		this.email = email;
+		this.telefone = telefone;
+		this.genero = genero;
 	}
-
 	public String getNome() {
 		return nome;
 	}
@@ -88,7 +94,22 @@ public abstract class Pessoa {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
 
+	public String getTelefone() {
+		return telefone;
+	}
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+	
+	
+	public String getGenero() {
+		return genero;
+	}
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

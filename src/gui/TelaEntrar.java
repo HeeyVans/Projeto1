@@ -23,15 +23,31 @@ import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
 
-public class Entrar {
+public class TelaEntrar {
 
 	JFrame TelaDeEntrada;
-	private JTextField txtMatrcula;
-	private JTextField textField;
+	private JTextField textFieldMatricula;
+	private JTextField textFieldCPF;
+	public static TelaEntrar instance;
+	
+	public static TelaEntrar getInstance() {
+		if(instance == null) {
+			instance = new TelaEntrar();
+			return instance;
+		}else {
+			return instance;
+		}
+	}
 
 	/**
 	 * Launch the application.
 	 */
+	
+	public void limpar() {
+		textFieldMatricula.setText("");
+		textFieldCPF.setText("");
+	}
+	
 	public static void main(String[] args) {
 		try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -46,7 +62,7 @@ public class Entrar {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Entrar window = new Entrar();
+					TelaEntrar window = new TelaEntrar();
 					window.TelaDeEntrada.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -58,7 +74,7 @@ public class Entrar {
 	/**
 	 * Create the application.
 	 */
-	public Entrar() {
+	public TelaEntrar() {
 		initialize();
 	}
 
@@ -67,7 +83,7 @@ public class Entrar {
 	 */
 	private void initialize() {
 		TelaDeEntrada = new JFrame();
-		TelaDeEntrada.setIconImage(Toolkit.getDefaultToolkit().getImage(Entrar.class.getResource("/imagens/biceps png.png")));
+		TelaDeEntrada.setIconImage(Toolkit.getDefaultToolkit().getImage(TelaEntrar.class.getResource("/imagens/biceps png.png")));
 		TelaDeEntrada.setTitle("Sistema de Login da MFit");
 		TelaDeEntrada.getContentPane().setBackground(Color.WHITE);
 		TelaDeEntrada.getContentPane().setLayout(null);
@@ -92,9 +108,40 @@ public class Entrar {
 		panel.add(lblBemvindoAMfit);
 		
 		JButton btnEntrar = new JButton("Entrar");
+		btnEntrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String cpf, matricula;
+				cpf = textFieldCPF.getText();
+				matricula = textFieldMatricula.getText();
+				
+				if(ValidarDados.validarCampoVazio(cpf, matricula)) {
+					if(ValidarDados.validarLoginCliente(cpf, matricula)) {
+						limpar();
+						switch(ValidarDados.identificadorLogin()) {
+						
+						case ValidarDados.Cliente:
+							TelaConsultaCliente.getInstance().setVisible(true);
+							System.exit(0);
+							break;
+							
+						case ValidarDados.Instrutor:
+							TelaInstrutor1.getInstance().setVisible(true);
+							System.exit(0);
+							break;
+							
+						case ValidarDados.ADM:
+							
+						default:
+							System.exit(0);
+							break;
+						}
+					}
+				}
+			}
+		});
 		btnEntrar.setBackground(new Color(0, 128, 0));
 		btnEntrar.setForeground(new Color(255, 255, 255));
-		btnEntrar.setIcon(new ImageIcon(Entrar.class.getResource("/imagens/login.png")));
+		btnEntrar.setIcon(new ImageIcon(TelaEntrar.class.getResource("/imagens/login.png")));
 		btnEntrar.setFont(new Font("Arial", Font.BOLD, 14));
 		btnEntrar.setBounds(246, 304, 114, 34);
 		TelaDeEntrada.getContentPane().add(btnEntrar);
@@ -107,20 +154,20 @@ public class Entrar {
 		});
 		btnSair.setForeground(new Color(255, 255, 255));
 		btnSair.setBackground(new Color(0, 128, 0));
-		btnSair.setIcon(new ImageIcon(Entrar.class.getResource("/imagens/sair-menu-2.png")));
+		btnSair.setIcon(new ImageIcon(TelaEntrar.class.getResource("/imagens/sair-menu-2.png")));
 		btnSair.setFont(new Font("Arial", Font.BOLD, 14));
 		btnSair.setBounds(383, 304, 114, 34);
 		TelaDeEntrada.getContentPane().add(btnSair);
 		
-		txtMatrcula = new JTextField();
-		txtMatrcula.setColumns(10);
-		txtMatrcula.setBounds(310, 231, 187, 34);
-		TelaDeEntrada.getContentPane().add(txtMatrcula);
+		textFieldMatricula = new JTextField();
+		textFieldMatricula.setColumns(10);
+		textFieldMatricula.setBounds(310, 231, 187, 34);
+		TelaDeEntrada.getContentPane().add(textFieldMatricula);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(310, 172, 187, 34);
-		TelaDeEntrada.getContentPane().add(textField);
+		textFieldCPF = new JTextField();
+		textFieldCPF.setColumns(10);
+		textFieldCPF.setBounds(310, 172, 187, 34);
+		TelaDeEntrada.getContentPane().add(textFieldCPF);
 		
 		JLabel lblCpf = new JLabel("CPF:");
 		lblCpf.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -133,7 +180,7 @@ public class Entrar {
 		TelaDeEntrada.getContentPane().add(lblMatrcula);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(Entrar.class.getResource("/imagens/pessoas-saudaveis-carregando-icones-diferentes_53876-43069 novo.jpg")));
+		lblNewLabel.setIcon(new ImageIcon(TelaEntrar.class.getResource("/imagens/pessoas-saudaveis-carregando-icones-diferentes_53876-43069 novo.jpg")));
 		lblNewLabel.setBounds(10, 114, 211, 255);
 		TelaDeEntrada.getContentPane().add(lblNewLabel);
 		

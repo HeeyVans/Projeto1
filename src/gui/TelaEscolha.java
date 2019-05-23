@@ -99,7 +99,7 @@ public class TelaEscolha {
 		JButton button = new JButton("Voltar");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Entrar telaEntrar = new Entrar();
+				TelaEntrar telaEntrar = new TelaEntrar();
 				telaEntrar.TelaDeEntrada.setVisible(true);
 				frmTelaDeEntrada.dispose();
 			}

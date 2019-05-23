@@ -6,13 +6,13 @@ public class Endereco {
 	private String bairro;
 	private String cidade;
 	private String complemento;
-	private int numero;
+	private String numero;
 	
 	public Endereco() {
 		
 	}
 
-	public Endereco(String rua, String bairro, String cidade, String complemento, int numero) {
+	public Endereco(String rua, String bairro, String cidade, String complemento, String numero) {
 		super();
 		this.rua = rua;
 		this.bairro = bairro;
@@ -53,11 +53,11 @@ public class Endereco {
 		this.complemento = complemento;
 	}
 
-	public int getNumero() {
+	public String getNumero() {
 		return numero;
 	}
 
-	public void setNumero(int numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 
@@ -68,7 +68,7 @@ public class Endereco {
 		result = prime * result + ((bairro == null) ? 0 : bairro.hashCode());
 		result = prime * result + ((cidade == null) ? 0 : cidade.hashCode());
 		result = prime * result + ((complemento == null) ? 0 : complemento.hashCode());
-		result = prime * result + numero;
+		//result = prime * result + ((numero == null)) ? 0 : numero.hashCode();
 		result = prime * result + ((rua == null) ? 0 : rua.hashCode());
 		return result;
 	}

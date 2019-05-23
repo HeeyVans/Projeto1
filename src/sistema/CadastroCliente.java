@@ -16,7 +16,7 @@ public class CadastroCliente {
 		this.repositorio = repositorio;
 	}
 	
-	public void inserir(Cliente cliente) throws ClienteJaCadastradoException {
+	public void inserir(Cliente cliente) {
 		repositorio.inserir(cliente);
 	}
 	

@@ -37,6 +37,13 @@ import javax.swing.JRadioButton;
 import javax.swing.border.LineBorder;
 import javax.swing.UIManager;
 import com.toedter.calendar.JDateChooser;
+
+import basicas.Cliente;
+import basicas.Endereco;
+import sistema.Assistente;
+import sistema.Fachada;
+import sistema.ValidarDados;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -54,10 +61,36 @@ public class TelaCadastroCliente {
 	private JTextField textFieldCidade;
 	private JTextField textFieldObjetivo;
 	private JTextField textFieldPagamento;
+	JDateChooser dateNascimento;
+	JRadioButton rdbtnMasculino;
+	JRadioButton rdbtnFeminino;
+	private static TelaCadastroCliente instance;
+	
+	public static TelaCadastroCliente getInstance() {
+		if(instance == null) {
+			instance = new TelaCadastroCliente();
+		}
+		return instance;
+	}
 
 	/**
 	 * Launch the application.
 	 */
+	
+	public void limpar() {
+		textFieldTelefone.setText("");
+		textFieldNome.setText("");
+		textFieldCPF.setText("");
+		textFieldEmail.setText("");
+		textFieldRua.setText("");
+		textFieldNumero.setText("");
+		textFieldBairro.setText("");
+		textFieldComplemento.setText("");
+		textFieldCidade.setText("");
+		textFieldObjetivo.setText("");
+		textFieldPagamento.setText("");
+	}
+	
 	public static void main(String[] args) {
 		try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -148,12 +181,62 @@ public class TelaCadastroCliente {
 		frmTelaDeCadastro.getContentPane().add(label);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(ValidarDados.validarCampoVazio(textFieldTelefone.getText(), textFieldNome.getText(), 
+						textFieldEmail.getText(), textFieldCPF.getText(), textFieldRua.getText(), 
+						textFieldBairro.getText(), textFieldCidade.getText(),(textFieldNumero.getText()),
+						textFieldObjetivo.getText(), textFieldPagamento.getText())) {
+					try {
+						
+						Endereco end = new Endereco(textFieldRua.getText(), textFieldBairro.getText()
+								, textFieldCidade.getText(), textFieldComplemento.getText(), textFieldNumero.getText());
+						
+						/*String genero = " ";
+						if(rdbtnMasculino.isEnabled() == true) {
+							genero = "Masculino";
+						}else if(rdbtnFeminino.isEnabled() == true) {
+							genero = "Feminino";
+						}*/
+						
+						String matricula = Assistente.gerarMatricula();
+						Cliente clienteCadastrar;
+						Cliente cliente = new Cliente(textFieldNome.getText(), textFieldCPF.getText()
+								, matricula, "masculino", textFieldEmail.getText());
+						
+						clienteCadastrar = Fachada.getInstance().procurarCliente(textFieldCPF.getText());
+						
+						if(clienteCadastrar == null) {
+							
+							Fachada.getInstance().cadastrarCliente(cliente);
+							Assistente.enviarEmail(textFieldEmail.getText(), matricula);
+							PopUps.clienteCadastrado();
+							limpar();
+							
+						}else {
+							PopUps.ErroCadastro();
+						}
+						
+					}catch(NumberFormatException nfe) {
+						PopUps.ErroCadastro();
+					}
+						
+					
+					
+				}
+			}
+		});
 		btnCadastrar.setIcon(new ImageIcon(TelaCadastroCliente.class.getResource("/imagens/btn-novo.png")));
 		btnCadastrar.setBackground(new Color(152, 251, 152));
 		btnCadastrar.setBounds(621, 333, 108, 29);
 		frmTelaDeCadastro.getContentPane().add(btnCadastrar);
 		
 		JButton btnLimpar = new JButton("Limpar");
+		btnLimpar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limpar();
+			}
+		});
 		btnLimpar.setIcon(new ImageIcon(TelaCadastroCliente.class.getResource("/imagens/delete_remove_bin_icon-icons.com_72400.png")));
 		btnLimpar.setBackground(new Color(255, 99, 71));
 		btnLimpar.setBounds(505, 333, 108, 29);

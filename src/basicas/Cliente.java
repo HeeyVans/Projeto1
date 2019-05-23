@@ -19,18 +19,12 @@ public class Cliente extends Pessoa{
 		this.objetivo = objetivo;
 	}
 	//CONSTRUTOR PARA TESTESa
-	public Cliente(String nome, String cpf, String objetivo) {
-		super(nome, cpf);
-		this.objetivo = objetivo;
-	}
 
-	public Cliente(String nome, Endereco endereco, String cpf, Date dataDeNasc, String matricula, String identificador,
-			String email) {
-		super(nome, endereco, cpf, dataDeNasc, matricula, identificador, email);
+	public Cliente(String nome, String cpf, String matricula, String genero, String email) {
+		super(nome, cpf, matricula, genero, email);
 		// TODO Auto-generated constructor stub
 	}
-
-
+	
 	public String getPagamento() {
 		return pagamento;
 	}
