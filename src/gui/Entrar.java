@@ -137,14 +137,10 @@ public class Entrar {
 		lblNewLabel.setBounds(10, 114, 211, 255);
 		TelaDeEntrada.getContentPane().add(lblNewLabel);
 		
-		JLabel lblEsqueciASenha = new JLabel("Esqueci minha senha");
-		lblEsqueciASenha.setForeground(new Color(32, 178, 170));
-		lblEsqueciASenha.setHorizontalAlignment(SwingConstants.CENTER);
-		lblEsqueciASenha.setFont(new Font("Arial", Font.BOLD, 11));
-		lblEsqueciASenha.setBounds(320, 276, 145, 14);
-		TelaDeEntrada.getContentPane().add(lblEsqueciASenha);
-		
-		JButton btnEsqueciSenha = new JButton("Esqueci");
+		JButton btnEsqueciSenha = new JButton("Esqueci minha senha");
+		btnEsqueciSenha.setFont(new Font("Arial", Font.BOLD, 11));
+		btnEsqueciSenha.setForeground(new Color(0, 191, 255));
+		btnEsqueciSenha.setBackground(Color.WHITE);
 		btnEsqueciSenha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String email, matricula = "";
@@ -168,7 +164,7 @@ public class Entrar {
 				}while(matricula.equals(""));
 			}
 		});
-		btnEsqueciSenha.setBounds(231, 276, 89, 23);
+		btnEsqueciSenha.setBounds(320, 276, 145, 20);
 		TelaDeEntrada.getContentPane().add(btnEsqueciSenha);
 		TelaDeEntrada.setBounds(100, 100, 535, 454);
 		TelaDeEntrada.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

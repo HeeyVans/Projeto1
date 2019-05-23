@@ -61,7 +61,7 @@ public class TelaEscolha {
 		
 		JPanel panel = new JPanel();
 		panel.setForeground(new Color(255, 255, 255));
-		panel.setBackground(new Color(0, 0, 0));
+		panel.setBackground(new Color(0, 128, 0));
 		panel.setBounds(0, 0, 496, 107);
 		frmTelaDeEntrada.getContentPane().add(panel);
 		panel.setLayout(null);
