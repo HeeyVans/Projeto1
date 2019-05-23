@@ -16,13 +16,14 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.JRadioButton;
 import javax.swing.UIManager;
 import javax.swing.JButton;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 //import com.toedter.calendar.JDateChooser;
 
 public class TelaCadastroInstrutor {
 
 	private JFrame frmTelaDeCadastro;
-	private JTextField textFieldMatricula;
+	private JTextField textFieldTelefone;
 	private JTextField textFieldCPF;
 	private JTextField textFieldNome;
 	private JTextField textFieldEmail;
@@ -83,10 +84,10 @@ public class TelaCadastroInstrutor {
 		lblTelefone.setBounds(10, 18, 59, 14);
 		frmTelaDeCadastro.getContentPane().add(lblTelefone);
 		
-		textFieldMatricula = new JTextField();
-		textFieldMatricula.setColumns(10);
-		textFieldMatricula.setBounds(62, 11, 108, 29);
-		frmTelaDeCadastro.getContentPane().add(textFieldMatricula);
+		textFieldTelefone = new JTextField();
+		textFieldTelefone.setColumns(10);
+		textFieldTelefone.setBounds(62, 11, 108, 29);
+		frmTelaDeCadastro.getContentPane().add(textFieldTelefone);
 		
 		JLabel labelCPF = new JLabel("CPF:");
 		labelCPF.setBounds(10, 64, 59, 14);
@@ -133,6 +134,10 @@ public class TelaCadastroInstrutor {
 		radioButtonFemale.setBackground(Color.WHITE);
 		radioButtonFemale.setBounds(6, 49, 83, 23);
 		panel.add(radioButtonFemale);
+		
+		ButtonGroup grupo = new ButtonGroup();
+		grupo.add(radioButtonFemale);
+		grupo.add(radioButtonMale);
 		
 		JLabel labelNascimento = new JLabel("Nascimento:");
 		labelNascimento.setBounds(10, 110, 83, 14);

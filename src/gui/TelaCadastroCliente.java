@@ -23,6 +23,8 @@ import java.awt.ScrollPane;
 import javax.swing.border.TitledBorder;
 import java.awt.Panel;
 import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
+
 import java.awt.TextField;
 import javax.swing.JTextArea;
 import java.awt.Canvas;
@@ -39,7 +41,7 @@ import com.toedter.calendar.JDateChooser;
 public class TelaCadastroCliente {
 
 	private JFrame frmTelaDeCadastro;
-	private JTextField textFieldMatricula;
+	private JTextField textFieldTelefone;
 	private JTextField textFieldNome;
 	private JTextField textFieldCPF;
 	private JTextField textFieldEmail;
@@ -96,14 +98,14 @@ public class TelaCadastroCliente {
 		frmTelaDeCadastro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTelaDeCadastro.getContentPane().setLayout(null);
 		
-		JLabel lblMatricula = new JLabel("Matr\u00EDcula:");
-		lblMatricula.setBounds(10, 15, 59, 14);
-		frmTelaDeCadastro.getContentPane().add(lblMatricula);
+		JLabel lblTelefone = new JLabel("Telefone:");
+		lblTelefone.setBounds(10, 15, 59, 14);
+		frmTelaDeCadastro.getContentPane().add(lblTelefone);
 		
-		textFieldMatricula = new JTextField();
-		textFieldMatricula.setBounds(62, 8, 108, 29);
-		frmTelaDeCadastro.getContentPane().add(textFieldMatricula);
-		textFieldMatricula.setColumns(10);
+		textFieldTelefone = new JTextField();
+		textFieldTelefone.setBounds(62, 8, 108, 29);
+		frmTelaDeCadastro.getContentPane().add(textFieldTelefone);
+		textFieldTelefone.setColumns(10);
 		
 		JLabel lblNome = new JLabel("Nome:");
 		lblNome.setBounds(180, 15, 47, 14);
@@ -232,6 +234,10 @@ public class TelaCadastroCliente {
 		rdbtnFeminino.setBounds(6, 49, 83, 23);
 		panel_1.add(rdbtnFeminino);
 		rdbtnFeminino.setBackground(new Color(255, 255, 255));
+		
+		ButtonGroup grupo = new ButtonGroup();
+		grupo.add(rdbtnMasculino);
+		grupo.add(rdbtnFeminino);
 		
 		textFieldObjetivo = new JTextField();
 		textFieldObjetivo.setHorizontalAlignment(SwingConstants.LEFT);
