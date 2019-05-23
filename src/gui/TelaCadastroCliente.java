@@ -37,10 +37,12 @@ import javax.swing.JRadioButton;
 import javax.swing.border.LineBorder;
 import javax.swing.UIManager;
 import com.toedter.calendar.JDateChooser;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaCadastroCliente {
 
-	private JFrame frmTelaDeCadastro;
+    JFrame frmTelaDeCadastro;
 	private JTextField textFieldTelefone;
 	private JTextField textFieldNome;
 	private JTextField textFieldCPF;
@@ -265,6 +267,14 @@ public class TelaCadastroCliente {
 		frmTelaDeCadastro.getContentPane().add(dateChooserNascimento);
 		
 		JButton button = new JButton("Voltar");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaEscolha escolha = new TelaEscolha();
+				escolha.frmTelaDeEntrada.setVisible(true);
+				frmTelaDeCadastro.dispose();
+				
+			}
+		});
 		button.setIcon(new ImageIcon(TelaCadastroCliente.class.getResource("/imagens/gtkgobackltr_104397.png")));
 		button.setBackground(new Color(255, 250, 240));
 		button.setBounds(387, 333, 108, 29);

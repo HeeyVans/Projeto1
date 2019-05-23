@@ -25,7 +25,7 @@ import java.awt.Toolkit;
 
 public class Entrar {
 
-	private JFrame TelaDeEntrada;
+	JFrame TelaDeEntrada;
 	private JTextField txtMatrcula;
 	private JTextField textField;
 

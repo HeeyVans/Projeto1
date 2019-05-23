@@ -18,11 +18,13 @@ import javax.swing.UIManager;
 import javax.swing.JButton;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 //import com.toedter.calendar.JDateChooser;
 
 public class TelaCadastroInstrutor {
 
-	private JFrame frmTelaDeCadastro;
+    JFrame frmTelaDeCadastro;
 	private JTextField textFieldTelefone;
 	private JTextField textFieldCPF;
 	private JTextField textFieldNome;
@@ -247,6 +249,13 @@ public class TelaCadastroInstrutor {
 		frmTelaDeCadastro.getContentPane().add(dateChooserNascimento);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaEscolha escolha = new TelaEscolha();
+				escolha.frmTelaDeEntrada.setVisible(true);
+				frmTelaDeCadastro.dispose();
+			}
+		});
 		btnVoltar.setIcon(new ImageIcon(TelaCadastroInstrutor.class.getResource("/imagens/gtkgobackltr_104397.png")));
 		btnVoltar.setBackground(new Color(255, 250, 240));
 		btnVoltar.setBounds(414, 334, 108, 29);

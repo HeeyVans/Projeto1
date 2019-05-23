@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.awt.Window;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -16,7 +18,7 @@ import java.awt.event.ActionEvent;
 
 public class TelaEscolha {
 
-	private JFrame frmTelaDeEntrada;
+	 JFrame frmTelaDeEntrada;
 
 	/**
 	 * Launch the application.
@@ -97,6 +99,9 @@ public class TelaEscolha {
 		JButton button = new JButton("Voltar");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				Entrar telaEntrar = new Entrar();
+				telaEntrar.TelaDeEntrada.setVisible(true);
+				frmTelaDeEntrada.dispose();
 			}
 		});
 		button.setIcon(new ImageIcon(TelaEscolha.class.getResource("/imagens/gtkgobackltr_104397.png")));
