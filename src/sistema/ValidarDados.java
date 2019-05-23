@@ -8,6 +8,7 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 
 import basicas.Pessoa;
+import basicas.Administrador;
 import basicas.Cliente;
 import basicas.Instrutor;
 import excecoes.CPFInvalidoException;
@@ -18,7 +19,7 @@ import gui.PopUps;
 
 public class ValidarDados {
 	
-	public static Cliente cliente1;
+	public static Administrador adm;
 	public static Cliente cliente;
 	public static Instrutor instrutor;
 	public static final String Instrutor = "Instrutor";
@@ -132,21 +133,6 @@ public class ValidarDados {
             CPF.substring(6, 9) + "-" + CPF.substring(9, 11));
         }
         
-        //Identifica qual destes está fazendo o Login e o direciona para a tela correta
-        public static String identificadorLogin() {
-        	switch(cliente1.getIdentificador()) {
-        	
-        	case Instrutor:
-        		return Instrutor;
-        	case Cliente:
-        		return Cliente;
-        	case ADM:
-        		return ADM;
-        	default:
-        		return null;        	
-        	}
-        }
-        
         //Valida Login De Cliente
         public static boolean validarLoginCliente(String cpf, String matricula) {
         	try {
@@ -162,6 +148,34 @@ public class ValidarDados {
         	} 
         	return true;
         }
+        
+        public static boolean validarLoginADM(String cpf, String matricula) {
+        	try {
+        		adm = Fachada.getInstance().procurarADM(cpf);
+        		if(!adm.getMatricula().equals(matricula)) {
+        			MatriculaNaoEncontradaException mnee = new MatriculaNaoEncontradaException();
+        			throw mnee;
+        		}
+        	}catch(MatriculaNaoEncontradaException mnee) {
+        		PopUps.matriculaInvalida(mnee);
+        		return false;
+        		
+        	} 
+        	return true;
+        }
+        
+        public static boolean validarLoginADM2(String cpf, String matricula) {
+        	
+        		adm = Fachada.getInstance().procurarADM(cpf);
+        		if(!adm.getMatricula().equals(matricula)) {
+        			return false;
+        		}
+        	
+        		return true;
+        		
+        	} 
+        	
+        
         
         //Para Validar o Email
         public static boolean validarEmail(String email){

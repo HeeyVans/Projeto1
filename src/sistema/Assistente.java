@@ -79,7 +79,7 @@ public class Assistente {
 		//GERAR ADM
 		public static void gerarAdm() {
 			Administrador adm = new Administrador("44343918360", "AAAA", "Administrador");
-			Fachada.getInstance().cadastrarCliente(adm);
+			Fachada.getInstance().cadastrarADM(adm);
 		}
 
 }

@@ -2,6 +2,7 @@ package sistema;
 
 import java.util.List;
 
+import basicas.Administrador;
 import basicas.Cliente;
 import basicas.Exercicio;
 import basicas.Instrutor;
@@ -9,10 +10,12 @@ import basicas.Treino;
 import excecoes.ClienteJaCadastradoException;
 import excecoes.ClienteNaoEncontradoException;
 import excecoes.InstrutorJaCadastradoException;
+import interfaces.IRepositorioADM;
 import interfaces.IRepositorioCliente;
 import interfaces.IRepositorioExercicio;
 import interfaces.IRepositorioInstrutor;
 import interfaces.IRepositorioTreino;
+import repositorios.RepositorioADMArray;
 import repositorios.RepositorioClienteArquivo;
 import repositorios.RepositorioClienteArray;
 import repositorios.RepositorioExercicioArquivo;
@@ -29,6 +32,7 @@ public class Fachada {
 	private CadastroInstrutor instrutor;
 	private CadastroExercicio exercicio;
 	private CadastroTreino treino;
+	private CadastroADM adm;
 	
 	public Fachada() {
 		
@@ -38,11 +42,13 @@ public class Fachada {
 		//IRepositorioExercicio repExercicio = new RepositorioExercicioArquivo();
 		//IRepositorioTreino repTreino = new RepositorioTreinoArquivo();
 		
+		IRepositorioADM repADM = new RepositorioADMArray();
 		IRepositorioInstrutor repInstrutor = new RepositorioInstrutorArray();
 		IRepositorioCliente repCliente = new RepositorioClienteArray();
 		IRepositorioExercicio repExercicio = new RepositorioExercicioArray();
 		IRepositorioTreino repTreino = new RepositorioTreinoArray();
 		
+		adm = new CadastroADM(repADM);
 		cliente = new CadastroCliente(repCliente);
 		instrutor = new CadastroInstrutor(repInstrutor);
 		exercicio = new CadastroExercicio(repExercicio);
@@ -81,7 +87,14 @@ public class Fachada {
 	//listar();
 	
 	//FIM DE CRUD DE CLIENTE
-	
+	//INICIO CRUD ADM
+	public void cadastrarADM(Administrador adm)  {
+		this.adm.inserir(adm);
+	}
+	public Administrador procurarADM(String cpf) {
+		return adm.procurar(cpf);
+	}
+	//FIM CRUD ADM
 	//INICIO DE CRUD DO INSTRUTOR
 	public void cadastrarInstrutor(Instrutor instrutor) throws InstrutorJaCadastradoException{
 		this.instrutor.inserir(instrutor);

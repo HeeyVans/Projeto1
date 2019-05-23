@@ -114,39 +114,6 @@ public class TelaEntrar extends JFrame{
 		panel.add(lblBemvindoAMfit);
 		
 		JButton btnEntrar = new JButton("Entrar");
-		btnEntrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				String cpf, matricula;
-				cpf = textFieldCPF.getText();
-				matricula = textFieldMatricula.getText();
-				
-				if(ValidarDados.validarCampoVazio(cpf, matricula)) {
-					if(ValidarDados.validarLoginCliente(cpf, matricula)) {
-						limpar();
-						switch(ValidarDados.identificadorLogin()) {
-						
-						case ValidarDados.Cliente:
-							TelaConsultaCliente.getInstance().setVisible(true);
-							System.exit(0);
-							break;
-							
-						case ValidarDados.Instrutor:
-							TelaInstrutor1.getInstance().setVisible(true);
-							System.exit(0);
-							break;
-							
-						case ValidarDados.ADM:
-							TelaADM.getInstance().setVisible(true);
-							System.exit(0);
-							break;
-						default:
-							System.exit(0);
-							break;
-						}
-					}
-				}
-			}
-		});
 		btnEntrar.setBackground(new Color(0, 128, 0));
 		btnEntrar.setForeground(new Color(255, 255, 255));
 		btnEntrar.setIcon(new ImageIcon(TelaEntrar.class.getResource("/imagens/login.png")));

@@ -31,7 +31,7 @@ public class TelaInstrutor1 extends JFrame {
 
 	private JPanel contentPane;
 	private JTable tableCliente;
-	private static TelaInstrutor1 instance;
+	public static TelaInstrutor1 instance;
 	private ModeloTabelaInstrutor modeloInstrutor;	
 	private JTextField textFieldNome;
 	

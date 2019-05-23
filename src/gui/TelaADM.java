@@ -13,7 +13,7 @@ import java.awt.event.ActionEvent;
 public class TelaADM extends JFrame {
 
 	private JPanel contentPane;
-	private static TelaADM instance;
+	public static TelaADM instance;
 	
 	public static TelaADM getInstance() {
 		if(instance == null) {
@@ -92,7 +92,7 @@ public class TelaADM extends JFrame {
 		JButton btnPrincipal = new JButton("Home Page");
 		btnPrincipal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaEntrar.getInstance().setVisible(true);
+				TelaInicial.getInstance().setVisible(true);
 				dispose();
 			}
 		});

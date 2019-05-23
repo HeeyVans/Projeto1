@@ -64,7 +64,7 @@ public class TelaCadastroCliente extends JFrame{
 	JDateChooser dataNascimento = new JDateChooser();
 	JRadioButton rdbtnMasculino = new JRadioButton();
 	JRadioButton rdbtnFeminino = new JRadioButton();
-	private static TelaCadastroCliente instance;
+	public static TelaCadastroCliente instance;
 	
 	public static TelaCadastroCliente getInstance() {
 		if(instance == null) {

@@ -36,7 +36,7 @@ public class TelaCadastroInstrutor extends JFrame{
 	private JTextField textFieldCidade;
 	private JTextField textFieldCargo;
 	private JTextField textFieldHoraTrab;
-	private static TelaCadastroInstrutor instance;
+	public static TelaCadastroInstrutor instance;
 	
 	public static TelaCadastroInstrutor getInstance() {
 		if(instance == null) {

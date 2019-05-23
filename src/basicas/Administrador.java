@@ -2,7 +2,7 @@ package basicas;
 
 import java.util.Date;
 
-public class Administrador extends Cliente{
+public class Administrador extends Pessoa{
 
 	public Administrador() {
 		super();

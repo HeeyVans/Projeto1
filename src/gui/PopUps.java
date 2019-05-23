@@ -41,5 +41,8 @@ public class PopUps {
 	public static void ErroCadastro() {
 		JOptionPane.showMessageDialog(null, Mensagem.ERROCADASTRO, Mensagem.getMsgerror(), JOptionPane.WARNING_MESSAGE);
 	}
+	public static void cpfInvalido() {
+		JOptionPane.showMessageDialog(null, Mensagem.CPFINVALIDO, Mensagem.getMsgerror(), JOptionPane.WARNING_MESSAGE);
+	}
 
 }
