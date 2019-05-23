@@ -245,5 +245,11 @@ public class TelaCadastroInstrutor {
 		JDateChooser dateChooserNascimento = new JDateChooser();
 		dateChooserNascimento.setBounds(82, 105, 145, 27);
 		frmTelaDeCadastro.getContentPane().add(dateChooserNascimento);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setIcon(new ImageIcon(TelaCadastroInstrutor.class.getResource("/imagens/gtkgobackltr_104397.png")));
+		btnVoltar.setBackground(new Color(255, 250, 240));
+		btnVoltar.setBounds(414, 334, 108, 29);
+		frmTelaDeCadastro.getContentPane().add(btnVoltar);
 	}
 }

@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaEscolha {
 
@@ -91,6 +93,16 @@ public class TelaEscolha {
 		btnCadastrarInstrutor.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnCadastrarInstrutor.setBounds(159, 265, 176, 41);
 		frmTelaDeEntrada.getContentPane().add(btnCadastrarInstrutor);
+		
+		JButton button = new JButton("Voltar");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		button.setIcon(new ImageIcon(TelaEscolha.class.getResource("/imagens/gtkgobackltr_104397.png")));
+		button.setBackground(new Color(255, 250, 240));
+		button.setBounds(22, 378, 108, 29);
+		frmTelaDeEntrada.getContentPane().add(button);
 		frmTelaDeEntrada.setBounds(100, 100, 512, 491);
 		frmTelaDeEntrada.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
