@@ -86,6 +86,7 @@ public class Assistente {
 		public static void gerarCliente() {
 			Cliente c = new Cliente("Diogo", "70341656548", "bbbb", "Cliente");
 			Fachada.getInstance().cadastrarCliente(c);
+		
 		}
 
 }
