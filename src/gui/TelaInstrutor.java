@@ -127,21 +127,13 @@ public class TelaInstrutor extends JFrame {
 				String nome = textFieldNome.getText();
 				
 				ArrayList<Cliente> lista = new ArrayList();
-				List relatorio = new ArrayList();
 				
 				lista = (ArrayList<Cliente>) Fachada.getInstance().listarCliente(nome);
-				
-				if(!lista.isEmpty()) {
-					for(Cliente c:lista) {
-						c.getNome();
-						c.getObjetivo();
-						c.getDataDeNasc();
-						relatorio.add(c);
-					}
-					modeloInstrutor.addClienteList(relatorio);
+						
+					modeloInstrutor.addClienteList(lista);
 				}
 				
-			}
+			
 		});
 		btnBuscar.setBounds(311, 206, 116, 28);
 		contentPane.add(btnBuscar);

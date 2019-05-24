@@ -32,7 +32,7 @@ public class CadastroCliente {
 		repositorio.atualizar(cliente);
 	}
 	
-	public List listar(String cpf) {
+	public List listar(String nome) {
 		return repositorio.listar();
 	}
 

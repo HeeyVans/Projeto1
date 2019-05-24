@@ -10,8 +10,8 @@ import basicas.Cliente;
 public class ModeloTabelaInstrutor extends AbstractTableModel{
 	//TABELA PARA INSTRUTOR VISUALIZAR CLIENTES
 	private ArrayList<Cliente> dataList = new ArrayList();
-	private String[] columns={"Nome", "Objetivo","Data Nascimento"};
-	Class[] columnTypes = new Class[] { Object.class, Object.class, Object.class};
+	private String[] columns={"Nome", "Objetivo","Data Nascimento", "Sexo"};
+	Class[] columnTypes = new Class[] { Object.class, Object.class, Object.class, Object.class};
 	boolean[] columnEditables = new boolean[] {false, false, false};
 
 	
@@ -81,6 +81,8 @@ public class ModeloTabelaInstrutor extends AbstractTableModel{
 			return c.getObjetivo();
 		case 2:
 			return c.getDataDeNasc();
+		case 3:
+			return c.getGenero();
 		default:
 			return null;
 		}
