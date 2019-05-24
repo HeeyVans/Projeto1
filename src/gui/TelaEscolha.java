@@ -24,7 +24,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class TelaEscolha {
+public class TelaEscolha extends JFrame{
 
 	 JFrame frmTelaDeEntrada;
 
@@ -47,7 +47,10 @@ public class TelaEscolha {
 				try {
 					TelaEscolha window = new TelaEscolha();
 					window.frmTelaDeEntrada.setVisible(true);
+					
 					Assistente.gerarAdm();
+					Assistente.gerarCliente();
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -141,10 +144,8 @@ public class TelaEscolha {
 							if(matricula == null) {
 								break;
 							}else if(ValidarDados.validarLoginADM(cpf, matricula)) {
-								TelaADM tela = new TelaADM();
-								tela.telaADM.setVisible(true);
-								//TelaADM.getInstance().setVisible(true);
-								frmTelaDeEntrada.dispose();
+								TelaADM.getInstance().setVisible(true);
+								dispose();
 							}
 								}while(matricula.equals("") || ValidarDados.validarLoginADM2(cpf, matricula) == false);
 							}				

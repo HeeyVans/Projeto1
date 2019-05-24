@@ -17,6 +17,7 @@ import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
 
 import basicas.Administrador;
+import basicas.Cliente;
 
 public class Assistente {
 	
@@ -78,8 +79,13 @@ public class Assistente {
 		
 		//GERAR ADM
 		public static void gerarAdm() {
-			Administrador adm = new Administrador("44343918360", "AAAA", "Administrador");
+			Administrador adm = new Administrador("ADM", "44343918360", "AAAA", "Administrador");
 			Fachada.getInstance().cadastrarADM(adm);
+		}
+		
+		public static void gerarCliente() {
+			Cliente c = new Cliente("Diogo", "70341656548", "bbbb", "Cliente");
+			Fachada.getInstance().cadastrarCliente(c);
 		}
 
 }

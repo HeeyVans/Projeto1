@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import basicas.Cliente;
 import excecoes.ClienteJaCadastradoException;
@@ -20,6 +22,7 @@ public class RepositorioClienteArquivo implements IRepositorioCliente, Serializa
 	
 	private Cliente[] cliente;
 	private int indice;
+	private int i;
 	
 	private final static int TAMANHO = 100;
 	public static RepositorioClienteArquivo instance;
@@ -85,43 +88,65 @@ public class RepositorioClienteArquivo implements IRepositorioCliente, Serializa
 	    }
 	}
 	
-	@Override
-	public void inserir(Cliente clientes) throws ClienteJaCadastradoException {
-		for(int i = 0; i < indice; i++) {
-			if(cliente[i] == null) {
-				cliente[i] = clientes;
-				return;
+	public int getIndice(String cpf) {
+		int i = 0;
+		
+		if(indice != 0) {
+			while(!cpf.equals(cliente[i].getCpf())) {
+				if(i == indice - 1) {
+					return -1;
+				}else {
+					i++;
+				}
 			}
+			return i;
+		}
+		return -1;
+	}
+	
+	public boolean existe(String cpf) {
+		i = getIndice(cpf);
+		if(i == -1) {
+			return false;
+		}else {
+			return true;
+		}
+	}
+	
+	@Override
+	public void inserir(Cliente clientes)  {
+		if(!existe(clientes.getCpf())) {
+			cliente[indice] = clientes;
+			indice++;
 		}
 		
 	}
 
 	@Override
-	public Cliente procurar(String matricula) throws ParametroNuloException {
-		if(matricula.equals("")) {
-			throw new ParametroNuloException(matricula);
+	public Cliente procurar(String cpf) {
+		if(existe(cpf)) {
+			return this.cliente[i];
+		}else {
+			return null;
 		}
-		for (int i = 0; i < indice; i++) {
-			if (cliente != null && cliente[i].getMatricula().equals(matricula)) {
-				return cliente[i];
-			}
-		} 
-		throw new NaoEncontradoException("O Cliente " +matricula);
+		
 	} 
 
 	@Override
-	public void remover(String matricula) throws NaoEncontradoException {
-		for (int i = 0; i < indice; i++) {
-			if (cliente[i] != null && cliente[i].getMatricula().equals(matricula)) {
-				cliente[i] = null;
-				return;
-			}
+	public void remover(String cpf) {
+		if(!existe(cpf)) {
+			
+		}else {
+			cliente[i] = null;
+			cliente[i] = cliente[indice - 1];
+			cliente[indice - 1] = null;
+			indice--;
 		}
-		throw new NaoEncontradoException(matricula);
+		
 	}
 
 	@Override
-	public void atualizar(Cliente clienteAtualizado) throws NaoEncontradoException, ParametroNuloException {
+	public void atualizar(Cliente clienteAtualizado) {
          for (int i = 0; i < indice; i++) {
         	 if(clienteAtualizado.getMatricula().equals(cliente[i].getMatricula())) {
         		 cliente[i] = clienteAtualizado;
@@ -130,8 +155,15 @@ public class RepositorioClienteArquivo implements IRepositorioCliente, Serializa
 		}		
 	}
 	
-	public Cliente[] listar() {
-		return cliente;
+	public List listar() {
+		List clientes = new ArrayList();
+		i = 0;
+		while(i < indice) {
+			 clientes.add(cliente[i]);
+			 i++;
+			}
+		return clientes;
+		}
 	}
 
-}
+

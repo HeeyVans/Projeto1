@@ -13,10 +13,16 @@ public class Cliente extends Pessoa{
 
     
 
-	public Cliente(String cpf, String matricula, String identificador) {
-		super(cpf, matricula, identificador);
+	
+
+
+	public Cliente(String nome, String cpf, String matricula, String identificador) {
+		super(nome, cpf, matricula, identificador);
 		// TODO Auto-generated constructor stub
 	}
+
+
+
 
 
 

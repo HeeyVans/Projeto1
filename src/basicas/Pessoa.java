@@ -32,7 +32,8 @@ public abstract class Pessoa {
 		this.genero = genero;
 	}
 	
-	public Pessoa(String cpf, String matricula, String identificador) {
+	public Pessoa(String nome, String cpf, String matricula, String identificador) {
+		this.nome = nome;
 		this.cpf = cpf;
 		this.matricula = matricula;
 		this.identificador = identificador;

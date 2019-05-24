@@ -90,6 +90,13 @@ public class TelaADM extends JFrame {
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JButton button_1 = new JButton("Cadastrar Instrutor");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaCadastroInstrutor inicial = new TelaCadastroInstrutor();
+				inicial.frmTelaDeCadastro.setVisible(true);
+				telaADM.dispose();
+			}
+		});
 		button_1.setForeground(Color.WHITE);
 		button_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		button_1.setBackground(new Color(0, 128, 0));
@@ -111,6 +118,12 @@ public class TelaADM extends JFrame {
 		contentPane.add(btnPginaInicial);
 		
 		JButton btnConsultarCliente = new JButton("Consultar Cliente");
+		btnConsultarCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaInstrutor1.getInstance().setVisible(true);
+				dispose();
+			}
+		});
 		btnConsultarCliente.setForeground(Color.WHITE);
 		btnConsultarCliente.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnConsultarCliente.setBackground(new Color(0, 128, 0));

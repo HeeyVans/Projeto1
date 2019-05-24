@@ -47,7 +47,7 @@ import sistema.ValidarDados;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class TelaCadastroCliente {
+public class TelaCadastroCliente extends JFrame{
 
     JFrame frmTelaDeCadastro;
 	private JTextField textFieldTelefone;
