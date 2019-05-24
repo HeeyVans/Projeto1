@@ -144,7 +144,11 @@ public class TelaInstrutor extends JFrame {
 		contentPane.add(label);
 		
 		JButton btnVoltar = new JButton("Voltar");
-		btnVoltar.setBounds(311, 245, 89, 23);
+		btnVoltar.setIcon(new ImageIcon(TelaInstrutor.class.getResource("/imagens/gtkgobackltr_104397.png")));
+		btnVoltar.setBackground(new Color(0, 128, 0));
+		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnVoltar.setForeground(Color.WHITE);
+		btnVoltar.setBounds(311, 245, 116, 28);
 		contentPane.add(btnVoltar);
 	}
 }
