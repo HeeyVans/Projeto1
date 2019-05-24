@@ -12,7 +12,7 @@ public class CadastroInstrutor {
 		this.repositorio = repositorio;
 	}
 	
-	public void inserir(Instrutor instrutor) throws InstrutorJaCadastradoException {
+	public void inserir(Instrutor instrutor)  {
 		repositorio.inserir(instrutor);
 	}
 	

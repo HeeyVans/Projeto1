@@ -1,5 +1,7 @@
 package sistema;
 
+import java.util.List;
+
 import basicas.Treino;
 import interfaces.IRepositorioTreino;
 
@@ -16,16 +18,20 @@ public class CadastroTreino {
 		this.repositorio.inserir(treino);
 	}
 	
-	public Treino procurar(int id) {
+	public Treino procurar(String id) {
 		return this.repositorio.procurar(id);
 	}
 	
-	public void remover(int id) {
+	public void remover(String id) {
 		this.repositorio.remover(id);
 	}
 	
 	public void atualizar(Treino treino) {
 		this.repositorio.atualizar(treino);
+	}
+	
+	public List listar(String nome) {
+		return repositorio.listar();
 	}
 
 }

@@ -1,5 +1,8 @@
 package repositorios;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import basicas.Treino;
 import interfaces.IRepositorioTreino;
 
@@ -15,7 +18,7 @@ public class RepositorioTreinoArray implements IRepositorioTreino{
 		indice = 0;
 	}
 	
-	public int getIndice(int id) {
+	public int getIndice(String id) {
 		int i = 0;
 		
 		if(indice != 0) {
@@ -31,7 +34,7 @@ public class RepositorioTreinoArray implements IRepositorioTreino{
 		return -1;
 	}
 	
-	public boolean existe(int id) {
+	public boolean existe(String id) {
 		i = getIndice(id);
 		if(i == -1) {
 			return false;
@@ -49,7 +52,7 @@ public class RepositorioTreinoArray implements IRepositorioTreino{
 	}
 
 	@Override
-	public Treino procurar(int id) {
+	public Treino procurar(String id) {
 		
 		if(existe(id)) {
 			return this.repositorio[i];
@@ -59,7 +62,7 @@ public class RepositorioTreinoArray implements IRepositorioTreino{
 	}
 
 	@Override
-	public void remover(int id) {
+	public void remover(String id) {
 		
 		if(existe(id)) {
 			repositorio[i] = null;
@@ -76,5 +79,16 @@ public class RepositorioTreinoArray implements IRepositorioTreino{
 			repositorio[i] = treino;
 			}
 
+		}
+	
+	public List listar() {
+		
+		List treino = new ArrayList();
+		i = 0;
+		while(i < indice) {
+			 treino.add(repositorio[i]);
+			 i++;
+			}
+		return treino;
 		}
 	}

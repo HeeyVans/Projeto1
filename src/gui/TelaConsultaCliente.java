@@ -13,6 +13,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import basicas.Cliente;
+import basicas.Treino;
+import sistema.Assistente;
+import sistema.Fachada;
 import sistema.ModeloTabelaTreino;
 
 import javax.swing.ListSelectionModel;
@@ -22,6 +26,9 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.awt.event.ActionEvent;
 
 public class TelaConsultaCliente extends JFrame {
 
@@ -47,6 +54,9 @@ public class TelaConsultaCliente extends JFrame {
 				try {
 					TelaConsultaCliente frame = new TelaConsultaCliente();
 					frame.setVisible(true);
+					
+					Assistente.gerarTreino();
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -103,6 +113,22 @@ public class TelaConsultaCliente extends JFrame {
 		contentPane.add(textField);
 		
 		JButton button = new JButton("Buscar");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				while(modeloTreino.getRowCount()>0) {
+					modeloTreino.removeTreinoAt(0);
+				}
+				
+				String id = textField.getText();
+				
+				ArrayList<Treino> lista = new ArrayList();
+				
+				lista = (ArrayList<Treino>) Fachada.getInstance().listarTreino(id);
+						
+					modeloTreino.addTreinoList(lista);
+				}
+			
+		});
 		button.setForeground(Color.WHITE);
 		button.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		button.setBackground(new Color(0, 128, 0));

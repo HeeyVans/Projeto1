@@ -18,6 +18,10 @@ import org.apache.commons.mail.SimpleEmail;
 
 import basicas.Administrador;
 import basicas.Cliente;
+import basicas.Exercicio;
+import basicas.Instrutor;
+import basicas.Treino;
+import repositorios.RepositorioExercicioArray;
 
 public class Assistente {
 	
@@ -72,6 +76,17 @@ public class Assistente {
 	            return (char)(index + 61); //os chars 97 a 122 representam [a - z]
 	    }
 		
+		//GerarId para Treino
+		public static String gerarId(){
+			final Random random = new Random();
+			final int TAMANHO = 4;
+			
+			char[] caracter = new char[TAMANHO];
+	        for (int i = 0; i<TAMANHO; i++)
+	            caracter[i] = toChar(random.nextInt(62));
+	        return new String(caracter);
+		}
+		
 		//Montando Tabelas
 		public static void montarTabela(List clientes, ModeloTabelaInstrutor modelo) {
 			modelo.addClienteList(clientes);
@@ -82,11 +97,37 @@ public class Assistente {
 			Administrador adm = new Administrador("ADM", "44343918360", "AAAA", "Administrador");
 			Fachada.getInstance().cadastrarADM(adm);
 		}
-		
+		//Gerar Clientes
 		public static void gerarCliente() {
 			Cliente c = new Cliente("Diogo", "70341656548", "bbbb", "Cliente");
 			Fachada.getInstance().cadastrarCliente(c);
+			Cliente v = new Cliente("Vanessa", "67371781708", "rrrr", "Cliente");
+			Fachada.getInstance().cadastrarCliente(v);
+			Cliente f = new Cliente("Paulo", "35774928721", "hhhh", "Cliente");
+			Fachada.getInstance().cadastrarCliente(f);
 		
 		}
+		//Gerar Treino
+		public static void gerarTreino() {
+		Instrutor t = new Instrutor("Vanessa", "27406222106", "aaff", "Instrutor");
+		Fachada.getInstance().cadastrarInstrutor(t);
+		
+		Cliente c = new Cliente("Diogo", "70341656548", "bbbb", "Cliente");
+		Fachada.getInstance().cadastrarCliente(c);
+		
+		Exercicio e = new Exercicio("obs", "Supino", 3, "1'", 0);
+		Exercicio e1 = new Exercicio("obs", "Supino", 3, "1'", 0);
+		Exercicio e2 = new Exercicio("obs", "Supino", 3, "1'", 0);
+		
+		Fachada.getInstance().inserirExercicio(e);
+		Fachada.getInstance().inserirExercicio(e1);
+		Fachada.getInstance().inserirExercicio(e2);
+		
+		RepositorioExercicioArray rep = new RepositorioExercicioArray();
+		
+		Treino tr = new Treino(t, c, e, rep, Assistente.gerarId());		
+		Fachada.getInstance().inserirTreino(tr);
+		}
+		
 
 }

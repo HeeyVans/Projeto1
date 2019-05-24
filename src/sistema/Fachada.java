@@ -84,7 +84,6 @@ public class Fachada {
 	public List listarCliente(String nome) {
 		return this.cliente.listar(nome);
 	}
-	//listar();
 	
 	//FIM DE CRUD DE CLIENTE
 	//INICIO CRUD ADM
@@ -96,7 +95,7 @@ public class Fachada {
 	}
 	//FIM CRUD ADM
 	//INICIO DE CRUD DO INSTRUTOR
-	public void cadastrarInstrutor(Instrutor instrutor) throws InstrutorJaCadastradoException{
+	public void cadastrarInstrutor(Instrutor instrutor){
 		this.instrutor.inserir(instrutor);
 	}
 	
@@ -124,16 +123,19 @@ public class Fachada {
 		this.treino.inserir(treino);
 	}
 	
-	public Treino procurarTreino(int id) {
+	public Treino procurarTreino(String id) {
 		return this.treino.procurar(id);
 	}
 	
-	public void removerTreino(int id) {
+	public void removerTreino(String id) {
 		this.treino.remover(id);
 	}
 	
 	public void atualizarTreino(Treino treino) {
 		this.treino.atualizar(treino);
+	}
+	public List listarTreino(String id) {
+		return this.cliente.listar(id);
 	}
 	//FIM DE CRUD TREINO
 }

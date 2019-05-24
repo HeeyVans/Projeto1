@@ -1,24 +1,25 @@
 package basicas;
 
 import repositorios.RepositorioExercicioArquivo;
+import repositorios.RepositorioExercicioArray;
 
 public class Treino {
 	
 	private Instrutor instrutor;
 	private Cliente cliente;
 	private Exercicio exercicio;
-	private RepositorioExercicioArquivo repExer;
-	private int id;
+	private RepositorioExercicioArray repExer;
+	private String id;
 	
 	
-	public Treino(Instrutor instrutor, Cliente cliente, Exercicio exercicio, RepositorioExercicioArquivo repExer,
-			int id) {
+	public Treino(Instrutor instrutor, Cliente cliente, Exercicio exercicio, RepositorioExercicioArray repExer,
+			String string) {
 		
 		this.instrutor = instrutor;
 		this.cliente = cliente;
 		this.exercicio = exercicio;
 		this.repExer = repExer;
-		this.id = id;
+		this.id = string;
 	}
 
 
@@ -57,22 +58,22 @@ public class Treino {
 	}
 
 
-	public RepositorioExercicioArquivo getRepExer() {
+	public RepositorioExercicioArray getRepExer() {
 		return repExer;
 	}
 
 
-	public void setRepExer(RepositorioExercicioArquivo repExer) {
+	public void setRepExer(RepositorioExercicioArray repExer) {
 		this.repExer = repExer;
 	}
 
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	
