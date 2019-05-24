@@ -150,5 +150,6 @@ public class TelaInstrutor extends JFrame {
 		btnVoltar.setForeground(Color.WHITE);
 		btnVoltar.setBounds(311, 245, 116, 28);
 		contentPane.add(btnVoltar);
+		
 	}
 }

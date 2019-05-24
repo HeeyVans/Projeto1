@@ -128,5 +128,6 @@ public class TelaConsultaCliente extends JFrame {
 		tableTreino.setBounds(68, 163, 100, 30);
 		tableTreino.setPreferredScrollableViewportSize(new Dimension(300, 50));
 		tableTreino.setFillsViewportHeight(true);
+		
 	}
 }
