@@ -31,21 +31,19 @@ import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 
-public class TelaInstrutor1 extends JFrame {
+public class TelaInstrutor extends JFrame {
 
 	private JPanel contentPane;
 	private JTable tableCliente;
-	public static TelaInstrutor1 instance;
+	public static TelaInstrutor instance;
 	private ModeloTabelaInstrutor modeloInstrutor;	
 	private JTextField textFieldNome;
 	
-	public static TelaInstrutor1 getInstance() {
+	public static TelaInstrutor getInstance() {
 		if(instance == null) {
-			instance = new TelaInstrutor1();
-			return instance;
-		}else {
-			return instance;
-		}
+			instance = new TelaInstrutor();
+			}
+		return instance;
 	}
 
 	/**
@@ -65,7 +63,7 @@ public class TelaInstrutor1 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaInstrutor1 frame = new TelaInstrutor1();
+					TelaInstrutor frame = new TelaInstrutor();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -77,8 +75,8 @@ public class TelaInstrutor1 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaInstrutor1() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaInstrutor1.class.getResource("/imagens/biceps png.png")));
+	public TelaInstrutor() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaInstrutor.class.getResource("/imagens/biceps png.png")));
 		setTitle("Consulta de Clientes");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 521, 375);
@@ -149,8 +147,12 @@ public class TelaInstrutor1 extends JFrame {
 		contentPane.add(btnBuscar);
 		
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon(TelaInstrutor1.class.getResource("/imagens/MFit logotipo redemensionada.jpg")));
+		label.setIcon(new ImageIcon(TelaInstrutor.class.getResource("/imagens/MFit logotipo redemensionada.jpg")));
 		label.setBounds(10, 256, 229, 80);
 		contentPane.add(label);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setBounds(311, 245, 89, 23);
+		contentPane.add(btnVoltar);
 	}
 }

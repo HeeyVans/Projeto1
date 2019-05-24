@@ -70,6 +70,13 @@ public class TelaADM extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton button = new JButton("Cadastrar Cliente");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaCadastroCliente inicial = new TelaCadastroCliente();
+				inicial.frmTelaDeCadastro.setVisible(true);
+				dispose();
+			}
+		});
 		button.setForeground(Color.WHITE);
 		button.setFont(new Font("Tahoma", Font.BOLD, 14));
 		button.setBackground(new Color(0, 128, 0));
@@ -94,7 +101,7 @@ public class TelaADM extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				TelaCadastroInstrutor inicial = new TelaCadastroInstrutor();
 				inicial.frmTelaDeCadastro.setVisible(true);
-				telaADM.dispose();
+				dispose();
 			}
 		});
 		button_1.setForeground(Color.WHITE);
@@ -108,7 +115,7 @@ public class TelaADM extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				TelaEscolha inicial = new TelaEscolha();
 				inicial.frmTelaDeEntrada.setVisible(true);
-				telaADM.dispose(); //NullPointerException
+				dispose();
 			}
 		});
 		btnPginaInicial.setForeground(Color.WHITE);
@@ -120,7 +127,7 @@ public class TelaADM extends JFrame {
 		JButton btnConsultarCliente = new JButton("Consultar Cliente");
 		btnConsultarCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				TelaInstrutor1.getInstance().setVisible(true);
+				TelaConsultaCliente.getInstance().setVisible(true);
 				dispose();
 			}
 		});
@@ -131,6 +138,12 @@ public class TelaADM extends JFrame {
 		contentPane.add(btnConsultarCliente);
 		
 		JButton btnConsultarInstrutor = new JButton("Consultar Instrutor");
+		btnConsultarInstrutor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaInstrutor.getInstance().setVisible(true);
+				dispose();
+			}
+		});
 		btnConsultarInstrutor.setForeground(Color.WHITE);
 		btnConsultarInstrutor.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnConsultarInstrutor.setBackground(new Color(0, 128, 0));

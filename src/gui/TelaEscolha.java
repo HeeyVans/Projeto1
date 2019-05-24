@@ -95,6 +95,12 @@ public class TelaEscolha extends JFrame{
 		frmTelaDeEntrada.getContentPane().add(lblEscolhaUmaDas);
 		
 		JButton btnCadastrarCliente = new JButton("Cliente");
+		btnCadastrarCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaConsultaCliente.getInstance().setVisible(true);
+				frmTelaDeEntrada.dispose();
+			}
+		});
 		btnCadastrarCliente.setForeground(new Color(255, 255, 255));
 		btnCadastrarCliente.setBackground(new Color(0, 128, 0));
 		btnCadastrarCliente.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -102,6 +108,12 @@ public class TelaEscolha extends JFrame{
 		frmTelaDeEntrada.getContentPane().add(btnCadastrarCliente);
 		
 		JButton btnCadastrarInstrutor = new JButton("Instrutor");
+		btnCadastrarInstrutor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaInstrutor.getInstance().setVisible(true);
+				frmTelaDeEntrada.dispose();
+			}
+		});
 		btnCadastrarInstrutor.setForeground(new Color(255, 255, 255));
 		btnCadastrarInstrutor.setBackground(new Color(0, 128, 0));
 		btnCadastrarInstrutor.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -145,7 +157,7 @@ public class TelaEscolha extends JFrame{
 								break;
 							}else if(ValidarDados.validarLoginADM(cpf, matricula)) {
 								TelaADM.getInstance().setVisible(true);
-								dispose();
+								frmTelaDeEntrada.dispose();
 							}
 								}while(matricula.equals("") || ValidarDados.validarLoginADM2(cpf, matricula) == false);
 							}				

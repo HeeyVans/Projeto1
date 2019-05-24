@@ -65,9 +65,8 @@ public class RepositorioClienteArquivo implements IRepositorioCliente, Serializa
 	  }
 
 	public void salvarArquivo() {
-	    if (instance == null) {
-	      return;
-	    }
+	    if (!(instance == null)) {
+	     
 	    File out = new File("clientes.dat");
 	    FileOutputStream fos = null;
 	    ObjectOutputStream oos = null;
@@ -75,7 +74,7 @@ public class RepositorioClienteArquivo implements IRepositorioCliente, Serializa
 	    try {
 	      fos = new FileOutputStream(out);
 	      oos = new ObjectOutputStream(fos);
-	      oos.writeObject(instance);
+	      oos.writeObject(instance); 
 	    } catch (Exception e) {
 	      e.printStackTrace();
 	    } finally {
@@ -86,6 +85,7 @@ public class RepositorioClienteArquivo implements IRepositorioCliente, Serializa
 	        }
 	      }
 	    }
+	   }
 	}
 	
 	public int getIndice(String cpf) {
