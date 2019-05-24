@@ -9,9 +9,16 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.Toolkit;
+import java.awt.Font;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
 
 public class TelaADM extends JFrame {
 
+	JFrame telaADM;
 	private JPanel contentPane;
 	public static TelaADM instance;
 	
@@ -26,6 +33,16 @@ public class TelaADM extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException  ex) {
+            System.err.println(ex);
+        } 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -42,61 +59,75 @@ public class TelaADM extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaADM() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaADM.class.getResource("/imagens/biceps png.png")));
+		setTitle("Tela do Administrador");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 513, 499);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnCadCliente = new JButton("Cad Cliente");
-		btnCadCliente.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			TelaCadastroCliente.getInstance().setVisible(true);
-			dispose();
-			}
-		});
-		btnCadCliente.setBounds(100, 60, 89, 23);
-		contentPane.add(btnCadCliente);
+		JButton button = new JButton("Cadastrar Cliente");
+		button.setForeground(Color.WHITE);
+		button.setFont(new Font("Tahoma", Font.BOLD, 14));
+		button.setBackground(new Color(0, 128, 0));
+		button.setBounds(51, 198, 176, 41);
+		contentPane.add(button);
 		
-		JButton btnCadInstru = new JButton("Cad Instru");
-		btnCadInstru.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				TelaCadastroInstrutor.getInstance().setVisible(true);
-				dispose();
-			}
-		});
-		btnCadInstru.setBounds(100, 138, 89, 23);
-		contentPane.add(btnCadInstru);
+		JPanel panel = new JPanel();
+		panel.setLayout(null);
+		panel.setForeground(Color.WHITE);
+		panel.setBackground(new Color(0, 128, 0));
+		panel.setBounds(0, 0, 496, 107);
+		contentPane.add(panel);
 		
-		JButton btnConsultaCliente = new JButton("Cons Client");
-		btnConsultaCliente.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				TelaConsultaCliente.getInstance().setVisible(true);
-				dispose();
-			}
-		});
-		btnConsultaCliente.setBounds(233, 60, 89, 23);
-		contentPane.add(btnConsultaCliente);
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon(TelaADM.class.getResource("/imagens/MFit logotipo.png")));
+		label.setBounds(79, 0, 340, 117);
+		panel.add(label);
+		label.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JButton btnConsultaInstrutor = new JButton("Cons Instr");
-		btnConsultaInstrutor.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				TelaInstrutor1.getInstance().setVisible(true);
-				dispose();
-			}
-		});
-		btnConsultaInstrutor.setBounds(233, 138, 89, 23);
-		contentPane.add(btnConsultaInstrutor);
+		JButton button_1 = new JButton("Cadastrar Instrutor");
+		button_1.setForeground(Color.WHITE);
+		button_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+		button_1.setBackground(new Color(0, 128, 0));
+		button_1.setBounds(51, 275, 176, 41);
+		contentPane.add(button_1);
 		
-		JButton btnPrincipal = new JButton("Home Page");
-		btnPrincipal.addActionListener(new ActionListener() {
+		JButton btnPginaInicial = new JButton("P\u00E1gina Inicial");
+		btnPginaInicial.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaInicial.getInstance().setVisible(true);
-				dispose();
+				TelaEscolha inicial = new TelaEscolha();
+				inicial.frmTelaDeEntrada.setVisible(true);
+				telaADM.dispose(); //NullPointerException
 			}
 		});
-		btnPrincipal.setBounds(170, 196, 89, 23);
-		contentPane.add(btnPrincipal);
+		btnPginaInicial.setForeground(Color.WHITE);
+		btnPginaInicial.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnPginaInicial.setBackground(new Color(0, 128, 0));
+		btnPginaInicial.setBounds(154, 345, 176, 41);
+		contentPane.add(btnPginaInicial);
+		
+		JButton btnConsultarCliente = new JButton("Consultar Cliente");
+		btnConsultarCliente.setForeground(Color.WHITE);
+		btnConsultarCliente.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnConsultarCliente.setBackground(new Color(0, 128, 0));
+		btnConsultarCliente.setBounds(271, 198, 176, 41);
+		contentPane.add(btnConsultarCliente);
+		
+		JButton btnConsultarInstrutor = new JButton("Consultar Instrutor");
+		btnConsultarInstrutor.setForeground(Color.WHITE);
+		btnConsultarInstrutor.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnConsultarInstrutor.setBackground(new Color(0, 128, 0));
+		btnConsultarInstrutor.setBounds(271, 275, 176, 41);
+		contentPane.add(btnConsultarInstrutor);
+		
+		JLabel label_1 = new JLabel("Escolha uma das op\u00E7\u00F5es acima para que possa prosseguir");
+		label_1.setHorizontalAlignment(SwingConstants.CENTER);
+		label_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
+		label_1.setBounds(70, 437, 355, 23);
+		contentPane.add(label_1);
 	}
 }

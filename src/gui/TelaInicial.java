@@ -95,6 +95,7 @@ public class TelaInicial extends JFrame {
 					
 				
 			}
+			
 		});
 		btnADM.setBounds(149, 123, 89, 23);
 		contentPane.add(btnADM);

@@ -22,7 +22,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 //import com.toedter.calendar.JDateChooser;
 
-public class TelaCadastroInstrutor extends JFrame{
+public class TelaCadastroInstrutor {
 
     JFrame frmTelaDeCadastro;
 	private JTextField textFieldTelefone;
