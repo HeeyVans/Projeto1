@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import basicas.Administrador;
+import sistema.Assistente;
 import sistema.Fachada;
 import sistema.Mensagem;
 import sistema.ValidarDados;
@@ -46,6 +47,7 @@ public class TelaEscolha {
 				try {
 					TelaEscolha window = new TelaEscolha();
 					window.frmTelaDeEntrada.setVisible(true);
+					Assistente.gerarAdm();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
