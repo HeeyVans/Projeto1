@@ -33,6 +33,7 @@ import javax.swing.ImageIcon;
 
 public class TelaInstrutor extends JFrame {
 
+	JFrame TelaDeInstrutor;
 	private JPanel contentPane;
 	private JTable tableCliente;
 	public static TelaInstrutor instance;
@@ -150,6 +151,16 @@ public class TelaInstrutor extends JFrame {
 		btnVoltar.setForeground(Color.WHITE);
 		btnVoltar.setBounds(311, 245, 116, 28);
 		contentPane.add(btnVoltar);
+		
+		JButton btnCriarTreino = new JButton("Criar Treino");
+		btnCriarTreino.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaCriarTreino.getInstance().setVisible(true);
+				dispose();
+			}
+		});
+		btnCriarTreino.setBounds(311, 284, 89, 23);
+		contentPane.add(btnCriarTreino);
 		
 	}
 }

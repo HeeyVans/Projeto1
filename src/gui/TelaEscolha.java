@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 
 import basicas.Administrador;
 import basicas.Cliente;
+import basicas.Instrutor;
 import sistema.Assistente;
 import sistema.Fachada;
 import sistema.Mensagem;
@@ -28,7 +29,16 @@ import java.awt.event.ActionEvent;
 public class TelaEscolha extends JFrame{
 
 	 JFrame frmTelaDeEntrada;
+	 private static TelaEscolha instance;
 	 public static Cliente cliente;
+	 public static Instrutor instrutor;
+	 
+	 public static TelaEscolha getInstance() {
+		 if(instance == null) {
+			 instance = new TelaEscolha();
+		 }
+		 return instance;
+	 }
 
 	/**
 	 * Launch the application.
@@ -51,7 +61,7 @@ public class TelaEscolha extends JFrame{
 					window.frmTelaDeEntrada.setVisible(true);
 					
 					Assistente.gerarAdm();
-					Assistente.gerarCliente();
+					Assistente.gerarInstCliente();
 					
 				} catch (Exception e) {
 					e.printStackTrace();

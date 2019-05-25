@@ -11,6 +11,7 @@ public interface IRepositorioCliente {
 	
 	public void inserir(Cliente cliente);
 	public Cliente procurar(String cpf);
+	public Cliente procurarMatricula(String matricula);
 	public void remover(String cpf);
 	public void atualizar(Cliente cliente) throws ClienteNaoEncontradoException;
 	public List listar(String nome);

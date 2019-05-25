@@ -45,6 +45,31 @@ public class RepositorioClienteArray implements IRepositorioCliente{
 			return true;
 		}
 	}
+	
+	public int getIndiceMatricula(String matricula) {
+		int i = 0;
+		
+		if(indice != 0) {
+			while(!matricula.equals(repositorio[i].getMatricula())) {
+				if(i == indice - 1) {
+					return -1;
+				}else {
+					i++;
+				}
+			}
+			return i;
+		}
+		return -1;
+	}
+	
+	public boolean existeMatricula(String matricula) {
+		i = getIndiceMatricula(matricula);
+		if(i == -1) {
+			return false;
+		}else {
+			return true;
+		}
+	}
 
 	@Override
 	public void inserir(Cliente cliente)  {
@@ -64,6 +89,15 @@ public class RepositorioClienteArray implements IRepositorioCliente{
 			return null;
 		}
 		
+	}
+	
+	@Override
+	public Cliente procurarMatricula(String matricula) {
+		if(existeMatricula(matricula)) {
+			return this.repositorio[i];
+		}else {
+			return null;
+		}
 	}
 
 	@Override
@@ -103,6 +137,7 @@ public class RepositorioClienteArray implements IRepositorioCliente{
 			}
 		return clientes;
 		}
+
 
 	}
 	

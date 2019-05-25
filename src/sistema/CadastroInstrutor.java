@@ -16,7 +16,11 @@ public class CadastroInstrutor {
 		repositorio.inserir(instrutor);
 	}
 	
-	public Instrutor procurar(String matricula) /*throws MatriculaNaoEncontradaException*/  {
+	public Instrutor procurar(String cpf) /*throws MatriculaNaoEncontradaException*/  {
+		return repositorio.procurar(cpf);
+	}
+	
+	public Instrutor procurarMatricula(String matricula)   {
 		return repositorio.procurar(matricula);
 	}
 	

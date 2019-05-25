@@ -75,6 +75,9 @@ public class Fachada {
 	public Cliente procurarCliente(String cpf) {
 		return cliente.procurar(cpf);
 	}
+	public Cliente procurarClienteMatricula(String matricula) {
+		return cliente.procurarMatricula(matricula);
+	}
 	public void removerCliente(String cpf) {
 		cliente.remover(cpf);
 	}
@@ -101,6 +104,10 @@ public class Fachada {
 	
 	public Instrutor procurarInstrutor(String cpf) {
 		return instrutor.procurar(cpf);
+	}
+	
+	public Instrutor procurarInstrutorMatricula(String matricula) {
+		return instrutor.procurar(matricula);
 	}
 
 	public void removerInstrutor(String cpf) {

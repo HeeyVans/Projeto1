@@ -97,6 +97,14 @@ public class Assistente {
 			Administrador adm = new Administrador("ADM", "44343918360", "AAAA", "Administrador");
 			Fachada.getInstance().cadastrarADM(adm);
 		}
+		
+		//Gerar Instrutor e Cliente
+		public static void gerarInstCliente() {
+			Cliente c = new Cliente("Diogo", "70341871427","bbbb", "Cliente");
+			Fachada.getInstance().cadastrarCliente(c);
+			Instrutor t = new Instrutor("Vanessa", "27406222106", "aaaa", "Instrutor");
+			Fachada.getInstance().cadastrarInstrutor(t);
+		}
 		//Gerar Clientes
 		public static void gerarCliente() {
 			Cliente c = new Cliente("Diogo", "70341871427", "Masculino");

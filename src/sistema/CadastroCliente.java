@@ -24,6 +24,10 @@ public class CadastroCliente {
 		return repositorio.procurar(cpf);
 	}
 	
+	public Cliente procurarMatricula(String matricula)  {
+		return repositorio.procurarMatricula(matricula);
+	}
+	
 	public void remover(String cpf)  {
 		repositorio.remover(cpf);
 	}
