@@ -13,6 +13,6 @@ public interface IRepositorioTreino {
 	public Treino procurar(String id);
 	public void remover(String id);
 	public void atualizar(Treino treino);
-	public List listar();
+	public List listar(String matricula);
 
 }

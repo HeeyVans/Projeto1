@@ -134,7 +134,7 @@ public class ValidarDados {
         }
         
         //Valida Login De Cliente
-        public static boolean validarLoginCliente(String cpf, String matricula) {
+        public static Cliente validarLoginCliente(String cpf, String matricula) {
         	try {
         		cliente = Fachada.getInstance().procurarCliente(cpf);
         		if(!cliente.getMatricula().equals(matricula)) {
@@ -143,10 +143,10 @@ public class ValidarDados {
         		}
         	}catch(MatriculaNaoEncontradaException mnee) {
         		PopUps.matriculaInvalida(mnee);
-        		return false;
+        		return null;
         		
         	} 
-        	return true;
+        	return cliente;
         }
         
         public static boolean validarLoginADM(String cpf, String matricula) {

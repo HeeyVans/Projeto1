@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import basicas.Cliente;
 import excecoes.CampoVazioException;
 import sistema.Assistente;
 import sistema.Mensagem;
@@ -29,6 +30,7 @@ public class TelaEntrar extends JFrame{
 	private JTextField textFieldMatricula;
 	private JTextField textFieldCPF;
 	public static TelaEntrar instance;
+	public static Cliente cliente;
 	
 	public static TelaEntrar getInstance() {
 		if(instance == null) {
@@ -69,6 +71,7 @@ public class TelaEntrar extends JFrame{
 					
 					//gerando user ADM
 					Assistente.gerarAdm();
+					Assistente.gerarTreino();
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -114,6 +117,40 @@ public class TelaEntrar extends JFrame{
 		panel.add(lblBemvindoAMfit);
 		
 		JButton btnEntrar = new JButton("Entrar");
+		btnEntrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String cpf, matricula;
+				
+				cpf = textFieldCPF.getText();
+				matricula = textFieldMatricula.getText();
+				
+				if(!ValidarDados.validarCampoVazio(cpf, matricula)) {
+					PopUps.campoVazio();
+				}else {
+						
+						if(!ValidarDados.isCPF(cpf)) {
+							PopUps.cpfInvalido();
+						}else {
+							cliente = ValidarDados.validarLoginCliente(cpf, matricula); 
+								
+							if(cliente == null) {
+								
+							}else {
+								TelaEscolha window = new TelaEscolha();
+								window.frmTelaDeEntrada.setVisible(true);
+								dispose();
+							}
+						}
+					
+					
+				
+				
+				
+				}
+				
+			}
+		});
 		btnEntrar.setBackground(new Color(0, 128, 0));
 		btnEntrar.setForeground(new Color(255, 255, 255));
 		btnEntrar.setIcon(new ImageIcon(TelaEntrar.class.getResource("/imagens/login.png")));

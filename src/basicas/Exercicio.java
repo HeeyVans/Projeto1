@@ -6,15 +6,14 @@ public class Exercicio {
 	private String nome;
 	private int serie;
 	private String tempoDescanso;
-	private double porcentagem;
 	
-	public Exercicio(String obs, String nome, int serie, String tempoDescanso, double porcentagem) {
+	public Exercicio(String obs, String nome, int serie, String tempoDescanso) {
 		
 		this.obs = obs;
 		this.nome = nome;
 		this.serie = serie;
 		this.tempoDescanso = tempoDescanso;
-		this.porcentagem = porcentagem;
+		
 	}
 
 	public String getObs() {
@@ -39,14 +38,6 @@ public class Exercicio {
 
 	public void setTempoDescanso(String tempoDescanso) {
 		this.tempoDescanso = tempoDescanso;
-	}
-
-	public double getPorcentagem() {
-		return porcentagem;
-	}
-
-	public void setPorcentagem(double porcentagem) {
-		this.porcentagem = porcentagem;
 	}
 
 	public String getNome() {

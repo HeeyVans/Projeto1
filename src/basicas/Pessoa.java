@@ -40,6 +40,14 @@ public abstract class Pessoa {
 		
 	}
 	
+	public Pessoa(String nome, String cpf, String genero) {
+		this.nome = nome;
+		this.cpf = cpf;
+		this.matricula = matricula;
+		this.genero = genero;
+		
+	}
+	
 	public String getNome() {
 		return nome;
 	}

@@ -40,4 +40,7 @@ public class Mensagem {
 	
 	//TelaCadastroCliente
 	public static final String CLIENTECADASTRADO = "Cliente cadastrado com sucesso!";
+	
+	//TelaEscolha
+	public static final String USUARIONAOEXISTE = "Este usuário não existe!";
 }

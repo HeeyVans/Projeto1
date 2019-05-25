@@ -91,12 +91,14 @@ public class RepositorioClienteArray implements IRepositorioCliente{
 	}
 
 	@Override
-	public List listar() {
+	public List listar(String nome) {
 		
 		List clientes = new ArrayList();
 		i = 0;
 		while(i < indice) {
-			 clientes.add(repositorio[i]);
+			if(repositorio[i].getNome().equals(nome)) {
+				clientes.add(repositorio[i]);
+			}			 
 			 i++;
 			}
 		return clientes;

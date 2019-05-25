@@ -14,6 +14,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import basicas.Cliente;
+import basicas.Exercicio;
 import basicas.Treino;
 import sistema.Assistente;
 import sistema.Fachada;
@@ -36,7 +37,7 @@ public class TelaConsultaCliente extends JFrame {
 	private JTable tableTreino;
 	private ModeloTabelaTreino modeloTreino;
 	public static TelaConsultaCliente instance;
-	private JTextField textField;
+	private JTable tableExercicios;
 	
 	public static TelaConsultaCliente getInstance() {
 		if(instance == null) {
@@ -84,46 +85,30 @@ public class TelaConsultaCliente extends JFrame {
 		lblExercicios.setBounds(24, 22, 136, 14);
 		contentPane.add(lblExercicios);
 		
-		JScrollPane scrollPaneTreino = new JScrollPane();
+		modeloTreino = new ModeloTabelaTreino();
+		tableExercicios = new JTable(modeloTreino);
+		tableExercicios.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+		tableExercicios.setBounds(68, 163, 100, 30);
+		tableExercicios.setPreferredScrollableViewportSize(new Dimension(300, 50));
+		tableExercicios.setFillsViewportHeight(true);
+		
+		JScrollPane scrollPaneTreino = new JScrollPane(tableExercicios);
 		scrollPaneTreino.setBounds(34, 47, 464, 161);
 		contentPane.add(scrollPaneTreino);
-		
-		tableTreino = new JTable();
-		tableTreino.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-		tableTreino.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"Nome", "S\u00E9ries", "Descanso", "Observa\u00E7\u00F5es"
-			}
-		));
-		tableTreino.getColumnModel().getColumn(3).setPreferredWidth(105);
-		tableTreino.setFillsViewportHeight(true);
-		scrollPaneTreino.setViewportView(tableTreino);
-		
-		JLabel label = new JLabel("Nome do Cliente:");
-		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		label.setBounds(16, 219, 144, 25);
-		contentPane.add(label);
-		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(155, 219, 174, 28);
-		contentPane.add(textField);
 		
 		JButton button = new JButton("Buscar");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				while(modeloTreino.getRowCount()>0) {
 					modeloTreino.removeTreinoAt(0);
-				}
+				}			
+					
 				
-				String id = textField.getText();
+				String matricula = TelaEntrar.getInstance().cliente.getMatricula();
+						
+				ArrayList<Exercicio> lista = new ArrayList();
 				
-				ArrayList<Treino> lista = new ArrayList();
-				
-				lista = (ArrayList<Treino>) Fachada.getInstance().listarTreino(id);
+				lista = (ArrayList<Exercicio>) Fachada.getInstance().listarTreino(matricula);
 						
 					modeloTreino.addTreinoList(lista);
 				}
@@ -148,12 +133,7 @@ public class TelaConsultaCliente extends JFrame {
 		label_1.setBounds(10, 266, 229, 80);
 		contentPane.add(label_1);
 		
-		modeloTreino = new ModeloTabelaTreino();
-		tableTreino = new JTable(modeloTreino);
-		tableTreino.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-		tableTreino.setBounds(68, 163, 100, 30);
-		tableTreino.setPreferredScrollableViewportSize(new Dimension(300, 50));
-		tableTreino.setFillsViewportHeight(true);
+		
 		
 	}
 }

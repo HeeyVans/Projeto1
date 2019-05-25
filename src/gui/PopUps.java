@@ -44,5 +44,11 @@ public class PopUps {
 	public static void cpfInvalido() {
 		JOptionPane.showMessageDialog(null, Mensagem.CPFINVALIDO, Mensagem.getMsgerror(), JOptionPane.WARNING_MESSAGE);
 	}
+	public static void campoVazio(){
+		JOptionPane.showMessageDialog(null, Mensagem.CAMPOVAZIO, Mensagem.getMsgalert(),JOptionPane.WARNING_MESSAGE);
+	}
+	public static void UsuarioNaoExiste() {
+		JOptionPane.showMessageDialog(null, Mensagem.USUARIONAOEXISTE, Mensagem.getMsgalert(), JOptionPane.WARNING_MESSAGE);
+	}
 
 }

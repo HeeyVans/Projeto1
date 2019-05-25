@@ -81,14 +81,17 @@ public class RepositorioTreinoArray implements IRepositorioTreino{
 
 		}
 	
-	public List listar() {
+	public List listar(String matricula) {
 		
-		List treino = new ArrayList();
+		List exercicios = new ArrayList();
 		i = 0;
 		while(i < indice) {
-			 treino.add(repositorio[i]);
+			if(repositorio[i].getCliente().getMatricula() == matricula) {
+				exercicios = repositorio[i].getRepExer().listar();
+				
+				}
 			 i++;
 			}
-		return treino;
+		return exercicios;
 		}
 	}

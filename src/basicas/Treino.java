@@ -7,17 +7,15 @@ public class Treino {
 	
 	private Instrutor instrutor;
 	private Cliente cliente;
-	private Exercicio exercicio;
 	private RepositorioExercicioArray repExer;
 	private String id;
 	
 	
-	public Treino(Instrutor instrutor, Cliente cliente, Exercicio exercicio, RepositorioExercicioArray repExer,
+	public Treino(Instrutor instrutor, Cliente cliente,  RepositorioExercicioArray repExer,
 			String string) {
 		
 		this.instrutor = instrutor;
 		this.cliente = cliente;
-		this.exercicio = exercicio;
 		this.repExer = repExer;
 		this.id = string;
 	}
@@ -46,17 +44,6 @@ public class Treino {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-
-
-	public Exercicio getExercicio() {
-		return exercicio;
-	}
-
-
-	public void setExercicio(Exercicio exercicio) {
-		this.exercicio = exercicio;
-	}
-
 
 	public RepositorioExercicioArray getRepExer() {
 		return repExer;

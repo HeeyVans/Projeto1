@@ -12,7 +12,7 @@ public class ModeloTabelaInstrutor extends AbstractTableModel{
 	private ArrayList<Cliente> dataList = new ArrayList();
 	private String[] columns={"Nome", "Objetivo","Data Nascimento", "Sexo"};
 	Class[] columnTypes = new Class[] { Object.class, Object.class, Object.class, Object.class};
-	boolean[] columnEditables = new boolean[] {false, false, false};
+	boolean[] columnEditables = new boolean[] {false, false, false, false};
 
 	
 	public Class getColumnCount(int columnIndex) {

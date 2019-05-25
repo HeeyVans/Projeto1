@@ -117,6 +117,9 @@ public class Fachada {
 	public void inserirExercicio(Exercicio exercicio) {
 		this.exercicio.inserir(exercicio);
 	}
+	public List listarTreino() {
+		return this.exercicio.listar();
+	}
 	//FIM DE CRUD EXERCICIO
 	//INICIO DE CRUD TREINO
 	public void inserirTreino(Treino treino) {
@@ -134,8 +137,8 @@ public class Fachada {
 	public void atualizarTreino(Treino treino) {
 		this.treino.atualizar(treino);
 	}
-	public List listarTreino(String id) {
-		return this.cliente.listar(id);
+	public List listarTreino(String matricula) {
+		return this.treino.listar(matricula);
 	}
 	//FIM DE CRUD TREINO
 }

@@ -99,7 +99,7 @@ public class Assistente {
 		}
 		//Gerar Clientes
 		public static void gerarCliente() {
-			Cliente c = new Cliente("Diogo", "70341656548", "bbbb", "Cliente");
+			Cliente c = new Cliente("Diogo", "70341871427", "Masculino");
 			Fachada.getInstance().cadastrarCliente(c);
 			Cliente v = new Cliente("Vanessa", "67371781708", "rrrr", "Cliente");
 			Fachada.getInstance().cadastrarCliente(v);
@@ -112,20 +112,23 @@ public class Assistente {
 		Instrutor t = new Instrutor("Vanessa", "27406222106", "aaff", "Instrutor");
 		Fachada.getInstance().cadastrarInstrutor(t);
 		
-		Cliente c = new Cliente("Diogo", "70341656548", "bbbb", "Cliente");
+		Cliente c = new Cliente("Diogo", "70341871427", "bbbb", "Cliente");
 		Fachada.getInstance().cadastrarCliente(c);
 		
-		Exercicio e = new Exercicio("obs", "Supino", 3, "1'", 0);
-		Exercicio e1 = new Exercicio("obs", "Supino", 3, "1'", 0);
-		Exercicio e2 = new Exercicio("obs", "Supino", 3, "1'", 0);
+		Exercicio e = new Exercicio("obs", "Supino", 3, "1'");
+		Exercicio e1 = new Exercicio("obs", "Supino", 3, "1'");
+		Exercicio e2 = new Exercicio("obs", "Supino", 3, "1'");
 		
 		Fachada.getInstance().inserirExercicio(e);
 		Fachada.getInstance().inserirExercicio(e1);
 		Fachada.getInstance().inserirExercicio(e2);
 		
 		RepositorioExercicioArray rep = new RepositorioExercicioArray();
+		rep.inserir(e);
+		rep.inserir(e2);
+		rep.inserir(e1);
 		
-		Treino tr = new Treino(t, c, e, rep, Assistente.gerarId());		
+		Treino tr = new Treino(t, c, rep, Assistente.gerarId());		
 		Fachada.getInstance().inserirTreino(tr);
 		}
 		

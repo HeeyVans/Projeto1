@@ -33,7 +33,7 @@ public class CadastroCliente {
 	}
 	
 	public List listar(String nome) {
-		return repositorio.listar();
+		return repositorio.listar(nome);
 	}
 
 }

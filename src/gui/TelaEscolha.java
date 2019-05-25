@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import basicas.Administrador;
+import basicas.Cliente;
 import sistema.Assistente;
 import sistema.Fachada;
 import sistema.Mensagem;
@@ -27,6 +28,7 @@ import java.awt.event.ActionEvent;
 public class TelaEscolha extends JFrame{
 
 	 JFrame frmTelaDeEntrada;
+	 public static Cliente cliente;
 
 	/**
 	 * Launch the application.
@@ -96,7 +98,7 @@ public class TelaEscolha extends JFrame{
 		
 		JButton btnCadastrarCliente = new JButton("Cliente");
 		btnCadastrarCliente.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {			
 				TelaConsultaCliente.getInstance().setVisible(true);
 				frmTelaDeEntrada.dispose();
 			}
@@ -137,15 +139,24 @@ public class TelaEscolha extends JFrame{
 		btnAdm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String cpf, matricula;
+				Administrador cpfCad;
+				boolean sair = false;
 				do {
 					
 				cpf = JOptionPane.showInputDialog(Mensagem.INFORMACPF);
 				
 				if(!ValidarDados.isCPF(cpf)) {
 					PopUps.cpfInvalido();
+				}else{
+					cpfCad = Fachada.getInstance().procurarADM(cpf);
+					if(cpfCad == null) {
+						PopUps.UsuarioNaoExiste();
+					}else {
+						sair = true;
+					}
 				}
 				
-			}while(cpf.equals("") || ValidarDados.isCPF(cpf) == false);
+			}while(!sair);
 				
 						Administrador adm;
 						adm = Fachada.getInstance().procurarADM(cpf);

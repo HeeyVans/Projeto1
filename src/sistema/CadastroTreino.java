@@ -30,8 +30,8 @@ public class CadastroTreino {
 		this.repositorio.atualizar(treino);
 	}
 	
-	public List listar(String nome) {
-		return repositorio.listar();
+	public List listar(String matricula) {
+		return repositorio.listar(matricula);
 	}
 
 }
