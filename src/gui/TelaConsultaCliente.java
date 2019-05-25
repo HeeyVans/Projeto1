@@ -52,6 +52,16 @@ public class TelaConsultaCliente extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException  ex) {
+            System.err.println(ex);
+        } 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -119,7 +129,7 @@ public class TelaConsultaCliente extends JFrame {
 		button.setForeground(Color.WHITE);
 		button.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		button.setBackground(new Color(0, 128, 0));
-		button.setBounds(356, 219, 116, 28);
+		button.setBounds(371, 219, 127, 38);
 		contentPane.add(button);
 		
 		JButton button_1 = new JButton("Voltar");
@@ -127,7 +137,7 @@ public class TelaConsultaCliente extends JFrame {
 		button_1.setForeground(Color.WHITE);
 		button_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		button_1.setBackground(new Color(0, 128, 0));
-		button_1.setBounds(356, 258, 116, 28);
+		button_1.setBounds(371, 270, 127, 38);
 		contentPane.add(button_1);
 		
 		JLabel label_1 = new JLabel("");
@@ -136,13 +146,16 @@ public class TelaConsultaCliente extends JFrame {
 		contentPane.add(label_1);
 		
 		JButton btnDados = new JButton("Dados");
+		btnDados.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnDados.setForeground(Color.WHITE);
+		btnDados.setBackground(new Color(0, 128, 0));
 		btnDados.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				TelaDadosCliente.getInstance().setVisible(true);
 				dispose();
 			}
 		});
-		btnDados.setBounds(228, 219, 104, 23);
+		btnDados.setBounds(235, 219, 127, 38);
 		contentPane.add(btnDados);
 		
 		

@@ -47,7 +47,11 @@ public class TelaInstrutor extends JFrame {
 		return instance;
 	}
 
+	public void limparCampos() {
+		textFieldNome.setText("");
+	}
 	/**
+	 * 
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
@@ -80,7 +84,7 @@ public class TelaInstrutor extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaInstrutor.class.getResource("/imagens/biceps png.png")));
 		setTitle("Consulta de Clientes");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 521, 375);
+		setBounds(100, 100, 602, 442);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -101,7 +105,7 @@ public class TelaInstrutor extends JFrame {
 		tableCliente.setFillsViewportHeight(true);
 		
 		JScrollPane scrollPaneCliente = new JScrollPane(tableCliente);
-		scrollPaneCliente.setBounds(10, 76, 485, 119);
+		scrollPaneCliente.setBounds(10, 76, 566, 119);
 		contentPane.add(scrollPaneCliente);
 		
 		JLabel lblNome = new JLabel("Nome do Cliente:");
@@ -136,12 +140,12 @@ public class TelaInstrutor extends JFrame {
 				
 			
 		});
-		btnBuscar.setBounds(311, 206, 116, 28);
+		btnBuscar.setBounds(306, 206, 129, 38);
 		contentPane.add(btnBuscar);
 		
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(TelaInstrutor.class.getResource("/imagens/MFit logotipo redemensionada.jpg")));
-		label.setBounds(10, 256, 229, 80);
+		label.setBounds(10, 312, 229, 80);
 		contentPane.add(label);
 		
 		JButton btnVoltar = new JButton("Voltar");
@@ -149,17 +153,25 @@ public class TelaInstrutor extends JFrame {
 		btnVoltar.setBackground(new Color(0, 128, 0));
 		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnVoltar.setForeground(Color.WHITE);
-		btnVoltar.setBounds(311, 245, 116, 28);
+		btnVoltar.setBounds(306, 255, 129, 38);
 		contentPane.add(btnVoltar);
 		
-		JButton btnCriarTreino = new JButton("Criar Treino");
-		btnCriarTreino.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				TelaCriarTreino.getInstance().setVisible(true);
-				dispose();
+		JButton button = new JButton("Limpar");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				limparCampos();
 			}
 		});
-		btnCriarTreino.setBounds(311, 284, 89, 23);
+		button.setIcon(new ImageIcon(TelaInstrutor.class.getResource("/imagens/delete_remove_bin_icon-icons.com_72400.png")));
+		button.setBackground(new Color(255, 99, 71));
+		button.setBounds(123, 242, 116, 28);
+		contentPane.add(button);
+		
+		JButton btnCriarTreino = new JButton("Criar treino");
+		btnCriarTreino.setForeground(Color.WHITE);
+		btnCriarTreino.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnCriarTreino.setBackground(new Color(0, 128, 0));
+		btnCriarTreino.setBounds(445, 206, 129, 38);
 		contentPane.add(btnCriarTreino);
 		
 	}
