@@ -32,6 +32,8 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class TelaConsultaCliente extends JFrame {
+	
+	//TELA PARA CLIENTE CONSULTAR SEUS TREINOS
 
 	private JPanel contentPane;
 	private JTable tableTreino;
@@ -132,6 +134,16 @@ public class TelaConsultaCliente extends JFrame {
 		label_1.setIcon(new ImageIcon(TelaConsultaCliente.class.getResource("/imagens/MFit logotipo redemensionada.jpg")));
 		label_1.setBounds(10, 266, 229, 80);
 		contentPane.add(label_1);
+		
+		JButton btnDados = new JButton("Dados");
+		btnDados.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaDadosCliente.getInstance().setVisible(true);
+				dispose();
+			}
+		});
+		btnDados.setBounds(228, 219, 104, 23);
+		contentPane.add(btnDados);
 		
 		
 		
