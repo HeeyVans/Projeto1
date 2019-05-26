@@ -11,6 +11,12 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.ImageIcon;
+import javax.swing.border.TitledBorder;
+import javax.swing.SwingConstants;
 
 public class TelaDadosCliente extends JFrame {
 
@@ -60,6 +66,16 @@ public class TelaDadosCliente extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException  ex) {
+            System.err.println(ex);
+        } 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -76,9 +92,12 @@ public class TelaDadosCliente extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaDadosCliente() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaDadosCliente.class.getResource("/imagens/biceps png.png")));
+		setTitle("Informa\u00E7\u00F5es do Cliente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 646, 436);
+		setBounds(100, 100, 684, 466);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -87,148 +106,166 @@ public class TelaDadosCliente extends JFrame {
 		lblNome.setBounds(40, 37, 46, 14);
 		contentPane.add(lblNome);
 		
-		JLabel lblInformacoes = new JLabel("Informa\u00E7\u00F5es do cliente:");
+		JLabel lblInformacoes = new JLabel("Informa\u00E7\u00F5es ");
+		lblInformacoes.setHorizontalAlignment(SwingConstants.CENTER);
+		lblInformacoes.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblInformacoes.setToolTipText("");
-		lblInformacoes.setBounds(245, 0, 125, 14);
+		lblInformacoes.setBounds(247, 11, 125, 25);
 		contentPane.add(lblInformacoes);
-		
-		JLabel lblRua = new JLabel("Rua:");
-		lblRua.setBounds(219, 97, 46, 14);
-		contentPane.add(lblRua);
-		
-		JLabel lblBairro = new JLabel("Bairro:");
-		lblBairro.setBounds(219, 151, 46, 14);
-		contentPane.add(lblBairro);
-		
-		JLabel lblCidade = new JLabel("Cidade:");
-		lblCidade.setBounds(219, 37, 46, 14);
-		contentPane.add(lblCidade);
-		
-		JLabel lblNumero = new JLabel("N\u00FAmero:");
-		lblNumero.setBounds(219, 213, 46, 14);
-		contentPane.add(lblNumero);
-		
-		JLabel lblComplemento = new JLabel("Complemento:");
-		lblComplemento.setBounds(219, 261, 78, 14);
-		contentPane.add(lblComplemento);
 		
 		JLabel lblCPF = new JLabel("CPF:");
 		lblCPF.setBounds(40, 84, 46, 14);
 		contentPane.add(lblCPF);
 		
 		JLabel lblData = new JLabel("Data:");
-		lblData.setBounds(40, 131, 46, 14);
+		lblData.setBounds(40, 359, 46, 14);
 		contentPane.add(lblData);
 		
 		JLabel lblMatricula = new JLabel("Matr\u00EDcula:");
-		lblMatricula.setBounds(40, 184, 60, 14);
+		lblMatricula.setBounds(40, 139, 60, 14);
 		contentPane.add(lblMatricula);
 		
 		JLabel lblEmail = new JLabel("Email:");
-		lblEmail.setBounds(40, 240, 46, 14);
+		lblEmail.setBounds(40, 195, 46, 14);
 		contentPane.add(lblEmail);
 		
 		JLabel lblTelefone = new JLabel("Telefone:");
-		lblTelefone.setBounds(40, 297, 46, 14);
+		lblTelefone.setBounds(40, 252, 60, 14);
 		contentPane.add(lblTelefone);
 		
 		JLabel lblGenero = new JLabel("Sexo:");
-		lblGenero.setBounds(40, 348, 46, 14);
+		lblGenero.setBounds(40, 307, 46, 14);
 		contentPane.add(lblGenero);
 		
 		JLabel lblPagamento = new JLabel("Pagamento:");
-		lblPagamento.setBounds(411, 37, 65, 14);
+		lblPagamento.setBounds(247, 274, 84, 14);
 		contentPane.add(lblPagamento);
 		
 		JLabel lblObjetivo = new JLabel("Objetivo:");
-		lblObjetivo.setBounds(411, 97, 46, 14);
+		lblObjetivo.setBounds(453, 274, 69, 14);
 		contentPane.add(lblObjetivo);
 		
 		textFieldNome = new JTextField();
-		textFieldNome.setBounds(40, 53, 86, 28);
+		textFieldNome.setBounds(40, 53, 170, 28);
 		contentPane.add(textFieldNome);
 		textFieldNome.setColumns(10);
 		
 		textFieldCPF = new JTextField();
-		textFieldCPF.setBounds(40, 100, 86, 28);
+		textFieldCPF.setBounds(40, 100, 170, 28);
 		contentPane.add(textFieldCPF);
 		textFieldCPF.setColumns(10);
 		
 		textFieldData = new JTextField();
-		textFieldData.setBounds(40, 148, 86, 35);
+		textFieldData.setBounds(40, 381, 170, 28);
 		contentPane.add(textFieldData);
 		textFieldData.setColumns(10);
 		
 		textFieldMatricula = new JTextField();
-		textFieldMatricula.setBounds(40, 210, 86, 28);
+		textFieldMatricula.setBounds(40, 156, 170, 28);
 		contentPane.add(textFieldMatricula);
 		textFieldMatricula.setColumns(10);
 		
 		textFieldEmail = new JTextField();
-		textFieldEmail.setBounds(40, 266, 86, 28);
+		textFieldEmail.setBounds(40, 213, 170, 28);
 		contentPane.add(textFieldEmail);
 		textFieldEmail.setColumns(10);
 		
 		textFieldTelefone = new JTextField();
-		textFieldTelefone.setBounds(40, 317, 86, 28);
+		textFieldTelefone.setBounds(40, 267, 170, 28);
 		contentPane.add(textFieldTelefone);
 		textFieldTelefone.setColumns(10);
 		
 		textFieldSexo = new JTextField();
-		textFieldSexo.setBounds(40, 366, 86, 31);
+		textFieldSexo.setBounds(40, 321, 170, 28);
 		contentPane.add(textFieldSexo);
 		textFieldSexo.setColumns(10);
 		
-		textFieldCidade = new JTextField();
-		textFieldCidade.setBounds(219, 62, 86, 28);
-		contentPane.add(textFieldCidade);
-		textFieldCidade.setColumns(10);
-		
-		textFieldRua = new JTextField();
-		textFieldRua.setBounds(219, 120, 86, 25);
-		contentPane.add(textFieldRua);
-		textFieldRua.setColumns(10);
-		
-		textFieldBairro = new JTextField();
-		textFieldBairro.setBounds(219, 174, 86, 28);
-		contentPane.add(textFieldBairro);
-		textFieldBairro.setColumns(10);
-		
-		textFieldNumero = new JTextField();
-		textFieldNumero.setBounds(219, 230, 86, 28);
-		contentPane.add(textFieldNumero);
-		textFieldNumero.setColumns(10);
-		
-		textFieldComplemento = new JTextField();
-		textFieldComplemento.setBounds(219, 286, 86, 28);
-		contentPane.add(textFieldComplemento);
-		textFieldComplemento.setColumns(10);
-		
 		textFieldPagamento = new JTextField();
-		textFieldPagamento.setBounds(411, 62, 86, 28);
+		textFieldPagamento.setBounds(247, 293, 170, 28);
 		contentPane.add(textFieldPagamento);
 		textFieldPagamento.setColumns(10);
 		
 		textFieldObjetivo = new JTextField();
-		textFieldObjetivo.setBounds(411, 128, 86, 37);
+		textFieldObjetivo.setBounds(455, 293, 170, 28);
 		contentPane.add(textFieldObjetivo);
 		textFieldObjetivo.setColumns(10);
 		
 		JButton btnAtualizar = new JButton("Solicitar Atualiza\u00E7\u00E3o");
-		btnAtualizar.setBounds(408, 180, 142, 35);
+		btnAtualizar.setBackground(new Color(0, 128, 0));
+		btnAtualizar.setForeground(new Color(255, 255, 255));
+		btnAtualizar.setBounds(331, 382, 142, 35);
 		contentPane.add(btnAtualizar);
 		
 		JButton btnVoltar = new JButton("Voltar");
-		btnVoltar.setBounds(411, 236, 89, 23);
+		btnVoltar.setIcon(new ImageIcon(TelaDadosCliente.class.getResource("/imagens/gtkgobackltr_104397.png")));
+		btnVoltar.setForeground(new Color(255, 255, 255));
+		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnVoltar.setBackground(new Color(0, 128, 0));
+		btnVoltar.setBounds(483, 381, 142, 35);
 		contentPane.add(btnVoltar);
 		
 		JButton btnMostrarDados = new JButton("Mostrar Dados");
+		btnMostrarDados.setForeground(new Color(255, 255, 255));
+		btnMostrarDados.setBackground(new Color(0, 128, 0));
+		btnMostrarDados.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnMostrarDados.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setDados();
 			}
 		});
-		btnMostrarDados.setBounds(411, 270, 142, 23);
+		btnMostrarDados.setBounds(483, 338, 142, 35);
 		contentPane.add(btnMostrarDados);
+		
+		JPanel panel = new JPanel();
+		panel.setBorder(new TitledBorder(null, "Endere\u00E7o", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setBounds(293, 47, 332, 219);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblRua = new JLabel("Rua:");
+		lblRua.setBounds(10, 21, 46, 14);
+		panel.add(lblRua);
+		
+		textFieldRua = new JTextField();
+		textFieldRua.setBounds(10, 43, 170, 28);
+		panel.add(textFieldRua);
+		textFieldRua.setColumns(10);
+		
+		JLabel lblBairro = new JLabel("Bairro:");
+		lblBairro.setBounds(10, 79, 46, 14);
+		panel.add(lblBairro);
+		
+		textFieldBairro = new JTextField();
+		textFieldBairro.setBounds(10, 104, 170, 28);
+		panel.add(textFieldBairro);
+		textFieldBairro.setColumns(10);
+		
+		JLabel lblComplemento = new JLabel("Complemento:");
+		lblComplemento.setBounds(10, 143, 101, 14);
+		panel.add(lblComplemento);
+		
+		textFieldComplemento = new JTextField();
+		textFieldComplemento.setBounds(10, 168, 170, 28);
+		panel.add(textFieldComplemento);
+		textFieldComplemento.setColumns(10);
+		
+		JLabel lblNumero = new JLabel("N\u00FAmero:");
+		lblNumero.setBounds(219, 21, 53, 14);
+		panel.add(lblNumero);
+		
+		textFieldNumero = new JTextField();
+		textFieldNumero.setBounds(219, 43, 86, 28);
+		panel.add(textFieldNumero);
+		textFieldNumero.setColumns(10);
+		
+		JLabel lblCidade = new JLabel("Cidade:");
+		lblCidade.setBounds(219, 79, 46, 14);
+		panel.add(lblCidade);
+		
+		textFieldCidade = new JTextField();
+		textFieldCidade.setBounds(219, 104, 86, 28);
+		panel.add(textFieldCidade);
+		textFieldCidade.setColumns(10);
 	}
 }
