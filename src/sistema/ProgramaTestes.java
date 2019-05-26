@@ -11,8 +11,10 @@ public class ProgramaTestes {
 
 		RepositorioClienteArquivo clientes = new RepositorioClienteArquivo();
 		
-		Cliente c1 = new Cliente("João", null, "1528258", null, "","","");
+		Cliente c1 = new Cliente("João", null, "1528258", null, "","","", null, null, null, null);
 		RepositorioClienteArquivo.getInstance().inserir(c1);
+		RepositorioClienteArquivo.getInstance().lerDoArquivo();
+		RepositorioClienteArquivo.getInstance().salvarArquivo();
 	}
 
 }

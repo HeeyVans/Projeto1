@@ -1,8 +1,9 @@
 package basicas;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Cliente extends Pessoa{
+public class Cliente extends Pessoa implements Serializable{
 	
 	private String pagamento;
 	private String objetivo;
