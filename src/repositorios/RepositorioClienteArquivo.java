@@ -164,6 +164,22 @@ public class RepositorioClienteArquivo implements IRepositorioCliente, Serializa
 			}
 		return clientes;
 		}
+
+	@Override
+	public Cliente procurarMatricula(String matricula) {
+		for (int i = 0; i < indice; i++) {
+			if (cliente[i].getMatricula().equals(matricula)) {
+				return cliente[i];
+			}
+		} 
+		return null;
+	}
+
+	@Override
+	public List listar(String nome) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	}
 
 

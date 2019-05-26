@@ -117,4 +117,10 @@ public class RepositorioInstrutorArquivo implements IRepositorioInstrutor, Seria
 		instrutorAtualizado = instrutor;		
 	}
 
+	@Override
+	public Instrutor procurarMatricula(String matricula) {
+      //Método duplicado, já existe um procurando por matrícula.
+		return null;
+	}
+
 }

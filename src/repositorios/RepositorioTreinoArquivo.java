@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.List;
 
 import basicas.Cliente;
 import basicas.Instrutor;
@@ -84,29 +85,34 @@ public class RepositorioTreinoArquivo implements IRepositorioTreino, Serializabl
 	    }
 	}
 	
-	
 	@Override
-	public void inserir(Treino treino, Cliente cliente, Instrutor instrutor) {
+	public void inserir(Treino treino) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public Treino procurar(Treino treino, Cliente cliente, Instrutor instrutor) {
+	public Treino procurar(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void remover(Treino treino, Cliente cliente, Instrutor instrutor) {
+	public void remover(String id) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void atualizar(Treino treino, Cliente cliente, Instrutor instrutor) {
+	public void atualizar(Treino treino) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List listar(String matricula) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
