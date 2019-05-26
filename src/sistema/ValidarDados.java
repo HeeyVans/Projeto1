@@ -149,6 +149,7 @@ public class ValidarDados {
         	return cliente;
         }
         
+        
         public static boolean validarLoginADM(String cpf, String matricula) {
         	try {
         		adm = Fachada.getInstance().procurarADM(cpf);
@@ -164,20 +165,23 @@ public class ValidarDados {
         	return true;
         }
         
-        public static boolean validarLoginADM2(String cpf, String matricula) {
-        	
-        		adm = Fachada.getInstance().procurarADM(cpf);
-        		if(!adm.getMatricula().equals(matricula)) {
-        			return false;
+        
+        public static Instrutor validarLoginInstrutor(String cpf, String matricula) {
+        	try {
+        		instrutor = Fachada.getInstance().procurarInstrutor(cpf);
+        		if(!instrutor.getMatricula().equals(matricula)) {
+        			MatriculaNaoEncontradaException mnee = new MatriculaNaoEncontradaException();
+        			throw mnee;
         		}
-        	
-        		return true;
+        	}catch(MatriculaNaoEncontradaException mnee) {
+        		PopUps.matriculaInvalida(mnee);
+        		return null;
         		
         	} 
-        	
-        
-        
-        //Para Validar o Email
+        	return instrutor;
+        }
+             	
+         //Para Validar o Email
         public static boolean validarEmail(String email){
     		try{
     			if(!email.matches("[\\w\\d]+@[^0-9]+(\\.com$|\\.br$)")){

@@ -114,13 +114,11 @@ public class RepositorioClienteArray implements IRepositorioCliente{
 	}
 
 	@Override
-	public void atualizar(Cliente cliente) throws ClienteNaoEncontradoException{
+	public void atualizar(Cliente cliente){
 		if(existe(cliente.getCpf())) {
 			repositorio[i] = cliente;
-		}else {
-			ClienteNaoEncontradoException cnee = new ClienteNaoEncontradoException();
-			throw cnee;
 		}
+		
 		
 	}
 

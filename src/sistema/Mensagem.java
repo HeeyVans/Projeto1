@@ -37,10 +37,14 @@ public class Mensagem {
 	public static final String EMAILENVIADO = "Email enviado com sucesso!";
 	public static final String INFORMACPF = "Informe o CPF:";
 	public static final String INFORMAMATRICULA = "Informe sua matrícula:";
+	public static final String USUARIONAOEXISTE = "Este usuário não existe!";
+	public static final String MATRICULAALTERADA = "Matrícula alterada com sucesso!";
 	
 	//TelaCadastroCliente
 	public static final String CLIENTECADASTRADO = "Cliente cadastrado com sucesso!";
 	
-	//TelaEscolha
-	public static final String USUARIONAOEXISTE = "Este usuário não existe!";
+	//TelaCadastroInstrutor
+	public static final String INSTRUTORCADASTRADO = "Instrutor cadastrado com sucesso!";
+	
+
 }

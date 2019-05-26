@@ -32,7 +32,7 @@ public class CadastroCliente {
 		repositorio.remover(cpf);
 	}
 	
-	public void atualizar(Cliente cliente) throws ClienteNaoEncontradoException{
+	public void atualizar(Cliente cliente){
 		repositorio.atualizar(cliente);
 	}
 	

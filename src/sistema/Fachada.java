@@ -81,7 +81,7 @@ public class Fachada {
 	public void removerCliente(String cpf) {
 		cliente.remover(cpf);
 	}
-	public void atualizar(Cliente cliente) throws ClienteNaoEncontradoException{
+	public void atualizar(Cliente cliente){
 		this.cliente.atualizar(cliente);
 	}
 	public List listarCliente(String nome) {

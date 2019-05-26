@@ -149,6 +149,13 @@ public class TelaInstrutor extends JFrame {
 		contentPane.add(label);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaEntrar window = new TelaEntrar();
+				window.TelaDeEntrada.setVisible(true);
+				dispose();
+			}
+		});
 		btnVoltar.setIcon(new ImageIcon(TelaInstrutor.class.getResource("/imagens/gtkgobackltr_104397.png")));
 		btnVoltar.setBackground(new Color(0, 128, 0));
 		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -173,6 +180,16 @@ public class TelaInstrutor extends JFrame {
 		btnCriarTreino.setBackground(new Color(0, 128, 0));
 		btnCriarTreino.setBounds(445, 206, 129, 38);
 		contentPane.add(btnCriarTreino);
+		
+		JButton btnMeusDados = new JButton("Meus Dados");
+		btnMeusDados.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaDadosInstrutor.getInstance().setVisible(true);
+				dispose();
+			}
+		});
+		btnMeusDados.setBounds(370, 329, 129, 23);
+		contentPane.add(btnMeusDados);
 		
 	}
 }

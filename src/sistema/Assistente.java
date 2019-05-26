@@ -117,7 +117,7 @@ public class Assistente {
 		}
 		//Gerar Treino
 		public static void gerarTreino() {
-		Instrutor t = new Instrutor("Vanessa", "27406222106", "aaff", "Instrutor");
+		Instrutor t = new Instrutor("Vanessa", "27406222106", "aaaa", "Instrutor");
 		Fachada.getInstance().cadastrarInstrutor(t);
 		
 		Cliente c = new Cliente("Diogo", "70341871427", "bbbb", "Cliente");

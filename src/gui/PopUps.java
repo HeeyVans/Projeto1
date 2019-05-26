@@ -36,6 +36,12 @@ public class PopUps {
 	public static void clienteCadastrado() {
 		JOptionPane.showMessageDialog(null, Mensagem.CLIENTECADASTRADO);
 	}
+	public static void matriculaAlterada() {
+		JOptionPane.showMessageDialog(null, Mensagem.MATRICULAALTERADA);
+	}
+	public static void instrutorCadastrado() {
+		JOptionPane.showMessageDialog(null, Mensagem.INSTRUTORCADASTRADO);
+	}
 	
 	//ERROS
 	public static void ErroCadastro() {

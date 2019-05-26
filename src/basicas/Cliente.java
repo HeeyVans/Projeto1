@@ -34,9 +34,9 @@ public class Cliente extends Pessoa implements Serializable{
 
 
 
-	public Cliente(String nome, Endereco endereco, String cpf, Date dataDeNasc, String matricula, String identificador,
+	public Cliente(String nome, Endereco endereco, String cpf, Date dataDeNasc, String matricula,
 			String email, String telefone, String genero, String pagamento, String objetivo) {
-		super(nome, endereco, cpf, dataDeNasc, matricula, identificador, email, telefone, genero);
+		super(nome, endereco, cpf, dataDeNasc, matricula,  email, telefone, genero);
 		this.pagamento = pagamento;
 		this.objetivo = objetivo;
 	}

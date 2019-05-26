@@ -9,7 +9,6 @@ public abstract class Pessoa {
 	private String cpf;
 	private Date dataDeNasc;
 	private String matricula;
-	private String identificador;
 	private String email;
 	private String telefone;
 	private String genero;
@@ -18,7 +17,7 @@ public abstract class Pessoa {
 		
 	}
 	//CONSTRUTOR PARA TESTES	
-	public Pessoa(String nome, Endereco endereco, String cpf, Date dataDeNasc, String matricula, String identificador,
+	public Pessoa(String nome, Endereco endereco, String cpf, Date dataDeNasc, String matricula,
 			String email, String telefone, String genero) {
 		
 		this.nome = nome;
@@ -26,7 +25,6 @@ public abstract class Pessoa {
 		this.cpf = cpf;
 		this.dataDeNasc = dataDeNasc;
 		this.matricula = matricula;
-		this.identificador = identificador;
 		this.email = email;
 		this.telefone = telefone;
 		this.genero = genero;
@@ -36,14 +34,12 @@ public abstract class Pessoa {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.matricula = matricula;
-		this.identificador = identificador;
 		
 	}
 	
 	public Pessoa(String nome, String cpf, String genero) {
 		this.nome = nome;
 		this.cpf = cpf;
-		this.matricula = matricula;
 		this.genero = genero;
 		
 	}
@@ -86,14 +82,6 @@ public abstract class Pessoa {
 
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
-	}
-
-	public String getIdentificador() {
-		return identificador;
-	}
-
-	public void setIdentificador(String identificador) {
-		this.identificador = identificador;
 	}
 
 	public String getEmail() {

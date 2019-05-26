@@ -13,6 +13,12 @@ import javax.swing.border.TitledBorder;
 
 import com.toedter.calendar.JDateChooser;
 
+import basicas.Instrutor;
+import basicas.Endereco;
+import sistema.Assistente;
+import sistema.Fachada;
+import sistema.ValidarDados;
+
 import javax.swing.JRadioButton;
 import javax.swing.UIManager;
 import javax.swing.JButton;
@@ -36,6 +42,9 @@ public class TelaCadastroInstrutor extends JFrame{
 	private JTextField textFieldCidade;
 	private JTextField textFieldCargo;
 	private JTextField textFieldHoraTrab;
+	JDateChooser dataNascimento = new JDateChooser();
+	JRadioButton rdbtnMasculino = new JRadioButton();
+	JRadioButton rdbtnFeminino = new JRadioButton();
 	public static TelaCadastroInstrutor instance;
 	
 	public static TelaCadastroInstrutor getInstance() {
@@ -43,6 +52,32 @@ public class TelaCadastroInstrutor extends JFrame{
 			instance = new TelaCadastroInstrutor();
 		}
 		return instance;
+	}
+	
+	public void limpar() {
+		textFieldTelefone.setText("");
+		textFieldNome.setText("");
+		textFieldCPF.setText("");
+		textFieldEmail.setText("");
+		textFieldRua.setText("");
+		textFieldNumero.setText("");
+		textFieldBairro.setText("");
+		textFieldComplemento.setText("");
+		textFieldCidade.setText("");
+		textFieldCargo.setText("");
+		textFieldHoraTrab.setText("");
+	}
+	
+	public String radioSelect() {
+		
+		if(rdbtnMasculino.isSelected()) {
+			return "Masculino";
+		}else if(rdbtnFeminino.isSelected()) {
+			return "Feminino";
+		}else {
+			return null;
+		}
+		
 	}
 
 	/**
@@ -217,6 +252,48 @@ public class TelaCadastroInstrutor extends JFrame{
 		frmTelaDeCadastro.getContentPane().add(button);
 		
 		JButton button_1 = new JButton("Cadastrar");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(ValidarDados.validarCampoVazio(textFieldTelefone.getText(), textFieldNome.getText(), 
+						textFieldEmail.getText(), textFieldCPF.getText(), textFieldRua.getText(), 
+						textFieldBairro.getText(), textFieldCidade.getText(),(textFieldNumero.getText()),
+						textFieldCargo.getText(), textFieldHoraTrab.getText())) {
+					try {
+						
+						Endereco end = new Endereco(textFieldRua.getText(), textFieldBairro.getText()
+								, textFieldCidade.getText(), textFieldComplemento.getText(), textFieldNumero.getText());
+												
+						String matricula = Assistente.gerarMatricula();
+						Instrutor instruCadastrar;
+						Instrutor instrutor = new Instrutor(textFieldNome.getText(), end, textFieldCPF.getText(),
+								dataNascimento.getDate() , matricula, textFieldEmail.getText(), 
+								textFieldTelefone.getText(), radioSelect(), textFieldCargo.getText(),
+								textFieldHoraTrab.getText());
+						
+						instruCadastrar = Fachada.getInstance().procurarInstrutor(textFieldCPF.getText());
+						
+						if(instruCadastrar == null) {
+							
+							Fachada.getInstance().cadastrarInstrutor(instrutor);
+							Assistente.enviarEmail(textFieldEmail.getText(), matricula);
+							PopUps.instrutorCadastrado();
+							limpar();
+							
+						}else {
+							PopUps.ErroCadastro();
+						}
+						
+					}catch(NumberFormatException nfe) {
+						PopUps.ErroCadastro();
+					}
+						
+					
+					
+				}
+			}
+			
+		});
 		button_1.setIcon(new ImageIcon(TelaCadastroInstrutor.class.getResource("/imagens/btn-novo.png")));
 		button_1.setBackground(new Color(152, 251, 152));
 		button_1.setBounds(648, 334, 108, 29);

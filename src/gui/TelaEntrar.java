@@ -7,13 +7,18 @@ import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import basicas.Cliente;
+import basicas.Endereco;
+import basicas.Instrutor;
 import excecoes.CampoVazioException;
+import excecoes.ClienteNaoEncontradoException;
 import sistema.Assistente;
+import sistema.Fachada;
 import sistema.Mensagem;
 import sistema.ValidarDados;
 
@@ -26,11 +31,16 @@ import java.awt.Toolkit;
 
 public class TelaEntrar extends JFrame{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JFrame TelaDeEntrada;
 	private JTextField textFieldMatricula;
 	private JTextField textFieldCPF;
 	public static TelaEntrar instance;
 	public static Cliente cliente;
+	public static Instrutor instrutor;
 	
 	public static TelaEntrar getInstance() {
 		if(instance == null) {
@@ -125,30 +135,34 @@ public class TelaEntrar extends JFrame{
 				cpf = textFieldCPF.getText();
 				matricula = textFieldMatricula.getText();
 				
-				if(!ValidarDados.validarCampoVazio(cpf, matricula)) {
+				if(!ValidarDados.validarCampoVazio(cpf, matricula)) {					
 					PopUps.campoVazio();
 				}else {
+					
+					if(!ValidarDados.isCPF(cpf)) {						
+						PopUps.cpfInvalido();
+					}else {
 						
-						if(!ValidarDados.isCPF(cpf)) {
-							PopUps.cpfInvalido();
+						cliente = Fachada.getInstance().procurarCliente(cpf);
+						instrutor = Fachada.getInstance().procurarInstrutor(cpf);
+						
+						if(cliente != null) {
+							TelaConsultaCliente.getInstance().setVisible(true);
+							TelaDeEntrada.dispose();
+						}else if(instrutor != null) {
+							TelaInstrutor.getInstance().setVisible(true);
+							TelaDeEntrada.dispose();
+						}else if(ValidarDados.validarLoginADM(cpf, matricula)) {
+							TelaADM.getInstance().setVisible(true);
+							TelaDeEntrada.dispose();
 						}else {
-							cliente = ValidarDados.validarLoginCliente(cpf, matricula); 
-								
-							if(cliente == null) {
-								
-							}else {
-								TelaEscolha window = new TelaEscolha();
-								window.frmTelaDeEntrada.setVisible(true);
-								dispose();
-							}
+							PopUps.UsuarioNaoExiste();
 						}
-					
-					
-				
-				
-				
+					}
 				}
 				
+				
+			
 			}
 		});
 		btnEntrar.setBackground(new Color(0, 128, 0));
@@ -201,26 +215,118 @@ public class TelaEntrar extends JFrame{
 		btnEsqueciSenha.setForeground(new Color(0, 191, 255));
 		btnEsqueciSenha.setBackground(Color.WHITE);
 		btnEsqueciSenha.addActionListener(new ActionListener() {
+			private String email;
+
 			public void actionPerformed(ActionEvent arg0) {
-				String email, matricula = "";
-				do {
-					email = JOptionPane.showInputDialog(Mensagem.INFORMAEMAIL);
-					
-					if(email == null) {
-						break;
-					}else if(!email.equals("")){
-						if(ValidarDados.validarEmail(email)) {
-							matricula = Assistente.gerarMatricula();
-							Assistente.enviarEmail(email, matricula);
-							PopUps.emailEnviado();
-							break;
+				
+				String cpf = "";
+				Cliente c;
+				Instrutor in;
+				
+				cpf = JOptionPane.showInputDialog(Mensagem.INFORMACPF);
+				
+				if(ValidarDados.isCPF(cpf)) {
+					c = Fachada.getInstance().procurarCliente(cpf);
+					if(c == null) {
+						in = Fachada.getInstance().procurarInstrutor(cpf);
+						if(in == null) {
+							PopUps.UsuarioNaoExiste();
+						}else {
+							
+							String nome, matricula ="", telefone, genero, cargo, horaTrab, rua, bairro, numero, complemento, 
+									cidade;
+							Endereco end;
+							Date data;
+							    
+							do {	
+							 email = JOptionPane.showInputDialog(Mensagem.INFORMAEMAIL);
+								
+								if(email == null) {
+									break;
+								}else if(!email.equals("")){
+									if(ValidarDados.validarEmail(email)) {
+										 matricula = Assistente.gerarMatricula();										 
+										 nome = in.getNome();									
+										cpf = in.getCpf();									 
+										telefone = in.getTelefone();									
+										genero = in.getGenero();									 
+										cargo = in.getCargo();								 
+										horaTrab = in.getHoraTrab();									 
+										rua = in.getEndereco().getRua();									
+										bairro = in.getEndereco().getBairro();									
+										numero = in.getEndereco().getNumero();									 
+										complemento = in.getEndereco().getComplemento();									 
+										cidade = in.getEndereco().getCidade();									
+										data = in.getDataDeNasc();
+										 end = new Endereco(rua, bairro, cidade, complemento, numero);
+										 
+										 Instrutor in1 = new Instrutor(nome, end, cpf, data, matricula, email,
+												 telefone, genero, cargo, horaTrab);
+										 
+										 
+											Fachada.getInstance().atualizar(in1);
+											Assistente.enviarEmail(email, matricula);
+											PopUps.matriculaAlterada();
+											PopUps.emailEnviado();
+										
+									}
+									
+								}															
+								
+							}while(matricula.equals(""));
+							
 						}
-						email = "";
-						continue;
+					}else {
+						
+						String nome, matricula ="", telefone, genero, pagamento, objetivo, rua, bairro, numero, complemento, 
+								cidade;
+						Endereco end;
+						Date data;
+						    
+						do {	
+						 email = JOptionPane.showInputDialog(Mensagem.INFORMAEMAIL);
+							
+							if(email == null) {
+								break;
+							}else if(!email.equals("")){
+								if(ValidarDados.validarEmail(email)) {
+									 matricula = Assistente.gerarMatricula();										 
+									 nome = c.getNome();									
+									cpf = c.getCpf();									 
+									telefone = c.getTelefone();									
+									genero = c.getGenero();									 
+									pagamento = c.getPagamento();									 
+									objetivo = c.getObjetivo();									 
+									rua = c.getEndereco().getRua();									
+									bairro = c.getEndereco().getBairro();									
+									numero = c.getEndereco().getNumero();									 
+									complemento = c.getEndereco().getComplemento();									 
+									cidade = c.getEndereco().getCidade();									
+									data = c.getDataDeNasc();
+									 end = new Endereco(rua, bairro, cidade, complemento, numero);
+									 
+									 Cliente c1 = new Cliente(nome, end, cpf, data, matricula, email, telefone, genero,
+											 pagamento, objetivo);
+									 
+									 
+										Fachada.getInstance().atualizar(c1);
+										Assistente.enviarEmail(email, matricula);
+										PopUps.matriculaAlterada();
+										PopUps.emailEnviado();
+									
+								}
+								
+							}															
+							
+						}while(matricula.equals(""));
+						
 					}
-					PopUps.campoVazio(new CampoVazioException());
 					
-				}while(matricula.equals(""));
+				
+				}else {
+					PopUps.cpfInvalido();
+				}
+				
 			}
 		});
 		btnEsqueciSenha.setBounds(320, 276, 145, 20);

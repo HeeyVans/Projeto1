@@ -207,7 +207,7 @@ public class TelaCadastroCliente extends JFrame{
 						String matricula = Assistente.gerarMatricula();
 						Cliente clienteCadastrar;
 						Cliente cliente = new Cliente(textFieldNome.getText(), end, textFieldCPF.getText(),
-								dataNascimento.getDate() , matricula, "Cliente", textFieldEmail.getText(), 
+								dataNascimento.getDate() , matricula, textFieldEmail.getText(), 
 								textFieldTelefone.getText(), radioSelect(), textFieldPagamento.getText(),
 								textFieldObjetivo.getText());
 						
