@@ -108,8 +108,8 @@ public class TelaConsultaCliente extends JFrame {
 		scrollPaneTreino.setBounds(34, 47, 464, 161);
 		contentPane.add(scrollPaneTreino);
 		
-		JButton button = new JButton("Buscar");
-		button.addActionListener(new ActionListener() {
+		JButton buttonMostrar = new JButton("Mostrar");
+		buttonMostrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				while(modeloTreino.getRowCount()>0) {
 					modeloTreino.removeTreinoAt(0);
@@ -126,19 +126,19 @@ public class TelaConsultaCliente extends JFrame {
 				}
 			
 		});
-		button.setForeground(Color.WHITE);
-		button.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		button.setBackground(new Color(0, 128, 0));
-		button.setBounds(371, 219, 127, 38);
-		contentPane.add(button);
+		buttonMostrar.setForeground(Color.WHITE);
+		buttonMostrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		buttonMostrar.setBackground(new Color(0, 128, 0));
+		buttonMostrar.setBounds(371, 219, 127, 38);
+		contentPane.add(buttonMostrar);
 		
-		JButton button_1 = new JButton("Voltar");
-		button_1.setIcon(new ImageIcon(TelaConsultaCliente.class.getResource("/imagens/gtkgobackltr_104397.png")));
-		button_1.setForeground(Color.WHITE);
-		button_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		button_1.setBackground(new Color(0, 128, 0));
-		button_1.setBounds(371, 270, 127, 38);
-		contentPane.add(button_1);
+		JButton buttonVoltar = new JButton("Voltar");
+		buttonVoltar.setIcon(new ImageIcon(TelaConsultaCliente.class.getResource("/imagens/gtkgobackltr_104397.png")));
+		buttonVoltar.setForeground(Color.WHITE);
+		buttonVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		buttonVoltar.setBackground(new Color(0, 128, 0));
+		buttonVoltar.setBounds(371, 270, 127, 38);
+		contentPane.add(buttonVoltar);
 		
 		JLabel label_1 = new JLabel("");
 		label_1.setIcon(new ImageIcon(TelaConsultaCliente.class.getResource("/imagens/MFit logotipo redemensionada.jpg")));
@@ -157,6 +157,10 @@ public class TelaConsultaCliente extends JFrame {
 		});
 		btnDados.setBounds(235, 219, 127, 38);
 		contentPane.add(btnDados);
+		
+		JButton btnGerarTreino = new JButton("Gerar Treino");
+		btnGerarTreino.setBounds(235, 279, 126, 23);
+		contentPane.add(btnGerarTreino);
 		
 		
 		

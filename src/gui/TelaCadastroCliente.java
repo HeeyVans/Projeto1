@@ -359,9 +359,7 @@ public class TelaCadastroCliente extends JFrame{
 		JButton button = new JButton("Voltar");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaEscolha escolha = new TelaEscolha();
-				escolha.frmTelaDeEntrada.setVisible(true);
-				frmTelaDeCadastro.dispose();
+				
 				
 			}
 		});

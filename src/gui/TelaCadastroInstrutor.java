@@ -336,9 +336,7 @@ public class TelaCadastroInstrutor extends JFrame{
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				TelaEscolha escolha = new TelaEscolha();
-				escolha.frmTelaDeEntrada.setVisible(true);
-				frmTelaDeCadastro.dispose();
+				
 			}
 		});
 		btnVoltar.setIcon(new ImageIcon(TelaCadastroInstrutor.class.getResource("/imagens/gtkgobackltr_104397.png")));

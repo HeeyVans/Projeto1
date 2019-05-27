@@ -57,7 +57,7 @@ public class TestePDF extends JFrame {
 		JButton btnGerador = new JButton("PDF");
 		btnGerador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				/*
 				Document document = new Document();
 				try {
 					
@@ -85,7 +85,7 @@ public class TestePDF extends JFrame {
 				}
 				
 				document.close();
-			}
+			*/}
 		});
 		btnGerador.setBounds(64, 87, 89, 23);
 		contentPane.add(btnGerador);
