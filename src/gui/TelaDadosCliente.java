@@ -51,9 +51,9 @@ public class TelaDadosCliente extends JFrame {
 		TelaEntrar.getInstance();
 		textFieldNome.setText(TelaEntrar.cliente.getNome());
 		textFieldCPF.setText(TelaEntrar.cliente.getCpf());
-        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        String dataFormatada = dateFormat.format(TelaEntrar.cliente.getDataDeNasc());
-		textFieldData.setText(dataFormatada);
+        //DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        //String dataFormatada = dateFormat.format(TelaEntrar.cliente.getDataDeNasc());
+		//textFieldData.setText(dataFormatada);
 		textFieldMatricula.setText(TelaEntrar.cliente.getMatricula());
 		textFieldEmail.setText(TelaEntrar.cliente.getEmail());
 		textFieldTelefone.setText(TelaEntrar.cliente.getTelefone());
@@ -272,5 +272,9 @@ public class TelaDadosCliente extends JFrame {
 		textFieldCidade.setBounds(219, 104, 86, 28);
 		panel.add(textFieldCidade);
 		textFieldCidade.setColumns(10);
+		
+		JButton btnGerarPDF = new JButton("Gerar PDF");
+		btnGerarPDF.setBounds(331, 350, 89, 23);
+		contentPane.add(btnGerarPDF);
 	}
 }

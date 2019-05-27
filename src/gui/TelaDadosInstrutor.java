@@ -135,5 +135,9 @@ public class TelaDadosInstrutor extends JFrame {
 		JButton btnAtualizacao = new JButton("Solicitar Atualiza\u00E7\u00E3o");
 		btnAtualizacao.setBounds(196, 299, 148, 23);
 		contentPane.add(btnAtualizacao);
+		
+		JButton btnGerarPDF = new JButton("Gerar PDF");
+		btnGerarPDF.setBounds(196, 340, 89, 23);
+		contentPane.add(btnGerarPDF);
 	}
 }

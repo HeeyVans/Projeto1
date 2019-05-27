@@ -175,6 +175,12 @@ public class TelaInstrutor extends JFrame {
 		contentPane.add(button);
 		
 		JButton btnCriarTreino = new JButton("Criar treino");
+		btnCriarTreino.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaCriarTreino.getInstance().setVisible(true);
+				dispose();
+			}
+		});
 		btnCriarTreino.setForeground(Color.WHITE);
 		btnCriarTreino.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnCriarTreino.setBackground(new Color(0, 128, 0));

@@ -136,7 +136,7 @@ public class TelaEntrar extends JFrame{
 				matricula = textFieldMatricula.getText();
 				
 				if(!ValidarDados.validarCampoVazio(cpf, matricula)) {					
-					PopUps.campoVazio();
+					
 				}else {
 					
 					if(!ValidarDados.isCPF(cpf)) {						
