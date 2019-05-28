@@ -142,7 +142,7 @@ public class TelaConsultaCliente extends JFrame {
 		
 		JLabel label_1 = new JLabel("");
 		label_1.setIcon(new ImageIcon(TelaConsultaCliente.class.getResource("/imagens/MFit logotipo redemensionada.jpg")));
-		label_1.setBounds(10, 266, 229, 80);
+		label_1.setBounds(0, 258, 229, 80);
 		contentPane.add(label_1);
 		
 		JButton btnDados = new JButton("Dados");
@@ -159,7 +159,10 @@ public class TelaConsultaCliente extends JFrame {
 		contentPane.add(btnDados);
 		
 		JButton btnGerarTreino = new JButton("Gerar Treino");
-		btnGerarTreino.setBounds(235, 279, 126, 23);
+		btnGerarTreino.setForeground(new Color(255, 255, 255));
+		btnGerarTreino.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnGerarTreino.setBackground(new Color(0, 128, 0));
+		btnGerarTreino.setBounds(235, 270, 127, 38);
 		contentPane.add(btnGerarTreino);
 		
 		

@@ -196,12 +196,19 @@ public class TelaDadosCliente extends JFrame {
 		textFieldObjetivo.setColumns(10);
 		
 		JButton btnAtualizar = new JButton("Solicitar Atualiza\u00E7\u00E3o");
+		btnAtualizar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnAtualizar.setBackground(new Color(0, 128, 0));
 		btnAtualizar.setForeground(new Color(255, 255, 255));
 		btnAtualizar.setBounds(331, 382, 142, 35);
 		contentPane.add(btnAtualizar);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaConsultaCliente.getInstance().setVisible(true);
+				dispose();
+			}
+		});
 		btnVoltar.setIcon(new ImageIcon(TelaDadosCliente.class.getResource("/imagens/gtkgobackltr_104397.png")));
 		btnVoltar.setForeground(new Color(255, 255, 255));
 		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -274,7 +281,10 @@ public class TelaDadosCliente extends JFrame {
 		textFieldCidade.setColumns(10);
 		
 		JButton btnGerarPDF = new JButton("Gerar PDF");
-		btnGerarPDF.setBounds(331, 350, 89, 23);
+		btnGerarPDF.setForeground(new Color(255, 255, 255));
+		btnGerarPDF.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnGerarPDF.setBackground(new Color(0, 128, 0));
+		btnGerarPDF.setBounds(331, 338, 142, 35);
 		contentPane.add(btnGerarPDF);
 	}
 }

@@ -113,6 +113,9 @@ public class TelaADM extends JFrame {
 		JButton btnPginaInicial = new JButton("P\u00E1gina Inicial");
 		btnPginaInicial.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				TelaEntrar entrar = new TelaEntrar();
+				entrar.TelaDeEntrada.setVisible(true);
+				dispose();
 				
 			}
 		});

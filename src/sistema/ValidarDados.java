@@ -74,7 +74,7 @@ public class ValidarDados {
 	//VALIDAÇÃO DE CPF
 	public static boolean isCPF(String CPF) {
         // considera-se erro CPF's formados por uma sequencia de numeros iguais
-        if (CPF.equals("00000000000") ||
+			if (CPF.equals("00000000000") ||
             CPF.equals("11111111111") ||
             CPF.equals("22222222222") || CPF.equals("33333333333") ||
             CPF.equals("44444444444") || CPF.equals("55555555555") ||
@@ -184,7 +184,9 @@ public class ValidarDados {
          //Para Validar o Email
         public static boolean validarEmail(String email){
     		try{
-    			if(!email.matches("[\\w\\d]+@[^0-9]+(\\.com$|\\.br$)")){
+    			//if(!email.matches("[\\w\\d]+@[^0-9]+(\\.com$|\\.br$)")){
+    			if(!email.matches( "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) {
     				EmailInvalidoException eie = new EmailInvalidoException();
     				throw eie;
     			}
