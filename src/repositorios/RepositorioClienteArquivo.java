@@ -41,8 +41,21 @@ public class RepositorioClienteArquivo implements IRepositorioCliente, Serializa
 	
 	public static RepositorioClienteArquivo lerDoArquivo() {
 		RepositorioClienteArquivo instanciaLocal = null;
-
-	    File in = new File("clientes.dat");
+	    //Criando um arquivo e passando o nome dele	
+	    File in = new File("clientes.dat");//criando um arquivo .dat na pasta do projeto
+	   
+	    /*boolean exists() – arquivo ou diretório existe;
+	      boolean isDirectory() – é um diretório;
+	      boolean isFile() – é um arquivo;
+	      boolean canRead() – pode ler;
+	      boolean canWrite() – pode escrever;
+	      boolean mkdir() – cria uma diretório;
+	      boolean mkdirs() – cria vários diretórios;
+	      boolean renameTo(File file) - renomear;
+	      long length() - tamanho;
+	      long lastModified(ultima modificação);
+	      boolean delete() - deletar;*/	
+	   
 	    FileInputStream fis = null;
 	    ObjectInputStream ois = null;
 	    try {
@@ -86,7 +99,7 @@ public class RepositorioClienteArquivo implements IRepositorioCliente, Serializa
 	      }
 	    }
 	   }
-	}
+	} 
 	
 	public int getIndice(String cpf) {
 		int i = 0;
@@ -180,6 +193,6 @@ public class RepositorioClienteArquivo implements IRepositorioCliente, Serializa
 		// TODO Auto-generated method stub
 		return null;
 	}
-	}
+}
 
 
