@@ -70,6 +70,16 @@ public class TelaDadosInstrutor extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException  ex) {
+            System.err.println(ex);
+        } 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -130,6 +140,7 @@ public class TelaDadosInstrutor extends JFrame {
 		contentPane.add(btnAtualizacao);
 		
 		JButton btnGerarPDF = new JButton("Gerar PDF");
+		btnGerarPDF.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnGerarPDF.setBackground(new Color(0, 128, 0));
 		btnGerarPDF.setForeground(new Color(255, 255, 255));
 		btnGerarPDF.setBounds(323, 355, 142, 35);
