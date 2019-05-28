@@ -317,12 +317,12 @@ public class TelaCadastroCliente extends JFrame{
 		frmTelaDeCadastro.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
-		JRadioButton rdbtnMasculino = new JRadioButton("Masculino");
+		rdbtnMasculino = new JRadioButton("Masculino");
 		rdbtnMasculino.setBounds(6, 23, 109, 23);
 		panel_1.add(rdbtnMasculino);
 		rdbtnMasculino.setBackground(new Color(255, 255, 255));
 		
-		JRadioButton rdbtnFeminino = new JRadioButton("Feminino");
+		rdbtnFeminino = new JRadioButton("Feminino");
 		rdbtnFeminino.setBounds(6, 49, 83, 23);
 		panel_1.add(rdbtnFeminino);
 		rdbtnFeminino.setBackground(new Color(255, 255, 255));
@@ -352,15 +352,15 @@ public class TelaCadastroCliente extends JFrame{
 		label_1.setBounds(10, 281, 253, 63);
 		frmTelaDeCadastro.getContentPane().add(label_1);
 		
-		JDateChooser dateChooserNascimento = new JDateChooser();
-		dateChooserNascimento.setBounds(82, 101, 145, 29);
-		frmTelaDeCadastro.getContentPane().add(dateChooserNascimento);
+		dataNascimento = new JDateChooser();
+		dataNascimento.setBounds(82, 101, 145, 29);
+		frmTelaDeCadastro.getContentPane().add(dataNascimento);
 		
 		JButton button = new JButton("Voltar");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
+				TelaADM.getInstance().setVisible(true);
+				frmTelaDeCadastro.dispose();
 			}
 		});
 		button.setIcon(new ImageIcon(TelaCadastroCliente.class.getResource("/imagens/gtkgobackltr_104397.png")));

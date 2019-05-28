@@ -43,8 +43,8 @@ public class TelaCadastroInstrutor extends JFrame{
 	private JTextField textFieldCargo;
 	private JTextField textFieldHoraTrab;
 	JDateChooser dataNascimento = new JDateChooser();
-	JRadioButton rdbtnMasculino = new JRadioButton();
-	JRadioButton rdbtnFeminino = new JRadioButton();
+	JRadioButton radioButtonMale = new JRadioButton();
+	JRadioButton radioButtonFemale= new JRadioButton();
 	public static TelaCadastroInstrutor instance;
 	
 	public static TelaCadastroInstrutor getInstance() {
@@ -70,9 +70,9 @@ public class TelaCadastroInstrutor extends JFrame{
 	
 	public String radioSelect() {
 		
-		if(rdbtnMasculino.isSelected()) {
+		if(radioButtonMale.isSelected()) {
 			return "Masculino";
-		}else if(rdbtnFeminino.isSelected()) {
+		}else if(radioButtonFemale.isSelected()) {
 			return "Feminino";
 		}else {
 			return null;
@@ -170,12 +170,12 @@ public class TelaCadastroInstrutor extends JFrame{
 		panel.setBounds(415, 11, 145, 79);
 		frmTelaDeCadastro.getContentPane().add(panel);
 		
-		JRadioButton radioButtonMale = new JRadioButton("Masculino");
+		radioButtonMale = new JRadioButton("Masculino");
 		radioButtonMale.setBackground(Color.WHITE);
 		radioButtonMale.setBounds(6, 23, 109, 23);
 		panel.add(radioButtonMale);
 		
-		JRadioButton radioButtonFemale = new JRadioButton("Feminino");
+		radioButtonFemale = new JRadioButton("Feminino");
 		radioButtonFemale.setBackground(Color.WHITE);
 		radioButtonFemale.setBounds(6, 49, 83, 23);
 		panel.add(radioButtonFemale);
@@ -246,6 +246,11 @@ public class TelaCadastroInstrutor extends JFrame{
 		panel_1.add(textFieldCidade);
 		
 		JButton button = new JButton("Limpar");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				limpar();
+			}
+		});
 		button.setIcon(new ImageIcon(TelaCadastroInstrutor.class.getResource("/imagens/delete_remove_bin_icon-icons.com_72400.png")));
 		button.setBackground(new Color(255, 99, 71));
 		button.setBounds(532, 334, 108, 29);
@@ -336,6 +341,8 @@ public class TelaCadastroInstrutor extends JFrame{
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				TelaADM.getInstance().setVisible(true);
+				frmTelaDeCadastro.dispose();
 				
 			}
 		});
