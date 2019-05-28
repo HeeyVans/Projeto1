@@ -159,6 +159,10 @@ public class TelaConsultaCliente extends JFrame {
 		contentPane.add(btnDados);
 		
 		JButton btnGerarTreino = new JButton("Gerar Treino");
+		btnGerarTreino.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnGerarTreino.setForeground(new Color(255, 255, 255));
 		btnGerarTreino.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnGerarTreino.setBackground(new Color(0, 128, 0));
