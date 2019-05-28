@@ -58,6 +58,7 @@ public class TestePDF extends JFrame {
 		btnGerador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				/*
+				//criando um documento vazio
 				Document document = new Document();
 				try {
 					
@@ -66,21 +67,29 @@ public class TestePDF extends JFrame {
 					Cliente cliente = new Cliente("Diogo", "700000000", "Hipertrofia");
 					Endereco endInstru = new Endereco("Boa viagem", "Boa viagem", "Recife", "", 2520);
 					Instrutor instr = new Instrutor("Vanessa", endInstru, "7000526156");
+					
+					//cria uma inst√¢ncia do documento e da o nome do PDF
 					PdfWriter.getInstance(document, new FileOutputStream("PDF.pdf"));
 					
+					//abrir o documento
 					document.open();
+					
+					//setar o tamanho da p√°gina
+					document.setPageSize(PageSize.A4);
+					
+					//adicionando um paragrafo
 					document.add(new Paragraph("Cliente:" + cliente.getNome()));
 					document.add(new Paragraph("Objetivo:" + cliente.getObjetivo()));
 					document.add(new Paragraph("Instrutor(a):" + instr.getNome()));
 					document.add(new Paragraph(" "));
-					document.add(new Paragraph("ObservaÁıes:" + exer.getObs()));
+					document.add(new Paragraph("Observa√ß√µes:" + exer.getObs()));
 					document.add(new Paragraph("Nome:" + exer.getNome()));
-					document.add(new Paragraph("SÈries:" + exer.getSerie()));
+					document.add(new Paragraph("S√©ries:" + exer.getSerie()));
 					document.add(new Paragraph("Descanso:" + exer.getTempoDescanso()));
 					document.add(new Paragraph("Porcentagem:" + exer.getPorcentagem() +"%"));
 					
 					
-				}catch(DocumentException | FileNotFoundException ex) {
+				}catch(DocumentException | FileNotFoundException | IOException ex) {
 					System.out.println("Error"+ ex);
 				}
 				
