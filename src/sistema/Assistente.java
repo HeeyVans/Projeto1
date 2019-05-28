@@ -1,5 +1,8 @@
 package sistema;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 import java.util.Random;
@@ -16,11 +19,18 @@ import javax.mail.internet.MimeMessage;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+
 import basicas.Administrador;
 import basicas.Cliente;
 import basicas.Exercicio;
 import basicas.Instrutor;
 import basicas.Treino;
+import gui.PopUps;
 import repositorios.RepositorioExercicioArray;
 
 public class Assistente {
@@ -87,6 +97,45 @@ public class Assistente {
 	        return new String(caracter);
 		}
 		
+		//GerarPDF de Dados para Cliente
+		public static void gerarPDFCliente(Cliente cliente) throws FileNotFoundException {
+			
+			Document document = new Document();
+			
+			try {
+				
+				PdfWriter.getInstance(document, new FileOutputStream("Cliente.pdf"));
+				document.open();
+				document.setPageSize(PageSize.A1);
+				
+				document.add(new Paragraph("Cliente:" + cliente.getNome()));
+				document.add(new Paragraph(" "));
+				document.add(new Paragraph("Cidade:" + cliente.getEndereco().getCidade()));
+				document.add(new Paragraph("Bairro:" + cliente.getEndereco().getBairro()));
+				document.add(new Paragraph("Rua:" + cliente.getEndereco().getRua()));
+				document.add(new Paragraph("Rua:" + cliente.getEndereco().getComplemento()));
+				document.add(new Paragraph("Número:" + cliente.getEndereco().getNumero()));
+				document.add(new Paragraph(" "));
+				document.add(new Paragraph("CPF:" + cliente.getCpf()));
+				document.add(new Paragraph("Data de Nascimento:" + cliente.getDataDeNasc()));
+				document.add(new Paragraph("Matrícula:" + cliente.getMatricula()));
+				document.add(new Paragraph("Email:" + cliente.getEmail()));
+				document.add(new Paragraph("Telefone:" + cliente.getTelefone()));
+				document.add(new Paragraph("Gênero:" + cliente.getGenero()));
+				document.add(new Paragraph(" "));
+				document.add(new Paragraph("Pagamento:" + cliente.getPagamento()));
+				document.add(new Paragraph("Objetivo:" + cliente.getObjetivo()));
+				
+				PopUps.pdfgerado();
+					
+				
+			}catch(DocumentException | IOException ex) {
+				System.out.println("Error"+ ex);
+			}
+			
+			document.close();
+		}
+		
 		//Montando Tabelas
 		public static void montarTabela(List clientes, ModeloTabelaInstrutor modelo) {
 			modelo.addClienteList(clientes);
@@ -124,8 +173,8 @@ public class Assistente {
 		Fachada.getInstance().cadastrarCliente(c);
 		
 		Exercicio e = new Exercicio("obs", "Supino", 3, "1'");
-		Exercicio e1 = new Exercicio("obs", "Supino", 3, "1'");
-		Exercicio e2 = new Exercicio("obs", "Supino", 3, "1'");
+		Exercicio e1 = new Exercicio("obs", "Leg", 3, "1'");
+		Exercicio e2 = new Exercicio("obs", "Rosca", 3, "1'");
 		
 		Fachada.getInstance().inserirExercicio(e);
 		Fachada.getInstance().inserirExercicio(e1);

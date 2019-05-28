@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,6 +20,9 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.border.TitledBorder;
+
+import sistema.Assistente;
+
 import javax.swing.SwingConstants;
 
 public class TelaDadosCliente extends JFrame {
@@ -281,6 +285,16 @@ public class TelaDadosCliente extends JFrame {
 		textFieldCidade.setColumns(10);
 		
 		JButton btnGerarPDF = new JButton("Gerar PDF");
+		btnGerarPDF.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					Assistente.gerarPDFCliente(TelaEntrar.cliente);
+				} catch (FileNotFoundException e) {
+					
+					e.printStackTrace();
+				}
+			}
+		});
 		btnGerarPDF.setForeground(new Color(255, 255, 255));
 		btnGerarPDF.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnGerarPDF.setBackground(new Color(0, 128, 0));

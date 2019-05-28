@@ -46,5 +46,8 @@ public class Mensagem {
 	//TelaCadastroInstrutor
 	public static final String INSTRUTORCADASTRADO = "Instrutor cadastrado com sucesso!";
 	
+	//TelaDadosCliente
+	public static final String PDFGERADO = "PDF gerado com sucesso!";
+	
 
 }
