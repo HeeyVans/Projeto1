@@ -153,6 +153,24 @@ public class TelaCadastroCliente extends JFrame{
 		textFieldTelefone.setBounds(62, 8, 108, 29);
 		frmTelaDeCadastro.getContentPane().add(textFieldTelefone);
 		textFieldTelefone.setColumns(10);
+		/*
+		------------Código para a formatação de telefone------------
+		
+		Scanner ler = new Scanner(System.in);
+		System.out.println("informe seu numero: ");
+		String phone = ler.nextLine();
+		try {
+		MaskFormatter phoneFormatter = new MaskFormatter("(##) ####-####");
+		JFormattedTextField txtPhone = new JFormattedTextField(phoneFormatter);
+		txtPhone.setText(phone);
+
+				System.out.println("Seu numero eh: " + txtPhone.getText());
+			} catch (ParseException e) {
+				e.printStackTrace();
+				return;
+			} 
+		
+	}*/
 		
 		JLabel lblNome = new JLabel("Nome:");
 		lblNome.setBounds(180, 15, 47, 14);
