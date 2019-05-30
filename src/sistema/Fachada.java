@@ -137,6 +137,10 @@ public class Fachada {
 		return this.treino.procurar(id);
 	}
 	
+	public Treino procurarClienteTreino(String matricula) {
+		return this.treino.procurarClienteTreino(matricula);
+	}
+	
 	public void removerTreino(String id) {
 		this.treino.remover(id);
 	}
@@ -144,8 +148,8 @@ public class Fachada {
 	public void atualizarTreino(Treino treino) {
 		this.treino.atualizar(treino);
 	}
-	public List listarTreino(String matricula) {
-		return this.treino.listar(matricula);
+	public List listarTreino(String matricula, String categoria) {
+		return this.treino.listar(matricula, categoria);
 	}
 	//FIM DE CRUD TREINO
 }

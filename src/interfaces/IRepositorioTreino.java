@@ -11,8 +11,9 @@ public interface IRepositorioTreino {
 	
 	public void inserir(Treino treino);
 	public Treino procurar(String id);
+	public Treino procurarClienteTreino(String matricula);
 	public void remover(String id);
 	public void atualizar(Treino treino);
-	public List listar(String matricula);
+	public List listar(String matricula, String categoria);
 
 }

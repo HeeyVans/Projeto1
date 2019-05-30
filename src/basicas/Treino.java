@@ -9,15 +9,27 @@ public class Treino {
 	private Cliente cliente;
 	private RepositorioExercicioArray repExer;
 	private String id;
+	private String categoria;
 	
 	
 	public Treino(Instrutor instrutor, Cliente cliente,  RepositorioExercicioArray repExer,
-			String string) {
+			String id, String categoria) {
 		
 		this.instrutor = instrutor;
 		this.cliente = cliente;
 		this.repExer = repExer;
-		this.id = string;
+		this.categoria = categoria;
+		this.id = id;
+	}
+
+
+	public String getId() {
+		return id;
+	}
+
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 
@@ -55,14 +67,16 @@ public class Treino {
 	}
 
 
-	public String getId() {
-		return id;
+	public String getCategoria() {
+		return categoria;
 	}
 
 
-	public void setId(String id) {
-		this.id = id;
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
+
+
 	
 	
 	

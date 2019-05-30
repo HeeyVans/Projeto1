@@ -110,7 +110,13 @@ public class RepositorioTreinoArquivo implements IRepositorioTreino, Serializabl
 	}
 
 	@Override
-	public List listar(String matricula) {
+	public Treino procurarClienteTreino(String matricula) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List listar(String matricula, String categoria) {
 		// TODO Auto-generated method stub
 		return null;
 	}

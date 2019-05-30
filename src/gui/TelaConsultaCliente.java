@@ -30,6 +30,8 @@ import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class TelaConsultaCliente extends JFrame {
 	
@@ -120,7 +122,7 @@ public class TelaConsultaCliente extends JFrame {
 						
 				ArrayList<Exercicio> lista = new ArrayList();
 				
-				lista = (ArrayList<Exercicio>) Fachada.getInstance().listarTreino(matricula);
+				lista = (ArrayList<Exercicio>) Fachada.getInstance().listarTreino(matricula, "B");
 						
 					modeloTreino.addTreinoList(lista);
 				}
@@ -161,6 +163,12 @@ public class TelaConsultaCliente extends JFrame {
 		JButton btnGerarTreino = new JButton("Gerar Treino");
 		btnGerarTreino.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				String matricula = TelaEntrar.cliente.getMatricula();
+				String categoria = "A";
+				
+				Assistente.gerarPDFTreino(matricula, categoria);
+				
 			}
 		});
 		btnGerarTreino.setForeground(new Color(255, 255, 255));
@@ -168,6 +176,16 @@ public class TelaConsultaCliente extends JFrame {
 		btnGerarTreino.setBackground(new Color(0, 128, 0));
 		btnGerarTreino.setBounds(235, 270, 127, 38);
 		contentPane.add(btnGerarTreino);
+		
+		JComboBox comboBoxCategoria = new JComboBox();
+		comboBoxCategoria.setModel(new DefaultComboBoxModel(new String[] {"", "A", "B", "C", "D", "E"}));
+		comboBoxCategoria.setMaximumRowCount(5);
+		comboBoxCategoria.setBounds(184, 219, 45, 28);
+		contentPane.add(comboBoxCategoria);
+		
+		JLabel lblCategoria = new JLabel("Categoria:");
+		lblCategoria.setBounds(132, 219, 59, 14);
+		contentPane.add(lblCategoria);
 		
 		
 		

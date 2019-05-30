@@ -2,6 +2,7 @@ package sistema;
 
 import java.util.List;
 
+import basicas.Cliente;
 import basicas.Treino;
 import interfaces.IRepositorioTreino;
 
@@ -22,6 +23,10 @@ public class CadastroTreino {
 		return this.repositorio.procurar(id);
 	}
 	
+	public Treino procurarClienteTreino(String matricula) {
+		return this.repositorio.procurarClienteTreino(matricula);
+	}
+	
 	public void remover(String id) {
 		this.repositorio.remover(id);
 	}
@@ -30,8 +35,8 @@ public class CadastroTreino {
 		this.repositorio.atualizar(treino);
 	}
 	
-	public List listar(String matricula) {
-		return repositorio.listar(matricula);
+	public List listar(String matricula, String categoria) {
+		return repositorio.listar(matricula, categoria);
 	}
 
 }

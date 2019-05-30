@@ -140,6 +140,7 @@ public class TelaCriarTreino extends JFrame {
 				Exercicio ex;
 				RepositorioExercicioArray rep = new RepositorioExercicioArray();
 				
+				String categoria = "A";
 				String matricula = textFieldMatricula.getText();
 				String matriculaInst = textFieldMatriculaInst.getText();
 				
@@ -154,7 +155,7 @@ public class TelaCriarTreino extends JFrame {
 				
 				rep.inserir(ex);
 				
-				Treino t = new Treino(instru, cliente, rep, Assistente.gerarId());
+				Treino t = new Treino(instru, cliente, rep, Assistente.gerarId(), categoria);
 				Fachada.getInstance().inserirTreino(t);
 			}
 		});

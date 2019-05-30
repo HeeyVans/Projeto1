@@ -3,6 +3,8 @@ package repositorios;
 import java.util.ArrayList;
 import java.util.List;
 
+import basicas.Cliente;
+import basicas.Exercicio;
 import basicas.Treino;
 import interfaces.IRepositorioTreino;
 
@@ -36,6 +38,31 @@ public class RepositorioTreinoArray implements IRepositorioTreino{
 	
 	public boolean existe(String id) {
 		i = getIndice(id);
+		if(i == -1) {
+			return false;
+		}else {
+			return true;
+		}
+	}
+	
+	public int getIndiceClienteTreino(String matricula) {
+		int i = 0;
+		
+		if(indice != 0) {
+			while(!(matricula == repositorio[i].getCliente().getMatricula())) {
+				if(i == indice - 1) {
+					return -1;
+				}else {
+					i++;
+				}
+			}
+			return i;
+		}
+		return -1;
+	}
+	
+	public boolean existeClienteTreino(String matricula) {
+		i = getIndiceClienteTreino(matricula);
 		if(i == -1) {
 			return false;
 		}else {
@@ -81,17 +108,30 @@ public class RepositorioTreinoArray implements IRepositorioTreino{
 
 		}
 	
-	public List listar(String matricula) {
+	public List listar(String matricula, String categoria) {
 		
 		List exercicios = new ArrayList();
 		i = 0;
 		while(i < indice) {
-			if(repositorio[i].getCliente().getMatricula() == matricula) {
+			if(repositorio[i].getCliente().getMatricula() == matricula && categoria == repositorio[i]
+					.getCategoria()) {
 				exercicios = repositorio[i].getRepExer().listar();
 				
 				}
 			 i++;
 			}
 		return exercicios;
+		}
+	
+
+	@Override
+	public Treino procurarClienteTreino(String matricula) {
+		
+		if(existeClienteTreino(matricula)) {
+			return this.repositorio[i];
+		}else {
+			return null;
+			}
+		
 		}
 	}

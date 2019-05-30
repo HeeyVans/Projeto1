@@ -3,6 +3,7 @@ package sistema;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.Random;
@@ -110,12 +111,14 @@ public class Assistente {
 				
 				document.add(new Paragraph("Cliente:" + cliente.getNome()));
 				document.add(new Paragraph(" "));
+				document.add(new Paragraph("_______________________________"));
 				document.add(new Paragraph("Cidade:" + cliente.getEndereco().getCidade()));
 				document.add(new Paragraph("Bairro:" + cliente.getEndereco().getBairro()));
 				document.add(new Paragraph("Rua:" + cliente.getEndereco().getRua()));
 				document.add(new Paragraph("Rua:" + cliente.getEndereco().getComplemento()));
 				document.add(new Paragraph("Número:" + cliente.getEndereco().getNumero()));
 				document.add(new Paragraph(" "));
+				document.add(new Paragraph("_______________________________"));
 				document.add(new Paragraph("CPF:" + cliente.getCpf()));
 				document.add(new Paragraph("Data de Nascimento:" + cliente.getDataDeNasc()));
 				document.add(new Paragraph("Matrícula:" + cliente.getMatricula()));
@@ -123,11 +126,49 @@ public class Assistente {
 				document.add(new Paragraph("Telefone:" + cliente.getTelefone()));
 				document.add(new Paragraph("Gênero:" + cliente.getGenero()));
 				document.add(new Paragraph(" "));
+				document.add(new Paragraph("_______________________________"));
 				document.add(new Paragraph("Pagamento:" + cliente.getPagamento()));
 				document.add(new Paragraph("Objetivo:" + cliente.getObjetivo()));
 				
 				PopUps.pdfgerado();
 					
+				
+			}catch(DocumentException | IOException ex) {
+				System.out.println("Error"+ ex);
+			}
+			
+			document.close();
+		}
+		
+		//Gerar PDF do Treino
+		public static void gerarPDFTreino(String matricula, String categoria) {
+			int i;
+			Treino treino = Fachada.getInstance().procurarClienteTreino(matricula);
+			
+			Document document = new Document();
+			
+			ArrayList<Exercicio> lista = new ArrayList();
+			lista = (ArrayList<Exercicio>) Fachada.getInstance().listarTreino(matricula, categoria);
+			
+			try {
+				
+				PdfWriter.getInstance(document, new FileOutputStream("Treino.pdf"));
+				document.open();
+				document.setPageSize(PageSize.A1);
+				
+				document.add(new Paragraph("Cliente: " + treino.getCliente().getNome()));
+				document.add(new Paragraph("Instrutor: " + treino.getInstrutor().getNome()));
+				document.add(new Paragraph("_______________________________"));
+				for(i = 0; i < lista.size(); i++) {
+					document.add(new Paragraph("Nome: " + lista.get(i).getNome()));
+					document.add(new Paragraph("Séries: " + lista.get(i).getSerie()));
+					document.add(new Paragraph("Descanso: " + lista.get(i).getTempoDescanso()));
+					document.add(new Paragraph("Obs: " + lista.get(i).getObs()));
+					document.add(new Paragraph("_______________________________"));
+				}
+				
+				PopUps.pdfgerado();
+				
 				
 			}catch(DocumentException | IOException ex) {
 				System.out.println("Error"+ ex);
@@ -182,11 +223,16 @@ public class Assistente {
 		
 		RepositorioExercicioArray rep = new RepositorioExercicioArray();
 		rep.inserir(e);
-		rep.inserir(e2);
 		rep.inserir(e1);
 		
-		Treino tr = new Treino(t, c, rep, Assistente.gerarId());		
+		RepositorioExercicioArray rep1 = new RepositorioExercicioArray();
+		rep1.inserir(e2);
+		
+		Treino tr = new Treino(t, c, rep, Assistente.gerarId(), "A");		
 		Fachada.getInstance().inserirTreino(tr);
+		
+		Treino tr1 = new Treino(t, c, rep1, Assistente.gerarId(), "B");		
+		Fachada.getInstance().inserirTreino(tr1);
 		}
 		
 
