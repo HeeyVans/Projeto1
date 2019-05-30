@@ -161,9 +161,15 @@ public class TelaConsultaCliente extends JFrame {
 				confirm = PopUps.ConfirmarVolta();
 				
 				if(confirm == true) {
+					if(TelaEntrar.cliente == null) {
+						TelaADM.getInstance().setVisible(true);
+						dispose();
+					}else {
+						
 					TelaEntrar window = new TelaEntrar();
 					window.TelaDeEntrada.setVisible(true);
 					dispose();
+					}
 				}
 			}
 		});
