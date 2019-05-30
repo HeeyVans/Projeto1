@@ -188,13 +188,16 @@ public class TelaInstrutor extends JFrame {
 		contentPane.add(btnCriarTreino);
 		
 		JButton btnMeusDados = new JButton("Meus Dados");
+		btnMeusDados.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnMeusDados.setBackground(new Color(0, 128, 0));
+		btnMeusDados.setForeground(Color.WHITE);
 		btnMeusDados.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaDadosInstrutor.getInstance().setVisible(true);
 				dispose();
 			}
 		});
-		btnMeusDados.setBounds(370, 329, 129, 23);
+		btnMeusDados.setBounds(447, 256, 129, 38);
 		contentPane.add(btnMeusDados);
 		
 	}

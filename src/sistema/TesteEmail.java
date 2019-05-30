@@ -23,7 +23,7 @@ public class TesteEmail {
 		try {  
 			
 			email.setHostName("smtp.gmail.com"); // o servidor SMTP para envio do e-mail
-			email.addTo("digsuk360@gmail.com"); //destinatário
+			email.addTo("vanessa.cs.oliveira@gmail.com"); //destinatário
 			email.setFrom("MFit.Academia10@gmail.com"); // remetente
 			email.setSubject("Teste -> Email simples"); // assunto do e-mail
 			email.setMsg("Teste de Email utilizando commons-email"); //conteudo do e-mail
