@@ -89,7 +89,8 @@ public class TelaDadosCliente extends JFrame {
 			public void run() {
 				try {
 					TelaDadosCliente frame = new TelaDadosCliente();
-					frame.setVisible(true);					
+					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

@@ -119,6 +119,7 @@ public class TelaCadastroCliente extends JFrame{
 				try {
 					TelaCadastroCliente window = new TelaCadastroCliente();
 					window.frmTelaDeCadastro.setVisible(true);
+					window.frmTelaDeCadastro.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

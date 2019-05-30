@@ -88,6 +88,7 @@ public class TelaConsultaCliente extends JFrame {
 				try {
 					TelaConsultaCliente frame = new TelaConsultaCliente();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 					
 					Assistente.gerarTreino();
 					

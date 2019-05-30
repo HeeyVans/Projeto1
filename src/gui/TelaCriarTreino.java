@@ -155,6 +155,7 @@ private String comboSelecionado() {
 				try {
 					TelaCriarTreino frame = new TelaCriarTreino();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

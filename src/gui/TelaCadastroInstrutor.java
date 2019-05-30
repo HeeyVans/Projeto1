@@ -99,6 +99,7 @@ public class TelaCadastroInstrutor extends JFrame{
 				try {
 					TelaCadastroInstrutor window = new TelaCadastroInstrutor();
 					window.frmTelaDeCadastro.setVisible(true);
+					window.frmTelaDeCadastro.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

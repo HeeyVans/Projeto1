@@ -48,6 +48,7 @@ public class TelaADM extends JFrame {
 				try {
 					TelaADM frame = new TelaADM();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

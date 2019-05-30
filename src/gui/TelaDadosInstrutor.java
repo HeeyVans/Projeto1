@@ -85,6 +85,7 @@ public class TelaDadosInstrutor extends JFrame {
 				try {
 					TelaDadosInstrutor frame = new TelaDadosInstrutor();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

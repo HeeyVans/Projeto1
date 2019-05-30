@@ -70,6 +70,7 @@ public class TelaInstrutor extends JFrame {
 				try {
 					TelaInstrutor frame = new TelaInstrutor();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
