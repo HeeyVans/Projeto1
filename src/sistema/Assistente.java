@@ -154,11 +154,14 @@ public class Assistente {
 				
 				PdfWriter.getInstance(document, new FileOutputStream("Treino.pdf"));
 				document.open();
-				document.setPageSize(PageSize.A1);
+				document.setPageSize(PageSize._11X17);
 				
 				document.add(new Paragraph("Cliente: " + treino.getCliente().getNome()));
 				document.add(new Paragraph("Instrutor: " + treino.getInstrutor().getNome()));
+				document.add(new Paragraph(" "));
+				document.add(new Paragraph("Tipo: " + categoria));
 				document.add(new Paragraph("_______________________________"));
+				
 				for(i = 0; i < lista.size(); i++) {
 					document.add(new Paragraph("Nome: " + lista.get(i).getNome()));
 					document.add(new Paragraph("Séries: " + lista.get(i).getSerie()));
@@ -167,7 +170,7 @@ public class Assistente {
 					document.add(new Paragraph("_______________________________"));
 				}
 				
-				PopUps.pdfgerado();
+				PopUps.treinoGerado();
 				
 				
 			}catch(DocumentException | IOException ex) {

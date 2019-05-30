@@ -48,6 +48,10 @@ public class Mensagem {
 	
 	//TelaDadosCliente
 	public static final String PDFGERADO = "PDF gerado com sucesso!";
+	public static final String TREINOGERADO = "Treino gerado com sucesso!";
+	
+	//TelaCriarTreino
+	public static final String TREINOCRIADO = "Treino criado com sucesso!";
 	
 
 }

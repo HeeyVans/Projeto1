@@ -45,6 +45,12 @@ public class PopUps {
 	public static void pdfgerado() {
 		JOptionPane.showMessageDialog(null, Mensagem.PDFGERADO);
 	}
+	public static void treinoGerado() {
+		JOptionPane.showMessageDialog(null, Mensagem.TREINOGERADO);
+	}
+	public static void treinoCriado() {
+		JOptionPane.showMessageDialog(null, Mensagem.TREINOCRIADO);
+	}
 	
 	//ERROS
 	public static void ErroCadastro() {

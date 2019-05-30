@@ -40,6 +40,7 @@ public class TelaConsultaCliente extends JFrame {
 	private JPanel contentPane;
 	private JTable tableTreino;
 	private ModeloTabelaTreino modeloTreino;
+	JComboBox comboBoxCategoria = new JComboBox();
 	public static TelaConsultaCliente instance;
 	private JTable tableExercicios;
 	
@@ -48,6 +49,26 @@ public class TelaConsultaCliente extends JFrame {
 			instance = new TelaConsultaCliente();
 		}
 		return instance;
+	}
+	
+	private String comboSelecionado() {
+		
+		if(comboBoxCategoria.getSelectedIndex() == 0) {
+			return null;
+		}else if(comboBoxCategoria.getSelectedIndex() == 1) {
+			return "A";
+		}else if(comboBoxCategoria.getSelectedIndex() == 2) {
+			return "B";
+		}else if(comboBoxCategoria.getSelectedIndex() == 3) {
+			return "C";
+		}else if(comboBoxCategoria.getSelectedIndex() == 4) {
+			return "D";
+		}else if(comboBoxCategoria.getSelectedIndex() == 5) {
+			return "E";
+		}else {
+			return null;
+		}
+		
 	}
 
 	/**
@@ -119,10 +140,11 @@ public class TelaConsultaCliente extends JFrame {
 					
 				
 				String matricula = TelaEntrar.getInstance().cliente.getMatricula();
+				String categoria = comboSelecionado();
 						
 				ArrayList<Exercicio> lista = new ArrayList();
 				
-				lista = (ArrayList<Exercicio>) Fachada.getInstance().listarTreino(matricula, "B");
+				lista = (ArrayList<Exercicio>) Fachada.getInstance().listarTreino(matricula, categoria);
 						
 					modeloTreino.addTreinoList(lista);
 				}
@@ -165,7 +187,7 @@ public class TelaConsultaCliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				String matricula = TelaEntrar.cliente.getMatricula();
-				String categoria = "A";
+				String categoria = comboSelecionado();
 				
 				Assistente.gerarPDFTreino(matricula, categoria);
 				
@@ -177,7 +199,7 @@ public class TelaConsultaCliente extends JFrame {
 		btnGerarTreino.setBounds(235, 270, 127, 38);
 		contentPane.add(btnGerarTreino);
 		
-		JComboBox comboBoxCategoria = new JComboBox();
+		
 		comboBoxCategoria.setModel(new DefaultComboBoxModel(new String[] {"", "A", "B", "C", "D", "E"}));
 		comboBoxCategoria.setMaximumRowCount(5);
 		comboBoxCategoria.setBounds(184, 219, 45, 28);
