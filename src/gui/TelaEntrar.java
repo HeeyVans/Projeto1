@@ -15,8 +15,6 @@ import javax.swing.SwingConstants;
 import basicas.Cliente;
 import basicas.Endereco;
 import basicas.Instrutor;
-import excecoes.CampoVazioException;
-import excecoes.ClienteNaoEncontradoException;
 import sistema.Assistente;
 import sistema.Fachada;
 import sistema.Mensagem;
@@ -37,7 +35,6 @@ public class TelaEntrar extends JFrame{
 	private static final long serialVersionUID = 1L;
 	JFrame TelaDeEntrada;
 	private JTextField textFieldMatricula;
-	private JTextField textFieldCPF;
 	public static TelaEntrar instance;
 	public static Cliente cliente;
 	public static Instrutor instrutor;
@@ -57,7 +54,6 @@ public class TelaEntrar extends JFrame{
 	
 	public void limpar() {
 		textFieldMatricula.setText("");
-		textFieldCPF.setText("");
 	}
 	
 	public static void main(String[] args) {
@@ -81,8 +77,8 @@ public class TelaEntrar extends JFrame{
 					
 					//gerando user ADM
 					Assistente.gerarAdm();
-					//Assistente.gerarTreino();
-					Assistente.gerarInstCliente();
+					Assistente.gerarTreino();
+					//Assistente.gerarInstCliente();
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -131,21 +127,17 @@ public class TelaEntrar extends JFrame{
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String cpf, matricula;
+				String matricula;
 				
-				cpf = textFieldCPF.getText();
 				matricula = textFieldMatricula.getText();
 				
-				if(!ValidarDados.validarCampoVazio(cpf, matricula)) {					
+				if(!ValidarDados.validarCampoVazio(matricula)) {					
 					
-				}else {
+				}else {					
 					
-					if(!ValidarDados.isCPF(cpf)) {						
-						PopUps.cpfInvalido();
-					}else {
 						
-						cliente = Fachada.getInstance().procurarCliente(cpf);
-						instrutor = Fachada.getInstance().procurarInstrutor(cpf);
+						cliente = Fachada.getInstance().procurarClienteMatricula(matricula);
+						instrutor = Fachada.getInstance().procurarInstrutorMatricula(matricula);
 						
 						if(cliente != null) {
 							TelaConsultaCliente.getInstance().setVisible(true);
@@ -153,14 +145,16 @@ public class TelaEntrar extends JFrame{
 						}else if(instrutor != null) {
 							TelaInstrutor.getInstance().setVisible(true);
 							TelaDeEntrada.dispose();
-						}else if(ValidarDados.validarLoginADM(cpf, matricula)) {
+						}else if(ValidarDados.validarLoginADM(matricula)) {
 							TelaADM.getInstance().setVisible(true);
 							TelaDeEntrada.dispose();
 						}else {
 							PopUps.UsuarioNaoExiste();
 						}
-					}
+					
 				}
+				
+				limpar();
 				
 				
 			
@@ -191,16 +185,6 @@ public class TelaEntrar extends JFrame{
 		textFieldMatricula.setBounds(310, 231, 187, 34);
 		TelaDeEntrada.getContentPane().add(textFieldMatricula);
 		
-		textFieldCPF = new JTextField();
-		textFieldCPF.setColumns(10);
-		textFieldCPF.setBounds(310, 172, 187, 34);
-		TelaDeEntrada.getContentPane().add(textFieldCPF);
-		
-		JLabel lblCpf = new JLabel("CPF:");
-		lblCpf.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblCpf.setBounds(269, 169, 42, 34);
-		TelaDeEntrada.getContentPane().add(lblCpf);
-		
 		JLabel lblMatrcula = new JLabel("Matr\u00EDcula:");
 		lblMatrcula.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblMatrcula.setBounds(231, 238, 90, 14);
@@ -224,7 +208,13 @@ public class TelaEntrar extends JFrame{
 				Cliente c;
 				Instrutor in;
 				
-				cpf = JOptionPane.showInputDialog(Mensagem.INFORMACPF);
+				do {
+					cpf = JOptionPane.showInputDialog(Mensagem.INFORMACPF);
+					if(ValidarDados.isCPF(cpf) == false) {
+						PopUps.cpfInvalido();
+					}
+				}while(!ValidarDados.isCPF(cpf));
+				
 				
 				if(ValidarDados.isCPF(cpf)) {
 					c = Fachada.getInstance().procurarCliente(cpf);

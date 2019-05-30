@@ -40,6 +40,20 @@ public class ValidarDados {
 		return true;
 	}
 	
+	//VALIDAÇÃO DE CAMPOVAZIO COM 1 CAMPO
+			public static boolean validarCampoVazio(String arg0) {
+				try {
+					if (arg0.equals("")) {
+						CampoVazioException cve = new CampoVazioException();
+						throw cve;
+					}
+				} catch (CampoVazioException cve) {
+					PopUps.campoVazio(cve);
+					return false;
+				}
+				return true;
+			}
+	
 	//VALIDAÇÃO DE CAMPOVAZIO COM 2 CAMPOS
 		public static boolean validarCampoVazio(String arg0, String arg1) {
 			try {
@@ -150,10 +164,10 @@ public class ValidarDados {
         }
         
         
-        public static boolean validarLoginADM(String cpf, String matricula) {
+        public static boolean validarLoginADM(String matricula) {
         	try {
-        		adm = Fachada.getInstance().procurarADM(cpf);
-        		if(!adm.getMatricula().equals(matricula)) {
+        		adm = Fachada.getInstance().procurarADM(matricula);
+        		if(adm == null) {
         			MatriculaNaoEncontradaException mnee = new MatriculaNaoEncontradaException();
         			throw mnee;
         		}

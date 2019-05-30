@@ -54,16 +54,14 @@ public class TelaConsultaCliente extends JFrame {
 	private String comboSelecionado() {
 		
 		if(comboBoxCategoria.getSelectedIndex() == 0) {
-			return null;
-		}else if(comboBoxCategoria.getSelectedIndex() == 1) {
 			return "A";
-		}else if(comboBoxCategoria.getSelectedIndex() == 2) {
+		}else if(comboBoxCategoria.getSelectedIndex() == 1) {
 			return "B";
-		}else if(comboBoxCategoria.getSelectedIndex() == 3) {
+		}else if(comboBoxCategoria.getSelectedIndex() == 2) {
 			return "C";
-		}else if(comboBoxCategoria.getSelectedIndex() == 4) {
+		}else if(comboBoxCategoria.getSelectedIndex() == 3) {
 			return "D";
-		}else if(comboBoxCategoria.getSelectedIndex() == 5) {
+		}else if(comboBoxCategoria.getSelectedIndex() == 4) {
 			return "E";
 		}else {
 			return null;
@@ -141,13 +139,13 @@ public class TelaConsultaCliente extends JFrame {
 				
 				String matricula = TelaEntrar.getInstance().cliente.getMatricula();
 				String categoria = comboSelecionado();
-						
-				ArrayList<Exercicio> lista = new ArrayList();
 				
-				lista = (ArrayList<Exercicio>) Fachada.getInstance().listarTreino(matricula, categoria);
-						
-					modeloTreino.addTreinoList(lista);
-				}
+				ArrayList<Exercicio> lista = new ArrayList();				
+				
+				lista = (ArrayList<Exercicio>) Fachada.getInstance().listarTreino(matricula, categoria);								
+							
+				modeloTreino.addTreinoList(lista);
+			}
 			
 		});
 		buttonMostrar.setForeground(Color.WHITE);
@@ -157,6 +155,18 @@ public class TelaConsultaCliente extends JFrame {
 		contentPane.add(buttonMostrar);
 		
 		JButton buttonVoltar = new JButton("Voltar");
+		buttonVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {			
+				boolean confirm;
+				confirm = PopUps.ConfirmarVolta();
+				
+				if(confirm == true) {
+					TelaEntrar window = new TelaEntrar();
+					window.TelaDeEntrada.setVisible(true);
+					dispose();
+				}
+			}
+		});
 		buttonVoltar.setIcon(new ImageIcon(TelaConsultaCliente.class.getResource("/imagens/gtkgobackltr_104397.png")));
 		buttonVoltar.setForeground(Color.WHITE);
 		buttonVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -175,8 +185,14 @@ public class TelaConsultaCliente extends JFrame {
 		btnDados.setBackground(new Color(0, 128, 0));
 		btnDados.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				TelaDadosCliente.getInstance().setVisible(true);
-				dispose();
+				boolean confirm;
+				confirm = PopUps.ConfirmarIda();
+				
+				if(confirm == true) {
+					TelaDadosCliente.getInstance().setVisible(true);
+					dispose();
+				}
+				
 			}
 		});
 		btnDados.setBounds(235, 219, 127, 38);
@@ -189,7 +205,8 @@ public class TelaConsultaCliente extends JFrame {
 				String matricula = TelaEntrar.cliente.getMatricula();
 				String categoria = comboSelecionado();
 				
-				Assistente.gerarPDFTreino(matricula, categoria);
+					Assistente.gerarPDFTreino(matricula, categoria);			
+				
 				
 			}
 		});
@@ -200,7 +217,7 @@ public class TelaConsultaCliente extends JFrame {
 		contentPane.add(btnGerarTreino);
 		
 		
-		comboBoxCategoria.setModel(new DefaultComboBoxModel(new String[] {"", "A", "B", "C", "D", "E"}));
+		comboBoxCategoria.setModel(new DefaultComboBoxModel(new String[] {"A", "B", "C", "D", "E"}));
 		comboBoxCategoria.setMaximumRowCount(5);
 		comboBoxCategoria.setBounds(184, 219, 45, 28);
 		contentPane.add(comboBoxCategoria);

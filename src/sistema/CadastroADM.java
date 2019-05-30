@@ -15,8 +15,8 @@ public class CadastroADM {
 		repositorio.inserir(adm);
 	}
 	
-	public Administrador procurar(String cpf)  {
-		return repositorio.procurar(cpf);
+	public Administrador procurar(String matricula)  {
+		return repositorio.procurar(matricula);
 	}
 
 }

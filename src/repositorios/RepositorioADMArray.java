@@ -5,7 +5,7 @@ import interfaces.IRepositorioADM;
 
 public class RepositorioADMArray implements IRepositorioADM{
 	
-	public static final int TAM = 5;
+	public static final int TAM = 1;
 	private int indice;
 	private int i;
 	private Administrador[] repositorio;
@@ -15,11 +15,11 @@ public class RepositorioADMArray implements IRepositorioADM{
 		indice = 0;
 	}
 	
-	public int getIndice(String cpf) {
+	public int getIndice(String matricula) {
 		int i = 0;
 		
 		if(indice != 0) {
-			while(!cpf.equals(repositorio[i].getCpf())) {
+			while(!matricula.equals(repositorio[i].getMatricula())) {
 				if(i == indice - 1) {
 					return -1;
 				}else {
@@ -31,8 +31,8 @@ public class RepositorioADMArray implements IRepositorioADM{
 		return -1;
 	}
 	
-	public boolean existe(String cpf) {
-		i = getIndice(cpf);
+	public boolean existe(String matricula) {
+		i = getIndice(matricula);
 		if(i == -1) {
 			return false;
 		}else {
@@ -50,9 +50,9 @@ public class RepositorioADMArray implements IRepositorioADM{
 	}
 
 	@Override
-	public Administrador procurar(String cpf) {
+	public Administrador procurar(String matricula) {
 		
-		if(existe(cpf)) {
+		if(existe(matricula)) {
 			return this.repositorio[i];
 		}else {
 			return null;

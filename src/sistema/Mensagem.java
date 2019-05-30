@@ -25,8 +25,15 @@ public class Mensagem {
 		return MSGINFO;
 	}
 	
+	//Confirmações
+	public static final String CADCONFIRMA = "Confirma o cadastro?";
+	public static final String EXCCONFIRMA = "Confirma a exclusão?";
+	public static final String CONFVOLTAR = "Você realmente deseja voltar?";
+	public static final String DESEJAPROX = "Você realmente deseja ir?";
+	
 	//Erros
 	public static final String ERROCADASTRO = "Erro ao Cadastrar!";
+	
 	
 	//ClasseAssistente
 	public static final String NOVAMATRICULA = "MFit Academia - Nova Matrícula!";

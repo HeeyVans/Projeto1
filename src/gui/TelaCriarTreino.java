@@ -97,16 +97,14 @@ public class TelaCriarTreino extends JFrame {
 private String comboSelecionado() {
 		
 		if(comboBoxCategoria.getSelectedIndex() == 0) {
-			return null;
-		}else if(comboBoxCategoria.getSelectedIndex() == 1) {
 			return "A";
-		}else if(comboBoxCategoria.getSelectedIndex() == 2) {
+		}else if(comboBoxCategoria.getSelectedIndex() == 1) {
 			return "B";
-		}else if(comboBoxCategoria.getSelectedIndex() == 3) {
+		}else if(comboBoxCategoria.getSelectedIndex() == 2) {
 			return "C";
-		}else if(comboBoxCategoria.getSelectedIndex() == 4) {
+		}else if(comboBoxCategoria.getSelectedIndex() == 3) {
 			return "D";
-		}else if(comboBoxCategoria.getSelectedIndex() == 5) {
+		}else if(comboBoxCategoria.getSelectedIndex() == 4) {
 			return "E";
 		}else {
 			return null;
@@ -413,7 +411,7 @@ private String comboSelecionado() {
 		textFieldObs6.setColumns(10);
 		
 		
-		comboBoxCategoria.setModel(new DefaultComboBoxModel(new String[] {"", "A", "B", "C", "D", "E"}));
+		comboBoxCategoria.setModel(new DefaultComboBoxModel(new String[] {"A", "B", "C", "D", "E"}));
 		comboBoxCategoria.setBounds(483, 272, 58, 28);
 		contentPane.add(comboBoxCategoria);
 	}

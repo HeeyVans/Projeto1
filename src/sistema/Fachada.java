@@ -93,8 +93,8 @@ public class Fachada {
 	public void cadastrarADM(Administrador adm)  {
 		this.adm.inserir(adm);
 	}
-	public Administrador procurarADM(String cpf) {
-		return adm.procurar(cpf);
+	public Administrador procurarADM(String matricula) {
+		return adm.procurar(matricula);
 	}
 	//FIM CRUD ADM
 	//INICIO DE CRUD DO INSTRUTOR
@@ -107,7 +107,7 @@ public class Fachada {
 	}
 	
 	public Instrutor procurarInstrutorMatricula(String matricula) {
-		return instrutor.procurar(matricula);
+		return instrutor.procurarMatricula(matricula);
 	}
 
 	public void removerInstrutor(String cpf) {

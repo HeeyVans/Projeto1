@@ -121,8 +121,7 @@ public class RepositorioTreinoArray implements IRepositorioTreino{
 			 i++;
 			}
 		return exercicios;
-		}
-	
+		}	
 
 	@Override
 	public Treino procurarClienteTreino(String matricula) {

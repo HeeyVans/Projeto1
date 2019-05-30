@@ -10,7 +10,7 @@ import sistema.Mensagem;
 
 public class PopUps {
 	
-	//private static int confirm;
+	private static int confirm;
 	
 	//POPUPS PARA EXCEÇÕES
 	public static void campoVazio(CampoVazioException cve){
@@ -30,6 +30,47 @@ public class PopUps {
 	}
 	
 	//CONFIRMAÇÕES
+	
+    public static boolean ConfirmarCadastro() {
+		
+		confirm = JOptionPane.showConfirmDialog(null, Mensagem.CADCONFIRMA , null , JOptionPane.WARNING_MESSAGE, 3);
+		
+		if(confirm == JOptionPane.YES_OPTION) {
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+	
+	public static boolean ConfirmarExclusao() {
+		confirm = JOptionPane.showConfirmDialog(null, Mensagem.EXCCONFIRMA , null,  JOptionPane.WARNING_MESSAGE, 2);
+		if(confirm == JOptionPane.YES_OPTION) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public static boolean ConfirmarVolta() {
+		confirm = JOptionPane.showConfirmDialog(null, Mensagem.CONFVOLTAR , null,  JOptionPane.WARNING_MESSAGE, 2);
+		if(confirm == JOptionPane.YES_OPTION) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public static boolean ConfirmarIda() {
+		confirm = JOptionPane.showConfirmDialog(null, Mensagem.DESEJAPROX , null,  JOptionPane.WARNING_MESSAGE, 2);
+		if(confirm == JOptionPane.YES_OPTION) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	//CONFIRMAÇÕES VOID
 	public static void emailEnviado() {
 		JOptionPane.showMessageDialog(null, Mensagem.EMAILENVIADO);
 	}
@@ -65,5 +106,7 @@ public class PopUps {
 	public static void UsuarioNaoExiste() {
 		JOptionPane.showMessageDialog(null, Mensagem.USUARIONAOEXISTE, Mensagem.getMsgalert(), JOptionPane.WARNING_MESSAGE);
 	}
+	
+
 
 }

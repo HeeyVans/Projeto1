@@ -38,5 +38,6 @@ public class CadastroTreino {
 	public List listar(String matricula, String categoria) {
 		return repositorio.listar(matricula, categoria);
 	}
+	
 
 }

@@ -21,7 +21,7 @@ public class CadastroInstrutor {
 	}
 	
 	public Instrutor procurarMatricula(String matricula)   {
-		return repositorio.procurar(matricula);
+		return repositorio.procurarMatricula(matricula);
 	}
 	
 	public void remover(String matricula) /*throws MatriculaNaoEncontradaException*/   {
