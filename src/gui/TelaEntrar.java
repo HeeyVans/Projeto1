@@ -142,12 +142,15 @@ public class TelaEntrar extends JFrame{
 						
 						if(cliente != null) {
 							TelaConsultaCliente.getInstance().setVisible(true);
+							TelaConsultaCliente.getInstance().setLocationRelativeTo(null);
 							TelaDeEntrada.dispose();
 						}else if(instrutor != null) {
 							TelaInstrutor.getInstance().setVisible(true);
+							TelaInstrutor.getInstance().setLocationRelativeTo(null);
 							TelaDeEntrada.dispose();
 						}else if(ValidarDados.validarLoginADM(matricula)) {
 							TelaADM.getInstance().setVisible(true);
+							TelaADM.getInstance().setLocationRelativeTo(null);
 							TelaDeEntrada.dispose();
 						}else {
 							PopUps.UsuarioNaoExiste();

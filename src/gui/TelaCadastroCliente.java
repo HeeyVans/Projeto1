@@ -379,6 +379,7 @@ public class TelaCadastroCliente extends JFrame{
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaADM.getInstance().setVisible(true);
+				TelaADM.getInstance().setLocationRelativeTo(null);
 				frmTelaDeCadastro.dispose();
 			}
 		});

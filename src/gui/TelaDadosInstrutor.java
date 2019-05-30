@@ -127,6 +127,7 @@ public class TelaDadosInstrutor extends JFrame {
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaInstrutor.getInstance().setVisible(true);
+				TelaInstrutor.getInstance().setLocationRelativeTo(null);
 				dispose();
 			}
 		});

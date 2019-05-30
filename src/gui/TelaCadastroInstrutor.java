@@ -343,6 +343,7 @@ public class TelaCadastroInstrutor extends JFrame{
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				TelaADM.getInstance().setVisible(true);
+				TelaADM.getInstance().setLocationRelativeTo(null);
 				frmTelaDeCadastro.dispose();
 				
 			}

@@ -75,6 +75,7 @@ public class TelaADM extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				TelaCadastroCliente inicial = new TelaCadastroCliente();
 				inicial.frmTelaDeCadastro.setVisible(true);
+				inicial.frmTelaDeCadastro.setLocationRelativeTo(null);
 				dispose();
 			}
 		});
@@ -102,6 +103,7 @@ public class TelaADM extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				TelaCadastroInstrutor inicial = new TelaCadastroInstrutor();
 				inicial.frmTelaDeCadastro.setVisible(true);
+				inicial.frmTelaDeCadastro.setLocationRelativeTo(null);
 				dispose();
 			}
 		});
@@ -116,6 +118,7 @@ public class TelaADM extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				TelaEntrar entrar = new TelaEntrar();
 				entrar.TelaDeEntrada.setVisible(true);
+				entrar.TelaDeEntrada.setLocationRelativeTo(null);
 				dispose();
 				
 			}
@@ -130,6 +133,7 @@ public class TelaADM extends JFrame {
 		btnConsultarCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				TelaConsultaCliente.getInstance().setVisible(true);
+				TelaConsultaCliente.getInstance().setLocationRelativeTo(null);
 				dispose();
 			}
 		});
@@ -143,6 +147,7 @@ public class TelaADM extends JFrame {
 		btnConsultarInstrutor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaInstrutor.getInstance().setVisible(true);
+				TelaInstrutor.getInstance().setLocationRelativeTo(null);
 				dispose();
 			}
 		});

@@ -164,11 +164,13 @@ public class TelaConsultaCliente extends JFrame {
 				if(confirm == true) {
 					if(TelaEntrar.cliente == null) {
 						TelaADM.getInstance().setVisible(true);
+						TelaADM.getInstance().setLocationRelativeTo(null);
 						dispose();
 					}else {
 						
 					TelaEntrar window = new TelaEntrar();
 					window.TelaDeEntrada.setVisible(true);
+					window.TelaDeEntrada.setLocationRelativeTo(null);
 					dispose();
 					}
 				}
@@ -197,6 +199,7 @@ public class TelaConsultaCliente extends JFrame {
 				
 				if(confirm == true) {
 					TelaDadosCliente.getInstance().setVisible(true);
+					TelaDadosCliente.getInstance().setLocationRelativeTo(null);
 					dispose();
 				}
 				

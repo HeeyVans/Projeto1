@@ -154,6 +154,7 @@ public class TelaInstrutor extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				TelaEntrar window = new TelaEntrar();
 				window.TelaDeEntrada.setVisible(true);
+				window.TelaDeEntrada.setLocationRelativeTo(null);
 				dispose();
 			}
 		});
@@ -179,6 +180,7 @@ public class TelaInstrutor extends JFrame {
 		btnCriarTreino.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				TelaCriarTreino.getInstance().setVisible(true);
+				TelaCriarTreino.getInstance().setLocationRelativeTo(null);
 				dispose();
 			}
 		});
@@ -195,6 +197,7 @@ public class TelaInstrutor extends JFrame {
 		btnMeusDados.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaDadosInstrutor.getInstance().setVisible(true);
+				TelaDadosInstrutor.getInstance().setLocationRelativeTo(null);
 				dispose();
 			}
 		});
