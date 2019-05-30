@@ -215,15 +215,18 @@ public class TelaConsultaCliente extends JFrame {
 		btnGerarTreino.setBackground(new Color(0, 128, 0));
 		btnGerarTreino.setBounds(235, 270, 127, 38);
 		contentPane.add(btnGerarTreino);
+		comboBoxCategoria.setBackground(new Color(0, 128, 0));
+		comboBoxCategoria.setForeground(new Color(255, 255, 255));
 		
 		
 		comboBoxCategoria.setModel(new DefaultComboBoxModel(new String[] {"A", "B", "C", "D", "E"}));
 		comboBoxCategoria.setMaximumRowCount(5);
-		comboBoxCategoria.setBounds(184, 219, 45, 28);
+		comboBoxCategoria.setBounds(166, 219, 45, 28);
 		contentPane.add(comboBoxCategoria);
 		
 		JLabel lblCategoria = new JLabel("Categoria:");
-		lblCategoria.setBounds(132, 219, 59, 14);
+		lblCategoria.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblCategoria.setBounds(100, 219, 83, 28);
 		contentPane.add(lblCategoria);
 		
 		

@@ -278,7 +278,7 @@ public class TelaDadosInstrutor extends JFrame {
 		contentPane.add(textFieldCargo);
 		
 		JLabel lblHorrioDeTrabalho = new JLabel("Hor\u00E1rio de Trabalho:");
-		lblHorrioDeTrabalho.setBounds(427, 287, 105, 14);
+		lblHorrioDeTrabalho.setBounds(427, 287, 119, 14);
 		contentPane.add(lblHorrioDeTrabalho);
 		
 		textFieldHoraTrab = new JTextField();

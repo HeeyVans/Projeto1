@@ -182,12 +182,12 @@ public class TelaEntrar extends JFrame{
 		
 		textFieldMatricula = new JTextField();
 		textFieldMatricula.setColumns(10);
-		textFieldMatricula.setBounds(310, 231, 187, 34);
+		textFieldMatricula.setBounds(310, 213, 187, 34);
 		TelaDeEntrada.getContentPane().add(textFieldMatricula);
 		
 		JLabel lblMatrcula = new JLabel("Matr\u00EDcula:");
 		lblMatrcula.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblMatrcula.setBounds(231, 238, 90, 14);
+		lblMatrcula.setBounds(231, 220, 90, 14);
 		TelaDeEntrada.getContentPane().add(lblMatrcula);
 		
 		JLabel lblNewLabel = new JLabel("New label");
@@ -320,7 +320,7 @@ public class TelaEntrar extends JFrame{
 				
 			}
 		});
-		btnEsqueciSenha.setBounds(320, 276, 145, 20);
+		btnEsqueciSenha.setBounds(320, 258, 145, 20);
 		TelaDeEntrada.getContentPane().add(btnEsqueciSenha);
 		TelaDeEntrada.setBounds(100, 100, 535, 454);
 		TelaDeEntrada.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
