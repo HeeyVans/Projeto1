@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
@@ -18,6 +19,9 @@ import java.awt.Toolkit;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
+
+import sistema.Assistente;
+
 import javax.swing.ImageIcon;
 
 public class TelaDadosInstrutor extends JFrame {
@@ -129,20 +133,31 @@ public class TelaDadosInstrutor extends JFrame {
 				boolean confirm;
 				confirm = PopUps.ConfirmarVolta();
 				
-				if(confirm == true) {
-					if(TelaEntrar.instrutor != null) {
+				if(confirm == true) {					
 						TelaInstrutor.getInstance().setVisible(true);
 						TelaInstrutor.getInstance().setLocationRelativeTo(null);
 						dispose();
 					}
-					
-				}
+				
 			}
 		});
 		btnVoltar.setBounds(475, 400, 142, 35);
 		contentPane.add(btnVoltar);
 		
 		JButton btnAtualizacao = new JButton("Solicitar Atualiza\u00E7\u00E3o");
+		btnAtualizacao.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				boolean confirm;
+				confirm = PopUps.ConfirmarIda();
+				
+				if(confirm == true) {		
+						AttPedido.getInstance().setVisible(true);
+						AttPedido.getInstance().setLocationRelativeTo(null);
+						dispose();					
+					
+				}
+			}
+		});
 		btnAtualizacao.setForeground(new Color(255, 255, 255));
 		btnAtualizacao.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnAtualizacao.setBackground(new Color(0, 128, 0));
@@ -150,6 +165,16 @@ public class TelaDadosInstrutor extends JFrame {
 		contentPane.add(btnAtualizacao);
 		
 		JButton btnGerarPDF = new JButton("Gerar PDF");
+		btnGerarPDF.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Assistente.gerarPDFInstrutor(TelaEntrar.instrutor);
+				} catch (FileNotFoundException e1) {
+					
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnGerarPDF.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnGerarPDF.setBackground(new Color(0, 128, 0));
 		btnGerarPDF.setForeground(new Color(255, 255, 255));

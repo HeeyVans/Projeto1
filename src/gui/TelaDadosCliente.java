@@ -201,6 +201,20 @@ public class TelaDadosCliente extends JFrame {
 		textFieldObjetivo.setColumns(10);
 		
 		JButton btnAtualizar = new JButton("Solicitar Atualiza\u00E7\u00E3o");
+		btnAtualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				boolean confirm;
+				confirm = PopUps.ConfirmarIda();
+				
+				if(confirm == true) {		
+						AttPedido.getInstance().setVisible(true);
+						AttPedido.getInstance().setLocationRelativeTo(null);
+						dispose();					
+					
+				}
+			}
+		});
 		btnAtualizar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnAtualizar.setBackground(new Color(0, 128, 0));
 		btnAtualizar.setForeground(new Color(255, 255, 255));

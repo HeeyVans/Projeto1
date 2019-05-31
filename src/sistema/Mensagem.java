@@ -6,7 +6,7 @@ public class Mensagem {
 	public static final String CLIENTEJACADASTRADO = " já foi cadastrado como cliente!";
 	public static final String CLIENTENAOENCONTRADO = "Este cliente não foi encontrado!";
 	public static final String INSTRUTORJACADASTRADO = " já foi cadastrado como instrutor!";
-	public static final String MATRICULANAOENCONTRADA = "Esta matrícula não foi encontrada!";
+	public static final String MATRICULANAOENCONTRADA = "Esta matrícula não foi encontrada, por favor tente novamente!";
 	public static final String CPFINVALIDO = "Este CPF é inválido!";
 	public static final String EMAILINVALIDO = "Este email é inválido!";
 	public static final String CAMPOVAZIO = "Por favor, preencha todos os campos em branco!";
@@ -30,6 +30,8 @@ public class Mensagem {
 	public static final String EXCCONFIRMA = "Confirma a exclusão?";
 	public static final String CONFVOLTAR = "Você realmente deseja voltar?";
 	public static final String DESEJAPROX = "Você realmente deseja ir?";
+	public static final String PAGINAINICIAL = "Você realmente deseja ir para a página inicial?";
+	public static final String CONFENVIO = "Você confirma o envio?";
 	
 	//Erros
 	public static final String ERROCADASTRO = "Erro ao Cadastrar!";
@@ -59,6 +61,9 @@ public class Mensagem {
 	
 	//TelaCriarTreino
 	public static final String TREINOCRIADO = "Treino criado com sucesso!";
+	
+	//TelaCliente e Instrutor
+		public static final String ENVIOPEDIDO = "Pedido feito com sucesso!";
 	
 
 }

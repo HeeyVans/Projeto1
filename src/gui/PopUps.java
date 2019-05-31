@@ -70,9 +70,30 @@ public class PopUps {
 		}
 	}
 	
+	public static boolean ConfirmarIdaHomePage() {
+		confirm = JOptionPane.showConfirmDialog(null, Mensagem.PAGINAINICIAL , null,  JOptionPane.WARNING_MESSAGE, 2);
+		if(confirm == JOptionPane.YES_OPTION) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public static boolean ConfirmarEnvio() {
+		confirm = JOptionPane.showConfirmDialog(null, Mensagem.CONFENVIO , null,  JOptionPane.WARNING_MESSAGE, 2);
+		if(confirm == JOptionPane.YES_OPTION) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
 	//CONFIRMAÇÕES VOID
 	public static void emailEnviado() {
 		JOptionPane.showMessageDialog(null, Mensagem.EMAILENVIADO);
+	}
+	public static void pedidoEnviado() {
+		JOptionPane.showMessageDialog(null, Mensagem.ENVIOPEDIDO);
 	}
 	public static void clienteCadastrado() {
 		JOptionPane.showMessageDialog(null, Mensagem.CLIENTECADASTRADO);

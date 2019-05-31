@@ -64,6 +64,62 @@ public class Assistente {
 			      }   
 		}
 		
+		//Envia um email com uma mensagem2.
+				public static void enviarEmailClienteparaADM(String mensagem, Cliente c){
+					
+					final String MFitEmail = "MFit.Academia10@gmail.com";
+					final String MFitSenha = "mfit1010";
+					
+					SimpleEmail email = new SimpleEmail(); 
+					
+					try {  
+						
+						email.setHostName("smtp.gmail.com"); // o servidor SMTP para envio do e-mail
+						email.addTo("admMFitAcademia@gmail.com"); //destinatário
+						email.setFrom(MFitEmail); // remetente
+						email.setSubject("Solicitação de Atualização Cliente: " + c.getNome() + " com matrícula -" + c.getMatricula()); // assunto do e-mail
+						email.setMsg(mensagem); //conteudo do e-mail
+						email.setAuthentication(MFitEmail, MFitSenha);
+						email.setSmtpPort(465);
+						email.setSSL(true);
+						email.setTLS(true);
+						email.send();
+
+					      } catch (EmailException e) {  
+
+					      System.out.println(e.getMessage());  
+
+					      }   
+				}
+				
+				//Envia um email com uma mensagem3.
+				public static void enviarEmailInstrutorparaADM(String mensagem, Instrutor in){
+					
+					final String MFitEmail = "MFit.Academia10@gmail.com";
+					final String MFitSenha = "mfit1010";
+					
+					SimpleEmail email = new SimpleEmail(); 
+					
+					try {  
+						
+						email.setHostName("smtp.gmail.com"); // o servidor SMTP para envio do e-mail
+						email.addTo("admMFitAcademia@gmail.com"); //destinatário
+						email.setFrom(MFitEmail); // remetente
+						email.setSubject("Solicitação de Atualização Instrutor: " + in.getNome() + " com matrícula -" + in.getMatricula()); // assunto do e-mail
+						email.setMsg(mensagem); //conteudo do e-mail
+						email.setAuthentication(MFitEmail, MFitSenha);
+						email.setSmtpPort(465);
+						email.setSSL(true);
+						email.setTLS(true);
+						email.send();
+
+					      } catch (EmailException e) {  
+
+					      System.out.println(e.getMessage());  
+
+					      }   
+				}
+		
 		
 		//Gera uma senha de 10 caracteres, através da conversão de 
 		//valores inteiros aleatóriso em caracteres.
@@ -139,6 +195,48 @@ public class Assistente {
 			
 			document.close();
 		}
+		
+		//GerarPDF de Dados para Cliente
+				public static void gerarPDFInstrutor(Instrutor instrutor) throws FileNotFoundException {
+					
+					Document document = new Document();
+					
+					try {
+						
+						PdfWriter.getInstance(document, new FileOutputStream("Instrutor.pdf"));
+						document.open();
+						document.setPageSize(PageSize.A1);
+						
+						document.add(new Paragraph("Cliente:" + instrutor.getNome()));
+						document.add(new Paragraph(" "));
+						document.add(new Paragraph("_______________________________"));
+						document.add(new Paragraph("Cidade:" + instrutor.getEndereco().getCidade()));
+						document.add(new Paragraph("Bairro:" + instrutor.getEndereco().getBairro()));
+						document.add(new Paragraph("Rua:" + instrutor.getEndereco().getRua()));
+						document.add(new Paragraph("Rua:" + instrutor.getEndereco().getComplemento()));
+						document.add(new Paragraph("Número:" + instrutor.getEndereco().getNumero()));
+						document.add(new Paragraph(" "));
+						document.add(new Paragraph("_______________________________"));
+						document.add(new Paragraph("CPF:" + instrutor.getCpf()));
+						document.add(new Paragraph("Data de Nascimento:" + instrutor.getDataDeNasc()));
+						document.add(new Paragraph("Matrícula:" + instrutor.getMatricula()));
+						document.add(new Paragraph("Email:" + instrutor.getEmail()));
+						document.add(new Paragraph("Telefone:" + instrutor.getTelefone()));
+						document.add(new Paragraph("Gênero:" + instrutor.getGenero()));
+						document.add(new Paragraph(" "));
+						document.add(new Paragraph("_______________________________"));
+						document.add(new Paragraph("Horas de Trabalho:" + instrutor.getHoraTrab()));
+						document.add(new Paragraph("Cargo:" + instrutor.getCargo()));
+						
+						PopUps.pdfgerado();
+							
+						
+					}catch(DocumentException | IOException ex) {
+						System.out.println("Error"+ ex);
+					}
+					
+					document.close();
+				}
 		
 		//Gerar PDF do Treino
 		public static void gerarPDFTreino(String matricula, String categoria) {

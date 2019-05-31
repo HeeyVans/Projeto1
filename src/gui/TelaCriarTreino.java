@@ -11,9 +11,11 @@ import basicas.Cliente;
 import basicas.Exercicio;
 import basicas.Instrutor;
 import basicas.Treino;
+import excecoes.MatriculaNaoEncontradaException;
 import repositorios.RepositorioExercicioArray;
 import sistema.Assistente;
 import sistema.Fachada;
+import sistema.ValidarDados;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -27,6 +29,8 @@ import javax.swing.border.TitledBorder;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class TelaCriarTreino extends JFrame {
 
@@ -195,9 +199,16 @@ private String comboSelecionado() {
 		JButton button = new JButton("P\u00E1gina Inicial");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaEntrar window = new TelaEntrar();
-				window.TelaDeEntrada.setVisible(true);
-				dispose();
+				boolean confirm;
+				confirm = PopUps.ConfirmarIdaHomePage();
+				
+				if(confirm == true) {
+						TelaEntrar window = new TelaEntrar();
+						window.TelaDeEntrada.setVisible(true);
+						dispose();
+										
+				}
+				
 			}
 		});
 		button.setForeground(Color.WHITE);
@@ -209,42 +220,67 @@ private String comboSelecionado() {
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				boolean confirm;
+				confirm = PopUps.ConfirmarCadastro();
 				
-				Instrutor instru = TelaEntrar.instrutor;
-				Cliente cliente;
-				Exercicio ex, ex1, ex2, ex3, ex4, ex5;
-				RepositorioExercicioArray rep = new RepositorioExercicioArray();
+				if(confirm == true && textFieldMatricula.getText() != "") {
+						
+					if(ValidarDados.validarCampoVazio(textFieldDescanso3.getText(),textFieldDescanso4.getText(), 
+							textFieldDescanso5.getText(), textFieldDescanso6.getText(), textFieldNome.getText(),
+							textFieldNome2.getText(), textFieldNome3.getText(), textFieldNome4.getText(), textFieldNome5.getText(), 
+							textFieldNome6.getText(), textFieldSeries.getText(), textFieldSeries2.getText(), textFieldSeries3.getText(), 
+							textFieldSeries4.getText(), textFieldSeries5.getText(), textFieldSeries6.getText(),
+							textFieldDescanso.getText(), textFieldDescanso2.getText())) {
+						
+						try {
+							Instrutor instru = TelaEntrar.instrutor;
+							Cliente cliente;
+							Exercicio ex, ex1, ex2, ex3, ex4, ex5;
+							RepositorioExercicioArray rep = new RepositorioExercicioArray();
+							
+							String matricula = textFieldMatricula.getText();
+							
+							cliente = Fachada.getInstance().procurarClienteMatricula(matricula);
+							
+							ex = new Exercicio(textFieldObs.getText(), textFieldNome.getText(), Integer.parseInt(textFieldSeries.getText()), 
+									textFieldDescanso.getText());
+							ex1 = new Exercicio(textFieldObs2.getText(), textFieldNome2.getText(), Integer.parseInt(textFieldSeries2.getText()), 
+									textFieldDescanso2.getText());
+							ex2 = new Exercicio(textFieldObs3.getText(), textFieldNome3.getText(), Integer.parseInt(textFieldSeries3.getText()), 
+									textFieldDescanso3.getText());
+							ex3 = new Exercicio(textFieldObs4.getText(), textFieldNome4.getText(), Integer.parseInt(textFieldSeries4.getText()), 
+									textFieldDescanso4.getText());
+							ex4 = new Exercicio(textFieldObs5.getText(), textFieldNome5.getText(), Integer.parseInt(textFieldSeries5.getText()), 
+									textFieldDescanso5.getText());
+							ex5 = new Exercicio(textFieldObs6.getText(), textFieldNome6.getText(), Integer.parseInt(textFieldSeries6.getText()), 
+									textFieldDescanso6.getText());
+													
+							Fachada.getInstance().inserirExercicio(ex);
+							
+							rep.inserir(ex);
+							rep.inserir(ex1);
+							rep.inserir(ex2);
+							rep.inserir(ex3);
+							rep.inserir(ex4);
+							rep.inserir(ex5);
+							
+							Treino t = new Treino(instru, cliente, rep, Assistente.gerarId(), comboSelecionado());
+							Fachada.getInstance().inserirTreino(t);
+							limpar();
+							PopUps.treinoCriado();
+							
+							MatriculaNaoEncontradaException mnee = new MatriculaNaoEncontradaException();
+							throw mnee;
+							
+						}catch(MatriculaNaoEncontradaException mnee) {
+							PopUps.matriculaInvalida(mnee);
+						}
+						
+					}					
+				}
 				
-				String matricula = textFieldMatricula.getText();
 				
-				cliente = Fachada.getInstance().procurarClienteMatricula(matricula);
 				
-				ex = new Exercicio(textFieldObs.getText(), textFieldNome.getText(), Integer.parseInt(textFieldSeries.getText()), 
-						textFieldDescanso.getText());
-				ex1 = new Exercicio(textFieldObs2.getText(), textFieldNome2.getText(), Integer.parseInt(textFieldSeries2.getText()), 
-						textFieldDescanso2.getText());
-				ex2 = new Exercicio(textFieldObs3.getText(), textFieldNome3.getText(), Integer.parseInt(textFieldSeries3.getText()), 
-						textFieldDescanso3.getText());
-				ex3 = new Exercicio(textFieldObs4.getText(), textFieldNome4.getText(), Integer.parseInt(textFieldSeries4.getText()), 
-						textFieldDescanso4.getText());
-				ex4 = new Exercicio(textFieldObs5.getText(), textFieldNome5.getText(), Integer.parseInt(textFieldSeries5.getText()), 
-						textFieldDescanso5.getText());
-				ex5 = new Exercicio(textFieldObs6.getText(), textFieldNome6.getText(), Integer.parseInt(textFieldSeries6.getText()), 
-						textFieldDescanso6.getText());
-				
-				Fachada.getInstance().inserirExercicio(ex);
-				
-				rep.inserir(ex);
-				rep.inserir(ex1);
-				rep.inserir(ex2);
-				rep.inserir(ex3);
-				rep.inserir(ex4);
-				rep.inserir(ex5);
-				
-				Treino t = new Treino(instru, cliente, rep, Assistente.gerarId(), comboSelecionado());
-				Fachada.getInstance().inserirTreino(t);
-				limpar();
-				PopUps.treinoCriado();
 			}
 		});
 		btnCadastrar.setForeground(Color.WHITE);
@@ -276,6 +312,16 @@ private String comboSelecionado() {
 		lblSerie.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		textFieldSeries = new JTextField();
+		textFieldSeries.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				String caracteres="0987654321";
+			       if(!caracteres.contains(arg0.getKeyChar()+"")){
+			              arg0.consume();
+
+			       }
+			}
+		});
 		textFieldSeries.setBounds(64, 83, 174, 28);
 		panel.add(textFieldSeries);
 		textFieldSeries.setColumns(10);
@@ -361,6 +407,16 @@ private String comboSelecionado() {
 		textFieldNome2.setColumns(10);
 		
 		textFieldSeries2 = new JTextField();
+		textFieldSeries2.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				String caracteres="0987654321";
+			       if(!caracteres.contains(e.getKeyChar()+"")){
+			              e.consume();
+
+			       }
+			}
+		});
 		textFieldSeries2.setBounds(66, 83, 174, 28);
 		panel_1.add(textFieldSeries2);
 		textFieldSeries2.setColumns(10);
@@ -413,6 +469,16 @@ private String comboSelecionado() {
 		textFieldNome3.setColumns(10);
 		
 		textFieldSeries3 = new JTextField();
+		textFieldSeries3.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				String caracteres="0987654321";
+			       if(!caracteres.contains(e.getKeyChar()+"")){
+			              e.consume();
+
+			       }
+			}
+		});
 		textFieldSeries3.setBounds(66, 83, 174, 28);
 		panel_2.add(textFieldSeries3);
 		textFieldSeries3.setColumns(10);
@@ -465,6 +531,16 @@ private String comboSelecionado() {
 		textFieldNome4.setColumns(10);
 		
 		textFieldSeries4 = new JTextField();
+		textFieldSeries4.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				String caracteres="0987654321";
+			       if(!caracteres.contains(e.getKeyChar()+"")){
+			              e.consume();
+
+			       }
+			}
+		});
 		textFieldSeries4.setBounds(66, 83, 174, 28);
 		panel_3.add(textFieldSeries4);
 		textFieldSeries4.setColumns(10);
@@ -517,6 +593,16 @@ private String comboSelecionado() {
 		textFieldNome5.setColumns(10);
 		
 		textFieldSeries5 = new JTextField();
+		textFieldSeries5.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				String caracteres="0987654321";
+			       if(!caracteres.contains(e.getKeyChar()+"")){
+			              e.consume();
+
+			       }
+			}
+		});
 		textFieldSeries5.setBounds(66, 83, 174, 28);
 		panel_4.add(textFieldSeries5);
 		textFieldSeries5.setColumns(10);
@@ -569,6 +655,16 @@ private String comboSelecionado() {
 		textFieldNome6.setColumns(10);
 		
 		textFieldSeries6 = new JTextField();
+		textFieldSeries6.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				String caracteres="0987654321";
+			       if(!caracteres.contains(e.getKeyChar()+"")){
+			              e.consume();
+
+			       }
+			}
+		});
 		textFieldSeries6.setBounds(66, 83, 174, 28);
 		panel_5.add(textFieldSeries6);
 		textFieldSeries6.setColumns(10);
