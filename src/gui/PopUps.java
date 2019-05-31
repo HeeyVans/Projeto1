@@ -107,6 +107,5 @@ public class PopUps {
 		JOptionPane.showMessageDialog(null, Mensagem.USUARIONAOEXISTE, Mensagem.getMsgalert(), JOptionPane.WARNING_MESSAGE);
 	}
 	
-
-
+	
 }

@@ -55,9 +55,9 @@ public class TelaDadosCliente extends JFrame {
 		TelaEntrar.getInstance();
 		textFieldNome.setText(TelaEntrar.cliente.getNome());
 		textFieldCPF.setText(TelaEntrar.cliente.getCpf());
-        //DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        //String dataFormatada = dateFormat.format(TelaEntrar.cliente.getDataDeNasc());
-		//textFieldData.setText(dataFormatada);
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String dataFormatada = dateFormat.format(TelaEntrar.cliente.getDataDeNasc());
+		textFieldData.setText(dataFormatada);
 		textFieldMatricula.setText(TelaEntrar.cliente.getMatricula());
 		textFieldEmail.setText(TelaEntrar.cliente.getEmail());
 		textFieldTelefone.setText(TelaEntrar.cliente.getTelefone());
@@ -210,9 +210,18 @@ public class TelaDadosCliente extends JFrame {
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaConsultaCliente.getInstance().setVisible(true);
-				TelaConsultaCliente.getInstance().setLocationRelativeTo(null);
-				dispose();
+				boolean confirm;
+				confirm = PopUps.ConfirmarVolta();
+				
+				if(confirm == true) {
+					if(TelaEntrar.cliente != null) {
+						TelaConsultaCliente.getInstance().setVisible(true);
+						TelaConsultaCliente.getInstance().setLocationRelativeTo(null);
+						dispose();
+					}
+					
+				}
+				
 			}
 		});
 		btnVoltar.setIcon(new ImageIcon(TelaDadosCliente.class.getResource("/imagens/gtkgobackltr_104397.png")));

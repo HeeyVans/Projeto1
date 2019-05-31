@@ -47,7 +47,7 @@ public class TelaInstrutor extends JFrame {
 		return instance;
 	}
 
-	public void limparCampos() {
+	public void limpar() {
 		textFieldNome.setText("");
 	}
 	/**
@@ -138,6 +138,7 @@ public class TelaInstrutor extends JFrame {
 						
 					modeloInstrutor.addClienteList(lista);
 				}
+			
 				
 			
 		});
@@ -152,10 +153,23 @@ public class TelaInstrutor extends JFrame {
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaEntrar window = new TelaEntrar();
-				window.TelaDeEntrada.setVisible(true);
-				window.TelaDeEntrada.setLocationRelativeTo(null);
-				dispose();
+				boolean confirm;
+				confirm = PopUps.ConfirmarVolta();
+				
+				if(confirm == true) {
+					if(TelaEntrar.instrutor == null) {
+						TelaADM.getInstance().setVisible(true);
+						TelaADM.getInstance().setLocationRelativeTo(null);
+						dispose();
+					}else {
+						
+					TelaEntrar window = new TelaEntrar();
+					window.TelaDeEntrada.setVisible(true);
+					window.TelaDeEntrada.setLocationRelativeTo(null);
+					dispose();
+					}
+				}
+				
 			}
 		});
 		btnVoltar.setIcon(new ImageIcon(TelaInstrutor.class.getResource("/imagens/gtkgobackltr_104397.png")));
@@ -168,7 +182,7 @@ public class TelaInstrutor extends JFrame {
 		JButton button = new JButton("Limpar");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				limparCampos();
+				limpar();
 			}
 		});
 		button.setIcon(new ImageIcon(TelaInstrutor.class.getResource("/imagens/delete_remove_bin_icon-icons.com_72400.png")));
@@ -179,9 +193,15 @@ public class TelaInstrutor extends JFrame {
 		JButton btnCriarTreino = new JButton("Criar treino");
 		btnCriarTreino.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				TelaCriarTreino.getInstance().setVisible(true);
-				TelaCriarTreino.getInstance().setLocationRelativeTo(null);
-				dispose();
+				boolean confirm;
+				confirm = PopUps.ConfirmarIda();
+				
+				if(confirm == true) {
+					TelaCriarTreino.getInstance().setVisible(true);
+					TelaCriarTreino.getInstance().setLocationRelativeTo(null);
+					dispose();
+				}
+				
 			}
 		});
 		btnCriarTreino.setForeground(Color.WHITE);
@@ -196,9 +216,15 @@ public class TelaInstrutor extends JFrame {
 		btnMeusDados.setForeground(Color.WHITE);
 		btnMeusDados.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaDadosInstrutor.getInstance().setVisible(true);
-				TelaDadosInstrutor.getInstance().setLocationRelativeTo(null);
-				dispose();
+				boolean confirm;
+				confirm = PopUps.ConfirmarIda();
+				
+				if(confirm == true) {
+					TelaDadosInstrutor.getInstance().setVisible(true);
+					TelaDadosInstrutor.getInstance().setLocationRelativeTo(null);
+					dispose();
+				}
+				
 			}
 		});
 		btnMeusDados.setBounds(447, 256, 129, 38);

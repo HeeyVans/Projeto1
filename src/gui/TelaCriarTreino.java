@@ -587,5 +587,23 @@ private String comboSelecionado() {
 		lblCategoriaDoTreino.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblCategoriaDoTreino.setBounds(338, 648, 140, 17);
 		contentPane.add(lblCategoriaDoTreino);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				boolean confirm;
+				confirm = PopUps.ConfirmarVolta();
+				
+				if(confirm == true) {
+					if(TelaEntrar.instrutor == null) {
+						TelaInstrutor.getInstance().setVisible(true);
+						TelaInstrutor.getInstance().setLocationRelativeTo(null);
+						dispose();
+					}
+				}
+			}
+		});
+		btnVoltar.setBounds(566, 612, 89, 23);
+		contentPane.add(btnVoltar);
 	}
 }

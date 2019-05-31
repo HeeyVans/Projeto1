@@ -40,12 +40,15 @@ import com.toedter.calendar.JDateChooser;
 
 import basicas.Cliente;
 import basicas.Endereco;
+import excecoes.EmailInvalidoException;
 import sistema.Assistente;
 import sistema.Fachada;
 import sistema.ValidarDados;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class TelaCadastroCliente extends JFrame{
 
@@ -151,6 +154,16 @@ public class TelaCadastroCliente extends JFrame{
 		frmTelaDeCadastro.getContentPane().add(lblTelefone);
 		
 		textFieldTelefone = new JTextField();
+		textFieldTelefone.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent ev) {
+				String caracteres="0987654321";
+			       if(!caracteres.contains(ev.getKeyChar()+"")){
+			              ev.consume();
+
+			       }
+			}
+		});
 		textFieldTelefone.setBounds(62, 8, 108, 29);
 		frmTelaDeCadastro.getContentPane().add(textFieldTelefone);
 		textFieldTelefone.setColumns(10);
@@ -214,6 +227,15 @@ public class TelaCadastroCliente extends JFrame{
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String cpf = textFieldCPF.getText(), email = textFieldEmail.getText();
+				
+				if(!ValidarDados.isCPF(cpf)) {
+					PopUps.cpfInvalido();
+				}else if(!ValidarDados.validarEmail(email)){
+								
+				}else {					
+				
+				
 				if(ValidarDados.validarCampoVazio(textFieldTelefone.getText(), textFieldNome.getText(), 
 						textFieldEmail.getText(), textFieldCPF.getText(), textFieldRua.getText(), 
 						textFieldBairro.getText(), textFieldCidade.getText(),(textFieldNumero.getText()),
@@ -247,7 +269,7 @@ public class TelaCadastroCliente extends JFrame{
 						PopUps.ErroCadastro();
 					}
 						
-					
+				}
 					
 				}
 			}
@@ -378,9 +400,16 @@ public class TelaCadastroCliente extends JFrame{
 		JButton button = new JButton("Voltar");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaADM.getInstance().setVisible(true);
-				TelaADM.getInstance().setLocationRelativeTo(null);
-				frmTelaDeCadastro.dispose();
+				boolean confirm;
+				confirm = PopUps.ConfirmarVolta();
+				
+				if(confirm == true) {
+					if(TelaEntrar.instrutor == null) {
+						TelaADM.getInstance().setVisible(true);
+						TelaADM.getInstance().setLocationRelativeTo(null);
+						frmTelaDeCadastro.dispose();
+					}
+				}
 			}
 		});
 		button.setIcon(new ImageIcon(TelaCadastroCliente.class.getResource("/imagens/gtkgobackltr_104397.png")));

@@ -188,7 +188,7 @@ public class TelaConsultaCliente extends JFrame {
 		label_1.setBounds(0, 258, 229, 80);
 		contentPane.add(label_1);
 		
-		JButton btnDados = new JButton("Dados");
+		JButton btnDados = new JButton("Meus Dados");
 		btnDados.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnDados.setForeground(Color.WHITE);
 		btnDados.setBackground(new Color(0, 128, 0));

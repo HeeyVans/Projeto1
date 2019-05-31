@@ -52,9 +52,9 @@ public class TelaDadosInstrutor extends JFrame {
 		textFieldCPF.setText(TelaEntrar.instrutor.getCpf());
 		textFieldMatricula.setText(TelaEntrar.instrutor.getMatricula());
 		textFieldEmail.setText(TelaEntrar.instrutor.getEmail());
-        /*DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         String dataFormatada = dateFormat.format(TelaEntrar.instrutor.getDataDeNasc());
-		textFieldData.setText(dataFormatada);		
+		textFieldData.setText(dataFormatada);	
 		textFieldTelefone.setText(TelaEntrar.instrutor.getTelefone());
 		textFieldSexo.setText(TelaEntrar.instrutor.getGenero());
 		textFieldCidade.setText(TelaEntrar.instrutor.getEndereco().getCidade());
@@ -62,8 +62,8 @@ public class TelaDadosInstrutor extends JFrame {
 		textFieldBairro.setText(TelaEntrar.instrutor.getEndereco().getBairro());
 		textFieldNumero.setText(TelaEntrar.instrutor.getEndereco().getNumero());
 		textFieldComplemento.setText(TelaEntrar.instrutor.getEndereco().getComplemento());
-		textFieldPagamento.setText(TelaEntrar.instrutor.getPagamento());
-		textFieldObjetivo.setText(TelaEntrar.instrutor.getObjetivo());*/
+		textFieldCargo.setText(TelaEntrar.instrutor.getCargo());
+		textFieldHoraTrab.setText(TelaEntrar.instrutor.getHoraTrab());
 	}
 
 	/**
@@ -126,9 +126,17 @@ public class TelaDadosInstrutor extends JFrame {
 		btnVoltar.setBackground(new Color(0, 128, 0));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaInstrutor.getInstance().setVisible(true);
-				TelaInstrutor.getInstance().setLocationRelativeTo(null);
-				dispose();
+				boolean confirm;
+				confirm = PopUps.ConfirmarVolta();
+				
+				if(confirm == true) {
+					if(TelaEntrar.instrutor != null) {
+						TelaInstrutor.getInstance().setVisible(true);
+						TelaInstrutor.getInstance().setLocationRelativeTo(null);
+						dispose();
+					}
+					
+				}
 			}
 		});
 		btnVoltar.setBounds(475, 400, 142, 35);

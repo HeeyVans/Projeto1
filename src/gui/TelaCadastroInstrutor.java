@@ -26,6 +26,8 @@ import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 //import com.toedter.calendar.JDateChooser;
 
 public class TelaCadastroInstrutor extends JFrame{
@@ -131,6 +133,16 @@ public class TelaCadastroInstrutor extends JFrame{
 		frmTelaDeCadastro.getContentPane().add(lblTelefone);
 		
 		textFieldTelefone = new JTextField();
+		textFieldTelefone.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent ev) {
+				String caracteres="0987654321";
+			       if(!caracteres.contains(ev.getKeyChar()+"")){
+			              ev.consume();
+
+			       }
+			}
+		});
 		textFieldTelefone.setColumns(10);
 		textFieldTelefone.setBounds(62, 11, 108, 29);
 		frmTelaDeCadastro.getContentPane().add(textFieldTelefone);
@@ -260,6 +272,13 @@ public class TelaCadastroInstrutor extends JFrame{
 		JButton button_1 = new JButton("Cadastrar");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String cpf = textFieldCPF.getText(), email = textFieldEmail.getText();
+				
+				if(!ValidarDados.isCPF(cpf)) {
+					PopUps.cpfInvalido();
+				}else if(!ValidarDados.validarEmail(email)){
+								
+				}else {
 				
 				if(ValidarDados.validarCampoVazio(textFieldTelefone.getText(), textFieldNome.getText(), 
 						textFieldEmail.getText(), textFieldCPF.getText(), textFieldRua.getText(), 
@@ -294,7 +313,7 @@ public class TelaCadastroInstrutor extends JFrame{
 						PopUps.ErroCadastro();
 					}
 						
-					
+				}
 					
 				}
 			}
@@ -320,6 +339,16 @@ public class TelaCadastroInstrutor extends JFrame{
 		frmTelaDeCadastro.getContentPane().add(lblHoraTrab);
 		
 		textFieldHoraTrab = new JTextField();
+		textFieldHoraTrab.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				String caracteres="0987654321";
+			       if(!caracteres.contains(e.getKeyChar()+"")){
+			              e.consume();
+
+			       }
+			}
+		});
 		textFieldHoraTrab.setHorizontalAlignment(SwingConstants.LEFT);
 		textFieldHoraTrab.setColumns(10);
 		textFieldHoraTrab.setBounds(7, 232, 186, 29);
@@ -335,16 +364,23 @@ public class TelaCadastroInstrutor extends JFrame{
 		label_10.setBounds(7, 282, 260, 68);
 		frmTelaDeCadastro.getContentPane().add(label_10);
 		
-		JDateChooser dateChooserNascimento = new JDateChooser();
-		dateChooserNascimento.setBounds(82, 105, 145, 27);
-		frmTelaDeCadastro.getContentPane().add(dateChooserNascimento);
+		
+		dataNascimento.setBounds(82, 105, 145, 27);
+		frmTelaDeCadastro.getContentPane().add(dataNascimento);
 		
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				TelaADM.getInstance().setVisible(true);
-				TelaADM.getInstance().setLocationRelativeTo(null);
-				frmTelaDeCadastro.dispose();
+				boolean confirm;
+				confirm = PopUps.ConfirmarVolta();
+				
+				if(confirm == true) {
+					if(TelaEntrar.instrutor == null) {
+						TelaADM.getInstance().setVisible(true);
+						TelaADM.getInstance().setLocationRelativeTo(null);
+						frmTelaDeCadastro.dispose();
+					}
+				}
 				
 			}
 		});
