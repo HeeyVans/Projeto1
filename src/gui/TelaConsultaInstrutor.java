@@ -259,6 +259,13 @@ public class TelaConsultaInstrutor extends JFrame {
 		contentPane.add(btnRemoverInstrutor);
 		
 		JButton btnAlterarInstrutor = new JButton("Alterar");
+		btnAlterarInstrutor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AttPedido.getInstance().setVisible(true);
+				AttPedido.getInstance().setLocationRelativeTo(null);
+				dispose();
+			}
+		});
 		btnAlterarInstrutor.setForeground(Color.WHITE);
 		btnAlterarInstrutor.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnAlterarInstrutor.setBackground(new Color(0, 128, 0));

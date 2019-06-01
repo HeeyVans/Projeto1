@@ -300,6 +300,13 @@ public class TelaInstrutor extends JFrame {
 		contentPane.add(btnRemoverCliente);
 		
 		JButton btnAlterarCliente = new JButton("Alterar");
+		btnAlterarCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				AttPedido.getInstance().setVisible(true);
+				AttPedido.getInstance().setLocationRelativeTo(null);
+				dispose();
+			}
+		});
 		btnAlterarCliente.setForeground(Color.WHITE);
 		btnAlterarCliente.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnAlterarCliente.setBackground(new Color(0, 128, 0));
