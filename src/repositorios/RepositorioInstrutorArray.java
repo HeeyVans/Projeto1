@@ -1,5 +1,8 @@
 package repositorios;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import basicas.Instrutor;
 import interfaces.IRepositorioInstrutor;
 
@@ -113,5 +116,18 @@ public class RepositorioInstrutorArray implements IRepositorioInstrutor{
 		}
 	}
 
+	@Override
+	public List listar(String nome) {
+		
+		List instrutor = new ArrayList();
+		i = 0;
+		while(i < indice) {
+			if(repositorio[i].getNome().equals(nome)) {
+				instrutor.add(repositorio[i]);
+			}			 
+			 i++;
+			}
+		return instrutor;
+		}
 
 }

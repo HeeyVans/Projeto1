@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.List;
 
 import basicas.Instrutor;
 import interfaces.IRepositorioInstrutor;
@@ -120,6 +121,12 @@ public class RepositorioInstrutorArquivo implements IRepositorioInstrutor, Seria
 	@Override
 	public Instrutor procurarMatricula(String matricula) {
       //Método duplicado, já existe um procurando por matrícula.
+		return null;
+	}
+
+	@Override
+	public List listar(String nome) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

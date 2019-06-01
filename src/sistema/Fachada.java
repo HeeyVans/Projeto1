@@ -117,7 +117,9 @@ public class Fachada {
 	public void atualizar(Instrutor instrutor) {
 		this.instrutor.atualizar(instrutor);
 	}
-	//listar();
+	public List listarInstrutor(String nome) {
+		return this.instrutor.listar(nome);
+	}
 	
 	//FIM DE CRUD DO INSTRUTOR
 	//INICIO DE CRUD EXERCICIO

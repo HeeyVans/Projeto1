@@ -1,6 +1,8 @@
 package interfaces;
 
 
+import java.util.List;
+
 import basicas.Instrutor;
 
 public interface IRepositorioInstrutor {
@@ -10,6 +12,6 @@ public interface IRepositorioInstrutor {
 	public Instrutor procurarMatricula(String matricula);
 	public void remover(String cpf);
 	public void atualizar(Instrutor instrutor);
-	//listar
+	public List listar(String nome);
 
 }

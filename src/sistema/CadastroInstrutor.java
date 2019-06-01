@@ -1,5 +1,7 @@
 package sistema;
 
+import java.util.List;
+
 import basicas.Instrutor;
 import excecoes.InstrutorJaCadastradoException;
 import interfaces.IRepositorioInstrutor;
@@ -30,6 +32,10 @@ public class CadastroInstrutor {
 	
 	public void atualizar(Instrutor instrutor) {
 		repositorio.atualizar(instrutor);
+	}
+
+	public List listar(String nome) {
+		return repositorio.listar(nome);
 	}
 
 }
