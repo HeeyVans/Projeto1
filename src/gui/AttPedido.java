@@ -61,6 +61,10 @@ public class AttPedido extends JFrame {
 		}
 		return instance;
 	}
+	
+	public void limpar() {
+		textFieldAlterar.setText("");
+	}
 
 	/**
 	 * Create the frame.
@@ -108,9 +112,11 @@ public class AttPedido extends JFrame {
 						if(in == null) {
 						Assistente.enviarEmailClienteparaADM(mensagem, cliente);
 						PopUps.pedidoEnviado();
+						limpar();
 						}else {
 							Assistente.enviarEmailInstrutorparaADM(mensagem, in);
-							PopUps.pedidoEnviado();
+							PopUps.pedidoEnviado();	
+							limpar();
 						}
 					}
 				}				
