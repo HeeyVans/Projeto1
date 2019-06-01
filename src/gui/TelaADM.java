@@ -70,21 +70,6 @@ public class TelaADM extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton button = new JButton("Cadastrar Cliente");
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				TelaCadastroCliente inicial = new TelaCadastroCliente();
-				inicial.frmTelaDeCadastro.setVisible(true);
-				inicial.frmTelaDeCadastro.setLocationRelativeTo(null);
-				dispose();
-			}
-		});
-		button.setForeground(Color.WHITE);
-		button.setFont(new Font("Tahoma", Font.BOLD, 14));
-		button.setBackground(new Color(0, 128, 0));
-		button.setBounds(51, 198, 176, 41);
-		contentPane.add(button);
-		
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setForeground(Color.WHITE);
@@ -97,21 +82,6 @@ public class TelaADM extends JFrame {
 		label.setBounds(79, 0, 340, 117);
 		panel.add(label);
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		
-		JButton button_1 = new JButton("Cadastrar Instrutor");
-		button_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				TelaCadastroInstrutor inicial = new TelaCadastroInstrutor();
-				inicial.frmTelaDeCadastro.setVisible(true);
-				inicial.frmTelaDeCadastro.setLocationRelativeTo(null);
-				dispose();
-			}
-		});
-		button_1.setForeground(Color.WHITE);
-		button_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		button_1.setBackground(new Color(0, 128, 0));
-		button_1.setBounds(51, 275, 176, 41);
-		contentPane.add(button_1);
 		
 		JButton btnPginaInicial = new JButton("P\u00E1gina Inicial");
 		btnPginaInicial.addActionListener(new ActionListener() {
@@ -129,49 +99,32 @@ public class TelaADM extends JFrame {
 		btnPginaInicial.setBounds(154, 345, 176, 41);
 		contentPane.add(btnPginaInicial);
 		
-		JButton btnConsultarCliente = new JButton("Consultar Cliente");
-		btnConsultarCliente.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				TelaConsultaCliente.getInstance().setVisible(true);
-				TelaConsultaCliente.getInstance().setLocationRelativeTo(null);
-				dispose();
-			}
-		});
-		btnConsultarCliente.setForeground(Color.WHITE);
-		btnConsultarCliente.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnConsultarCliente.setBackground(new Color(0, 128, 0));
-		btnConsultarCliente.setBounds(271, 198, 176, 41);
-		contentPane.add(btnConsultarCliente);
-		
-		JButton btnConsultarInstrutor = new JButton("Consultar Instrutor");
-		btnConsultarInstrutor.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				TelaInstrutor.getInstance().setVisible(true);
-				TelaInstrutor.getInstance().setLocationRelativeTo(null);
-				dispose();
-			}
-		});
-		btnConsultarInstrutor.setForeground(Color.WHITE);
-		btnConsultarInstrutor.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnConsultarInstrutor.setBackground(new Color(0, 128, 0));
-		btnConsultarInstrutor.setBounds(271, 275, 176, 41);
-		contentPane.add(btnConsultarInstrutor);
-		
 		JLabel label_1 = new JLabel("Escolha uma das op\u00E7\u00F5es acima para que possa prosseguir");
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
 		label_1.setBounds(70, 437, 355, 23);
 		contentPane.add(label_1);
 		
-		JButton btnInstrutores = new JButton("Instrutores");
-		btnInstrutores.addActionListener(new ActionListener() {
+		JButton btnCliente = new JButton("Cliente");
+		btnCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaInstrutor.getInstance().setVisible(true);
+				TelaInstrutor.getInstance().setLocationRelativeTo(null);
+				dispose();
+			}
+		});
+		btnCliente.setBounds(91, 183, 89, 23);
+		contentPane.add(btnCliente);
+		
+		JButton btnInstrutor = new JButton("Instrutor");
+		btnInstrutor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaConsultaInstrutor.getInstance().setVisible(true);
 				TelaConsultaInstrutor.getInstance().setLocationRelativeTo(null);
 				dispose();
 			}
 		});
-		btnInstrutores.setBounds(197, 151, 89, 23);
-		contentPane.add(btnInstrutores);
+		btnInstrutor.setBounds(223, 183, 89, 23);
+		contentPane.add(btnInstrutor);
 	}
 }

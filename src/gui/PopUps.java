@@ -98,6 +98,9 @@ public class PopUps {
 	public static void clienteCadastrado() {
 		JOptionPane.showMessageDialog(null, Mensagem.CLIENTECADASTRADO);
 	}
+	public static void clienteRemovido() {
+		JOptionPane.showMessageDialog(null, Mensagem.REMOVIDOSUCESSO);
+	}
 	public static void matriculaAlterada() {
 		JOptionPane.showMessageDialog(null, Mensagem.MATRICULAALTERADA);
 	}
@@ -126,6 +129,9 @@ public class PopUps {
 	}
 	public static void UsuarioNaoExiste() {
 		JOptionPane.showMessageDialog(null, Mensagem.USUARIONAOEXISTE, Mensagem.getMsgalert(), JOptionPane.WARNING_MESSAGE);
+	}
+	public static void AcessoNegado() {
+		JOptionPane.showMessageDialog(null, Mensagem.ACESSONEGADO, Mensagem.getMsgerror(), JOptionPane.ERROR_MESSAGE);
 	}
 	
 	

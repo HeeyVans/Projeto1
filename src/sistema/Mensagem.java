@@ -35,6 +35,7 @@ public class Mensagem {
 	
 	//Erros
 	public static final String ERROCADASTRO = "Erro ao Cadastrar!";
+	public static final String ACESSONEGADO = "Acesso não permitido!";
 	
 	
 	//ClasseAssistente
@@ -46,6 +47,7 @@ public class Mensagem {
 	public static final String EMAILENVIADO = "Email enviado com sucesso!";
 	public static final String INFORMACPF = "Informe o CPF:";
 	public static final String INFORMAMATRICULA = "Informe sua matrícula:";
+	public static final String INFORMAMATRICULACLIENTE = "Informe a matrícula do cliente:";
 	public static final String USUARIONAOEXISTE = "Este usuário não existe!";
 	public static final String MATRICULAALTERADA = "Matrícula alterada com sucesso!";
 	
@@ -64,6 +66,8 @@ public class Mensagem {
 	
 	//TelaCliente e Instrutor
 		public static final String ENVIOPEDIDO = "Pedido feito com sucesso!";
+		public static final String MATRICULAADM= "Por favor digite sua matrícula!";
 	
-
+		//TelaADM
+		public static final String REMOVIDOSUCESSO = "Removido com sucesso!";
 }

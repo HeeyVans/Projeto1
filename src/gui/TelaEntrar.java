@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import basicas.Administrador;
 import basicas.Cliente;
 import basicas.Endereco;
 import basicas.Instrutor;
@@ -38,6 +39,7 @@ public class TelaEntrar extends JFrame{
 	public static TelaEntrar instance;
 	public static Cliente cliente;
 	public static Instrutor instrutor;
+	public static Administrador adm;
 	
 	public static TelaEntrar getInstance() {
 		if(instance == null) {

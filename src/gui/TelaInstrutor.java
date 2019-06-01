@@ -9,15 +9,20 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import basicas.Administrador;
 import basicas.Cliente;
 import basicas.Instrutor;
+import excecoes.MatriculaNaoEncontradaException;
 import sistema.Fachada;
+import sistema.Mensagem;
 import sistema.ModeloTabelaInstrutor;
 
 import javax.swing.ListSelectionModel;
@@ -121,6 +126,7 @@ public class TelaInstrutor extends JFrame {
 		contentPane.add(textFieldNome);
 		textFieldNome.setColumns(10);
 		
+		
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnBuscar.setBackground(new Color(0, 128, 0));
@@ -145,6 +151,7 @@ public class TelaInstrutor extends JFrame {
 		});
 		btnBuscar.setBounds(306, 206, 129, 38);
 		contentPane.add(btnBuscar);
+		
 		
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(TelaInstrutor.class.getResource("/imagens/MFit logotipo redemensionada.jpg")));
@@ -248,6 +255,43 @@ public class TelaInstrutor extends JFrame {
 		});
 		btnExibirTodos.setBounds(306, 306, 129, 23);
 		contentPane.add(btnExibirTodos);
+		
+		JButton btnRemoverCliente = new JButton("Remover");
+		btnRemoverCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Instrutor instrutor = TelaEntrar.instrutor;
+				String matricula, matriculaCliente;
+				
+				if(instrutor == null) {
+					matricula = JOptionPane.showInputDialog(Mensagem.INFORMAMATRICULA);
+					Administrador adm;
+					adm = Fachada.getInstance().procurarADM(matricula);
+					
+					if(adm != null) {
+						matriculaCliente = JOptionPane.showInputDialog(Mensagem.INFORMAMATRICULACLIENTE);
+						Cliente cliente = Fachada.getInstance().procurarClienteMatricula(matriculaCliente);
+						
+						if(cliente != null) {
+							boolean confirm;
+							confirm = PopUps.ConfirmarExclusao();
+							
+							if(confirm == true) {
+							Fachada.getInstance().removerCliente(cliente.getCpf());
+							PopUps.clienteRemovido();
+							}
+						}else {
+							PopUps.UsuarioNaoExiste();
+						}
+					}else {
+						PopUps.matriculaInvalida(new MatriculaNaoEncontradaException());
+					}
+				}else {
+					PopUps.AcessoNegado();
+				}
+			}
+		});
+		btnRemoverCliente.setBounds(306, 337, 89, 23);
+		contentPane.add(btnRemoverCliente);
 		
 	}
 }
