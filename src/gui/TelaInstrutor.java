@@ -184,7 +184,7 @@ public class TelaInstrutor extends JFrame {
 		btnVoltar.setBackground(new Color(0, 128, 0));
 		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnVoltar.setForeground(Color.WHITE);
-		btnVoltar.setBounds(306, 255, 129, 38);
+		btnVoltar.setBounds(447, 354, 129, 38);
 		contentPane.add(btnVoltar);
 		
 		JButton button = new JButton("Limpar");
@@ -239,6 +239,9 @@ public class TelaInstrutor extends JFrame {
 		contentPane.add(btnMeusDados);
 		
 		JButton btnExibirTodos = new JButton("Exibir Todos");
+		btnExibirTodos.setBackground(new Color(0, 128, 0));
+		btnExibirTodos.setForeground(new Color(255, 255, 255));
+		btnExibirTodos.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnExibirTodos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				while(modeloInstrutor.getRowCount()>0) {
@@ -253,10 +256,13 @@ public class TelaInstrutor extends JFrame {
 					modeloInstrutor.addClienteList(lista);
 			}
 		});
-		btnExibirTodos.setBounds(306, 306, 129, 23);
+		btnExibirTodos.setBounds(306, 306, 129, 38);
 		contentPane.add(btnExibirTodos);
 		
 		JButton btnRemoverCliente = new JButton("Remover");
+		btnRemoverCliente.setBackground(new Color(0, 128, 0));
+		btnRemoverCliente.setForeground(Color.WHITE);
+		btnRemoverCliente.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnRemoverCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Instrutor instrutor = TelaEntrar.instrutor;
@@ -290,8 +296,15 @@ public class TelaInstrutor extends JFrame {
 				}
 			}
 		});
-		btnRemoverCliente.setBounds(306, 337, 89, 23);
+		btnRemoverCliente.setBounds(306, 255, 129, 38);
 		contentPane.add(btnRemoverCliente);
+		
+		JButton btnAlterarCliente = new JButton("Alterar");
+		btnAlterarCliente.setForeground(Color.WHITE);
+		btnAlterarCliente.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnAlterarCliente.setBackground(new Color(0, 128, 0));
+		btnAlterarCliente.setBounds(447, 305, 129, 38);
+		contentPane.add(btnAlterarCliente);
 		
 	}
 }

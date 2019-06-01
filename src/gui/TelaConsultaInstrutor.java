@@ -177,7 +177,7 @@ public class TelaConsultaInstrutor extends JFrame {
 		btnVoltar.setBackground(new Color(0, 128, 0));
 		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnVoltar.setForeground(Color.WHITE);
-		btnVoltar.setBounds(306, 255, 129, 38);
+		btnVoltar.setBounds(445, 354, 129, 38);
 		contentPane.add(btnVoltar);
 		
 		JButton button = new JButton("Limpar");
@@ -232,6 +232,9 @@ public class TelaConsultaInstrutor extends JFrame {
 		contentPane.add(btnMeusDados);
 		
 		JButton btnExibirTodos = new JButton("Exibir Todos ");
+		btnExibirTodos.setBackground(new Color(0, 128, 0));
+		btnExibirTodos.setForeground(new Color(255, 255, 255));
+		btnExibirTodos.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnExibirTodos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				while(modeloConsultaInstrutor.getRowCount()>0) {
@@ -245,8 +248,22 @@ public class TelaConsultaInstrutor extends JFrame {
 					modeloConsultaInstrutor.addInstrutorList(lista);
 			}
 		});
-		btnExibirTodos.setBounds(306, 312, 129, 23);
+		btnExibirTodos.setBounds(306, 256, 129, 38);
 		contentPane.add(btnExibirTodos);
+		
+		JButton btnRemoverInstrutor = new JButton("Remover");
+		btnRemoverInstrutor.setForeground(Color.WHITE);
+		btnRemoverInstrutor.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnRemoverInstrutor.setBackground(new Color(0, 128, 0));
+		btnRemoverInstrutor.setBounds(306, 305, 129, 38);
+		contentPane.add(btnRemoverInstrutor);
+		
+		JButton btnAlterarInstrutor = new JButton("Alterar");
+		btnAlterarInstrutor.setForeground(Color.WHITE);
+		btnAlterarInstrutor.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnAlterarInstrutor.setBackground(new Color(0, 128, 0));
+		btnAlterarInstrutor.setBounds(447, 305, 129, 38);
+		contentPane.add(btnAlterarInstrutor);
 		
 	}
 }
