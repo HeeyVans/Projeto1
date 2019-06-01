@@ -16,6 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import basicas.Cliente;
+import basicas.Instrutor;
 import sistema.Fachada;
 import sistema.ModeloTabelaInstrutor;
 
@@ -229,6 +230,24 @@ public class TelaInstrutor extends JFrame {
 		});
 		btnMeusDados.setBounds(447, 256, 129, 38);
 		contentPane.add(btnMeusDados);
+		
+		JButton btnExibirTodos = new JButton("Exibir Todos");
+		btnExibirTodos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				while(modeloInstrutor.getRowCount()>0) {
+					modeloInstrutor.removeClienteAt(0);
+				}
+				
+				
+				ArrayList<Cliente> lista = new ArrayList();
+				
+				lista = (ArrayList<Cliente>) Fachada.getInstance().listarClienteVoid();
+						
+					modeloInstrutor.addClienteList(lista);
+			}
+		});
+		btnExibirTodos.setBounds(306, 306, 129, 23);
+		contentPane.add(btnExibirTodos);
 		
 	}
 }

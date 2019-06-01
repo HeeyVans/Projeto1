@@ -130,4 +130,15 @@ public class RepositorioInstrutorArray implements IRepositorioInstrutor{
 		return instrutor;
 		}
 
+	@Override
+	public List listar() {
+		List instrutor = new ArrayList();
+		i = 0;
+		while(i < indice) {
+			instrutor.add(repositorio[i]);		 
+			 i++;
+			}
+		return instrutor;
+	}
+
 }

@@ -130,4 +130,10 @@ public class RepositorioInstrutorArquivo implements IRepositorioInstrutor, Seria
 		return null;
 	}
 
+	@Override
+	public List listar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

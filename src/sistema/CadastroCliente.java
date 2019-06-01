@@ -39,5 +39,9 @@ public class CadastroCliente {
 	public List listar(String nome) {
 		return repositorio.listar(nome);
 	}
+	
+	public List listar() {
+		return repositorio.listar();
+	}
 
 }

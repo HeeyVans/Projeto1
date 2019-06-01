@@ -137,7 +137,7 @@ public class TelaConsultaInstrutor extends JFrame {
 				
 				lista = (ArrayList<Instrutor>) Fachada.getInstance().listarInstrutor(nome);
 						
-					//modeloInstrutor.addClienteList(lista);
+					modeloConsultaInstrutor.addInstrutorList(lista);
 				}
 			
 				
@@ -230,6 +230,23 @@ public class TelaConsultaInstrutor extends JFrame {
 		});
 		btnMeusDados.setBounds(447, 256, 129, 38);
 		contentPane.add(btnMeusDados);
+		
+		JButton btnExibirTodos = new JButton("Exibir Todos ");
+		btnExibirTodos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				while(modeloConsultaInstrutor.getRowCount()>0) {
+					modeloConsultaInstrutor.removeInstrutorAt(0);
+				}
+								
+				ArrayList<Instrutor> lista = new ArrayList();
+				
+				lista = (ArrayList<Instrutor>) Fachada.getInstance().listarInstrutorVoid();
+						
+					modeloConsultaInstrutor.addInstrutorList(lista);
+			}
+		});
+		btnExibirTodos.setBounds(306, 312, 129, 23);
+		contentPane.add(btnExibirTodos);
 		
 	}
 }

@@ -162,5 +162,16 @@ public class TelaADM extends JFrame {
 		label_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
 		label_1.setBounds(70, 437, 355, 23);
 		contentPane.add(label_1);
+		
+		JButton btnInstrutores = new JButton("Instrutores");
+		btnInstrutores.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaConsultaInstrutor.getInstance().setVisible(true);
+				TelaConsultaInstrutor.getInstance().setLocationRelativeTo(null);
+				dispose();
+			}
+		});
+		btnInstrutores.setBounds(197, 151, 89, 23);
+		contentPane.add(btnInstrutores);
 	}
 }

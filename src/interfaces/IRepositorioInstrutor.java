@@ -13,5 +13,6 @@ public interface IRepositorioInstrutor {
 	public void remover(String cpf);
 	public void atualizar(Instrutor instrutor);
 	public List listar(String nome);
+	public List listar();
 
 }

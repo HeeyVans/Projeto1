@@ -87,6 +87,9 @@ public class Fachada {
 	public List listarCliente(String nome) {
 		return this.cliente.listar(nome);
 	}
+	public List listarClienteVoid() {
+		return this.cliente.listar();
+	}
 	
 	//FIM DE CRUD DE CLIENTE
 	//INICIO CRUD ADM
@@ -119,6 +122,9 @@ public class Fachada {
 	}
 	public List listarInstrutor(String nome) {
 		return this.instrutor.listar(nome);
+	}
+	public List listarInstrutorVoid() {
+		return this.instrutor.listar();
 	}
 	
 	//FIM DE CRUD DO INSTRUTOR

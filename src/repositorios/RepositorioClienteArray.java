@@ -136,6 +136,18 @@ public class RepositorioClienteArray implements IRepositorioCliente{
 		return clientes;
 		}
 
+	@Override
+	public List listar() {
+		
+		List clientes = new ArrayList();
+		i = 0;
+		while(i < indice) {	
+			clientes.add(repositorio[i]);
+			 i++;
+			}
+		return clientes;
+		}
+
 
 	}
 	
