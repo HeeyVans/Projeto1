@@ -162,7 +162,7 @@ public class AttPedido extends JFrame {
 		label.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				JOptionPane.showMessageDialog(null, "Insira na caixa de texto abaixo o dado que você quer que seja alterado!", Mensagem.getMsginfo(), JOptionPane.INFORMATION_MESSAGE);
+				PopUps.InformacaoPedido();
 			}
 		});
 		label.setIcon(new ImageIcon(AttPedido.class.getResource("/imagens/Bot\u00E3o d\u00FAvidas.png")));
@@ -173,7 +173,7 @@ public class AttPedido extends JFrame {
 		lblDvidas.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				JOptionPane.showMessageDialog(null, "Insira na caixa de texto abaixo o dado que você quer que seja alterado!", Mensagem.getMsginfo(), JOptionPane.INFORMATION_MESSAGE);
+				PopUps.InformacaoPedido();
 			}
 		});
 		lblDvidas.setForeground(new Color(0, 128, 0));

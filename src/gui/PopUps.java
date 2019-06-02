@@ -134,5 +134,10 @@ public class PopUps {
 		JOptionPane.showMessageDialog(null, Mensagem.ACESSONEGADO, Mensagem.getMsgerror(), JOptionPane.ERROR_MESSAGE);
 	}
 	
+	//INFORMAÇÕES
+	public static void InformacaoPedido() {
+		JOptionPane.showMessageDialog(null, Mensagem.PEDINFORMACAO, Mensagem.getMsginfo(), JOptionPane.INFORMATION_MESSAGE);
+	}
+	
 	
 }

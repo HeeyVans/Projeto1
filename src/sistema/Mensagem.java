@@ -37,6 +37,9 @@ public class Mensagem {
 	public static final String ERROCADASTRO = "Erro ao Cadastrar!";
 	public static final String ACESSONEGADO = "Acesso não permitido!";
 	
+	//Informações
+	public static final String PEDINFORMACAO = "Insira na caixa de texto abaixo o dado que você quer que seja alterado!";
+	
 	
 	//ClasseAssistente
 	public static final String NOVAMATRICULA = "MFit Academia - Nova Matrícula!";
