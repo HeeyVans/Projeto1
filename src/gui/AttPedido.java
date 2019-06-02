@@ -180,5 +180,6 @@ public class AttPedido extends JFrame {
 		lblDvidas.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblDvidas.setBounds(423, 14, 78, 28);
 		contentPane.add(lblDvidas);
+	
 	}
 }
