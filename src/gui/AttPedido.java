@@ -11,8 +11,10 @@ import basicas.Cliente;
 import basicas.Instrutor;
 import excecoes.CampoVazioException;
 import sistema.Assistente;
+import sistema.Mensagem;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -21,6 +23,8 @@ import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.Font;
 import javax.swing.ImageIcon;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class AttPedido extends JFrame {
 
@@ -73,7 +77,7 @@ public class AttPedido extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(AttPedido.class.getResource("/imagens/biceps png.png")));
 		setTitle("Tela de Pedido - MFit");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 496, 348);
+		setBounds(100, 100, 538, 355);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -153,5 +157,28 @@ public class AttPedido extends JFrame {
 		});
 		btnVoltar.setBounds(219, 224, 143, 38);
 		contentPane.add(btnVoltar);
+		
+		JLabel label = new JLabel("");
+		label.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				
+			}
+		});
+		label.setIcon(new ImageIcon("C:\\Users\\Ricardo\\Documents\\UFRPE\\PROGRAMA\u00C7\u00C3O\\JAVA\\Projeto - Programa\u00E7\u00E3o\\Bot\u00E3o d\u00FAvidas.png"));
+		label.setBounds(353, 0, 71, 62);
+		contentPane.add(label);
+		
+		JLabel lblDvidas = new JLabel("D\u00FAvidas?");
+		lblDvidas.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				JOptionPane.showMessageDialog(null, "Insira na caixa de texto abaixo o dado que você quer que seja alterado!", Mensagem.getMsginfo(), JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+		lblDvidas.setForeground(new Color(0, 128, 0));
+		lblDvidas.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblDvidas.setBounds(423, 14, 78, 28);
+		contentPane.add(lblDvidas);
 	}
 }
