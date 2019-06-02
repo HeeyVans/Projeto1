@@ -36,6 +36,9 @@ import java.awt.Toolkit;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 public class TelaInstrutor extends JFrame {
 
@@ -259,11 +262,31 @@ public class TelaInstrutor extends JFrame {
 		btnExibirTodos.setBounds(306, 306, 129, 38);
 		contentPane.add(btnExibirTodos);
 		
-		JButton btnRemoverCliente = new JButton("Remover");
-		btnRemoverCliente.setBackground(new Color(0, 128, 0));
-		btnRemoverCliente.setForeground(Color.WHITE);
-		btnRemoverCliente.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnRemoverCliente.addActionListener(new ActionListener() {
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBorderPainted(false);
+		menuBar.setEnabled(false);
+		menuBar.setBounds(0, 0, 121, 21);
+		contentPane.add(menuBar);
+		
+		JMenu mnCliente = new JMenu("Cliente");
+		menuBar.add(mnCliente);
+		
+		JMenuItem mntmCadastrar = new JMenuItem("Cadastrar");
+		mntmCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaCadastroCliente window = new TelaCadastroCliente();
+				window.frmTelaDeCadastro.setVisible(true);
+				window.frmTelaDeCadastro.setLocationRelativeTo(null);
+				dispose();
+			}
+		});
+		mnCliente.add(mntmCadastrar);
+		
+		JMenuItem mntmAtt = new JMenuItem("Atualizar");
+		mnCliente.add(mntmAtt);
+		
+		JMenuItem mntmRemover = new JMenuItem("Remover");
+		mntmRemover.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Instrutor instrutor = TelaEntrar.instrutor;
 				String matricula, matriculaCliente;
@@ -296,22 +319,26 @@ public class TelaInstrutor extends JFrame {
 				}
 			}
 		});
-		btnRemoverCliente.setBounds(306, 255, 129, 38);
-		contentPane.add(btnRemoverCliente);
+		mnCliente.add(mntmRemover);
 		
-		JButton btnAlterarCliente = new JButton("Alterar");
-		btnAlterarCliente.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				AttPedido.getInstance().setVisible(true);
-				AttPedido.getInstance().setLocationRelativeTo(null);
+		JMenu mnInstrutor = new JMenu("Instrutor");
+		menuBar.add(mnInstrutor);
+		
+		JMenuItem mntmIr = new JMenuItem("Ir Para ->");
+		mntmIr.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Instrutor instrutor = TelaEntrar.instrutor;
+				
+				if(instrutor == null) {
+				TelaConsultaInstrutor.getInstance().setVisible(true);
+				TelaConsultaInstrutor.getInstance().setLocationRelativeTo(null);
 				dispose();
+				}else {
+					PopUps.AcessoNegado();
+				}
 			}
 		});
-		btnAlterarCliente.setForeground(Color.WHITE);
-		btnAlterarCliente.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnAlterarCliente.setBackground(new Color(0, 128, 0));
-		btnAlterarCliente.setBounds(447, 305, 129, 38);
-		contentPane.add(btnAlterarCliente);
+		mnInstrutor.add(mntmIr);
 		
 	}
 }

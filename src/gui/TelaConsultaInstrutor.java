@@ -31,6 +31,9 @@ import java.awt.Toolkit;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 public class TelaConsultaInstrutor extends JFrame {
 
@@ -271,6 +274,47 @@ public class TelaConsultaInstrutor extends JFrame {
 		btnAlterarInstrutor.setBackground(new Color(0, 128, 0));
 		btnAlterarInstrutor.setBounds(447, 305, 129, 38);
 		contentPane.add(btnAlterarInstrutor);
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(0, 0, 136, 21);
+		contentPane.add(menuBar);
+		
+		JMenu mnCliente = new JMenu("Cliente");
+		menuBar.add(mnCliente);
+		
+		JMenuItem mntmIr = new JMenuItem("Ir para ->");
+		mntmIr.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaInstrutor.getInstance().setVisible(true);
+				TelaInstrutor.getInstance().setLocationRelativeTo(null);
+				dispose();
+			}
+		});
+		mnCliente.add(mntmIr);
+		
+		JMenu mnInstrutor = new JMenu("Instrutor");
+		menuBar.add(mnInstrutor);
+		
+		JMenuItem mntmCadastrar = new JMenuItem("Cadastrar");
+		mntmCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaCadastroInstrutor window = new TelaCadastroInstrutor();
+				window.frmTelaDeCadastro.setVisible(true);
+				window.frmTelaDeCadastro.setLocationRelativeTo(null);
+				dispose();
+			}
+		});
+		mnInstrutor.add(mntmCadastrar);
+		
+		JMenuItem mntmAtualizar = new JMenuItem("Atualizar");
+		mnInstrutor.add(mntmAtualizar);
+		
+		JMenuItem mntmRemover = new JMenuItem("Remover");
+		mntmRemover.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		mnInstrutor.add(mntmRemover);
 		
 	}
 }
