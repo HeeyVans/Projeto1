@@ -165,7 +165,7 @@ public class AttPedido extends JFrame {
 				
 			}
 		});
-		label.setIcon(new ImageIcon("C:\\Users\\Ricardo\\Documents\\UFRPE\\PROGRAMA\u00C7\u00C3O\\JAVA\\Projeto - Programa\u00E7\u00E3o\\Bot\u00E3o d\u00FAvidas.png"));
+		label.setIcon(new ImageIcon(AttPedido.class.getResource("/imagens/Bot\u00E3o d\u00FAvidas.png")));
 		label.setBounds(353, 0, 71, 62);
 		contentPane.add(label);
 		
