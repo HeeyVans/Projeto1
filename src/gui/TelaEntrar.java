@@ -201,7 +201,7 @@ public class TelaEntrar extends JFrame{
 		lblNewLabel.setBounds(10, 114, 211, 255);
 		TelaDeEntrada.getContentPane().add(lblNewLabel);
 		
-		JButton btnEsqueciSenha = new JButton("Esqueci minha senha");
+		JButton btnEsqueciSenha = new JButton("Esqueci minha matrícula");
 		btnEsqueciSenha.setFont(new Font("Arial", Font.BOLD, 11));
 		btnEsqueciSenha.setForeground(new Color(0, 191, 255));
 		btnEsqueciSenha.setBackground(Color.WHITE);
@@ -326,7 +326,7 @@ public class TelaEntrar extends JFrame{
 				
 			}
 		});
-		btnEsqueciSenha.setBounds(320, 258, 145, 20);
+		btnEsqueciSenha.setBounds(310, 258, 187, 20);
 		TelaDeEntrada.getContentPane().add(btnEsqueciSenha);
 		TelaDeEntrada.setBounds(100, 100, 535, 454);
 		TelaDeEntrada.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
