@@ -39,6 +39,7 @@ public class Mensagem {
 	
 	//Informações
 	public static final String PEDINFORMACAO = "Insira na caixa de texto abaixo o dado que você quer que seja alterado!";
+	public static final String DUVINFORMACAO = "Em caso de dúvidas mande um email para: MFit.Academia10@gmail.com";
 	
 	
 	//ClasseAssistente

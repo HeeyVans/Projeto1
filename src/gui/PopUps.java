@@ -137,7 +137,10 @@ public class PopUps {
 	//INFORMAÇÕES
 	public static void InformacaoPedido() {
 		JOptionPane.showMessageDialog(null, Mensagem.PEDINFORMACAO, Mensagem.getMsginfo(), JOptionPane.INFORMATION_MESSAGE);
+	}
 	
+	public static void InformacaoDuvida() {
+		JOptionPane.showMessageDialog(null, Mensagem.DUVINFORMACAO, Mensagem.getMsginfo(), JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 }

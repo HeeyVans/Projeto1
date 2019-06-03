@@ -34,6 +34,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class TelaConsultaInstrutor extends JFrame {
 
@@ -89,7 +91,7 @@ public class TelaConsultaInstrutor extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaInstrutor.class.getResource("/imagens/biceps png.png")));
 		setTitle("Consulta de Instrutores - MFit");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 602, 442);
+		setBounds(100, 100, 602, 417);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -151,7 +153,7 @@ public class TelaConsultaInstrutor extends JFrame {
 		
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(TelaInstrutor.class.getResource("/imagens/MFit logotipo redemensionada.jpg")));
-		label.setBounds(10, 312, 229, 80);
+		label.setBounds(10, 291, 229, 80);
 		contentPane.add(label);
 		
 		JButton btnVoltar = new JButton("Voltar");
@@ -180,7 +182,7 @@ public class TelaConsultaInstrutor extends JFrame {
 		btnVoltar.setBackground(new Color(0, 128, 0));
 		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnVoltar.setForeground(Color.WHITE);
-		btnVoltar.setBounds(445, 354, 129, 38);
+		btnVoltar.setBounds(447, 255, 129, 38);
 		contentPane.add(btnVoltar);
 		
 		JButton button = new JButton("Limpar");
@@ -193,26 +195,6 @@ public class TelaConsultaInstrutor extends JFrame {
 		button.setBackground(new Color(255, 99, 71));
 		button.setBounds(123, 242, 116, 28);
 		contentPane.add(button);
-		
-		JButton btnCriarTreino = new JButton("Remover");
-		btnCriarTreino.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				boolean confirm;
-				confirm = PopUps.ConfirmarIda();
-				
-				if(confirm == true) {
-					TelaCriarTreino.getInstance().setVisible(true);
-					TelaCriarTreino.getInstance().setLocationRelativeTo(null);
-					dispose();
-				}
-				
-			}
-		});
-		btnCriarTreino.setForeground(Color.WHITE);
-		btnCriarTreino.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnCriarTreino.setBackground(new Color(0, 128, 0));
-		btnCriarTreino.setBounds(445, 206, 129, 38);
-		contentPane.add(btnCriarTreino);
 		
 		JButton btnMeusDados = new JButton("Dados");
 		btnMeusDados.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -231,7 +213,7 @@ public class TelaConsultaInstrutor extends JFrame {
 				
 			}
 		});
-		btnMeusDados.setBounds(447, 256, 129, 38);
+		btnMeusDados.setBounds(445, 206, 129, 38);
 		contentPane.add(btnMeusDados);
 		
 		JButton btnExibirTodos = new JButton("Exibir Todos ");
@@ -251,48 +233,19 @@ public class TelaConsultaInstrutor extends JFrame {
 					modeloConsultaInstrutor.addInstrutorList(lista);
 			}
 		});
-		btnExibirTodos.setBounds(306, 256, 129, 38);
+		btnExibirTodos.setBounds(306, 255, 129, 38);
 		contentPane.add(btnExibirTodos);
 		
-		JButton btnRemoverInstrutor = new JButton("Remover");
-		btnRemoverInstrutor.setForeground(Color.WHITE);
-		btnRemoverInstrutor.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnRemoverInstrutor.setBackground(new Color(0, 128, 0));
-		btnRemoverInstrutor.setBounds(306, 305, 129, 38);
-		contentPane.add(btnRemoverInstrutor);
-		
-		JButton btnAlterarInstrutor = new JButton("Alterar");
-		btnAlterarInstrutor.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				AttPedido.getInstance().setVisible(true);
-				AttPedido.getInstance().setLocationRelativeTo(null);
-				dispose();
-			}
-		});
-		btnAlterarInstrutor.setForeground(Color.WHITE);
-		btnAlterarInstrutor.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnAlterarInstrutor.setBackground(new Color(0, 128, 0));
-		btnAlterarInstrutor.setBounds(447, 305, 129, 38);
-		contentPane.add(btnAlterarInstrutor);
-		
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 0, 136, 21);
+		menuBar.setBorderPainted(false);
+		menuBar.setForeground(new Color(255, 255, 255));
+		menuBar.setFont(new Font("Arial", Font.BOLD, 14));
+		menuBar.setBounds(0, 0, 74, 21);
 		contentPane.add(menuBar);
 		
-		JMenu mnCliente = new JMenu("Cliente");
-		menuBar.add(mnCliente);
-		
-		JMenuItem mntmIr = new JMenuItem("Ir para ->");
-		mntmIr.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				TelaInstrutor.getInstance().setVisible(true);
-				TelaInstrutor.getInstance().setLocationRelativeTo(null);
-				dispose();
-			}
-		});
-		mnCliente.add(mntmIr);
-		
-		JMenu mnInstrutor = new JMenu("Instrutor");
+		JMenu mnInstrutor = new JMenu("Op\u00E7\u00F5es");
+		mnInstrutor.setHorizontalAlignment(SwingConstants.CENTER);
+		mnInstrutor.setFont(new Font("Arial", Font.BOLD, 14));
 		menuBar.add(mnInstrutor);
 		
 		JMenuItem mntmCadastrar = new JMenuItem("Cadastrar");
@@ -315,6 +268,29 @@ public class TelaConsultaInstrutor extends JFrame {
 			}
 		});
 		mnInstrutor.add(mntmRemover);
+		
+		JLabel label_1 = new JLabel("D\u00FAvidas?");
+		label_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				PopUps.InformacaoDuvida();
+			}
+		});
+		label_1.setForeground(new Color(0, 128, 0));
+		label_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		label_1.setBounds(498, 14, 78, 28);
+		contentPane.add(label_1);
+		
+		JLabel label_2 = new JLabel("");
+		label_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				PopUps.InformacaoDuvida();
+			}
+		});
+		label_2.setIcon(new ImageIcon(TelaConsultaInstrutor.class.getResource("/imagens/Bot\u00E3o d\u00FAvidas.png")));
+		label_2.setBounds(428, 0, 71, 62);
+		contentPane.add(label_2);
 		
 	}
 }

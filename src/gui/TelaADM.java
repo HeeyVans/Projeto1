@@ -105,7 +105,10 @@ public class TelaADM extends JFrame {
 		label_1.setBounds(70, 437, 355, 23);
 		contentPane.add(label_1);
 		
-		JButton btnInstrutor = new JButton("Instrutor");
+		JButton btnInstrutor = new JButton("Instrutores");
+		btnInstrutor.setBackground(new Color(0, 128, 0));
+		btnInstrutor.setForeground(Color.WHITE);
+		btnInstrutor.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnInstrutor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaConsultaInstrutor.getInstance().setVisible(true);
@@ -113,10 +116,13 @@ public class TelaADM extends JFrame {
 				dispose();
 			}
 		});
-		btnInstrutor.setBounds(154, 287, 176, 23);
+		btnInstrutor.setBounds(154, 267, 176, 41);
 		contentPane.add(btnInstrutor);
 		
-		JButton btnCliente = new JButton("Cliente");
+		JButton btnCliente = new JButton("Clientes");
+		btnCliente.setBackground(new Color(0, 128, 0));
+		btnCliente.setForeground(Color.WHITE);
+		btnCliente.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaInstrutor.getInstance().setVisible(true);
@@ -124,7 +130,7 @@ public class TelaADM extends JFrame {
 				dispose();
 			}
 		});
-		btnCliente.setBounds(154, 231, 176, 23);
+		btnCliente.setBounds(154, 185, 176, 41);
 		contentPane.add(btnCliente);
 		
 	}
