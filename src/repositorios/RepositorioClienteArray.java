@@ -99,8 +99,6 @@ public class RepositorioClienteArray implements IRepositorioCliente, Serializabl
 	} 
 	
 	public int getIndice(String cpf) {
-		getInstance();
-		RepositorioClienteArray.lerDoArquivo();
 		int i = 0;
 		
 		if(indice != 0) {
@@ -126,8 +124,6 @@ public class RepositorioClienteArray implements IRepositorioCliente, Serializabl
 	}
 	
 	public int getIndiceMatricula(String matricula) {
-		getInstance();
-		RepositorioClienteArray.lerDoArquivo();
 		int i = 0;
 		
 		if(indice != 0) {
@@ -154,20 +150,14 @@ public class RepositorioClienteArray implements IRepositorioCliente, Serializabl
 
 	@Override
 	public void inserir(Cliente cliente)  {
-		getInstance();
-		RepositorioClienteArray.lerDoArquivo();
 		if(!existe(cliente.getCpf())) {
 			repositorio[indice] = cliente;
 			indice++;
-			getInstance();
-			RepositorioClienteArray.salvarArquivo();
 		}
 	}
 
 	@Override
 	public Cliente procurar(String cpf)  {
-		getInstance();
-		RepositorioClienteArray.lerDoArquivo();
 		if(existe(cpf)) {
 			return this.repositorio[i];
 		}else {
@@ -178,8 +168,6 @@ public class RepositorioClienteArray implements IRepositorioCliente, Serializabl
 	
 	@Override
 	public Cliente procurarMatricula(String matricula) {
-		getInstance();
-		RepositorioClienteArray.lerDoArquivo();
 		if(existeMatricula(matricula)) {
 			return this.repositorio[i];
 		}else {

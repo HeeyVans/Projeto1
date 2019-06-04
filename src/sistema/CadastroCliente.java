@@ -9,7 +9,8 @@ import excecoes.ClienteJaCadastradoException;
 import excecoes.ClienteNaoEncontradoException;
 import interfaces.IRepositorioCliente;
 import repositorios.RepositorioClienteArray;
-import repositorios.RepositorioClienteTeste;
+import repositorios.RepositorioClienteArrayTeste;
+import repositorios.RepositorioClienteTesteList;
 
 public class CadastroCliente {
 	
