@@ -18,8 +18,10 @@ public class AtividadeDiaria {
 
 	        DateTimeFormatter formatadorBarraEHora = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
+	        //Acrescenta mais 30 dias
+	        agora = agora.plusDays(30);
 	        System.out.println("LocalDateTime depois de formatar: " +agora.format(formatadorBarraEHora));
-
+	        
 
 	}
 }
