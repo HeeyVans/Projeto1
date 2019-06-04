@@ -15,8 +15,8 @@ public class CadastroCliente {
 	
 	private IRepositorioCliente repositorio;
 
-	public CadastroCliente() {
-			repositorio = new RepositorioClienteArray();
+	public CadastroCliente() {		
+				repositorio = new RepositorioClienteArray();	
 	}
 	
 	public void inserir(Cliente cliente) {

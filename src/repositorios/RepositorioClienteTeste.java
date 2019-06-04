@@ -16,105 +16,52 @@ import interfaces.IRepositorioCliente;
 public class RepositorioClienteTeste implements IRepositorioCliente, Serializable{
 	
 	public static final int TAM = 1000000;
-	private int indice;
-	private int i;
+	private int indice = 0;
 	private Cliente[] repositorio;
 	public static RepositorioClienteArray instance;
 	private File arquivoCliente;
 	
 	public RepositorioClienteTeste() throws IOException{
-		arquivoCliente = new File("Clientes.bin");
+		arquivoCliente = new File("Clientes.dat");
 		if(arquivoCliente.exists() == false) {
 			arquivoCliente.createNewFile();
 		}
 	}
 	
-	public int getIndice(String cpf) {
-		int i = 0;
+	
+	public static void lerArquivo(Cliente rep) {
 		
-		if(indice != 0) {
-			while(!cpf.equals(repositorio[i].getCpf())) {
-				if(i == indice - 1) {
-					return -1;
-				}else {
-					i++;
-				}
-			}
-			return i;
-		}
-		return -1;
-	}
-	
-	public boolean existe(String cpf) {
-		i = getIndice(cpf);
-		if(i == -1) {
-			return false;
-		}else {
-			return true;
-		}
-	}
-	
-	public int getIndiceMatricula(String matricula) {
+		FileInputStream inFile;
 		try {
-			repositorio = lerArquivoCliente();
-		} catch (ClassNotFoundException | IOException e) {
-			// TODO Auto-generated catch block
+			inFile = new FileInputStream("Clientes.dat");
+			ObjectInputStream objInput;
+			objInput = new ObjectInputStream(inFile);
+			rep = (Cliente) objInput.readObject();
+		} catch (IOException | ClassNotFoundException e2) {
+			e2.printStackTrace();
+		}
+		
+	}
+	
+	public static void salvarArquivo(Cliente rep) {
+		
+		FileOutputStream outFile;
+		try {
+			outFile = new FileOutputStream("Clientas.dat");
+			ObjectOutputStream objOutput = new ObjectOutputStream(outFile);
+			objOutput.writeObject(rep);
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		int i = 0;
 		
-		if(indice != 0) {
-			while(!matricula.equals(repositorio[i].getMatricula())) {
-				if(i == indice - 1) {
-					return -1;
-				}else {
-					i++;
-				}
-			}
-			return i;
-		}
-		return -1;
-	}
-	
-	public boolean existeMatricula(String matricula) {
-		i = getIndiceMatricula(matricula);
-		if(i == -1) {
-			return false;
-		}else {
-			return true;
-		}
-	}
-	
-	public Cliente[] lerArquivoCliente() throws FileNotFoundException, IOException, ClassNotFoundException {
-		Cliente[] clientes;
-		
-		if(arquivoCliente.length() > 0) {
-			ObjectInputStream in = new ObjectInputStream(new FileInputStream(arquivoCliente));
-			clientes = (Cliente[]) in.readObject();
-			in.close();
-		}else {
-			clientes = new Cliente[TAM];
-			indice = 0;
-		}
-		
-		return clientes;
 	}
 
 	@Override
 	public void inserir(Cliente cliente) {	
-		if(!existe(cliente.getCpf())) {
-			try {
-				repositorio[indice] = cliente;
-				indice++;
-				ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(arquivoCliente));
-				out.writeObject(repositorio);	
-				out.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+		salvarArquivo(repositorio[indice]);
+		indice++;
 		}
 		
-	}
 
 	@Override
 	public Cliente procurar(String cpf)  {		
@@ -123,17 +70,14 @@ public class RepositorioClienteTeste implements IRepositorioCliente, Serializabl
 
 	@Override
 	public Cliente procurarMatricula(String matricula){
-		try {
-			repositorio = lerArquivoCliente();
-		} catch (ClassNotFoundException | IOException e) {
-			e.printStackTrace();
-		}
 		
-		if(existeMatricula(matricula)) {
-			return this.repositorio[i];
-		}else {
-			return null;
+		for(int i = 0; i <= repositorio.length; i++) {
+		lerArquivo(repositorio[i]);
+		if(repositorio[i].getMatricula() == matricula) {
+				return repositorio[i];
+			}
 		}
+		return null;
 		
 	}
 
