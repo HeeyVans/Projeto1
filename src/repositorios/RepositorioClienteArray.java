@@ -74,7 +74,7 @@ public class RepositorioClienteArray implements IRepositorioCliente, Serializabl
 	    return instanciaLocal;
 	  }
 
-	public void salvarArquivo() {
+	public static void salvarArquivo() {
 	    if (!(instance == null)) {
 	     
 	    File out = new File("clientes.dat");

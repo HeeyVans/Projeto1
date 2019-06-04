@@ -4,14 +4,15 @@ import java.util.List;
 
 import basicas.Exercicio;
 import interfaces.IRepositorioExercicio;
+import repositorios.RepositorioExercicioArray;
 
 public class CadastroExercicio {
 	
 	private IRepositorioExercicio repositorio;
 
-	public CadastroExercicio(IRepositorioExercicio repositorio) {
+	public CadastroExercicio() {
 		
-		this.repositorio = repositorio;
+		repositorio = new RepositorioExercicioArray();
 	}
 
 	

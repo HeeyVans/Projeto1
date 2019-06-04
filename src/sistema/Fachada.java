@@ -33,23 +33,11 @@ public class Fachada {
 	
 	public Fachada() {
 		
-		//Repositórios ArrayArquivo		
-		//IRepositorioInstrutor repInstrutor = new RepositorioInstrutorArquivo();
-		//IRepositorioCliente repCliente = new RepositorioClienteArquivo();
-		//IRepositorioExercicio repExercicio = new RepositorioExercicioArquivo();
-		//IRepositorioTreino repTreino = new RepositorioTreinoArquivo();
-		
-		IRepositorioADM repADM = new RepositorioADMArray();
-		IRepositorioInstrutor repInstrutor = new RepositorioInstrutorArray();
-		IRepositorioCliente repCliente = new RepositorioClienteArray();
-		IRepositorioExercicio repExercicio = new RepositorioExercicioArray();
-		IRepositorioTreino repTreino = new RepositorioTreinoArray();
-		
-		adm = new CadastroADM(repADM);
-		cliente = new CadastroCliente(repCliente);
-		instrutor = new CadastroInstrutor(repInstrutor);
-		exercicio = new CadastroExercicio(repExercicio);
-		treino = new CadastroTreino(repTreino);
+		adm = new CadastroADM();
+		cliente = new CadastroCliente();
+		instrutor = new CadastroInstrutor();
+		exercicio = new CadastroExercicio();
+		treino = new CadastroTreino();
 		
 	}
 	

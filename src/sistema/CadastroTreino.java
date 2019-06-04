@@ -6,14 +6,15 @@ import basicas.Cliente;
 import basicas.Treino;
 import excecoes.MatriculaNaoEncontradaException;
 import interfaces.IRepositorioTreino;
+import repositorios.RepositorioTreinoArray;
 
 public class CadastroTreino {
 	
 	private IRepositorioTreino repositorio;
 
-	public CadastroTreino(IRepositorioTreino repositorio) {
+	public CadastroTreino() {
 		
-		this.repositorio = repositorio;
+		repositorio = new RepositorioTreinoArray();
 	}
 	
 	public void inserir(Treino treino) throws MatriculaNaoEncontradaException {

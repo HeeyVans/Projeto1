@@ -7,13 +7,14 @@ import basicas.Cliente;
 import excecoes.ClienteJaCadastradoException;
 import excecoes.ClienteNaoEncontradoException;
 import interfaces.IRepositorioCliente;
+import repositorios.RepositorioClienteArray;
 
 public class CadastroCliente {
 	
 	private IRepositorioCliente repositorio;
 
-	public CadastroCliente(IRepositorioCliente repositorio) {
-		this.repositorio = repositorio;
+	public CadastroCliente() {
+		repositorio = new RepositorioClienteArray();
 	}
 	
 	public void inserir(Cliente cliente) {

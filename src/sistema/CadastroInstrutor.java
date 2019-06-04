@@ -5,13 +5,14 @@ import java.util.List;
 import basicas.Instrutor;
 import excecoes.InstrutorJaCadastradoException;
 import interfaces.IRepositorioInstrutor;
+import repositorios.RepositorioInstrutorArray;
 
 public class CadastroInstrutor {
 	
 	private IRepositorioInstrutor repositorio;
 	
-	public CadastroInstrutor(IRepositorioInstrutor repositorio) {
-		this.repositorio = repositorio;
+	public CadastroInstrutor() {
+		repositorio = new RepositorioInstrutorArray();
 	}
 	
 	public void inserir(Instrutor instrutor)  {
