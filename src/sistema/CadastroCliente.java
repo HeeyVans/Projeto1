@@ -1,5 +1,6 @@
 package sistema;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.util.List;
 
@@ -8,13 +9,14 @@ import excecoes.ClienteJaCadastradoException;
 import excecoes.ClienteNaoEncontradoException;
 import interfaces.IRepositorioCliente;
 import repositorios.RepositorioClienteArray;
+import repositorios.RepositorioClienteTeste;
 
 public class CadastroCliente {
 	
 	private IRepositorioCliente repositorio;
 
 	public CadastroCliente() {
-		repositorio = new RepositorioClienteArray();
+			repositorio = new RepositorioClienteArray();
 	}
 	
 	public void inserir(Cliente cliente) {

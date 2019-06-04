@@ -1,8 +1,9 @@
 package basicas;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public abstract class Pessoa {
+public abstract class Pessoa implements Serializable{
 	
 	private String nome;
 	private Endereco endereco;

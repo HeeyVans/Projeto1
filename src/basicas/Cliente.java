@@ -10,12 +10,7 @@ public class Cliente extends Pessoa implements Serializable{
 	
 	public Cliente() {
 		
-	}
-
-    
-
-	
-
+	}  
 
 	public Cliente(String nome, String cpf, String matricula, String identificador) {
 		super(nome, cpf, matricula, identificador);
