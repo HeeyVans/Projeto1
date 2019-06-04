@@ -10,19 +10,16 @@ import basicas.Treino;
 import excecoes.ClienteJaCadastradoException;
 import excecoes.ClienteNaoEncontradoException;
 import excecoes.InstrutorJaCadastradoException;
+import excecoes.MatriculaNaoEncontradaException;
 import interfaces.IRepositorioADM;
 import interfaces.IRepositorioCliente;
 import interfaces.IRepositorioExercicio;
 import interfaces.IRepositorioInstrutor;
 import interfaces.IRepositorioTreino;
 import repositorios.RepositorioADMArray;
-import repositorios.RepositorioClienteArquivo;
 import repositorios.RepositorioClienteArray;
-import repositorios.RepositorioExercicioArquivo;
 import repositorios.RepositorioExercicioArray;
-import repositorios.RepositorioInstrutorArquivo;
 import repositorios.RepositorioInstrutorArray;
-import repositorios.RepositorioTreinoArquivo;
 import repositorios.RepositorioTreinoArray;
 
 public class Fachada {
@@ -137,7 +134,7 @@ public class Fachada {
 	}
 	//FIM DE CRUD EXERCICIO
 	//INICIO DE CRUD TREINO
-	public void inserirTreino(Treino treino) {
+	public void inserirTreino(Treino treino) throws MatriculaNaoEncontradaException {
 		this.treino.inserir(treino);
 	}
 	

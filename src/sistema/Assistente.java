@@ -329,11 +329,11 @@ public class Assistente {
 		RepositorioExercicioArray rep1 = new RepositorioExercicioArray();
 		rep1.inserir(e2);
 		
-		Treino tr = new Treino(t, c, rep, Assistente.gerarId(), "A");		
+		/*Treino tr = new Treino(t, c, rep, Assistente.gerarId(), "A");		
 		Fachada.getInstance().inserirTreino(tr);
 		
 		Treino tr1 = new Treino(t, c, rep1, Assistente.gerarId(), "B");		
-		Fachada.getInstance().inserirTreino(tr1);
+		Fachada.getInstance().inserirTreino(tr1);*/
 		}
 		
 

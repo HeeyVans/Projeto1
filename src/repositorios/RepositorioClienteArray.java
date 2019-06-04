@@ -1,5 +1,12 @@
 package repositorios;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,17 +16,87 @@ import excecoes.ClienteJaCadastradoException;
 import excecoes.ClienteNaoEncontradoException;
 import interfaces.IRepositorioCliente;
 
-public class RepositorioClienteArray implements IRepositorioCliente{
+public class RepositorioClienteArray implements IRepositorioCliente, Serializable{
 	
 	public static final int TAM = 1000000;
 	private int indice;
 	private int i;
 	private Cliente[] repositorio;
+	public static RepositorioClienteArray instance;
 	
 	public RepositorioClienteArray(){
 		this.repositorio = new Cliente[TAM];
 		indice = 0;
 	}
+	
+	public static RepositorioClienteArray getInstance() {
+	    if (instance == null) {
+	      instance = lerDoArquivo();
+	    }
+	    return instance;
+	  }
+	
+	public static  RepositorioClienteArray lerDoArquivo() {
+		 RepositorioClienteArray instanciaLocal = null;
+	    //Criando um arquivo e passando o nome dele	
+	    File in = new File("clientes.dat");//criando um arquivo .dat na pasta do projeto
+	   
+	    /*boolean exists() – arquivo ou diretório existe;
+	      boolean isDirectory() – é um diretório;
+	      boolean isFile() – é um arquivo;
+	      boolean canRead() – pode ler;
+	      boolean canWrite() – pode escrever;
+	      boolean mkdir() – cria uma diretório;
+	      boolean mkdirs() – cria vários diretórios;
+	      boolean renameTo(File file) - renomear;
+	      long length() - tamanho;
+	      long lastModified(ultima modificação);
+	      boolean delete() - deletar;*/	
+	   
+	    FileInputStream fis = null;
+	    ObjectInputStream ois = null;
+	    try {
+	      fis = new FileInputStream(in);
+	      ois = new ObjectInputStream(fis);
+	      Object o = ois.readObject();
+	      instanciaLocal = (RepositorioClienteArray) o;
+	    } catch (Exception e) {
+	      instanciaLocal = new  RepositorioClienteArray();
+	    } finally {
+	      if (ois != null) {
+	        try {
+	          ois.close();
+	        } catch (IOException e) {
+	        }
+	      }
+	    }
+
+	    return instanciaLocal;
+	  }
+
+	public void salvarArquivo() {
+	    if (!(instance == null)) {
+	     
+	    File out = new File("clientes.dat");
+	    FileOutputStream fos = null;
+	    ObjectOutputStream oos = null;
+
+	    try {
+	      fos = new FileOutputStream(out);
+	      oos = new ObjectOutputStream(fos);
+	      oos.writeObject(instance); 
+	    } catch (Exception e) {
+	      e.printStackTrace();
+	    } finally {
+	      if (oos != null) {
+	        try {
+	          oos.close();
+	        } catch (IOException e) {
+	        }
+	      }
+	    }
+	   }
+	} 
 	
 	public int getIndice(String cpf) {
 		int i = 0;
@@ -77,8 +154,6 @@ public class RepositorioClienteArray implements IRepositorioCliente{
 			repositorio[indice] = cliente;
 			indice++;
 		}
-		
-		
 	}
 
 	@Override
@@ -128,7 +203,7 @@ public class RepositorioClienteArray implements IRepositorioCliente{
 		List clientes = new ArrayList();
 		i = 0;
 		while(i < indice) {
-			if(repositorio[i].getNome().equals(nome)) {
+			if(repositorio[i].getNome().contains(nome)) {
 				clientes.add(repositorio[i]);
 			}			 
 			 i++;

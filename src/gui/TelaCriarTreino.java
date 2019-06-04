@@ -205,6 +205,7 @@ private String comboSelecionado() {
 				if(confirm == true) {
 						TelaEntrar window = new TelaEntrar();
 						window.TelaDeEntrada.setVisible(true);
+						window.TelaDeEntrada.setLocationRelativeTo(null);
 						dispose();
 										
 				}
@@ -214,7 +215,7 @@ private String comboSelecionado() {
 		button.setForeground(Color.WHITE);
 		button.setFont(new Font("Tahoma", Font.BOLD, 14));
 		button.setBackground(new Color(0, 128, 0));
-		button.setBounds(887, 655, 143, 38);
+		button.setBounds(887, 609, 143, 38);
 		contentPane.add(button);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
@@ -268,9 +269,6 @@ private String comboSelecionado() {
 							Fachada.getInstance().inserirTreino(t);
 							limpar();
 							PopUps.treinoCriado();
-							
-							MatriculaNaoEncontradaException mnee = new MatriculaNaoEncontradaException();
-							throw mnee;
 							
 						}catch(MatriculaNaoEncontradaException mnee) {
 							PopUps.matriculaInvalida(mnee);
@@ -685,6 +683,9 @@ private String comboSelecionado() {
 		contentPane.add(lblCategoriaDoTreino);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setIcon(new ImageIcon(TelaCriarTreino.class.getResource("/imagens/gtkgobackltr_104397.png")));
+		btnVoltar.setForeground(new Color(255, 255, 255));
+		btnVoltar.setBackground(new Color(0, 128, 0));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				boolean confirm;
@@ -699,7 +700,7 @@ private String comboSelecionado() {
 				}
 			}
 		});
-		btnVoltar.setBounds(566, 612, 89, 23);
+		btnVoltar.setBounds(887, 657, 143, 38);
 		contentPane.add(btnVoltar);
 	}
 }

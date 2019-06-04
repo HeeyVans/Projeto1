@@ -4,6 +4,7 @@ import java.util.List;
 
 import basicas.Cliente;
 import basicas.Treino;
+import excecoes.MatriculaNaoEncontradaException;
 import interfaces.IRepositorioTreino;
 
 public class CadastroTreino {
@@ -15,7 +16,7 @@ public class CadastroTreino {
 		this.repositorio = repositorio;
 	}
 	
-	public void inserir(Treino treino) {
+	public void inserir(Treino treino) throws MatriculaNaoEncontradaException {
 		this.repositorio.inserir(treino);
 	}
 	

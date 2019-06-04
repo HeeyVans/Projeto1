@@ -1,21 +1,84 @@
 package repositorios;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import basicas.Instrutor;
 import interfaces.IRepositorioInstrutor;
 
-public class RepositorioInstrutorArray implements IRepositorioInstrutor{
+public class RepositorioInstrutorArray implements IRepositorioInstrutor, Serializable{
 
 	public static final int TAM = 1000000;
 	private int indice;
 	private int i;
 	private Instrutor[] repositorio;
+	public static RepositorioInstrutorArray instance;
 	
 	public RepositorioInstrutorArray(){
 		this.repositorio = new Instrutor[TAM];
 		indice = 0;
+	}
+	public static RepositorioInstrutorArray getInstance() {
+	    if (instance == null) {
+	      instance = lerDoArquivo();
+	    }
+	    return instance;
+	  }
+	
+	public static RepositorioInstrutorArray lerDoArquivo() {
+		RepositorioInstrutorArray instanciaLocal = null;
+
+	    File in = new File("instrutor.dat");
+	    FileInputStream fis = null;
+	    ObjectInputStream ois = null;
+	    try {
+	      fis = new FileInputStream(in);
+	      ois = new ObjectInputStream(fis);
+	      Object o = ois.readObject();
+	      instanciaLocal = (RepositorioInstrutorArray) o;
+	    } catch (Exception e) {
+	      instanciaLocal = new RepositorioInstrutorArray();
+	    } finally {
+	      if (ois != null) {
+	        try {
+	          ois.close();
+	        } catch (IOException e) {
+	        }
+	      }
+	    }
+
+	    return instanciaLocal;
+	  }
+
+	public void salvarArquivo() {
+	    if (instance == null) {
+	      return;
+	    }
+	    File out = new File("instrutor.dat");
+	    FileOutputStream fos = null;
+	    ObjectOutputStream oos = null;
+
+	    try {
+	      fos = new FileOutputStream(out);
+	      oos = new ObjectOutputStream(fos);
+	      oos.writeObject(instance);
+	    } catch (Exception e) {
+	      e.printStackTrace();
+	    } finally {
+	      if (oos != null) {
+	        try {
+	          oos.close();
+	        } catch (IOException e) {
+	        }
+	      }
+	    }
 	}
 	
 	public int getIndice(String cpf) {
@@ -122,7 +185,7 @@ public class RepositorioInstrutorArray implements IRepositorioInstrutor{
 		List instrutor = new ArrayList();
 		i = 0;
 		while(i < indice) {
-			if(repositorio[i].getNome().equals(nome)) {
+			if(repositorio[i].getNome().contains(nome)) {
 				instrutor.add(repositorio[i]);
 			}			 
 			 i++;

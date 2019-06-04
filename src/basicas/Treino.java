@@ -1,6 +1,5 @@
 package basicas;
 
-import repositorios.RepositorioExercicioArquivo;
 import repositorios.RepositorioExercicioArray;
 
 public class Treino {
