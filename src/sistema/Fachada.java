@@ -133,10 +133,6 @@ public class Fachada {
 		this.treino.inserir(treino);
 	}
 	
-	public Treino procurarTreino(String id) {
-		return this.treino.procurar(id);
-	}
-	
 	public Treino procurarClienteTreino(String matricula) {
 		return this.treino.procurarClienteTreino(matricula);
 	}

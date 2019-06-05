@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import basicas.Cliente;
+import sistema.Assistente;
 import sistema.Fachada;
 import sistema.ModeloTabelaInstrutor;
 
@@ -21,6 +22,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 
 public class TelaConferirPagamento extends JFrame {
 
@@ -30,6 +32,10 @@ public class TelaConferirPagamento extends JFrame {
 	private ModeloTabelaInstrutor modeloInstrutor;
 	private JButton btnExibir;
 	private static TelaConferirPagamento instance;
+	private JButton btnPDFAtrasados;
+	private JLabel lblGerarPDF;
+	private JButton btnEmDia;
+	private JButton btnTodos;
 	
 	public static TelaConferirPagamento getInstance() {
 		if(instance == null) {
@@ -115,5 +121,36 @@ public class TelaConferirPagamento extends JFrame {
 		});
 		btnExibir.setBounds(10, 187, 89, 23);
 		contentPane.add(btnExibir);
+		
+		btnPDFAtrasados = new JButton("Atrasados");
+		btnPDFAtrasados.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Assistente.gerarPDFClientesAtrasados();
+			}
+		});
+		btnPDFAtrasados.setBounds(198, 181, 89, 23);
+		contentPane.add(btnPDFAtrasados);
+		
+		lblGerarPDF = new JLabel("Gerar PDF:");
+		lblGerarPDF.setBounds(265, 156, 81, 14);
+		contentPane.add(lblGerarPDF);
+		
+		btnEmDia = new JButton("Em Dia");
+		btnEmDia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Assistente.gerarPDFClientesEmDia();
+			}
+		});
+		btnEmDia.setBounds(301, 181, 89, 23);
+		contentPane.add(btnEmDia);
+		
+		btnTodos = new JButton("Todos");
+		btnTodos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Assistente.gerarPDFTodosClientes();
+			}
+		});
+		btnTodos.setBounds(257, 213, 89, 23);
+		contentPane.add(btnTodos);
 	}
 }

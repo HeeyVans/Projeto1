@@ -71,12 +71,6 @@ public class RepositorioTreinoTesteList implements IRepositorioTreino, Serializa
 	}
 
 	@Override
-	public Treino procurar(String id) {
-		
-		return null;
-	}
-
-	@Override
 	public Treino procurarClienteTreino(String matricula) {
 		List<Treino> treinos = lerArquivo();
 		

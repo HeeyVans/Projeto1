@@ -21,10 +21,6 @@ public class CadastroTreino {
 		this.repositorio.inserir(treino);
 	}
 	
-	public Treino procurar(String id) {
-		return this.repositorio.procurar(id);
-	}
-	
 	public Treino procurarClienteTreino(String matricula) {
 		return this.repositorio.procurarClienteTreino(matricula);
 	}

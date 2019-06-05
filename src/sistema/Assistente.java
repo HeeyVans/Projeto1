@@ -32,6 +32,7 @@ import basicas.Endereco;
 import basicas.Exercicio;
 import basicas.Instrutor;
 import basicas.Treino;
+import excecoes.MatriculaNaoEncontradaException;
 import gui.PopUps;
 import repositorios.RepositorioExercicioArray;
 
@@ -279,6 +280,101 @@ public class Assistente {
 			document.close();
 		}
 		
+		//GerarPDFAtrasados
+		public static void gerarPDFClientesAtrasados() {
+			int i;	
+			
+			Document document = new Document();
+			
+			ArrayList<Cliente> lista = new ArrayList();
+			lista = (ArrayList<Cliente>) Fachada.getInstance().listarClienteAtrasado("Não");
+			
+			try {
+				
+				PdfWriter.getInstance(document, new FileOutputStream("Atrasados.pdf"));
+				document.open();
+				document.setPageSize(PageSize._11X17);
+				
+				document.add(new Paragraph("_______________________________"));	
+				document.add(new Paragraph("Clientes Atrasados:"));
+				document.add(new Paragraph("_______________________________"));	
+				
+				for(i = 0; i <= lista.size() - 1; i++) {
+				document.add(new Paragraph("Cliente: " + lista.get(i).getNome()));	
+				}
+			}catch(DocumentException | IOException ex) {
+				System.out.println("Error"+ ex);
+			}
+			
+			document.close();
+		}
+		//GerarPDFEmDia
+		public static void gerarPDFClientesEmDia() {
+			int i;	
+			
+			Document document = new Document();
+			
+			ArrayList<Cliente> lista = new ArrayList();
+			lista = (ArrayList<Cliente>) Fachada.getInstance().listarClienteEmDia("Sim");
+			
+			try {
+				
+				PdfWriter.getInstance(document, new FileOutputStream("EmDia.pdf"));
+				document.open();
+				document.setPageSize(PageSize._11X17);
+				
+				document.add(new Paragraph("_______________________________"));	
+				document.add(new Paragraph("Clientes em dia:"));
+				document.add(new Paragraph("_______________________________"));	
+				
+				for(i = 0; i <= lista.size() - 1; i++) {
+				document.add(new Paragraph("Cliente: " + lista.get(i).getNome()));	
+				}
+			}catch(DocumentException | IOException ex) {
+				System.out.println("Error"+ ex);
+			}
+			
+			document.close();
+		}
+		//GerarPDFTodosClientes
+		public static void gerarPDFTodosClientes() {
+			int i;	
+			
+			Document document = new Document();
+			
+			ArrayList<Cliente> lista1 = new ArrayList();
+			lista1 = (ArrayList<Cliente>) Fachada.getInstance().listarClienteEmDia("Sim");
+			ArrayList<Cliente> lista2 = new ArrayList();
+			lista2 = (ArrayList<Cliente>) Fachada.getInstance().listarClienteAtrasado("Não");
+			
+			try {
+				
+				PdfWriter.getInstance(document, new FileOutputStream("TodosClientes.pdf"));
+				document.open();
+				document.setPageSize(PageSize._11X17);
+				
+				document.add(new Paragraph("_______________________________"));	
+				document.add(new Paragraph("Clientes em dia:"));
+				document.add(new Paragraph("_______________________________"));	
+				document.add(new Paragraph("_______________________________"));	
+				for(i = 0; i <= lista1.size() - 1; i++) {
+				document.add(new Paragraph("Cliente: " + lista1.get(i).getNome()));	
+				}
+				
+				document.add(new Paragraph("_______________________________"));	
+				document.add(new Paragraph("Clientes Atrasados:"));
+				document.add(new Paragraph("_______________________________"));	
+				document.add(new Paragraph("_______________________________"));	
+				for(i = 0; i <= lista2.size() - 1; i++) {
+					document.add(new Paragraph("Cliente: " + lista2.get(i).getNome()));	
+					}
+				
+			}catch(DocumentException | IOException ex) {
+				System.out.println("Error"+ ex);
+			}
+			
+			document.close();
+		}
 		//Montando Tabelas
 		public static void montarTabela(List clientes, ModeloTabelaInstrutor modelo) {
 			modelo.addClienteList(clientes);
@@ -290,53 +386,51 @@ public class Assistente {
 			Fachada.getInstance().cadastrarADM(adm);
 		}
 		
-		/*Gerar Instrutor e Cliente
-		public static void gerarInstCliente() {
-			Cliente c = new Cliente("Diogo", "70341871427","bbbb", "Cliente");
-			Fachada.getInstance().cadastrarCliente(c);
-			Instrutor t = new Instrutor("Vanessa", "27406222106", "aaaa", "Instrutor");
-			Fachada.getInstance().cadastrarInstrutor(t);
-		}
-		//Gerar Clientes
-		public static void gerarCliente() {
-			Cliente c = new Cliente("Diogo", "70341871427", "Masculino", "Sim");
-			Fachada.getInstance().cadastrarCliente(c);
-			Cliente v = new Cliente("Vanessa", "67371781708", "rrrr", "Cliente");
-			Fachada.getInstance().cadastrarCliente(v);
-			Cliente f = new Cliente("Paulo", "35774928721", "hhhh", "Cliente");
-			Fachada.getInstance().cadastrarCliente(f);
-		
-		}*/
 		//Gerar Treino
-		public static void gerarTreino() {
+		public static void gerarTreino() throws MatriculaNaoEncontradaException {
 		Instrutor t = new Instrutor("Vanessa", "27406222106", "aaaa", "Instrutor");
 		Fachada.getInstance().cadastrarInstrutor(t);
 		
 		Endereco end = new Endereco("Rua","Bairro","Cidade","Complemento","Número");
 		Cliente c = new Cliente("Diogo", end, "70341871427", "bbbb", "digsuk360@gmail.com", "84504668", "Masculino",
-				"Não", "Hipertrofia");
+				"Sim", "Hipertrofia");
 		Fachada.getInstance().cadastrarCliente(c);
 		
-		Exercicio e = new Exercicio("obs", "Supino", 3, "1'");
-		Exercicio e1 = new Exercicio("obs", "Leg", 3, "1'");
-		Exercicio e2 = new Exercicio("obs", "Rosca", 3, "1'");
+		Exercicio e = new Exercicio("", "Supino", 3, "1'");
+		Exercicio e1 = new Exercicio("", "Fly", 3, "1'");
+		Exercicio e2 = new Exercicio("", "Elevação Frontal", 3, "1'");
+		Exercicio e3 = new Exercicio("", "Flexão de braços aberta", 3, "1'");
+		Exercicio e4 = new Exercicio("", "Flexão de braços fechada", 3, "1'");
+		Exercicio e5 = new Exercicio("", "Tríceps Pulley", 3, "1'");
 		
-		Fachada.getInstance().inserirExercicio(e);
-		Fachada.getInstance().inserirExercicio(e1);
-		Fachada.getInstance().inserirExercicio(e2);
+		ArrayList<Exercicio> categoriaA = new ArrayList<Exercicio>();
+		categoriaA.add(e);
+		categoriaA.add(e1);
+		categoriaA.add(e2);
+		categoriaA.add(e3);
+		categoriaA.add(e4);
+		categoriaA.add(e5);
 		
-		RepositorioExercicioArray rep = new RepositorioExercicioArray();
-		rep.inserir(e);
-		rep.inserir(e1);
-		
-		RepositorioExercicioArray rep1 = new RepositorioExercicioArray();
-		rep1.inserir(e2);
-		
-		/*Treino tr = new Treino(t, c, rep, Assistente.gerarId(), "A");		
+		Treino tr = new Treino(t, c, categoriaA, "A");		
 		Fachada.getInstance().inserirTreino(tr);
 		
-		Treino tr1 = new Treino(t, c, rep1, Assistente.gerarId(), "B");		
-		Fachada.getInstance().inserirTreino(tr1);*/
+		Exercicio e6 = new Exercicio("", "Total Leg", 3, "1'");
+		Exercicio e7 = new Exercicio("", "Leg 90", 3, "1'");
+		Exercicio e8 = new Exercicio("", "Extensora", 3, "1'");
+		Exercicio e9 = new Exercicio("", "Panturrilha Sentada", 3, "1'");
+		Exercicio e10 = new Exercicio("", "Panturrilha Smith", 3, "1'");
+		Exercicio e11 = new Exercicio("", "Abdução", 3, "1'");
+		
+		ArrayList<Exercicio> categoriaB = new ArrayList<Exercicio>();
+		categoriaB.add(e6);
+		categoriaB.add(e7);
+		categoriaB.add(e8);
+		categoriaB.add(e9);
+		categoriaB.add(e10);
+		categoriaB.add(e11);
+		
+		Treino tr1 = new Treino(t, c, categoriaB, "B");		
+		Fachada.getInstance().inserirTreino(tr1);
 		}
 		
 

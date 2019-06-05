@@ -1,35 +1,26 @@
 package basicas;
 
+import java.util.ArrayList;
+
 import repositorios.RepositorioExercicioArray;
 
 public class Treino {
 	
 	private Instrutor instrutor;
 	private Cliente cliente;
-	private RepositorioExercicioArray repExer;
-	private String id;
+	private ArrayList repExer;
 	private String categoria;
 	
 	
-	public Treino(Instrutor instrutor, Cliente cliente,  RepositorioExercicioArray repExer,
-			String id, String categoria) {
+	public Treino(Instrutor instrutor, Cliente cliente,  ArrayList repExer,
+			String categoria) {
 		
 		this.instrutor = instrutor;
 		this.cliente = cliente;
 		this.repExer = repExer;
 		this.categoria = categoria;
-		this.id = id;
 	}
 
-
-	public String getId() {
-		return id;
-	}
-
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 
 	public Treino() {
@@ -56,12 +47,12 @@ public class Treino {
 		this.cliente = cliente;
 	}
 
-	public RepositorioExercicioArray getRepExer() {
+	public ArrayList getRepExer() {
 		return repExer;
 	}
 
 
-	public void setRepExer(RepositorioExercicioArray repExer) {
+	public void setRepExer(ArrayList repExer) {
 		this.repExer = repExer;
 	}
 

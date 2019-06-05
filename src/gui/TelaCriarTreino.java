@@ -31,6 +31,7 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 public class TelaCriarTreino extends JFrame {
 
@@ -256,16 +257,16 @@ private String comboSelecionado() {
 							ex5 = new Exercicio(textFieldObs6.getText(), textFieldNome6.getText(), Integer.parseInt(textFieldSeries6.getText()), 
 									textFieldDescanso6.getText());
 													
-							Fachada.getInstance().inserirExercicio(ex);
+							ArrayList<Exercicio> categoria = new ArrayList<Exercicio>();
 							
-							rep.inserir(ex);
-							rep.inserir(ex1);
-							rep.inserir(ex2);
-							rep.inserir(ex3);
-							rep.inserir(ex4);
-							rep.inserir(ex5);
+							categoria.add(ex);
+							categoria.add(ex1);
+							categoria.add(ex2);
+							categoria.add(ex3);
+							categoria.add(ex4);
+							categoria.add(ex5);
 							
-							Treino t = new Treino(instru, cliente, rep, Assistente.gerarId(), comboSelecionado());
+							Treino t = new Treino(instru, cliente, categoria, comboSelecionado());
 							Fachada.getInstance().inserirTreino(t);
 							limpar();
 							PopUps.treinoCriado();
