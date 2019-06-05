@@ -80,7 +80,7 @@ public class TelaEntrar extends JFrame{
 					
 					//gerando user ADM
 					Assistente.gerarAdm();
-					//Assistente.gerarTreino();
+					Assistente.gerarTreino();
 					//Assistente.gerarInstCliente();
 					
 				} catch (Exception e) {
@@ -141,11 +141,16 @@ public class TelaEntrar extends JFrame{
 						
 						cliente = Fachada.getInstance().procurarClienteMatricula(matricula);
 						instrutor = Fachada.getInstance().procurarInstrutorMatricula(matricula);
+						adm = Fachada.getInstance().procurarADM(matricula);
 						
 						if(cliente != null) {
-							TelaConsultaCliente.getInstance().setVisible(true);
-							TelaConsultaCliente.getInstance().setLocationRelativeTo(null);
-							TelaDeEntrada.dispose();
+							if(cliente.getPagamento().equals("Não")) {
+								PopUps.AcessoNegado();
+							}else {
+								TelaConsultaCliente.getInstance().setVisible(true);
+								TelaConsultaCliente.getInstance().setLocationRelativeTo(null);
+								TelaDeEntrada.dispose();	
+							}		
 						}else if(instrutor != null) {
 							TelaInstrutor.getInstance().setVisible(true);
 							TelaInstrutor.getInstance().setLocationRelativeTo(null);

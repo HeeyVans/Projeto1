@@ -18,7 +18,7 @@ import interfaces.IRepositorioCliente;
 
 public class RepositorioClienteArray implements IRepositorioCliente, Serializable{
 	
-	public static final int TAM = 1000;
+	public static final int TAM = 1000000;
 	private int indice;
 	private int i;
 	private Cliente[] repositorio;
@@ -102,7 +102,7 @@ public class RepositorioClienteArray implements IRepositorioCliente, Serializabl
 		int i = 0;
 		
 		if(indice != 0) {
-			while(!cpf.equals(repositorio[i].getCpf())) {
+			while(!(cpf.equals(repositorio[i].getCpf()))) {
 				if(i == indice - 1) {
 					return -1;
 				}else {
@@ -127,7 +127,7 @@ public class RepositorioClienteArray implements IRepositorioCliente, Serializabl
 		int i = 0;
 		
 		if(indice != 0) {
-			while(!matricula.equals(repositorio[i].getMatricula())) {
+			while(!(matricula.equals(repositorio[i].getMatricula()))) {
 				if(i == indice - 1) {
 					return -1;
 				}else {

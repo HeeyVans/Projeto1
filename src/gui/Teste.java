@@ -10,7 +10,7 @@ public class Teste {
 
 	public static void main(String[] args) throws ClienteJaCadastradoException {
 		
-		Cliente cliente = new Cliente("Diogo", "1111111", "Hipertrofia");
+	/*	Cliente cliente = new Cliente("Diogo", "1111111", "Hipertrofia");
 		Cliente cliente1 = new Cliente("Vanessa", "000000", "Hipertrofia");
 		
 		Fachada.getInstance().cadastrarCliente(cliente1);
@@ -25,7 +25,7 @@ public class Teste {
 		}else {
 			System.out.println(lista[0].getNome());
 		}
-
+*/
 	}
 
 }

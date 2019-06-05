@@ -292,6 +292,13 @@ public class TelaInstrutor extends JFrame {
 		mnCliente.add(mntmCadastrar);
 		
 		JMenuItem mntmAtt = new JMenuItem("Atualizar");
+		mntmAtt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaDadosCliente.getInstance().setVisible(true);
+				TelaDadosCliente.getInstance().setLocationRelativeTo(null);
+				dispose();
+			}
+		});
 		mnCliente.add(mntmAtt);
 		
 		JMenuItem mntmRemover = new JMenuItem("Remover");

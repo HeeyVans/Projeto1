@@ -72,7 +72,7 @@ public class Mensagem {
 		public static final String ENVIOPEDIDO = "Pedido feito com sucesso!";
 		public static final String MATRICULAADM= "Por favor digite sua matrícula!";
 	
-		//TelaADM
+	//TelaADM
 		public static final String REMOVIDOSUCESSO = "Removido com sucesso!";
 
 }

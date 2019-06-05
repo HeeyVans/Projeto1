@@ -38,10 +38,10 @@ public abstract class Pessoa implements Serializable{
 		
 	}
 	
-	public Pessoa(String nome, String cpf, String genero) {
+	public Pessoa(String nome, String cpf, String matricula) {
 		this.nome = nome;
 		this.cpf = cpf;
-		this.genero = genero;
+		this.matricula = matricula;
 		
 	}
 	

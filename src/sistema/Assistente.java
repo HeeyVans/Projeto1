@@ -298,7 +298,7 @@ public class Assistente {
 		}
 		//Gerar Clientes
 		public static void gerarCliente() {
-			Cliente c = new Cliente("Diogo", "70341871427", "Masculino");
+			Cliente c = new Cliente("Diogo", "70341871427", "Masculino", "Sim");
 			Fachada.getInstance().cadastrarCliente(c);
 			Cliente v = new Cliente("Vanessa", "67371781708", "rrrr", "Cliente");
 			Fachada.getInstance().cadastrarCliente(v);
@@ -311,7 +311,7 @@ public class Assistente {
 		Instrutor t = new Instrutor("Vanessa", "27406222106", "aaaa", "Instrutor");
 		Fachada.getInstance().cadastrarInstrutor(t);
 		
-		Cliente c = new Cliente("Diogo", "70341871427", "bbbb", "Cliente");
+		Cliente c = new Cliente("Diogo", "70341871427", "bbbb", "Sim");
 		Fachada.getInstance().cadastrarCliente(c);
 		
 		Exercicio e = new Exercicio("obs", "Supino", 3, "1'");

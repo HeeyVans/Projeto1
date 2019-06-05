@@ -12,16 +12,10 @@ public class Cliente extends Pessoa implements Serializable{
 		
 	}  
 
-	public Cliente(String nome, String cpf, String matricula, String identificador) {
-		super(nome, cpf, matricula, identificador);
-		// TODO Auto-generated constructor stub
-	}
-
-
-
-	public Cliente(String nome, String cpf, String genero) {
-		super(nome, cpf, genero);
-		// TODO Auto-generated constructor stub
+	
+	public Cliente(String nome, String cpf, String matricula, String pagamento) {
+		super(nome, cpf, matricula);
+		this.pagamento = pagamento;
 	}
 
 

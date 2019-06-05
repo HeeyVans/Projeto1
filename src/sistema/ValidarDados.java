@@ -68,7 +68,24 @@ public class ValidarDados {
 			return true;
 		}
 		
-		//VALIDA플O DE CAMPOVAZIO COM 10 CAMPOS
+		//VALIDA플O DE CAMPOVAZIO COM 9 CAMPOS
+				public static boolean validarCampoVazio(String arg0, String arg1, String arg2, String arg3
+						, String arg4, String arg5, String arg6, String arg7, String arg8) {
+					try {
+						if (arg0.equals("") || arg1.equals("") || arg2.equals("") || arg3.equals("")
+								|| arg4.equals("") || arg5.equals("") || arg6.equals("") || arg7.equals("")
+								|| arg8.equals("")) {
+							CampoVazioException cve = new CampoVazioException();
+							throw cve;
+						}
+					} catch (CampoVazioException cve) {
+						PopUps.campoVazio(cve);
+						return false;
+					}
+					return true;
+				}
+				
+				//VALIDA플O DE CAMPOVAZIO COM 10 CAMPOS
 				public static boolean validarCampoVazio(String arg0, String arg1, String arg2, String arg3
 						, String arg4, String arg5, String arg6, String arg7, String arg8, String arg9) {
 					try {
@@ -85,7 +102,7 @@ public class ValidarDados {
 					return true;
 				}
 				
-				//VALIDA플O DE CAMPOVAZIO COM 10 CAMPOS
+				//VALIDA플O DE CAMPOVAZIO COM 20 CAMPOS
 				public static boolean validarCampoVazio(String arg0, String arg1, String arg2, String arg3
 						, String arg4, String arg5, String arg6, String arg7, String arg8, String arg9, String arg10
 						, String arg11 , String arg12, String arg13, String arg14, String arg15, String arg16, String arg17

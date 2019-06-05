@@ -1,15 +1,10 @@
 package sistema;
 
-import java.io.IOException;
-import java.sql.ResultSet;
 import java.util.List;
 
 import basicas.Cliente;
-import excecoes.ClienteJaCadastradoException;
-import excecoes.ClienteNaoEncontradoException;
 import interfaces.IRepositorioCliente;
 import repositorios.RepositorioClienteArray;
-import repositorios.RepositorioClienteTesteList;
 
 public class CadastroCliente {
 	

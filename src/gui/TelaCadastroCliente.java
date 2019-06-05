@@ -49,6 +49,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.DefaultComboBoxModel;
 
 public class TelaCadastroCliente extends JFrame{
 
@@ -63,10 +64,10 @@ public class TelaCadastroCliente extends JFrame{
 	private JTextField textFieldComplemento;
 	private JTextField textFieldCidade;
 	private JTextField textFieldObjetivo;
-	private JTextField textFieldPagamento;
 	JDateChooser dataNascimento = new JDateChooser();
 	JRadioButton rdbtnMasculino = new JRadioButton();
 	JRadioButton rdbtnFeminino = new JRadioButton();
+	JComboBox comboBox = new JComboBox();
 	public static TelaCadastroCliente instance;
 	
 	public static TelaCadastroCliente getInstance() {
@@ -74,6 +75,16 @@ public class TelaCadastroCliente extends JFrame{
 			instance = new TelaCadastroCliente();
 		}
 		return instance;
+	}
+	
+	private String comboSelecionado() {
+		if(comboBox.getSelectedIndex() == 0) {
+			return "Sim";
+		}else if(comboBox.getSelectedIndex() == 1) {
+			return "Não";
+		}else {
+			return null;
+		}
 	}
 
 	/**
@@ -91,7 +102,6 @@ public class TelaCadastroCliente extends JFrame{
 		textFieldComplemento.setText("");
 		textFieldCidade.setText("");
 		textFieldObjetivo.setText("");
-		textFieldPagamento.setText("");
 	}
 	
 	public String radioSelect() {
@@ -239,7 +249,7 @@ public class TelaCadastroCliente extends JFrame{
 				if(ValidarDados.validarCampoVazio(textFieldTelefone.getText(), textFieldNome.getText(), 
 						textFieldEmail.getText(), textFieldCPF.getText(), textFieldRua.getText(), 
 						textFieldBairro.getText(), textFieldCidade.getText(),(textFieldNumero.getText()),
-						textFieldObjetivo.getText(), textFieldPagamento.getText())) {
+						textFieldObjetivo.getText())) {
 					try {
 						
 						Endereco end = new Endereco(textFieldRua.getText(), textFieldBairro.getText()
@@ -249,7 +259,7 @@ public class TelaCadastroCliente extends JFrame{
 						Cliente clienteCadastrar;
 						Cliente cliente = new Cliente(textFieldNome.getText(), end, textFieldCPF.getText(),
 								dataNascimento.getDate() , matricula, textFieldEmail.getText(), 
-								textFieldTelefone.getText(), radioSelect(), textFieldPagamento.getText(),
+								textFieldTelefone.getText(), radioSelect(), comboSelecionado(),
 								textFieldObjetivo.getText());
 						
 						clienteCadastrar = Fachada.getInstance().procurarCliente(textFieldCPF.getText());
@@ -378,15 +388,9 @@ public class TelaCadastroCliente extends JFrame{
 		textFieldObjetivo.setBounds(10, 165, 217, 29);
 		frmTelaDeCadastro.getContentPane().add(textFieldObjetivo);
 		
-		JLabel lblPagamento = new JLabel("Pagamento:");
-		lblPagamento.setBounds(10, 205, 83, 14);
+		JLabel lblPagamento = new JLabel("Pagamento Feito:");
+		lblPagamento.setBounds(10, 205, 108, 14);
 		frmTelaDeCadastro.getContentPane().add(lblPagamento);
-		
-		textFieldPagamento = new JTextField();
-		textFieldPagamento.setHorizontalAlignment(SwingConstants.LEFT);
-		textFieldPagamento.setColumns(10);
-		textFieldPagamento.setBounds(10, 230, 217, 29);
-		frmTelaDeCadastro.getContentPane().add(textFieldPagamento);
 		
 		JLabel label_1 = new JLabel("");
 		label_1.setIcon(new ImageIcon(TelaCadastroCliente.class.getResource("/imagens/MFit logotipo redemensionada.jpg")));
@@ -416,5 +420,9 @@ public class TelaCadastroCliente extends JFrame{
 		button.setBackground(new Color(255, 250, 240));
 		button.setBounds(387, 333, 108, 29);
 		frmTelaDeCadastro.getContentPane().add(button);
+		
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Sim", "N\u00E3o"}));
+		comboBox.setBounds(10, 230, 59, 20);
+		frmTelaDeCadastro.getContentPane().add(comboBox);
 	}
 }
