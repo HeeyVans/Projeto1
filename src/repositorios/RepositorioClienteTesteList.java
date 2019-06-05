@@ -12,11 +12,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import basicas.Cliente;
+import basicas.Exercicio;
 import interfaces.IRepositorioCliente;
+import sistema.Fachada;
 
 public class RepositorioClienteTesteList implements IRepositorioCliente, Serializable{
 	
 	private File arquivoCliente;
+	private List<Cliente> cliente;
 	
 	public RepositorioClienteTesteList() {
 		arquivoCliente = new File("Clientes.bin");
@@ -62,7 +65,6 @@ public class RepositorioClienteTesteList implements IRepositorioCliente, Seriali
 			out.writeObject(clientes);
 			out.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -70,7 +72,13 @@ public class RepositorioClienteTesteList implements IRepositorioCliente, Seriali
 
 	@Override
 	public Cliente procurar(String cpf) {
-		// TODO Auto-generated method stub
+		List<Cliente> clientes = lerArquivo();
+		
+		for(Cliente c : clientes) {
+			if(c.getCpf().equals(cpf)) {
+				return c;
+			}
+		}
 		return null;
 	}
 
@@ -88,28 +96,64 @@ public class RepositorioClienteTesteList implements IRepositorioCliente, Seriali
 
 	@Override
 	public void remover(String cpf) {
-		// TODO Auto-generated method stub
+		List<Cliente> clientes = lerArquivo();
+		
+		for(int i = 0; i <= clientes.size(); i++) {
+			if(clientes.get(i).getCpf().equals(cpf)) {
+				clientes.remove(i);
+			}
+		}
+		
+		ObjectOutputStream out;
+		try {
+			out = new ObjectOutputStream(new FileOutputStream(arquivoCliente));
+			out.writeObject(clientes);
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 	}
 
 	@Override
 	public void atualizar(Cliente cliente) {
-		// TODO Auto-generated method stub
+		List<Cliente> clientes = lerArquivo();
+		
+		for(int i = 0; i < clientes.size(); i++) {
+			if(clientes.get(i).getCpf().equals(cliente.getCpf())){
+				clientes.set(i, cliente);
+				ObjectOutputStream out;
+				try {
+					out = new ObjectOutputStream(new FileOutputStream(arquivoCliente));
+					out.writeObject(clientes);
+					out.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	@Override
+	public List<Cliente> listar(String nome) {
+		List<Cliente> clientes = lerArquivo();
+		cliente = null;
+		
+		for(int i = 0; i <= clientes.size(); i++) {
+			if(clientes.get(i).getNome().contains(nome)) {
+				cliente.add(clientes.get(i));
+			}
+		}
+		return cliente;
 		
 	}
 
 	@Override
-	public List listar(String nome) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List listar() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
+	public List<Cliente> listar() {
+		List<Cliente> clientes = lerArquivo();
+		
+		return clientes;
+		
+	}	
 
 }

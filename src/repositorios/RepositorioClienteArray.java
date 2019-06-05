@@ -18,7 +18,7 @@ import interfaces.IRepositorioCliente;
 
 public class RepositorioClienteArray implements IRepositorioCliente, Serializable{
 	
-	public static final int TAM = 1000000;
+	public static final int TAM = 1000;
 	private int indice;
 	private int i;
 	private Cliente[] repositorio;

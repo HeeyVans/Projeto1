@@ -3,6 +3,7 @@ package sistema;
 import java.util.List;
 
 import basicas.Administrador;
+import basicas.AtividadeDiaria;
 import basicas.Cliente;
 import basicas.Exercicio;
 import basicas.Instrutor;
@@ -30,6 +31,7 @@ public class Fachada {
 	private CadastroExercicio exercicio;
 	private CadastroTreino treino;
 	private CadastroADM adm;
+	private CadastroAtividade ativ;
 	
 	public Fachada() {
 		
@@ -38,6 +40,7 @@ public class Fachada {
 		instrutor = new CadastroInstrutor();
 		exercicio = new CadastroExercicio();
 		treino = new CadastroTreino();
+		ativ = new CadastroAtividade();
 		
 	}
 	
@@ -145,4 +148,12 @@ public class Fachada {
 		return this.treino.listar(matricula, categoria);
 	}
 	//FIM DE CRUD TREINO
+	//INICIO CRUD RELATORIO
+	public void inserirAtividade(AtividadeDiaria atividade) {
+		this.ativ.inserir(atividade);
+	}
+	public List listar() {
+		return this.ativ.listar();
+	}
+	//FIM CRUD RELATORIO
 }

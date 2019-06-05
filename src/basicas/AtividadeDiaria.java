@@ -1,27 +1,38 @@
 package basicas;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class AtividadeDiaria {
+public class AtividadeDiaria implements Serializable{
 
 	Treino treino;
 	LocalDate data;
 	
-	public static void main(String[] args) {
-		  
-	        //Pega a data atual e a hora
-		 	LocalDateTime agora = LocalDateTime.now();
-
-	        System.out.println("LocalDateTime antes de formatar: " + agora);
-
-	        DateTimeFormatter formatadorBarraEHora = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-
-	        //Acrescenta mais 30 dias
-	        agora = agora.plusDays(30);
-	        System.out.println("LocalDateTime depois de formatar: " +agora.format(formatadorBarraEHora));
-	        
-
+	public AtividadeDiaria(Treino treino, LocalDate data) {
+		
+		this.treino = treino;
+		this.data = data;
 	}
+
+	public Treino getTreino() {
+		return treino;
+	}
+
+	public void setTreino(Treino treino) {
+		this.treino = treino;
+	}
+
+	public LocalDate getData() {
+		return data;
+	}
+
+	public void setData(LocalDate data) {
+		this.data = data;
+	}
+	
+	
+	
+	
 }

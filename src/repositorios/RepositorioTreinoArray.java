@@ -177,8 +177,7 @@ public class RepositorioTreinoArray implements IRepositorioTreino, Serializable{
 		while(i < indice) {
 			if(repositorio[i].getCliente().getMatricula() == matricula && categoria == repositorio[i]
 					.getCategoria()) {
-				exercicios = repositorio[i].getRepExer().listar();
-				
+				exercicios = repositorio[i].getRepExer().listar();				
 				}
 			 i++;
 			}
