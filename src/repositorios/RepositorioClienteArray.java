@@ -223,6 +223,35 @@ public class RepositorioClienteArray implements IRepositorioCliente, Serializabl
 		return clientes;
 		}
 
+	@Override
+	public List listarEmDia(String pagamentoEmDia) {
+		List clientes = new ArrayList();
+		i = 0;
+		
+		while(i < indice) {
+			if(repositorio[i].getPagamento().equals(pagamentoEmDia)) {
+				clientes.add(repositorio[i]);
+			}
+			i++;
+		}
+		return clientes;
+	}
+
+	@Override
+	public List listarAtrasado(String pagamentoAtrasado) {
+		
+		List clientes = new ArrayList();
+		i = 0;
+		
+		while(i < indice) {
+			if((repositorio[i].getPagamento().equals(pagamentoAtrasado))) {
+				clientes.add(repositorio[i]);
+			}
+			i++;
+		}
+		return clientes;
+	}
+
 
 	}
 	

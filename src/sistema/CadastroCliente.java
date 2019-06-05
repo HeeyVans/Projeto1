@@ -38,6 +38,14 @@ public class CadastroCliente {
 		return repositorio.listar(nome);
 	}
 	
+	public List listarEmDia(String pagamentoEmDia) {
+		return repositorio.listarEmDia(pagamentoEmDia);
+	}
+	
+	public List listarAtrasado(String pagamentoAtrasado) {
+		return repositorio.listarAtrasado(pagamentoAtrasado);
+	}
+	
 	public List listar() {
 		return repositorio.listar();
 	}

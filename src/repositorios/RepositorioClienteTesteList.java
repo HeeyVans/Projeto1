@@ -154,6 +154,18 @@ public class RepositorioClienteTesteList implements IRepositorioCliente, Seriali
 		
 		return clientes;
 		
+	}
+
+	@Override
+	public List listarEmDia(String pagamentoEmDia) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List listarAtrasado(String pagamentoAtrasado) {
+		// TODO Auto-generated method stub
+		return null;
 	}	
 
 }

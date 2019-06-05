@@ -15,6 +15,8 @@ public interface IRepositorioCliente {
 	public void remover(String cpf);
 	public void atualizar(Cliente cliente);
 	public List listar(String nome);
+	public List listarEmDia(String pagamentoEmDia);
+	public List listarAtrasado(String pagamentoAtrasado);
 	public List listar();
 	
 }

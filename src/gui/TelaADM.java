@@ -133,5 +133,16 @@ public class TelaADM extends JFrame {
 		btnCliente.setBounds(154, 185, 176, 41);
 		contentPane.add(btnCliente);
 		
+		JButton btnRelatorios = new JButton("Relat\u00F3rios");
+		btnRelatorios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaConferirPagamento.getInstance().setVisible(true);
+				TelaConferirPagamento.getInstance().setLocationRelativeTo(null);
+				dispose();
+			}
+		});
+		btnRelatorios.setBounds(29, 185, 89, 23);
+		contentPane.add(btnRelatorios);
+		
 	}
 }

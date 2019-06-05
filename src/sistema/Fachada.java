@@ -73,6 +73,12 @@ public class Fachada {
 	public List listarCliente(String nome) {
 		return this.cliente.listar(nome);
 	}
+	public List listarClienteEmDia(String pagamentoEmDia) {
+		return this.cliente.listarEmDia(pagamentoEmDia);
+	}
+	public List listarClienteAtrasado(String pagamentoAtrasado) {
+		return this.cliente.listarAtrasado(pagamentoAtrasado);
+	}
 	public List listarClienteVoid() {
 		return this.cliente.listar();
 	}
