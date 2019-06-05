@@ -31,6 +31,18 @@ public abstract class Pessoa implements Serializable{
 		this.genero = genero;
 	}
 	
+	public Pessoa(String nome, Endereco endereco, String cpf, String matricula,
+			String email, String telefone, String genero) {
+		
+		this.nome = nome;
+		this.endereco = endereco;
+		this.cpf = cpf;
+		this.matricula = matricula;
+		this.email = email;
+		this.telefone = telefone;
+		this.genero = genero;
+	}
+	
 	public Pessoa(String nome, String cpf, String matricula, String identificador) {
 		this.nome = nome;
 		this.cpf = cpf;

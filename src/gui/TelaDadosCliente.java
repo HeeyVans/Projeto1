@@ -66,9 +66,9 @@ public class TelaDadosCliente extends JFrame {
 	public void setDados(Cliente c) {
 		textFieldNome.setText(c.getNome());
 		textFieldCPF.setText(c.getCpf());
-        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        /*DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         String dataFormatada = dateFormat.format(c.getDataDeNasc());
-		textFieldData.setText(dataFormatada);
+		textFieldData.setText(dataFormatada);*/
 		textFieldMatricula.setText(c.getMatricula());
 		textFieldEmail.setText(c.getEmail());
 		textFieldTelefone.setText(c.getTelefone());
@@ -343,10 +343,6 @@ public class TelaDadosCliente extends JFrame {
 		btnGerarPDF.setBackground(new Color(0, 128, 0));
 		btnGerarPDF.setBounds(331, 338, 142, 35);
 		contentPane.add(btnGerarPDF);
-		
-		dataNascimento = new JDateChooser();
-		dataNascimento.setBounds(177, 380, 60, 29);
-		contentPane.add(dataNascimento);
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 97, 21);

@@ -28,6 +28,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import basicas.Administrador;
 import basicas.Cliente;
+import basicas.Endereco;
 import basicas.Exercicio;
 import basicas.Instrutor;
 import basicas.Treino;
@@ -289,7 +290,7 @@ public class Assistente {
 			Fachada.getInstance().cadastrarADM(adm);
 		}
 		
-		//Gerar Instrutor e Cliente
+		/*Gerar Instrutor e Cliente
 		public static void gerarInstCliente() {
 			Cliente c = new Cliente("Diogo", "70341871427","bbbb", "Cliente");
 			Fachada.getInstance().cadastrarCliente(c);
@@ -305,13 +306,15 @@ public class Assistente {
 			Cliente f = new Cliente("Paulo", "35774928721", "hhhh", "Cliente");
 			Fachada.getInstance().cadastrarCliente(f);
 		
-		}
+		}*/
 		//Gerar Treino
 		public static void gerarTreino() {
 		Instrutor t = new Instrutor("Vanessa", "27406222106", "aaaa", "Instrutor");
 		Fachada.getInstance().cadastrarInstrutor(t);
 		
-		Cliente c = new Cliente("Diogo", "70341871427", "bbbb", "Sim");
+		Endereco end = new Endereco("Rua","Bairro","Cidade","Complemento","Número");
+		Cliente c = new Cliente("Diogo", end, "70341871427", "bbbb", "digsuk360@gmail.com", "84504668", "Masculino",
+				"Não", "Hipertrofia");
 		Fachada.getInstance().cadastrarCliente(c);
 		
 		Exercicio e = new Exercicio("obs", "Supino", 3, "1'");

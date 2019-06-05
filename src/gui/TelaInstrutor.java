@@ -337,6 +337,16 @@ public class TelaInstrutor extends JFrame {
 		});
 		mnCliente.add(mntmRemover);
 		
+		JMenuItem mntmPagamento = new JMenuItem("Atualizar Pagamento");
+		mntmPagamento.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaAtualizarPagamento.getInstance().setVisible(true);
+				TelaAtualizarPagamento.getInstance().setLocationRelativeTo(null);
+				dispose();
+			}
+		});
+		mnCliente.add(mntmPagamento);
+		
 		JLabel label_1 = new JLabel("D\u00FAvidas?");
 		label_1.addMouseListener(new MouseAdapter() {
 			@Override
