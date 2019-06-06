@@ -88,6 +88,7 @@ public class TelaCriarTreino extends JFrame {
 	private JLabel label_18;
 	private JLabel label_19;
 	private JLabel lblCategoriaDoTreino;
+	private JTextField textFieldVezes;
 	
 	public static TelaCriarTreino getInstance() {
 		if(instance == null) {
@@ -266,7 +267,8 @@ private String comboSelecionado() {
 							categoria.add(ex4);
 							categoria.add(ex5);
 							
-							Treino t = new Treino(instru, cliente, categoria, comboSelecionado());
+							Treino t = new Treino(instru, cliente, categoria, comboSelecionado()
+									,Integer.parseInt(textFieldVezes.getText()), 0);
 							Fachada.getInstance().inserirTreino(t);
 							limpar();
 							PopUps.treinoCriado();
@@ -703,5 +705,14 @@ private String comboSelecionado() {
 		});
 		btnVoltar.setBounds(887, 657, 143, 38);
 		contentPane.add(btnVoltar);
+		
+		textFieldVezes = new JTextField();
+		textFieldVezes.setBounds(549, 613, 86, 20);
+		contentPane.add(textFieldVezes);
+		textFieldVezes.setColumns(10);
+		
+		JLabel lblTotal = new JLabel("Total de Treinos");
+		lblTotal.setBounds(549, 584, 86, 14);
+		contentPane.add(lblTotal);
 	}
 }

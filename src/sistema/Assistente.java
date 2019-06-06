@@ -260,6 +260,7 @@ public class Assistente {
 				document.add(new Paragraph("Instrutor: " + treino.getInstrutor().getNome()));
 				document.add(new Paragraph(" "));
 				document.add(new Paragraph("Tipo: " + categoria));
+				document.add(new Paragraph("Treino: " + treino.getContadorTreino() + "/" + treino.getNumeroTreinos()));
 				document.add(new Paragraph("_______________________________"));
 				
 				for(i = 0; i < lista.size(); i++) {
@@ -269,6 +270,14 @@ public class Assistente {
 					document.add(new Paragraph("Obs: " + lista.get(i).getObs()));
 					document.add(new Paragraph("_______________________________"));
 				}
+				
+				int contadorTreino = (treino.getContadorTreino() + 1);
+
+				Treino t = new Treino(treino.getInstrutor(), treino.getCliente(), treino.getRepExer(),
+						categoria, treino.getNumeroTreinos(), contadorTreino);
+				Fachada.getInstance().atualizarTreino(t);
+				
+				contadorTreino = 0;
 				
 				PopUps.treinoGerado();
 				
@@ -411,7 +420,7 @@ public class Assistente {
 		categoriaA.add(e4);
 		categoriaA.add(e5);
 		
-		Treino tr = new Treino(t, c, categoriaA, "A");		
+		Treino tr = new Treino(t, c, categoriaA, "A", 10, 0);		
 		Fachada.getInstance().inserirTreino(tr);
 		
 		Exercicio e6 = new Exercicio("", "Total Leg", 3, "1'");
@@ -429,7 +438,7 @@ public class Assistente {
 		categoriaB.add(e10);
 		categoriaB.add(e11);
 		
-		Treino tr1 = new Treino(t, c, categoriaB, "B");		
+		Treino tr1 = new Treino(t, c, categoriaB, "B", 10, 0);		
 		Fachada.getInstance().inserirTreino(tr1);
 		}
 		

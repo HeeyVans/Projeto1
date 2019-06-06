@@ -8,17 +8,22 @@ public class Treino {
 	
 	private Instrutor instrutor;
 	private Cliente cliente;
-	private ArrayList repExer;
+	private ArrayList<?> repExer;
 	private String categoria;
+	private int numeroTreinos;
+	private int contadorTreino;
 	
 	
 	public Treino(Instrutor instrutor, Cliente cliente,  ArrayList repExer,
-			String categoria) {
+			String categoria, int numeroTreinos, int contadorTreino) {
 		
 		this.instrutor = instrutor;
 		this.cliente = cliente;
 		this.repExer = repExer;
 		this.categoria = categoria;
+		this.numeroTreinos = numeroTreinos;
+		this.contadorTreino = contadorTreino;
+		
 	}
 
 
@@ -46,13 +51,38 @@ public class Treino {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+	
 
-	public ArrayList getRepExer() {
+	public int getNumeroTreinos() {
+		return numeroTreinos;
+	}
+
+
+
+	public void setNumeroTreinos(int numeroTreinos) {
+		this.numeroTreinos = numeroTreinos;
+	}
+
+
+
+	public int getContadorTreino() {
+		return contadorTreino;
+	}
+
+
+
+	public void setContadorTreino(int contadorTreino) {
+		this.contadorTreino = contadorTreino;
+	}
+
+
+
+	public ArrayList<?> getRepExer() {
 		return repExer;
 	}
 
 
-	public void setRepExer(ArrayList repExer) {
+	public void setRepExer(ArrayList<?> repExer) {
 		this.repExer = repExer;
 	}
 

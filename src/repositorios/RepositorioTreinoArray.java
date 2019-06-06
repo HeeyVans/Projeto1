@@ -130,7 +130,9 @@ public class RepositorioTreinoArray implements IRepositorioTreino, Serializable{
 
 	@Override
 	public void atualizar(Treino treino) {
-
+		if(existeClienteTreino(treino.getCliente().getMatricula())) {
+			repositorio[i] = treino;
+		}
 		}
 	
 	public List listar(String matricula, String categoria) {
