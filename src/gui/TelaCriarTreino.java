@@ -194,6 +194,7 @@ private String comboSelecionado() {
 		textFieldMatricula.setColumns(10);
 		
 		JButton button = new JButton("P\u00E1gina Inicial");
+		button.setToolTipText("Voltar para a p\u00E1gina inicial");
 		button.setIcon(null);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -217,6 +218,7 @@ private String comboSelecionado() {
 		contentPane.add(button);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setToolTipText("Cadastramento do treino");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boolean confirm;
@@ -348,6 +350,7 @@ private String comboSelecionado() {
 		contentPane.add(lblNewLabel_1);
 		
 		JButton button_1 = new JButton("Limpar");
+		button_1.setToolTipText("Limpar todos os campos de texto");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				limpar();
@@ -681,6 +684,7 @@ private String comboSelecionado() {
 		contentPane.add(lblCategoriaDoTreino);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setToolTipText("Voltar para tela anterior");
 		btnVoltar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnVoltar.setIcon(new ImageIcon(TelaCriarTreino.class.getResource("/imagens/gtkgobackltr_104397.png")));
 		btnVoltar.setForeground(new Color(255, 255, 255));

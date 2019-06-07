@@ -71,18 +71,6 @@ public class RepositorioTreinoTesteList implements IRepositorioTreino, Serializa
 	}
 
 	@Override
-	public Treino procurarClienteTreino(String matricula) {
-		List<Treino> treinos = lerArquivo();
-		
-		for(Treino t : treinos) {
-			if(t.getCliente().getMatricula().equals(matricula)) {
-				return t;
-			}
-		}
-		return null;
-	}
-
-	@Override
 	public void remover(String id) {
 		
 		
@@ -98,8 +86,18 @@ public class RepositorioTreinoTesteList implements IRepositorioTreino, Serializa
 	public List listar(String matricula, String categoria) {
 		List<Treino> treinos = lerArquivo();
 		
+		return null;
+	}
+
+	@Override
+	public Treino procurarClienteTreino(String matricula, String categoria) {
+		List<Treino> treinos = lerArquivo();
 		
-		
+		for(Treino t : treinos) {
+			if(t.getCliente().getMatricula().equals(matricula) && t.getCategoria().equals(categoria)) {
+				return t;
+			}
+		}
 		return null;
 	}
 

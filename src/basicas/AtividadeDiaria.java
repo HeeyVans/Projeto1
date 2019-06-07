@@ -32,7 +32,4 @@ public class AtividadeDiaria implements Serializable{
 		this.data = data;
 	}
 	
-	
-	
-	
 }

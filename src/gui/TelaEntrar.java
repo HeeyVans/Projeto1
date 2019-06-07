@@ -333,6 +333,14 @@ public class TelaEntrar extends JFrame{
 		});
 		btnEsqueciSenha.setBounds(310, 258, 187, 20);
 		TelaDeEntrada.getContentPane().add(btnEsqueciSenha);
+		
+		JLabel lblData = new JLabel("Data");
+		lblData.setBounds(383, 109, 46, 14);
+		TelaDeEntrada.getContentPane().add(lblData);
+		
+		JLabel lblHora = new JLabel("Hora");
+		lblHora.setBounds(451, 109, 46, 14);
+		TelaDeEntrada.getContentPane().add(lblHora);
 		TelaDeEntrada.setBounds(100, 100, 535, 454);
 		TelaDeEntrada.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
