@@ -77,6 +77,7 @@ public class TelaEntrar extends JFrame{
 					TelaEntrar window = new TelaEntrar();
 					window.TelaDeEntrada.setVisible(true);
 					window.TelaDeEntrada.setLocationRelativeTo(null);
+					window.TelaDeEntrada.setResizable(false);
 					
 					//gerando user ADM
 					Assistente.gerarAdm();

@@ -59,10 +59,6 @@ public class TelaConsultaCliente extends JFrame {
 			return "B";
 		}else if(comboBoxCategoria.getSelectedIndex() == 2) {
 			return "C";
-		}else if(comboBoxCategoria.getSelectedIndex() == 3) {
-			return "D";
-		}else if(comboBoxCategoria.getSelectedIndex() == 4) {
-			return "E";
 		}else {
 			return null;
 		}
@@ -89,6 +85,7 @@ public class TelaConsultaCliente extends JFrame {
 					TelaConsultaCliente frame = new TelaConsultaCliente();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
+					frame.setResizable(false);
 					
 					Assistente.gerarTreino();
 					
@@ -230,7 +227,7 @@ public class TelaConsultaCliente extends JFrame {
 		comboBoxCategoria.setForeground(new Color(255, 255, 255));
 		
 		
-		comboBoxCategoria.setModel(new DefaultComboBoxModel(new String[] {"A", "B", "C", "D", "E"}));
+		comboBoxCategoria.setModel(new DefaultComboBoxModel(new String[] {"A", "B", "C"}));
 		comboBoxCategoria.setMaximumRowCount(5);
 		comboBoxCategoria.setBounds(166, 219, 45, 28);
 		contentPane.add(comboBoxCategoria);

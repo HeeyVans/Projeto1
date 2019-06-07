@@ -132,10 +132,6 @@ private String comboSelecionado() {
 			return "B";
 		}else if(comboBoxCategoria.getSelectedIndex() == 2) {
 			return "C";
-		}else if(comboBoxCategoria.getSelectedIndex() == 3) {
-			return "D";
-		}else if(comboBoxCategoria.getSelectedIndex() == 4) {
-			return "E";
 		}else {
 			return null;
 		}
@@ -198,6 +194,7 @@ private String comboSelecionado() {
 		textFieldMatricula.setColumns(10);
 		
 		JButton button = new JButton("P\u00E1gina Inicial");
+		button.setIcon(null);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boolean confirm;
@@ -364,7 +361,7 @@ private String comboSelecionado() {
 		comboBoxCategoria.setForeground(Color.WHITE);
 		
 		
-		comboBoxCategoria.setModel(new DefaultComboBoxModel(new String[] {"A", "B", "C", "D", "E"}));
+		comboBoxCategoria.setModel(new DefaultComboBoxModel(new String[] {"A", "B", "C"}));
 		comboBoxCategoria.setBounds(338, 677, 58, 28);
 		contentPane.add(comboBoxCategoria);
 		
@@ -684,6 +681,7 @@ private String comboSelecionado() {
 		contentPane.add(lblCategoriaDoTreino);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnVoltar.setIcon(new ImageIcon(TelaCriarTreino.class.getResource("/imagens/gtkgobackltr_104397.png")));
 		btnVoltar.setForeground(new Color(255, 255, 255));
 		btnVoltar.setBackground(new Color(0, 128, 0));
@@ -705,12 +703,13 @@ private String comboSelecionado() {
 		contentPane.add(btnVoltar);
 		
 		textFieldVezes = new JTextField();
-		textFieldVezes.setBounds(549, 613, 86, 20);
+		textFieldVezes.setBounds(549, 609, 174, 28);
 		contentPane.add(textFieldVezes);
 		textFieldVezes.setColumns(10);
 		
-		JLabel lblTotal = new JLabel("Total de Treinos");
-		lblTotal.setBounds(549, 584, 86, 14);
+		JLabel lblTotal = new JLabel("Total de Treinos:");
+		lblTotal.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblTotal.setBounds(549, 582, 114, 14);
 		contentPane.add(lblTotal);
 	}
 }

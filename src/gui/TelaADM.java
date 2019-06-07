@@ -96,7 +96,7 @@ public class TelaADM extends JFrame {
 		btnPginaInicial.setForeground(Color.WHITE);
 		btnPginaInicial.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnPginaInicial.setBackground(new Color(0, 128, 0));
-		btnPginaInicial.setBounds(154, 345, 176, 41);
+		btnPginaInicial.setBounds(154, 361, 176, 41);
 		contentPane.add(btnPginaInicial);
 		
 		JLabel label_1 = new JLabel("Escolha uma das op\u00E7\u00F5es acima para que possa prosseguir");
@@ -116,7 +116,7 @@ public class TelaADM extends JFrame {
 				dispose();
 			}
 		});
-		btnInstrutor.setBounds(154, 267, 176, 41);
+		btnInstrutor.setBounds(154, 236, 176, 41);
 		contentPane.add(btnInstrutor);
 		
 		JButton btnCliente = new JButton("Clientes");
@@ -130,10 +130,13 @@ public class TelaADM extends JFrame {
 				dispose();
 			}
 		});
-		btnCliente.setBounds(154, 185, 176, 41);
+		btnCliente.setBounds(154, 170, 176, 41);
 		contentPane.add(btnCliente);
 		
 		JButton btnRelatorios = new JButton("Relat\u00F3rios");
+		btnRelatorios.setBackground(new Color(0, 128, 0));
+		btnRelatorios.setForeground(new Color(255, 255, 255));
+		btnRelatorios.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnRelatorios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaConferirPagamento.getInstance().setVisible(true);
@@ -141,7 +144,7 @@ public class TelaADM extends JFrame {
 				dispose();
 			}
 		});
-		btnRelatorios.setBounds(29, 185, 89, 23);
+		btnRelatorios.setBounds(154, 298, 176, 41);
 		contentPane.add(btnRelatorios);
 		
 	}

@@ -166,6 +166,7 @@ public class Assistente {
 				document.open();
 				document.setPageSize(PageSize.A1);
 				
+				document.add(new Paragraph("-------MFit Academia: Saúde em primeiro lugar-------"));
 				document.add(new Paragraph("Cliente:" + cliente.getNome()));
 				document.add(new Paragraph(" "));
 				document.add(new Paragraph("_______________________________"));
@@ -255,6 +256,10 @@ public class Assistente {
 				document.open();
 				document.setPageSize(PageSize._11X17);
 				
+				document.add(new Paragraph("-------MFit Academia: Saúde em primeiro lugar-------"));
+				document.add(new Paragraph("Treino realizado por: " +treino.getInstrutor().getNome()+ "\n E-mail: " +treino.getInstrutor().getEmail()));
+				document.add(new Paragraph("Autorizado por: Administração MFit Academia"));
+				document.add(new Paragraph(" "));
 				document.add(new Paragraph("Cliente: " + treino.getCliente().getNome()));
 				document.add(new Paragraph("Instrutor: " + treino.getInstrutor().getNome()));
 				document.add(new Paragraph(" "));

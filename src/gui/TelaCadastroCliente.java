@@ -50,6 +50,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class TelaCadastroCliente extends JFrame{
 
@@ -223,10 +225,17 @@ public class TelaCadastroCliente extends JFrame{
 		lblEmail.setBounds(180, 61, 59, 14);
 		frmTelaDeCadastro.getContentPane().add(lblEmail);
 		
-		textFieldEmail = new JTextField();
+		textFieldEmail = new JTextField(" Ex: Jo\u00E3o@gmail.com");
+		textFieldEmail.setToolTipText("");
+		textFieldEmail.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				textFieldEmail.setText("");
+			}
+		});
 		textFieldEmail.setHorizontalAlignment(SwingConstants.LEFT);
 		textFieldEmail.setColumns(10);
-		textFieldEmail.setBounds(219, 58, 186, 29);
+		textFieldEmail.setBounds(219, 54, 186, 29);
 		frmTelaDeCadastro.getContentPane().add(textFieldEmail);
 		
 		JLabel label = new JLabel("");
@@ -235,6 +244,7 @@ public class TelaCadastroCliente extends JFrame{
 		frmTelaDeCadastro.getContentPane().add(label);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setToolTipText("Cadastramento de um cliente");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String cpf = textFieldCPF.getText(), email = textFieldEmail.getText();
@@ -290,6 +300,7 @@ public class TelaCadastroCliente extends JFrame{
 		frmTelaDeCadastro.getContentPane().add(btnCadastrar);
 		
 		JButton btnLimpar = new JButton("Limpar");
+		btnLimpar.setToolTipText("Limpar todos os campos de texto");
 		btnLimpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				limpar();
@@ -317,7 +328,14 @@ public class TelaCadastroCliente extends JFrame{
 		lblRua.setBounds(10, 25, 46, 14);
 		panel.add(lblRua);
 		
-		textFieldRua = new JTextField();
+		textFieldRua = new JTextField(" Ex: Dom Manuel de Medeiros");
+		textFieldRua.setForeground(Color.BLACK);
+		textFieldRua.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				textFieldRua.setText("");
+			}
+		});
 		textFieldRua.setHorizontalAlignment(SwingConstants.LEFT);
 		textFieldRua.setColumns(10);
 		textFieldRua.setBounds(10, 42, 186, 29);
@@ -337,6 +355,13 @@ public class TelaCadastroCliente extends JFrame{
 		panel.add(lblBairro);
 		
 		textFieldBairro = new JTextField();
+		textFieldBairro.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				textFieldBairro.setText("");
+			}
+		});
+		textFieldBairro.setText(" Ex: Dois irm\u00E3os");
 		textFieldBairro.setHorizontalAlignment(SwingConstants.LEFT);
 		textFieldBairro.setColumns(10);
 		textFieldBairro.setBounds(10, 100, 186, 29);
@@ -347,6 +372,13 @@ public class TelaCadastroCliente extends JFrame{
 		panel.add(lblCidade);
 		
 		textFieldComplemento = new JTextField();
+		textFieldComplemento.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				textFieldComplemento.setText("");
+			}
+		});
+		textFieldComplemento.setText(" Ex: Perto do Lafepe");
 		textFieldComplemento.setHorizontalAlignment(SwingConstants.LEFT);
 		textFieldComplemento.setColumns(10);
 		textFieldComplemento.setBounds(10, 160, 186, 29);
@@ -383,6 +415,14 @@ public class TelaCadastroCliente extends JFrame{
 		grupo.add(rdbtnFeminino);
 		
 		textFieldObjetivo = new JTextField();
+		textFieldObjetivo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				textFieldObjetivo.setText("");
+			}
+		});
+		textFieldObjetivo.setForeground(Color.BLACK);
+		textFieldObjetivo.setText(" Ex: Hipertrofia ");
 		textFieldObjetivo.setHorizontalAlignment(SwingConstants.LEFT);
 		textFieldObjetivo.setColumns(10);
 		textFieldObjetivo.setBounds(10, 165, 217, 29);
@@ -402,6 +442,7 @@ public class TelaCadastroCliente extends JFrame{
 		frmTelaDeCadastro.getContentPane().add(dataNascimento);
 		
 		JButton button = new JButton("Voltar");
+		button.setToolTipText("Voltar para tela de ADM");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boolean confirm;

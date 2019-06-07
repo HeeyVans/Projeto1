@@ -21,6 +21,12 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.Date;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.ImageIcon;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class TelaAtualizarPagamento extends JFrame {
 
@@ -58,11 +64,23 @@ public class TelaAtualizarPagamento extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException  ex) {
+            System.err.println(ex);
+        } 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					TelaAtualizarPagamento frame = new TelaAtualizarPagamento();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+					frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -74,49 +92,60 @@ public class TelaAtualizarPagamento extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaAtualizarPagamento() {
+		setTitle("Atualizar Pagamentos - MFit");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaAtualizarPagamento.class.getResource("/imagens/biceps png.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 472, 309);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblNome = new JLabel("Nome do Cliente:");
-		lblNome.setBounds(281, 25, 82, 14);
+		lblNome.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNome.setBounds(19, 34, 127, 14);
 		contentPane.add(lblNome);
 		
 		textFieldNome = new JTextField();
-		textFieldNome.setBounds(281, 50, 86, 29);
+		textFieldNome.setBounds(19, 51, 173, 29);
 		contentPane.add(textFieldNome);
 		textFieldNome.setColumns(10);
 		
 		JLabel lblMatricula = new JLabel("Matr\u00EDcula:");
-		lblMatricula.setBounds(281, 128, 82, 14);
+		lblMatricula.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblMatricula.setBounds(19, 159, 82, 14);
 		contentPane.add(lblMatricula);
 		
 		textFieldMatricula = new JTextField();
-		textFieldMatricula.setBounds(281, 153, 86, 29);
+		textFieldMatricula.setBounds(19, 176, 173, 29);
 		contentPane.add(textFieldMatricula);
 		textFieldMatricula.setColumns(10);
 		
 		JLabel lblCPF = new JLabel("CPF:");
-		lblCPF.setBounds(281, 81, 46, 14);
+		lblCPF.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblCPF.setBounds(19, 94, 46, 14);
 		contentPane.add(lblCPF);
 		
 		textFieldCPF = new JTextField();
-		textFieldCPF.setBounds(281, 97, 86, 29);
+		textFieldCPF.setBounds(19, 110, 173, 29);
 		contentPane.add(textFieldCPF);
 		textFieldCPF.setColumns(10);
 		
-		JLabel lblPagamento = new JLabel("Pagamento:");
-		lblPagamento.setBounds(32, 25, 82, 14);
+		JLabel lblPagamento = new JLabel("Pagamento Realizado:");
+		lblPagamento.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblPagamento.setBounds(265, 73, 165, 23);
 		contentPane.add(lblPagamento);
+		comboBox.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Sim", "N\u00E3o"}));
-		comboBox.setBounds(32, 50, 60, 29);
+		comboBox.setBounds(301, 100, 60, 29);
 		contentPane.add(comboBox);
 		
 		JButton btnVerificar = new JButton("Verificar");
+		btnVerificar.setBackground(new Color(0, 128, 0));
+		btnVerificar.setForeground(new Color(255, 255, 255));
+		btnVerificar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnVerificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String matricula = textFieldMatricula.getText();
@@ -129,10 +158,13 @@ public class TelaAtualizarPagamento extends JFrame {
 				}
 			}
 		});
-		btnVerificar.setBounds(278, 190, 89, 23);
+		btnVerificar.setBounds(19, 218, 124, 41);
 		contentPane.add(btnVerificar);
 		
 		JButton btnConcluir = new JButton("Concluir");
+		btnConcluir.setBackground(new Color(0, 128, 0));
+		btnConcluir.setForeground(new Color(255, 255, 255));
+		btnConcluir.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnConcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String matricula = textFieldMatricula.getText();
@@ -165,10 +197,14 @@ public class TelaAtualizarPagamento extends JFrame {
 				}
 			}
 		});
-		btnConcluir.setBounds(32, 97, 89, 23);
+		btnConcluir.setBounds(272, 139, 124, 41);
 		contentPane.add(btnConcluir);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setIcon(new ImageIcon(TelaAtualizarPagamento.class.getResource("/imagens/gtkgobackltr_104397.png")));
+		btnVoltar.setBackground(new Color(0, 128, 0));
+		btnVoltar.setForeground(new Color(255, 255, 255));
+		btnVoltar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaInstrutor.getInstance().setVisible(true);
@@ -176,7 +212,30 @@ public class TelaAtualizarPagamento extends JFrame {
 				dispose();
 			}
 		});
-		btnVoltar.setBounds(32, 156, 89, 23);
+		btnVoltar.setBounds(272, 218, 124, 41);
 		contentPane.add(btnVoltar);
+		
+		JLabel label = new JLabel("");
+		label.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				PopUps.InformacaoDuvida(); //Alterar esse PopUps depois
+			}
+		});
+		label.setIcon(new ImageIcon(TelaAtualizarPagamento.class.getResource("/imagens/Bot\u00E3o d\u00FAvidas.png")));
+		label.setBounds(298, 0, 71, 62);
+		contentPane.add(label);
+		
+		JLabel label_1 = new JLabel("D\u00FAvidas?");
+		label_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				PopUps.InformacaoDuvida(); //Alterar esse PopUps depois
+			}
+		});
+		label_1.setForeground(new Color(0, 128, 0));
+		label_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		label_1.setBounds(368, 14, 78, 28);
+		contentPane.add(label_1);
 	}
 }
