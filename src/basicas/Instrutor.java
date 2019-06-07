@@ -1,8 +1,9 @@
 package basicas;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Instrutor extends Pessoa {
+public class Instrutor extends Pessoa implements Serializable{
 	
 	private String cargo;
 	private String horaTrab;

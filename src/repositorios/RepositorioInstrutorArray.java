@@ -57,7 +57,7 @@ public class RepositorioInstrutorArray implements IRepositorioInstrutor, Seriali
 	    return instanciaLocal;
 	  }
 
-	public void salvarArquivo() {
+	public static void salvarArquivo() {
 	    if (instance == null) {
 	      return;
 	    }

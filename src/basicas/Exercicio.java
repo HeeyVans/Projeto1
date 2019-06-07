@@ -1,6 +1,8 @@
 package basicas;
 
-public class Exercicio {
+import java.io.Serializable;
+
+public class Exercicio implements Serializable{
 	
 	private String obs;
 	private String nome;

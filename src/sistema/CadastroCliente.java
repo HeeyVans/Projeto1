@@ -11,12 +11,12 @@ public class CadastroCliente {
 	private IRepositorioCliente repositorio;
 
 	public CadastroCliente() {		
-				repositorio = new RepositorioClienteArray();	
+				repositorio = RepositorioClienteArray.getInstance();	
 	}
 	
 	public void inserir(Cliente cliente) {
 		repositorio.inserir(cliente);
-	}
+		RepositorioClienteArray.salvarArquivo();	}
 	
 	public Cliente procurar(String cpf)  {
 		return repositorio.procurar(cpf);

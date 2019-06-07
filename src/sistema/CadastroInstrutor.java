@@ -12,11 +12,12 @@ public class CadastroInstrutor {
 	private IRepositorioInstrutor repositorio;
 	
 	public CadastroInstrutor() {
-		repositorio = new RepositorioInstrutorArray();
+		repositorio = RepositorioInstrutorArray.getInstance();
 	}
 	
 	public void inserir(Instrutor instrutor)  {
 		repositorio.inserir(instrutor);
+		RepositorioInstrutorArray.salvarArquivo();
 	}
 	
 	public Instrutor procurar(String cpf) /*throws MatriculaNaoEncontradaException*/  {

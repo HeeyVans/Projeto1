@@ -138,7 +138,8 @@ public class TelaConsultaCliente extends JFrame {
 				}			
 					
 				
-				String matricula = TelaEntrar.getInstance().cliente.getMatricula();
+				TelaEntrar.getInstance();
+				String matricula = TelaEntrar.cliente.getMatricula();
 				String categoria = comboSelecionado();
 				
 				ArrayList<Exercicio> lista = new ArrayList<Exercicio>();				

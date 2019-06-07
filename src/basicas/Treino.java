@@ -1,20 +1,20 @@
 package basicas;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-import repositorios.RepositorioExercicioArray;
 
-public class Treino {
+public class Treino implements Serializable{
 	
 	private Instrutor instrutor;
 	private Cliente cliente;
-	private ArrayList<?> repExer;
+	private ArrayList<Exercicio> repExer;
 	private String categoria;
 	private int numeroTreinos;
 	private int contadorTreino;
 	
 	
-	public Treino(Instrutor instrutor, Cliente cliente,  ArrayList repExer,
+	public Treino(Instrutor instrutor, Cliente cliente,  ArrayList<Exercicio> repExer,
 			String categoria, int numeroTreinos, int contadorTreino) {
 		
 		this.instrutor = instrutor;
@@ -77,12 +77,12 @@ public class Treino {
 
 
 
-	public ArrayList<?> getRepExer() {
+	public ArrayList<Exercicio> getRepExer() {
 		return repExer;
 	}
 
 
-	public void setRepExer(ArrayList<?> repExer) {
+	public void setRepExer(ArrayList<Exercicio> repExer) {
 		this.repExer = repExer;
 	}
 

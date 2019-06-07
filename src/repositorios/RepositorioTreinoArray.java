@@ -58,7 +58,7 @@ public class RepositorioTreinoArray implements IRepositorioTreino, Serializable{
 	    return instanciaLocal;
 	  }
 
-	public void salvarArquivo() {
+	public static void salvarArquivo() {
 	    if (instance == null) {
 	      return;
 	    }
@@ -82,11 +82,12 @@ public class RepositorioTreinoArray implements IRepositorioTreino, Serializable{
 	    }
 	}
 	
-	public int getIndiceClienteTreino(String matricula) {
+	public int getIndiceClienteTreino(String matricula, String categoria) {
 		int i = 0;
 		
 		if(indice != 0) {
-			while(!(matricula == repositorio[i].getCliente().getMatricula())) {
+			while(!(matricula .equals(repositorio[i].getCliente().getMatricula()) && categoria.equals(
+					repositorio[i].getCategoria()))) {
 				if(i == indice - 1) {
 					return -1;
 				}else {
@@ -98,8 +99,8 @@ public class RepositorioTreinoArray implements IRepositorioTreino, Serializable{
 		return -1;
 	}
 	
-	public boolean existeClienteTreino(String matricula) {
-		i = getIndiceClienteTreino(matricula);
+	public boolean existeClienteTreino(String matricula, String categoria) {
+		i = getIndiceClienteTreino(matricula, categoria);
 		if(i == -1) {
 			return false;
 		}else {
@@ -113,9 +114,8 @@ public class RepositorioTreinoArray implements IRepositorioTreino, Serializable{
 	}
 	
 	@Override
-	public Treino procurarClienteTreino(String matricula) {
-		
-		if(existeClienteTreino(matricula)) {
+	public Treino procurarClienteTreino(String matricula, String categoria) {
+		if(existeClienteTreino(matricula, categoria)) {
 			return this.repositorio[i];
 		}else {
 			return null;
@@ -130,7 +130,7 @@ public class RepositorioTreinoArray implements IRepositorioTreino, Serializable{
 
 	@Override
 	public void atualizar(Treino treino) {
-		if(existeClienteTreino(treino.getCliente().getMatricula())) {
+		if(existeClienteTreino(treino.getCliente().getMatricula(), treino.getCategoria())) {
 			repositorio[i] = treino;
 		}
 		}
@@ -141,8 +141,8 @@ public class RepositorioTreinoArray implements IRepositorioTreino, Serializable{
 		int i = 0;
 			
 		while(i < indice) {
-		if(repositorio[i].getCliente().getMatricula() == matricula && categoria == repositorio[i]
-					.getCategoria()) {
+		if(repositorio[i].getCliente().getMatricula().equals(matricula) && categoria.equals(repositorio[i]
+					.getCategoria())) {
 				exercicios = repositorio[i].getRepExer();		
 				}
 		i++;

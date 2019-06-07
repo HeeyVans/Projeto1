@@ -80,7 +80,7 @@ public class TelaEntrar extends JFrame{
 					
 					//gerando user ADM
 					Assistente.gerarAdm();
-					Assistente.gerarTreino();
+					//Assistente.gerarTreino();
 					
 				} catch (Exception e) {
 					e.printStackTrace();

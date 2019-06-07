@@ -11,7 +11,7 @@ import excecoes.MatriculaNaoEncontradaException;
 public interface IRepositorioTreino {
 	
 	public void inserir(Treino treino) throws MatriculaNaoEncontradaException;
-	public Treino procurarClienteTreino(String matricula);
+	public Treino procurarClienteTreino(String matricula, String categoria);
 	public void remover(String id);
 	public void atualizar(Treino treino);
 	public List listar(String matricula, String categoria);

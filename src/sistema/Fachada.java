@@ -14,12 +14,10 @@ import excecoes.InstrutorJaCadastradoException;
 import excecoes.MatriculaNaoEncontradaException;
 import interfaces.IRepositorioADM;
 import interfaces.IRepositorioCliente;
-import interfaces.IRepositorioExercicio;
 import interfaces.IRepositorioInstrutor;
 import interfaces.IRepositorioTreino;
 import repositorios.RepositorioADMArray;
 import repositorios.RepositorioClienteArray;
-import repositorios.RepositorioExercicioArray;
 import repositorios.RepositorioInstrutorArray;
 import repositorios.RepositorioTreinoArray;
 
@@ -28,7 +26,6 @@ public class Fachada {
 	private static Fachada instance;
 	private CadastroCliente cliente;
 	private CadastroInstrutor instrutor;
-	private CadastroExercicio exercicio;
 	private CadastroTreino treino;
 	private CadastroADM adm;
 	
@@ -37,7 +34,6 @@ public class Fachada {
 		adm = new CadastroADM();
 		cliente = new CadastroCliente();
 		instrutor = new CadastroInstrutor();
-		exercicio = new CadastroExercicio();
 		treino = new CadastroTreino();
 		
 	}
@@ -120,21 +116,13 @@ public class Fachada {
 	}
 	
 	//FIM DE CRUD DO INSTRUTOR
-	//INICIO DE CRUD EXERCICIO
-	public void inserirExercicio(Exercicio exercicio) {
-		this.exercicio.inserir(exercicio);
-	}
-	public List listarTreino() {
-		return this.exercicio.listar();
-	}
-	//FIM DE CRUD EXERCICIO
 	//INICIO DE CRUD TREINO
 	public void inserirTreino(Treino treino) throws MatriculaNaoEncontradaException {
 		this.treino.inserir(treino);
 	}
 	
-	public Treino procurarClienteTreino(String matricula) {
-		return this.treino.procurarClienteTreino(matricula);
+	public Treino procurarClienteTreino(String matricula, String categoria) {
+		return this.treino.procurarClienteTreino(matricula, categoria);
 	}
 	
 	public void removerTreino(String id) {

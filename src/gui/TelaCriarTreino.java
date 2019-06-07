@@ -12,7 +12,6 @@ import basicas.Exercicio;
 import basicas.Instrutor;
 import basicas.Treino;
 import excecoes.MatriculaNaoEncontradaException;
-import repositorios.RepositorioExercicioArray;
 import sistema.Assistente;
 import sistema.Fachada;
 import sistema.ValidarDados;
@@ -239,7 +238,6 @@ private String comboSelecionado() {
 							Instrutor instru = TelaEntrar.instrutor;
 							Cliente cliente;
 							Exercicio ex, ex1, ex2, ex3, ex4, ex5;
-							RepositorioExercicioArray rep = new RepositorioExercicioArray();
 							
 							String matricula = textFieldMatricula.getText();
 							

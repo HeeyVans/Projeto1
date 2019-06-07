@@ -34,7 +34,6 @@ import basicas.Instrutor;
 import basicas.Treino;
 import excecoes.MatriculaNaoEncontradaException;
 import gui.PopUps;
-import repositorios.RepositorioExercicioArray;
 
 public class Assistente {
 	
@@ -243,7 +242,7 @@ public class Assistente {
 		//Gerar PDF do Treino
 		public static void gerarPDFTreino(String matricula, String categoria) {
 			int i;
-			Treino treino = Fachada.getInstance().procurarClienteTreino(matricula);
+			Treino treino = Fachada.getInstance().procurarClienteTreino(matricula, categoria);
 			
 			Document document = new Document();
 			

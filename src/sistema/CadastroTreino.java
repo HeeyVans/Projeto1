@@ -14,15 +14,16 @@ public class CadastroTreino {
 
 	public CadastroTreino() {
 		
-		repositorio = new RepositorioTreinoArray();
+		repositorio = RepositorioTreinoArray.getInstance();
 	}
 	
 	public void inserir(Treino treino) throws MatriculaNaoEncontradaException {
 		this.repositorio.inserir(treino);
+		RepositorioTreinoArray.salvarArquivo();
 	}
 	
-	public Treino procurarClienteTreino(String matricula) {
-		return this.repositorio.procurarClienteTreino(matricula);
+	public Treino procurarClienteTreino(String matricula, String categoria) {
+		return this.repositorio.procurarClienteTreino(matricula, categoria);
 	}
 	
 	public void remover(String id) {
