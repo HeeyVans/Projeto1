@@ -1,6 +1,7 @@
 package basicas;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 
@@ -10,12 +11,13 @@ public class Treino implements Serializable{
 	private Cliente cliente;
 	private ArrayList<Exercicio> repExer;
 	private String categoria;
-	private int numeroTreinos;
-	private int contadorTreino;
+	private int numeroTreinos; //define quantas vezes o treino será feito
+	private int contadorTreino;//contabiliza quantas vezes foi feito
+	private LocalDateTime dataCriacao;//guarda a data que o treino foi criado
 	
 	
 	public Treino(Instrutor instrutor, Cliente cliente,  ArrayList<Exercicio> repExer,
-			String categoria, int numeroTreinos, int contadorTreino) {
+			String categoria, int numeroTreinos, int contadorTreino, LocalDateTime dataCriacao) {
 		
 		this.instrutor = instrutor;
 		this.cliente = cliente;
@@ -23,6 +25,7 @@ public class Treino implements Serializable{
 		this.categoria = categoria;
 		this.numeroTreinos = numeroTreinos;
 		this.contadorTreino = contadorTreino;
+		this.dataCriacao = dataCriacao;
 		
 	}
 
@@ -94,6 +97,16 @@ public class Treino implements Serializable{
 
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
+	}
+
+	public LocalDateTime getDataCriacao() {
+		return dataCriacao;
+	}
+
+
+
+	public void setDataCriacao(LocalDateTime dataCriacao) {
+		this.dataCriacao = dataCriacao;
 	}
 
 

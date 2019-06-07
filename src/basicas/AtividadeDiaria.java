@@ -8,9 +8,9 @@ import java.time.format.DateTimeFormatter;
 public class AtividadeDiaria implements Serializable{
 
 	Treino treino;
-	LocalDate data;
+	LocalDateTime data;
 	
-	public AtividadeDiaria(Treino treino, LocalDate data) {
+	public AtividadeDiaria(Treino treino, LocalDateTime data) {
 		
 		this.treino = treino;
 		this.data = data;
@@ -24,11 +24,11 @@ public class AtividadeDiaria implements Serializable{
 		this.treino = treino;
 	}
 
-	public LocalDate getData() {
+	public LocalDateTime getData() {
 		return data;
 	}
 
-	public void setData(LocalDate data) {
+	public void setData(LocalDateTime data) {
 		this.data = data;
 	}
 	

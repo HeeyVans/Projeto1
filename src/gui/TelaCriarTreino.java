@@ -30,6 +30,8 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class TelaCriarTreino extends JFrame {
@@ -264,8 +266,10 @@ private String comboSelecionado() {
 							categoria.add(ex4);
 							categoria.add(ex5);
 							
+							LocalDateTime localDate = LocalDateTime.now();
+							
 							Treino t = new Treino(instru, cliente, categoria, comboSelecionado()
-									,Integer.parseInt(textFieldVezes.getText()), 0);
+									,Integer.parseInt(textFieldVezes.getText()), 0, localDate);
 							Fachada.getInstance().inserirTreino(t);
 							limpar();
 							PopUps.treinoCriado();

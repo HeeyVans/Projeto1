@@ -16,6 +16,7 @@ import basicas.Administrador;
 import basicas.Cliente;
 import basicas.Endereco;
 import basicas.Instrutor;
+import basicas.Treino;
 import sistema.Assistente;
 import sistema.Fachada;
 import sistema.Mensagem;
@@ -81,7 +82,6 @@ public class TelaEntrar extends JFrame{
 					
 					//gerando user ADM
 					Assistente.gerarAdm();
-					//Assistente.gerarTreino();
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -279,7 +279,6 @@ public class TelaEntrar extends JFrame{
 							
 						}
 					}else {
-						
 						String nome, matricula ="", telefone, genero, pagamento, objetivo, rua, bairro, numero, complemento, 
 								cidade;
 						Endereco end;
@@ -292,6 +291,7 @@ public class TelaEntrar extends JFrame{
 								break;
 							}else if(!email.equals("")){
 								if(ValidarDados.validarEmail(email)) {
+									
 									 matricula = Assistente.gerarMatricula();										 
 									 nome = c.getNome();									
 									cpf = c.getCpf();									 
@@ -307,11 +307,31 @@ public class TelaEntrar extends JFrame{
 									data = c.getDataDeNasc();
 									 end = new Endereco(rua, bairro, cidade, complemento, numero);
 									 
+										Treino treinoA = Fachada.getInstance().procurarClienteTreino(c.getMatricula(), "A");
+										Treino treinoB = Fachada.getInstance().procurarClienteTreino(c.getMatricula(), "B");
+										Treino treinoC = Fachada.getInstance().procurarClienteTreino(c.getMatricula(), "C");
+									 
 									 Cliente c1 = new Cliente(nome, end, cpf, data, matricula, email, telefone, genero,
 											 pagamento, objetivo);
 									 
-									 
 										Fachada.getInstance().atualizar(c1);
+									 
+									 /*if(!(treinoA == null)) {
+										 Treino treino1 = new Treino(treinoA.getInstrutor(), c1, treinoA.getRepExer(), 
+												 "A", treinoA.getNumeroTreinos(), treinoA.getContadorTreino(), treinoA.getDataCriacao());
+										 Fachada.getInstance().atualizarTreino(treino1);
+									 }
+									 if(!(treinoB == null)) {
+										 Treino treino2 = new Treino(treinoB.getInstrutor(), c1, treinoB.getRepExer(), 
+												 "B", treinoB.getNumeroTreinos(), treinoB.getContadorTreino(), treinoB.getDataCriacao());
+										 Fachada.getInstance().atualizarTreino(treino2);
+									 }
+									 if(!(treinoC == null)) {
+										 Treino treino3 = new Treino(treinoC.getInstrutor(), c1, treinoC.getRepExer(), 
+												 "C", treinoC.getNumeroTreinos(), treinoC.getContadorTreino(), treinoC.getDataCriacao());
+											Fachada.getInstance().atualizarTreino(treino3);
+									 }		*/							 						 
+
 										Assistente.enviarEmail(email, matricula);
 										PopUps.matriculaAlterada();
 										PopUps.emailEnviado();

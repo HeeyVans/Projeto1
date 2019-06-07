@@ -3,6 +3,8 @@ package sistema;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -265,6 +267,22 @@ public class Assistente {
 				document.add(new Paragraph(" "));
 				document.add(new Paragraph("Tipo: " + categoria));
 				document.add(new Paragraph("Treino: " + treino.getContadorTreino() + "/" + treino.getNumeroTreinos()));
+				LocalDateTime data = treino.getDataCriacao();
+				LocalDateTime dataVence = data.plusDays(30);
+				
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		        String agoraFormatado = data.format(formatter);
+		        
+		        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		        String agoraFormatado1 = dataVence.format(formatter1);
+				document.add(new Paragraph("Criado em: " + agoraFormatado + "  Vence em: " + agoraFormatado1));
+				document.add(new Paragraph(" "));
+				
+				LocalDateTime agoraS = LocalDateTime.now();
+		        DateTimeFormatter formatterS = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+		        String agoraFormatadoS = agoraS.format(formatterS);
+		        
+				document.add(new Paragraph("Ficha retirada em: " + agoraFormatadoS));
 				document.add(new Paragraph("_______________________________"));
 				
 				for(i = 0; i < lista.size(); i++) {
@@ -278,7 +296,7 @@ public class Assistente {
 				int contadorTreino = (treino.getContadorTreino() + 1);
 
 				Treino t = new Treino(treino.getInstrutor(), treino.getCliente(), treino.getRepExer(),
-						categoria, treino.getNumeroTreinos(), contadorTreino);
+						categoria, treino.getNumeroTreinos(), contadorTreino, treino.getDataCriacao());
 				Fachada.getInstance().atualizarTreino(t);
 				
 				contadorTreino = 0;
@@ -398,7 +416,7 @@ public class Assistente {
 			Administrador adm = new Administrador("ADM", "44343918360", "AAAA", "Administrador");
 			Fachada.getInstance().cadastrarADM(adm);
 		}
-		
+		/*
 		//Gerar Treino
 		public static void gerarTreino() throws MatriculaNaoEncontradaException {
 		Instrutor t = new Instrutor("Vanessa", "27406222106", "aaaa", "Instrutor");
@@ -444,7 +462,7 @@ public class Assistente {
 		
 		Treino tr1 = new Treino(t, c, categoriaB, "B", 10, 0);		
 		Fachada.getInstance().inserirTreino(tr1);
-		}
+		}*/
 		
 
 }

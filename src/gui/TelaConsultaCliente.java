@@ -85,10 +85,7 @@ public class TelaConsultaCliente extends JFrame {
 					TelaConsultaCliente frame = new TelaConsultaCliente();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
-					frame.setResizable(false);
-					
-					Assistente.gerarTreino();
-					
+					frame.setResizable(false);					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

@@ -132,7 +132,7 @@ public class RepositorioTreinoArray implements IRepositorioTreino, Serializable{
 	public void atualizar(Treino treino) {
 		if(existeClienteTreino(treino.getCliente().getMatricula(), treino.getCategoria())) {
 			repositorio[i] = treino;
-		}
+			}
 		}
 	
 	public List listar(String matricula, String categoria) {
