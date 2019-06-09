@@ -107,6 +107,32 @@ public class RepositorioTreinoArray implements IRepositorioTreino, Serializable{
 			return true;
 		}
 	}
+	
+	public int getIndiceIdTreino(int id, String categoria) {
+		int i = 0;
+		
+		if(indice != 0) {
+			while(!(id == repositorio[i].getId() && categoria.equals(repositorio[i].getCategoria()))) {
+				if(i == indice - 1) {
+					return -1;
+				}else {
+					i++;
+				}
+			}
+			return i;
+		}
+		return -1;
+	}
+	
+	public boolean existeIdTreino(int id, String categoria) {
+		i = getIndiceIdTreino(id, categoria);
+		if(i == -1) {
+			return false;
+		}else {
+			return true;
+		}
+	}
+	
 	@Override
 	public void inserir(Treino treino) {
 			repositorio[indice] = treino;
@@ -124,13 +150,8 @@ public class RepositorioTreinoArray implements IRepositorioTreino, Serializable{
 		}
 
 	@Override
-	public void remover(String id) {
-		
-	}
-
-	@Override
 	public void atualizar(Treino treino) {
-		if(existeClienteTreino(treino.getCliente().getMatricula(), treino.getCategoria())) {
+		if(existeIdTreino(treino.getId(), treino.getCategoria())) {
 			repositorio[i] = treino;
 			}
 		}
@@ -148,5 +169,14 @@ public class RepositorioTreinoArray implements IRepositorioTreino, Serializable{
 		i++;
 		}
 		return exercicios;
-		}	
+		}
+
+	@Override
+	public Treino procurarIdTreino(int id, String categoria) {
+		if(existeIdTreino(id, categoria)) {
+			return this.repositorio[i];
+		}else {
+			return null;
+			}
+	}	
 }

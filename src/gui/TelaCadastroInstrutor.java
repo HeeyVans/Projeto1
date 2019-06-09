@@ -102,6 +102,7 @@ public class TelaCadastroInstrutor extends JFrame{
 					TelaCadastroInstrutor window = new TelaCadastroInstrutor();
 					window.frmTelaDeCadastro.setVisible(true);
 					window.frmTelaDeCadastro.setLocationRelativeTo(null);
+					window.frmTelaDeCadastro.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -376,8 +377,8 @@ public class TelaCadastroInstrutor extends JFrame{
 				
 				if(confirm == true) {
 					if(TelaEntrar.instrutor == null) {
-						TelaADM.getInstance().setVisible(true);
-						TelaADM.getInstance().setLocationRelativeTo(null);
+						TelaConsultaInstrutor.getInstance().setVisible(true);
+						TelaConsultaInstrutor.getInstance().setLocationRelativeTo(null);
 						frmTelaDeCadastro.dispose();
 					}
 				}

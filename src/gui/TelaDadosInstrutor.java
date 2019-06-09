@@ -90,6 +90,7 @@ public class TelaDadosInstrutor extends JFrame {
 					TelaDadosInstrutor frame = new TelaDadosInstrutor();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
+					frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -134,8 +135,8 @@ public class TelaDadosInstrutor extends JFrame {
 				confirm = PopUps.ConfirmarVolta();
 				
 				if(confirm == true) {					
-						TelaInstrutor.getInstance().setVisible(true);
-						TelaInstrutor.getInstance().setLocationRelativeTo(null);
+						TelaConsultaInstrutor.getInstance().setVisible(true);
+						TelaConsultaInstrutor.getInstance().setLocationRelativeTo(null);
 						dispose();
 					}
 				

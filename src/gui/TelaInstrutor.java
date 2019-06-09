@@ -283,10 +283,14 @@ public class TelaInstrutor extends JFrame {
 		JMenuItem mntmCadastrar = new JMenuItem("Cadastrar");
 		mntmCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(TelaEntrar.adm == null) {
+					PopUps.AcessoNegado();
+				} else {
 				TelaCadastroCliente window = new TelaCadastroCliente();
 				window.frmTelaDeCadastro.setVisible(true);
 				window.frmTelaDeCadastro.setLocationRelativeTo(null);
 				dispose();
+				}
 			}
 		});
 		mnCliente.add(mntmCadastrar);
@@ -294,9 +298,13 @@ public class TelaInstrutor extends JFrame {
 		JMenuItem mntmAtt = new JMenuItem("Atualizar");
 		mntmAtt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(TelaEntrar.adm == null) {
+					PopUps.AcessoNegado();
+				} else {
 				TelaDadosCliente.getInstance().setVisible(true);
 				TelaDadosCliente.getInstance().setLocationRelativeTo(null);
 				dispose();
+				}
 			}
 		});
 		mnCliente.add(mntmAtt);
@@ -308,7 +316,7 @@ public class TelaInstrutor extends JFrame {
 				String matricula, matriculaCliente;
 				
 				if(instrutor == null) {
-					matricula = JOptionPane.showInputDialog(Mensagem.INFORMAMATRICULA);
+					matricula = JOptionPane.showInputDialog(Mensagem.INFORMACLIENTEMAT);
 					Administrador adm;
 					adm = Fachada.getInstance().procurarADM(matricula);
 					
@@ -340,9 +348,13 @@ public class TelaInstrutor extends JFrame {
 		JMenuItem mntmPagamento = new JMenuItem("Atualizar Pagamento");
 		mntmPagamento.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(TelaEntrar.adm == null) {
+					PopUps.AcessoNegado();
+				} else {
 				TelaAtualizarPagamento.getInstance().setVisible(true);
 				TelaAtualizarPagamento.getInstance().setLocationRelativeTo(null);
 				dispose();
+				}
 			}
 		});
 		mnCliente.add(mntmPagamento);

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class Treino implements Serializable{
 	
+
 	private Instrutor instrutor;
 	private Cliente cliente;
 	private ArrayList<Exercicio> repExer;
@@ -14,10 +15,11 @@ public class Treino implements Serializable{
 	private int numeroTreinos; //define quantas vezes o treino será feito
 	private int contadorTreino;//contabiliza quantas vezes foi feito
 	private LocalDateTime dataCriacao;//guarda a data que o treino foi criado
+	private int id;
 	
 	
 	public Treino(Instrutor instrutor, Cliente cliente,  ArrayList<Exercicio> repExer,
-			String categoria, int numeroTreinos, int contadorTreino, LocalDateTime dataCriacao) {
+			String categoria, int numeroTreinos, int contadorTreino, LocalDateTime dataCriacao, int id) {
 		
 		this.instrutor = instrutor;
 		this.cliente = cliente;
@@ -26,15 +28,21 @@ public class Treino implements Serializable{
 		this.numeroTreinos = numeroTreinos;
 		this.contadorTreino = contadorTreino;
 		this.dataCriacao = dataCriacao;
+		this.id = id;
 		
 	}
-
-
 
 	public Treino() {
 		
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public Instrutor getInstrutor() {
 		return instrutor;

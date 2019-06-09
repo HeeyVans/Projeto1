@@ -249,8 +249,8 @@ public class Assistente {
 			
 			Document document = new Document();
 			
-			ArrayList<Exercicio> lista = new ArrayList();
-			lista = (ArrayList<Exercicio>) Fachada.getInstance().listarTreino(matricula, categoria);
+			ArrayList<Exercicio> lista = new ArrayList<Exercicio>();
+			lista = ((ArrayList<Exercicio>) Fachada.getInstance().listarTreino(matricula, categoria));
 			
 			try {
 				
@@ -260,7 +260,7 @@ public class Assistente {
 				
 				document.add(new Paragraph("-------MFit Academia: Saúde em primeiro lugar-------"));
 				document.add(new Paragraph("Treino realizado por: " +treino.getInstrutor().getNome()+ "\n E-mail: " +treino.getInstrutor().getEmail()));
-				document.add(new Paragraph("Autorizado por: Administração MFit Academia"));
+				document.add(new Paragraph("Autorizado por: Administração MFit Academia E-mail: Mfit.academia10@gmail.com"));
 				document.add(new Paragraph(" "));
 				document.add(new Paragraph("Cliente: " + treino.getCliente().getNome()));
 				document.add(new Paragraph("Instrutor: " + treino.getInstrutor().getNome()));
@@ -275,7 +275,7 @@ public class Assistente {
 		        
 		        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		        String agoraFormatado1 = dataVence.format(formatter1);
-				document.add(new Paragraph("Criado em: " + agoraFormatado + "  Vence em: " + agoraFormatado1));
+				document.add(new Paragraph("Criado em: " + agoraFormatado + "  Vence em: " +agoraFormatado1));
 				document.add(new Paragraph(" "));
 				
 				LocalDateTime agoraS = LocalDateTime.now();
@@ -296,7 +296,7 @@ public class Assistente {
 				int contadorTreino = (treino.getContadorTreino() + 1);
 
 				Treino t = new Treino(treino.getInstrutor(), treino.getCliente(), treino.getRepExer(),
-						categoria, treino.getNumeroTreinos(), contadorTreino, treino.getDataCriacao());
+						categoria, treino.getNumeroTreinos(), contadorTreino, treino.getDataCriacao(), treino.getId());
 				Fachada.getInstance().atualizarTreino(t);
 				
 				contadorTreino = 0;
@@ -464,5 +464,13 @@ public class Assistente {
 		Fachada.getInstance().inserirTreino(tr1);
 		}*/
 		
+		//Gerador de números para o atributo ID.
+		public static int gerarID() {
+			int id;
+			Random numero = new Random();
+			id = numero.nextInt(5000);
+
+			return id;
+		}
 
 }

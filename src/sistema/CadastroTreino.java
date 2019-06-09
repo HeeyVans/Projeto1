@@ -6,6 +6,7 @@ import basicas.Cliente;
 import basicas.Treino;
 import excecoes.MatriculaNaoEncontradaException;
 import interfaces.IRepositorioTreino;
+import repositorios.RepositorioClienteArray;
 import repositorios.RepositorioTreinoArray;
 
 public class CadastroTreino {
@@ -26,12 +27,9 @@ public class CadastroTreino {
 		return this.repositorio.procurarClienteTreino(matricula, categoria);
 	}
 	
-	public void remover(String id) {
-		this.repositorio.remover(id);
-	}
-	
 	public void atualizar(Treino treino) {
 		this.repositorio.atualizar(treino);
+		RepositorioTreinoArray.salvarArquivo();	
 	}
 	
 	public List listar(String matricula, String categoria) {

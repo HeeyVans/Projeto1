@@ -16,7 +16,8 @@ public class CadastroCliente {
 	
 	public void inserir(Cliente cliente) {
 		repositorio.inserir(cliente);
-		RepositorioClienteArray.salvarArquivo();	}
+		RepositorioClienteArray.salvarArquivo();	
+		}
 	
 	public Cliente procurar(String cpf)  {
 		return repositorio.procurar(cpf);
@@ -32,6 +33,7 @@ public class CadastroCliente {
 	
 	public void atualizar(Cliente cliente){
 		repositorio.atualizar(cliente);
+		RepositorioClienteArray.salvarArquivo();	
 	}
 	
 	public List listar(String nome) {

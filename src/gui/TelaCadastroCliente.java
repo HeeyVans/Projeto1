@@ -52,6 +52,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.DropMode;
 
 public class TelaCadastroCliente extends JFrame{
 
@@ -135,6 +136,7 @@ public class TelaCadastroCliente extends JFrame{
 					TelaCadastroCliente window = new TelaCadastroCliente();
 					window.frmTelaDeCadastro.setVisible(true);
 					window.frmTelaDeCadastro.setLocationRelativeTo(null);
+					window.frmTelaDeCadastro.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -160,6 +162,16 @@ public class TelaCadastroCliente extends JFrame{
 		frmTelaDeCadastro.setBounds(100, 100, 755, 412);
 		frmTelaDeCadastro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTelaDeCadastro.getContentPane().setLayout(null);
+		
+		JLabel lblTeste = new JLabel("Teste");
+		lblTeste.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				lblTeste.setText("");
+			}
+		});
+		lblTeste.setBounds(91, 3, 27, 38);
+		frmTelaDeCadastro.getContentPane().add(lblTeste);
 		
 		JLabel lblTelefone = new JLabel("Telefone:");
 		lblTelefone.setBounds(10, 15, 59, 14);
@@ -442,7 +454,7 @@ public class TelaCadastroCliente extends JFrame{
 		frmTelaDeCadastro.getContentPane().add(dataNascimento);
 		
 		JButton button = new JButton("Voltar");
-		button.setToolTipText("Voltar para tela de ADM");
+		button.setToolTipText("Voltar para tela de Consulta de Clientes");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boolean confirm;
@@ -450,8 +462,8 @@ public class TelaCadastroCliente extends JFrame{
 				
 				if(confirm == true) {
 					if(TelaEntrar.instrutor == null) {
-						TelaADM.getInstance().setVisible(true);
-						TelaADM.getInstance().setLocationRelativeTo(null);
+						TelaInstrutor.getInstance().setVisible(true);
+						TelaInstrutor.getInstance().setLocationRelativeTo(null);
 						frmTelaDeCadastro.dispose();
 					}
 				}

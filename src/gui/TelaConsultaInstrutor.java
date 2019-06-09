@@ -77,6 +77,7 @@ public class TelaConsultaInstrutor extends JFrame {
 					TelaConsultaInstrutor frame = new TelaConsultaInstrutor();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
+					frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

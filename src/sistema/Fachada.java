@@ -124,11 +124,6 @@ public class Fachada {
 	public Treino procurarClienteTreino(String matricula, String categoria) {
 		return this.treino.procurarClienteTreino(matricula, categoria);
 	}
-	
-	public void removerTreino(String id) {
-		this.treino.remover(id);
-	}
-	
 	public void atualizarTreino(Treino treino) {
 		this.treino.atualizar(treino);
 	}

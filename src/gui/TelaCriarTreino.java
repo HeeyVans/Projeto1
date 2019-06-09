@@ -159,6 +159,7 @@ private String comboSelecionado() {
 					TelaCriarTreino frame = new TelaCriarTreino();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
+					frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -269,7 +270,7 @@ private String comboSelecionado() {
 							LocalDateTime localDate = LocalDateTime.now();
 							
 							Treino t = new Treino(instru, cliente, categoria, comboSelecionado()
-									,Integer.parseInt(textFieldVezes.getText()), 0, localDate);
+									,Integer.parseInt(textFieldVezes.getText()), 0, localDate, Assistente.gerarID());
 							Fachada.getInstance().inserirTreino(t);
 							limpar();
 							PopUps.treinoCriado();
@@ -699,11 +700,9 @@ private String comboSelecionado() {
 				confirm = PopUps.ConfirmarVolta();
 				
 				if(confirm == true) {
-					if(TelaEntrar.instrutor == null) {
 						TelaInstrutor.getInstance().setVisible(true);
 						TelaInstrutor.getInstance().setLocationRelativeTo(null);
 						dispose();
-					}
 				}
 			}
 		});

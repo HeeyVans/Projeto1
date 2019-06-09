@@ -34,6 +34,7 @@ public class CadastroInstrutor {
 	
 	public void atualizar(Instrutor instrutor) {
 		repositorio.atualizar(instrutor);
+		RepositorioInstrutorArray.salvarArquivo();
 	}
 
 	public List listar(String nome) {

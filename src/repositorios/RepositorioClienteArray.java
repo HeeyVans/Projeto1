@@ -41,18 +41,6 @@ public class RepositorioClienteArray implements IRepositorioCliente, Serializabl
 	    //Criando um arquivo e passando o nome dele	
 	    File in = new File("clientes.dat");//criando um arquivo .dat na pasta do projeto
 	   
-	    /*boolean exists() – arquivo ou diretório existe;
-	      boolean isDirectory() – é um diretório;
-	      boolean isFile() – é um arquivo;
-	      boolean canRead() – pode ler;
-	      boolean canWrite() – pode escrever;
-	      boolean mkdir() – cria uma diretório;
-	      boolean mkdirs() – cria vários diretórios;
-	      boolean renameTo(File file) - renomear;
-	      long length() - tamanho;
-	      long lastModified(ultima modificação);
-	      boolean delete() - deletar;*/	
-	   
 	    FileInputStream fis = null;
 	    ObjectInputStream ois = null;
 	    try {
@@ -61,7 +49,7 @@ public class RepositorioClienteArray implements IRepositorioCliente, Serializabl
 	      Object o = ois.readObject();
 	      instanciaLocal = (RepositorioClienteArray) o;
 	    } catch (Exception e) {
-	      instanciaLocal = new  RepositorioClienteArray();
+	      instanciaLocal = new RepositorioClienteArray();
 	    } finally {
 	      if (ois != null) {
 	        try {

@@ -12,7 +12,7 @@ public interface IRepositorioTreino {
 	
 	public void inserir(Treino treino) throws MatriculaNaoEncontradaException;
 	public Treino procurarClienteTreino(String matricula, String categoria);
-	public void remover(String id);
+	public Treino procurarIdTreino(int id, String categoria);
 	public void atualizar(Treino treino);
 	public List listar(String matricula, String categoria);
 

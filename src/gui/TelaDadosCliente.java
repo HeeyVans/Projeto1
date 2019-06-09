@@ -102,6 +102,7 @@ public class TelaDadosCliente extends JFrame {
 					TelaDadosCliente frame = new TelaDadosCliente();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
+					frame.setResizable(false);
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -246,8 +247,8 @@ public class TelaDadosCliente extends JFrame {
 						TelaConsultaCliente.getInstance().setLocationRelativeTo(null);
 						dispose();
 					}else if(TelaEntrar.adm != null) {
-						TelaADM.getInstance().setVisible(true);
-						TelaADM.getInstance().setLocationRelativeTo(null);
+						TelaConsultaCliente.getInstance().setVisible(true);
+						TelaConsultaCliente.getInstance().setLocationRelativeTo(null);
 						dispose();
 					}
 					

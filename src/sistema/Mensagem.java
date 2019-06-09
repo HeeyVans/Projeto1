@@ -71,7 +71,7 @@ public class Mensagem {
 	//TelaCliente e Instrutor
 		public static final String ENVIOPEDIDO = "Pedido feito com sucesso!";
 		public static final String MATRICULAADM= "Por favor digite sua matrícula!";
-	
+	    public static final String INFORMACLIENTEMAT = "Informe a matrícula do cliente: ";
 	//TelaADM
 		public static final String REMOVIDOSUCESSO = "Removido com sucesso!";
 

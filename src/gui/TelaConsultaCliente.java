@@ -189,14 +189,10 @@ public class TelaConsultaCliente extends JFrame {
 		btnDados.setBackground(new Color(0, 128, 0));
 		btnDados.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				boolean confirm;
-				confirm = PopUps.ConfirmarIda();
 				
-				if(confirm == true) {
 					TelaDadosCliente.getInstance().setVisible(true);
 					TelaDadosCliente.getInstance().setLocationRelativeTo(null);
 					dispose();
-				}
 				
 			}
 		});

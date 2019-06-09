@@ -316,21 +316,21 @@ public class TelaEntrar extends JFrame{
 									 
 										Fachada.getInstance().atualizar(c1);
 									 
-									 /*if(!(treinoA == null)) {
+									 if(!(treinoA == null)) {
 										 Treino treino1 = new Treino(treinoA.getInstrutor(), c1, treinoA.getRepExer(), 
-												 "A", treinoA.getNumeroTreinos(), treinoA.getContadorTreino(), treinoA.getDataCriacao());
+												 "A", treinoA.getNumeroTreinos(), treinoA.getContadorTreino(), treinoA.getDataCriacao(), treinoA.getId());
 										 Fachada.getInstance().atualizarTreino(treino1);
 									 }
 									 if(!(treinoB == null)) {
 										 Treino treino2 = new Treino(treinoB.getInstrutor(), c1, treinoB.getRepExer(), 
-												 "B", treinoB.getNumeroTreinos(), treinoB.getContadorTreino(), treinoB.getDataCriacao());
+												 "B", treinoB.getNumeroTreinos(), treinoB.getContadorTreino(), treinoB.getDataCriacao(), treinoB.getId());
 										 Fachada.getInstance().atualizarTreino(treino2);
 									 }
 									 if(!(treinoC == null)) {
 										 Treino treino3 = new Treino(treinoC.getInstrutor(), c1, treinoC.getRepExer(), 
-												 "C", treinoC.getNumeroTreinos(), treinoC.getContadorTreino(), treinoC.getDataCriacao());
+												 "C", treinoC.getNumeroTreinos(), treinoC.getContadorTreino(), treinoC.getDataCriacao(), treinoC.getId());
 											Fachada.getInstance().atualizarTreino(treino3);
-									 }		*/							 						 
+									 }								 						 
 
 										Assistente.enviarEmail(email, matricula);
 										PopUps.matriculaAlterada();

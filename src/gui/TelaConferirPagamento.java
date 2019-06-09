@@ -67,6 +67,8 @@ public class TelaConferirPagamento extends JFrame {
 				try {
 					TelaConferirPagamento frame = new TelaConferirPagamento();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+					frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

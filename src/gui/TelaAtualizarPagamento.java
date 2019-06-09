@@ -207,9 +207,14 @@ public class TelaAtualizarPagamento extends JFrame {
 		btnVoltar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				boolean confirm;
+				confirm = PopUps.ConfirmarIda();
+				
+				if(confirm == true) {
 				TelaInstrutor.getInstance().setVisible(true);
 				TelaInstrutor.getInstance().setLocationRelativeTo(null);
 				dispose();
+				}
 			}
 		});
 		btnVoltar.setBounds(272, 218, 124, 41);
