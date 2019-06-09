@@ -7,12 +7,14 @@ import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import basicas.Administrador;
+import basicas.AtividadeDiaria;
 import basicas.Cliente;
 import basicas.Endereco;
 import basicas.Instrutor;
@@ -147,9 +149,13 @@ public class TelaEntrar extends JFrame{
 							if(cliente.getPagamento().equals("Não")) {
 								PopUps.AcessoNegado();
 							}else {
+								/*LocalDateTime localDate = LocalDateTime.now();
+								AtividadeDiaria atividade = new AtividadeDiaria(cliente, localDate);
+								Fachada.getInstance().inserirAtividade(atividade);*/
+								
 								TelaConsultaCliente.getInstance().setVisible(true);
 								TelaConsultaCliente.getInstance().setLocationRelativeTo(null);
-								TelaDeEntrada.dispose();	
+								TelaDeEntrada.dispose();
 							}		
 						}else if(instrutor != null) {
 							TelaInstrutor.getInstance().setVisible(true);

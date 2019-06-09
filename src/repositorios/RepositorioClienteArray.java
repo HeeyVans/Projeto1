@@ -226,9 +226,9 @@ public class RepositorioClienteArray implements IRepositorioCliente, Serializabl
 	}
 
 	@Override
-	public List listarAtrasado(String pagamentoAtrasado) {
+	public List<Cliente> listarAtrasado(String pagamentoAtrasado) {
 		
-		List clientes = new ArrayList();
+		List<Cliente> clientes = new ArrayList<Cliente>();
 		i = 0;
 		
 		while(i < indice) {

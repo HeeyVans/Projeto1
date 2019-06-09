@@ -4,24 +4,21 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 public class AtividadeDiaria implements Serializable{
 
-	Treino treino;
+	Cliente cliente;
 	LocalDateTime data;
 	
-	public AtividadeDiaria(Treino treino, LocalDateTime data) {
+	public AtividadeDiaria(Cliente cliente, LocalDateTime data) {
 		
-		this.treino = treino;
+		this.cliente = cliente;
 		this.data = data;
 	}
 
-	public Treino getTreino() {
-		return treino;
-	}
-
-	public void setTreino(Treino treino) {
-		this.treino = treino;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
 	public LocalDateTime getData() {
@@ -31,5 +28,9 @@ public class AtividadeDiaria implements Serializable{
 	public void setData(LocalDateTime data) {
 		this.data = data;
 	}
-	
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
 }

@@ -6,6 +6,12 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import basicas.Cliente;
+import sistema.Assistente;
+import sistema.Fachada;
+import sistema.Mensagem;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -13,6 +19,7 @@ import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.Font;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 
@@ -147,6 +154,24 @@ public class TelaADM extends JFrame {
 		});
 		btnRelatorios.setBounds(154, 298, 176, 41);
 		contentPane.add(btnRelatorios);
+		
+		JButton btnHorarios = new JButton("Hor\u00E1rios");
+		btnHorarios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String matricula = JOptionPane.showInputDialog(Mensagem.INFORMACLIENTEMAT);
+				Cliente cliente = Fachada.getInstance().procurarClienteMatricula(matricula);
+				
+				if(cliente == null) {
+					PopUps.UsuarioNaoExiste();
+				}else {
+					Assistente.gerarPDFClienteHorario(matricula);
+					PopUps.pdfgerado();
+				}
+				
+			}
+		});
+		btnHorarios.setBounds(39, 260, 89, 23);
+		contentPane.add(btnHorarios);
 		
 	}
 }

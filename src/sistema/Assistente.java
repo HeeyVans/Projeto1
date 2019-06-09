@@ -29,6 +29,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import basicas.Administrador;
+import basicas.AtividadeDiaria;
 import basicas.Cliente;
 import basicas.Endereco;
 import basicas.Exercicio;
@@ -406,8 +407,38 @@ public class Assistente {
 			
 			document.close();
 		}
+		
+		//GerarPDFHorariosCliente
+		public static void gerarPDFClienteHorario(String matricula) {
+			int i;
+			Cliente cliente = Fachada.getInstance().procurarClienteMatricula(matricula);
+			Document document = new Document();
+			
+			ArrayList<AtividadeDiaria> ativ = new ArrayList<AtividadeDiaria>();
+			ativ =  (ArrayList<AtividadeDiaria>) Fachada.getInstance().listarAtividade(cliente.getCpf());
+			
+			try {
+				PdfWriter.getInstance(document, new FileOutputStream("Horarios.pdf"));
+				document.open();
+				document.setPageSize(PageSize._11X17);
+							
+						
+				for(i = 0; i <= ativ.size() -1; i++) {
+					LocalDateTime agoraS = ativ.get(i).getData();
+					DateTimeFormatter formatterS = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+					String agoraFormatadoS = agoraS.format(formatterS);	
+					
+					document.add(new Paragraph(agoraFormatadoS));	
+				}
+			}catch(DocumentException | IOException ex) {
+				System.out.println("Error"+ ex);
+			}
+			
+			document.close();
+			
+		}
 		//Montando Tabelas
-		public static void montarTabela(List clientes, ModeloTabelaInstrutor modelo) {
+		public static void montarTabela(List<Cliente> clientes, ModeloTabelaInstrutor modelo) {
 			modelo.addClienteList(clientes);
 		}
 		

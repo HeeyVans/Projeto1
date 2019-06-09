@@ -28,6 +28,7 @@ public class Fachada {
 	private CadastroInstrutor instrutor;
 	private CadastroTreino treino;
 	private CadastroADM adm;
+	private CadastroAtividadeDiaria atividade;
 	
 	public Fachada() {
 		
@@ -35,6 +36,7 @@ public class Fachada {
 		cliente = new CadastroCliente();
 		instrutor = new CadastroInstrutor();
 		treino = new CadastroTreino();
+		atividade = new CadastroAtividadeDiaria();
 		
 	}
 	
@@ -131,4 +133,16 @@ public class Fachada {
 		return this.treino.listar(matricula, categoria);
 	}
 	//FIM DE CRUD TREINO
+	//INICIO CRUD ATIVIDADE
+	public void inserirAtividade(AtividadeDiaria atividade) {
+		this.atividade.inserir(atividade);
+	}
+	
+	public AtividadeDiaria procurarAtividade(String cpf) {
+		return this.atividade.procurar(cpf);
+	}
+	public List listarAtividade(String cpf) {
+		return this.atividade.listar(cpf);
+	}
+	//FIM CRUD ATIVIDADE
 }
