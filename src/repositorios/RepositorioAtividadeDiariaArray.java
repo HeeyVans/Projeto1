@@ -83,11 +83,11 @@ public class RepositorioAtividadeDiariaArray implements IRepositorioAtividadeDia
 	   }
 	} */
 	
-	public int getIndice(String cpf) {
+	public int getIndice(String id) {
 		int i = 0;
 		
 		if(indice != 0) {
-			while(!cpf.equals(repositorio[i].getCpf())) {
+			while(!id.equals(repositorio[i].getId())) {
 				if(i == indice - 1) {
 					return -1;
 				}else {
@@ -99,8 +99,8 @@ public class RepositorioAtividadeDiariaArray implements IRepositorioAtividadeDia
 		return -1;
 	}
 	
-	public boolean existe(String matricula) {
-		i = getIndice(matricula);
+	public boolean existe(String id) {
+		i = getIndice(id);
 		if(i == -1) {
 			return false;
 		}else {
@@ -110,7 +110,7 @@ public class RepositorioAtividadeDiariaArray implements IRepositorioAtividadeDia
 
 	@Override
 	public void inserir(AtividadeDiaria atividade) {
-		if(!existe(atividade.getCpf())) {
+		if(!existe(atividade.getId())) {
 			repositorio[indice] = atividade;
 			indice++;
 			}
@@ -131,9 +131,9 @@ public class RepositorioAtividadeDiariaArray implements IRepositorioAtividadeDia
 		int i = 0;
 		
 		while(i < indice) {
-			
-				atividade.add(repositorio[i]);
-			
+					if(cpf.equals(repositorio[i].getCpf())) {
+						atividade.add(repositorio[i]);	
+					}			
 			i++;
 		}
 		return atividade;

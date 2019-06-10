@@ -150,7 +150,7 @@ public class TelaEntrar extends JFrame{
 								PopUps.AcessoNegado();
 							}else {
 								LocalDateTime localDate = LocalDateTime.now();
-								AtividadeDiaria atividade = new AtividadeDiaria(cliente.getCpf(), localDate);
+								AtividadeDiaria atividade = new AtividadeDiaria(cliente.getCpf(), localDate, Assistente.gerarId());
 								Fachada.getInstance().inserirAtividade(atividade);
 								
 								TelaConsultaCliente.getInstance().setVisible(true);
