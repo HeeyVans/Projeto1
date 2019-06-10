@@ -28,7 +28,7 @@ public class Fachada {
 	private CadastroInstrutor instrutor;
 	private CadastroTreino treino;
 	private CadastroADM adm;
-	private CadastroAtividadeDiaria atividade;
+	private CadastroAtividade atividade;
 	
 	public Fachada() {
 		
@@ -36,7 +36,7 @@ public class Fachada {
 		cliente = new CadastroCliente();
 		instrutor = new CadastroInstrutor();
 		treino = new CadastroTreino();
-		atividade = new CadastroAtividadeDiaria();
+		atividade = new CadastroAtividade();
 		
 	}
 	

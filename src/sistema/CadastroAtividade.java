@@ -3,25 +3,28 @@ package sistema;
 import java.util.List;
 
 import basicas.AtividadeDiaria;
-import basicas.Cliente;
-import basicas.Treino;
-import interfaces.IRepositorioRelatorio;
-import repositorios.RepositorioRelatorioArray;
+import interfaces.IRepositorioAtividadeDiaria;
+import repositorios.RepositorioAtividadeDiariaArray;
 
 public class CadastroAtividade {
 	
-	private IRepositorioRelatorio repositorio;
-
-	public CadastroAtividade() {		
-				repositorio = new RepositorioRelatorioArray();	
+	private IRepositorioAtividadeDiaria repositorio;
+	
+	public CadastroAtividade() {
+		repositorio = RepositorioAtividadeDiariaArray.getInstance();
 	}
 	
-	public void inserir(AtividadeDiaria ativ) {
-		repositorio.inserir(ativ);
+	public void inserir(AtividadeDiaria atividade) {
+		repositorio.inserir(atividade);
+		RepositorioAtividadeDiariaArray.salvarArquivo();
 	}
 	
-	public List listar() {
-		return repositorio.listar();
+	public AtividadeDiaria procurar(String cpf) {
+		return repositorio.procurar(cpf);
+	}
+	
+	public List listar(String cpf) {
+		return repositorio.listar(cpf);
 	}
 
 }

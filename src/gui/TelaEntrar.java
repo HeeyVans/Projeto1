@@ -149,9 +149,9 @@ public class TelaEntrar extends JFrame{
 							if(cliente.getPagamento().equals("Não")) {
 								PopUps.AcessoNegado();
 							}else {
-								/*LocalDateTime localDate = LocalDateTime.now();
+								LocalDateTime localDate = LocalDateTime.now();
 								AtividadeDiaria atividade = new AtividadeDiaria(cliente, localDate);
-								Fachada.getInstance().inserirAtividade(atividade);*/
+								Fachada.getInstance().inserirAtividade(atividade);
 								
 								TelaConsultaCliente.getInstance().setVisible(true);
 								TelaConsultaCliente.getInstance().setLocationRelativeTo(null);
