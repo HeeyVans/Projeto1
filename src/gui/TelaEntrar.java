@@ -30,6 +30,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
 
 public class TelaEntrar extends JFrame{
 
@@ -360,12 +363,14 @@ public class TelaEntrar extends JFrame{
 		btnEsqueciSenha.setBounds(310, 258, 187, 20);
 		TelaDeEntrada.getContentPane().add(btnEsqueciSenha);
 		
-		JLabel lblData = new JLabel("Data");
-		lblData.setBounds(383, 109, 46, 14);
+		JLabel lblData = new JLabel(new SimpleDateFormat("dd/MM/yyyy").format(new Date(System.currentTimeMillis())));
+		lblData.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblData.setBounds(349, 109, 98, 14);
 		TelaDeEntrada.getContentPane().add(lblData);
 		
-		JLabel lblHora = new JLabel("Hora");
-		lblHora.setBounds(451, 109, 46, 14);
+		JLabel lblHora = new JLabel(new SimpleDateFormat("HH:mm:ss").format(new Date(System.currentTimeMillis())));
+		lblHora.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblHora.setBounds(445, 109, 85, 14);
 		TelaDeEntrada.getContentPane().add(lblHora);
 		TelaDeEntrada.setBounds(100, 100, 535, 454);
 		TelaDeEntrada.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
