@@ -158,15 +158,12 @@ public class TelaADM extends JFrame {
 		JButton btnHorarios = new JButton("Hor\u00E1rios");
 		btnHorarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String matricula = JOptionPane.showInputDialog(Mensagem.INFORMACLIENTEMAT);
-				Cliente cliente = Fachada.getInstance().procurarClienteMatricula(matricula);
+		
 				
-				if(cliente == null) {
-					PopUps.UsuarioNaoExiste();
-				}else {
-					Assistente.gerarPDFClienteHorario(matricula);
-					PopUps.pdfgerado();
-				}
+					RelatorioDatas.getInstance().setVisible(true);
+					RelatorioDatas.getInstance().setLocationRelativeTo(null);
+					dispose();
+				
 				
 			}
 		});

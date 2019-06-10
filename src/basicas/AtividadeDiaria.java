@@ -8,29 +8,26 @@ import java.util.ArrayList;
 
 public class AtividadeDiaria implements Serializable{
 
-	Cliente cliente;
+	String cpf;
 	LocalDateTime data;
 	
-	public AtividadeDiaria(Cliente cliente, LocalDateTime data) {
-		
-		this.cliente = cliente;
+	public AtividadeDiaria(String cpf, LocalDateTime data) {
+
+		this.cpf = cpf;
 		this.data = data;
 	}
-
-	public Cliente getCliente() {
-		return cliente;
+	public String getCpf() {
+		return cpf;
 	}
-
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
 	public LocalDateTime getData() {
 		return data;
 	}
-
 	public void setData(LocalDateTime data) {
 		this.data = data;
 	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
+	
+	
 }

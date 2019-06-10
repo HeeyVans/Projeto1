@@ -77,7 +77,7 @@ public class ModeloTabelaData extends AbstractTableModel{
 			AtividadeDiaria i = dataList.get(row);
 			switch(col) {
 			case 0:
-				return i.getCliente().getCpf();
+				return i.getCpf();
 			case 1:
 				return i.getData();
 		

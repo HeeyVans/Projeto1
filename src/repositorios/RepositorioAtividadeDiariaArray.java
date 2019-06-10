@@ -26,14 +26,14 @@ public class RepositorioAtividadeDiariaArray implements IRepositorioAtividadeDia
 		indice = 0;
 	}
 	
-	public static RepositorioAtividadeDiariaArray getInstance() {
+	/*public static RepositorioAtividadeDiariaArray getInstance() {
 	    if (instance == null) {
 	      instance = lerDoArquivo();
 	    }
 	    return instance;
 	  }
 	
-	public static RepositorioAtividadeDiariaArray lerDoArquivo() {
+	/*public static RepositorioAtividadeDiariaArray lerDoArquivo() {
 		RepositorioAtividadeDiariaArray instanciaLocal = null;
 	    //Criando um arquivo e passando o nome dele	
 	    File in = new File("atividade.dat");//criando um arquivo .dat na pasta do projeto
@@ -81,13 +81,13 @@ public class RepositorioAtividadeDiariaArray implements IRepositorioAtividadeDia
 	      }
 	    }
 	   }
-	} 
+	} */
 	
 	public int getIndice(String cpf) {
 		int i = 0;
 		
 		if(indice != 0) {
-			while(!cpf.equals(repositorio[i].getCliente().getCpf())) {
+			while(!cpf.equals(repositorio[i].getCpf())) {
 				if(i == indice - 1) {
 					return -1;
 				}else {
@@ -110,7 +110,7 @@ public class RepositorioAtividadeDiariaArray implements IRepositorioAtividadeDia
 
 	@Override
 	public void inserir(AtividadeDiaria atividade) {
-		if(!existe(atividade.getCliente().getCpf())) {
+		if(!existe(atividade.getCpf())) {
 			repositorio[indice] = atividade;
 			indice++;
 			}
@@ -131,9 +131,9 @@ public class RepositorioAtividadeDiariaArray implements IRepositorioAtividadeDia
 		int i = 0;
 		
 		while(i < indice) {
-			if((repositorio[i].getCliente().getCpf().contains(cpf))) {
+			
 				atividade.add(repositorio[i]);
-			}
+			
 			i++;
 		}
 		return atividade;
