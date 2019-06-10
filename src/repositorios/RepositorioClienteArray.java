@@ -191,7 +191,7 @@ public class RepositorioClienteArray implements IRepositorioCliente, Serializabl
 		List clientes = new ArrayList();
 		i = 0;
 		while(i < indice) {
-			if(repositorio[i].getNome().contains(nome)) {
+			if(repositorio[i].getNome().equalsIgnoreCase(nome)) {
 				clientes.add(repositorio[i]);
 			}			 
 			 i++;
