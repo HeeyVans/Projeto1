@@ -15,9 +15,12 @@ import java.awt.Font;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import basicas.Administrador;
 import basicas.Cliente;
 import basicas.Instrutor;
+import excecoes.MatriculaNaoEncontradaException;
 import sistema.Fachada;
+import sistema.Mensagem;
 import sistema.ModeloTabelaConsultaInstrutor;
 
 import javax.swing.ListSelectionModel;
@@ -34,6 +37,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -261,12 +266,53 @@ public class TelaConsultaInstrutor extends JFrame {
 		mnInstrutor.add(mntmCadastrar);
 		
 		JMenuItem mntmAtualizar = new JMenuItem("Atualizar");
+		mntmAtualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(TelaEntrar.adm == null) {
+					PopUps.AcessoNegado();
+				} else {
+				TelaDadosInstrutor.getInstance().setVisible(true);
+				TelaDadosInstrutor.getInstance().setLocationRelativeTo(null);
+				dispose();
+				}
+			}
+		});
 		mnInstrutor.add(mntmAtualizar);
 		
 		JMenuItem mntmRemover = new JMenuItem("Remover");
 		mntmRemover.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			Cliente cliente = TelaEntrar.cliente;
+			String matricula, matriculaInstrutor;
+			
+			if(cliente == null) {
+				matricula = JOptionPane.showInputDialog(Mensagem.INFORMAMATRICULA);
+				Administrador adm;
+				adm = Fachada.getInstance().procurarADM(matricula);
+				
+				if(adm != null) {
+					matriculaInstrutor = JOptionPane.showInputDialog(Mensagem.INFORMAMATRICULAINSTRUTOR);
+					Instrutor instrutor = Fachada.getInstance().procurarInstrutorMatricula(matriculaInstrutor);
+					
+					if(instrutor != null) {
+						boolean confirm;
+						confirm = PopUps.ConfirmarExclusao();
+						
+						if(confirm == true) {
+						Fachada.getInstance().removerInstrutor(instrutor.getCpf());
+						PopUps.instrutorRemovido();
+						}
+					}else {
+						PopUps.UsuarioNaoExiste();
+					}
+				}else {
+					PopUps.matriculaInvalida(new MatriculaNaoEncontradaException());
+				}
+			}else {
+				PopUps.AcessoNegado();
 			}
+		}
+				
 		});
 		mnInstrutor.add(mntmRemover);
 		

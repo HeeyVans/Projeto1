@@ -53,6 +53,7 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.DropMode;
+import java.awt.Font;
 
 public class TelaCadastroCliente extends JFrame{
 
@@ -163,15 +164,29 @@ public class TelaCadastroCliente extends JFrame{
 		frmTelaDeCadastro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTelaDeCadastro.getContentPane().setLayout(null);
 		
-		JLabel lblTeste = new JLabel("Teste");
-		lblTeste.addMouseListener(new MouseAdapter() {
+		JLabel lblNewLabel_2 = new JLabel(" Ex: Hipertrofia ");
+		lblNewLabel_2.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mousePressed(MouseEvent arg0) {
-				lblTeste.setText("");
+			public void mousePressed(MouseEvent e) {
+				lblNewLabel_2.setText("");
 			}
 		});
-		lblTeste.setBounds(91, 3, 27, 38);
-		frmTelaDeCadastro.getContentPane().add(lblTeste);
+		lblNewLabel_2.setForeground(Color.LIGHT_GRAY);
+		lblNewLabel_2.setFont(new Font("Arial", Font.ITALIC, 12));
+		lblNewLabel_2.setBounds(20, 172, 124, 14);
+		frmTelaDeCadastro.getContentPane().add(lblNewLabel_2);
+		
+		JLabel lblNewLabel = new JLabel(" Ex: Jo\u00E3o@gmail.com");
+		lblNewLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				lblNewLabel.setText("");
+			}
+		});
+		lblNewLabel.setForeground(Color.LIGHT_GRAY);
+		lblNewLabel.setFont(new Font("Arial", Font.ITALIC, 12));
+		lblNewLabel.setBounds(228, 56, 138, 23);
+		frmTelaDeCadastro.getContentPane().add(lblNewLabel);
 		
 		JLabel lblTelefone = new JLabel("Telefone:");
 		lblTelefone.setBounds(10, 15, 59, 14);
@@ -237,13 +252,9 @@ public class TelaCadastroCliente extends JFrame{
 		lblEmail.setBounds(180, 61, 59, 14);
 		frmTelaDeCadastro.getContentPane().add(lblEmail);
 		
-		textFieldEmail = new JTextField(" Ex: Jo\u00E3o@gmail.com");
+		textFieldEmail = new JTextField("");
 		textFieldEmail.setToolTipText("");
 		textFieldEmail.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent arg0) {
-				textFieldEmail.setText("");
-			}
 		});
 		textFieldEmail.setHorizontalAlignment(SwingConstants.LEFT);
 		textFieldEmail.setColumns(10);
@@ -336,17 +347,49 @@ public class TelaCadastroCliente extends JFrame{
 		frmTelaDeCadastro.getContentPane().add(panel);
 		panel.setLayout(null);
 		
+		JLabel lblNewLabel_4 = new JLabel(" Ex: Dois irm\u00E3os");
+		lblNewLabel_4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				lblNewLabel_4.setText("");
+			}
+		});
+		lblNewLabel_4.setForeground(Color.LIGHT_GRAY);
+		lblNewLabel_4.setFont(new Font("Arial", Font.ITALIC, 12));
+		lblNewLabel_4.setBounds(18, 107, 140, 14);
+		panel.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_3 = new JLabel(" Ex: Perto do Lafepe");
+		lblNewLabel_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				lblNewLabel_3.setText("");
+			}
+		});
+		lblNewLabel_3.setForeground(Color.LIGHT_GRAY);
+		lblNewLabel_3.setFont(new Font("Arial", Font.ITALIC, 12));
+		lblNewLabel_3.setBounds(18, 167, 146, 14);
+		panel.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_1 = new JLabel(" Ex: Dom Manuel de Medeiros");
+		lblNewLabel_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				lblNewLabel_1.setText("");
+			}
+		});
+		lblNewLabel_1.setForeground(Color.LIGHT_GRAY);
+		lblNewLabel_1.setFont(new Font("Arial", Font.ITALIC, 12));
+		lblNewLabel_1.setBounds(18, 50, 173, 14);
+		panel.add(lblNewLabel_1);
+		
 		JLabel lblRua = new JLabel("Rua:");
 		lblRua.setBounds(10, 25, 46, 14);
 		panel.add(lblRua);
 		
-		textFieldRua = new JTextField(" Ex: Dom Manuel de Medeiros");
+		textFieldRua = new JTextField("");
 		textFieldRua.setForeground(Color.BLACK);
 		textFieldRua.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent e) {
-				textFieldRua.setText("");
-			}
 		});
 		textFieldRua.setHorizontalAlignment(SwingConstants.LEFT);
 		textFieldRua.setColumns(10);
@@ -368,12 +411,7 @@ public class TelaCadastroCliente extends JFrame{
 		
 		textFieldBairro = new JTextField();
 		textFieldBairro.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent e) {
-				textFieldBairro.setText("");
-			}
 		});
-		textFieldBairro.setText(" Ex: Dois irm\u00E3os");
 		textFieldBairro.setHorizontalAlignment(SwingConstants.LEFT);
 		textFieldBairro.setColumns(10);
 		textFieldBairro.setBounds(10, 100, 186, 29);
@@ -385,12 +423,7 @@ public class TelaCadastroCliente extends JFrame{
 		
 		textFieldComplemento = new JTextField();
 		textFieldComplemento.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent e) {
-				textFieldComplemento.setText("");
-			}
 		});
-		textFieldComplemento.setText(" Ex: Perto do Lafepe");
 		textFieldComplemento.setHorizontalAlignment(SwingConstants.LEFT);
 		textFieldComplemento.setColumns(10);
 		textFieldComplemento.setBounds(10, 160, 186, 29);
@@ -434,7 +467,6 @@ public class TelaCadastroCliente extends JFrame{
 			}
 		});
 		textFieldObjetivo.setForeground(Color.BLACK);
-		textFieldObjetivo.setText(" Ex: Hipertrofia ");
 		textFieldObjetivo.setHorizontalAlignment(SwingConstants.LEFT);
 		textFieldObjetivo.setColumns(10);
 		textFieldObjetivo.setBounds(10, 165, 217, 29);

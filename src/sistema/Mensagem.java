@@ -51,6 +51,7 @@ public class Mensagem {
 	public static final String EMAILENVIADO = "Email enviado com sucesso!";
 	public static final String INFORMACPF = "Informe o CPF:";
 	public static final String INFORMAMATRICULA = "Informe sua matrícula:";
+	public static final String INFORMAMATRICULAINSTRUTOR = "Informe a matrícula do instrutor:";
 	public static final String INFORMAMATRICULACLIENTE = "Informe a matrícula do cliente:";
 	public static final String USUARIONAOEXISTE = "Este usuário não existe!";
 	public static final String MATRICULAALTERADA = "Matrícula alterada com sucesso!";
@@ -71,7 +72,6 @@ public class Mensagem {
 	//TelaCliente e Instrutor
 		public static final String ENVIOPEDIDO = "Pedido feito com sucesso!";
 		public static final String MATRICULAADM= "Por favor digite sua matrícula!";
-	    public static final String INFORMACLIENTEMAT = "Informe a matrícula do cliente: ";
 	//TelaADM
 		public static final String REMOVIDOSUCESSO = "Removido com sucesso!";
 

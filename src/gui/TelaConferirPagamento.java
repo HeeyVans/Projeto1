@@ -28,6 +28,7 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.border.TitledBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.ImageIcon;
 
 public class TelaConferirPagamento extends JFrame {
 
@@ -113,7 +114,7 @@ public class TelaConferirPagamento extends JFrame {
 		comboBox.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"     Clientes em dia", "     Clientes atrasados"}));
-		comboBox.setBounds(24, 208, 166, 39);
+		comboBox.setBounds(24, 193, 166, 39);
 		contentPane.add(comboBox);
 		
 		btnExibir = new JButton("Exibir");
@@ -142,7 +143,7 @@ public class TelaConferirPagamento extends JFrame {
 				}
 			}
 		});
-		btnExibir.setBounds(44, 258, 119, 39);
+		btnExibir.setBounds(45, 243, 119, 39);
 		contentPane.add(btnExibir);
 		
 		JPanel panel = new JPanel();
@@ -172,6 +173,21 @@ public class TelaConferirPagamento extends JFrame {
 		btnTodos.setBounds(82, 81, 119, 39);
 		panel.add(btnTodos);
 		btnTodos.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaADM.getInstance().setVisible(true);
+				TelaADM.getInstance().setLocationRelativeTo(null);
+				dispose();
+			}
+		});
+		btnVoltar.setIcon(new ImageIcon(TelaConferirPagamento.class.getResource("/imagens/gtkgobackltr_104397.png")));
+		btnVoltar.setForeground(Color.WHITE);
+		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnVoltar.setBackground(new Color(0, 128, 0));
+		btnVoltar.setBounds(45, 298, 119, 39);
+		contentPane.add(btnVoltar);
 		btnTodos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Assistente.gerarPDFTodosClientes();

@@ -316,7 +316,7 @@ public class TelaInstrutor extends JFrame {
 				String matricula, matriculaCliente;
 				
 				if(instrutor == null) {
-					matricula = JOptionPane.showInputDialog(Mensagem.INFORMACLIENTEMAT);
+					matricula = JOptionPane.showInputDialog(Mensagem.INFORMAMATRICULA);
 					Administrador adm;
 					adm = Fachada.getInstance().procurarADM(matricula);
 					
