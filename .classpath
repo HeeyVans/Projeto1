@@ -20,5 +20,6 @@
 	<classpathentry kind="lib" path="lib/commons-email-1.5-tests.jar"/>
 	<classpathentry kind="lib" path="lib/commons-email-1.5.jar"/>
 	<classpathentry kind="lib" path="lib/mail.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

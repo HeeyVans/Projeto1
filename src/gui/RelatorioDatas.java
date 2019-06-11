@@ -21,6 +21,11 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 import basicas.AtividadeDiaria;
+import java.awt.Toolkit;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class RelatorioDatas extends JFrame {
 
@@ -58,9 +63,12 @@ public class RelatorioDatas extends JFrame {
 	 * Create the frame.
 	 */
 	public RelatorioDatas() {
+		setTitle("Consulta de relat\u00F3rios - MFit");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(RelatorioDatas.class.getResource("/imagens/biceps png.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 410, 481);
+		setBounds(100, 100, 462, 547);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
@@ -73,10 +81,13 @@ public class RelatorioDatas extends JFrame {
 		tableCliente.setFillsViewportHeight(true);
 		
 		JScrollPane scrollPaneCliente = new JScrollPane(tableCliente);
-		scrollPaneCliente.setBounds(5, 5, 384, 370);
+		scrollPaneCliente.setBounds(5, 5, 431, 370);
 		contentPane.add(scrollPaneCliente);
 		
 		JButton btnExibir = new JButton("Exibir");
+		btnExibir.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnExibir.setBackground(new Color(0, 128, 0));
+		btnExibir.setForeground(new Color(255, 255, 255));
 		btnExibir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				while(modeloData.getRowCount()>0) {
@@ -92,16 +103,31 @@ public class RelatorioDatas extends JFrame {
 				modeloData.addDataList(atividade);
 			}
 		});
-		btnExibir.setBounds(10, 386, 89, 23);
+		btnExibir.setBounds(47, 453, 133, 42);
 		contentPane.add(btnExibir);
 		
 		textFieldExibir = new JTextField();
-		textFieldExibir.setBounds(109, 387, 220, 20);
+		textFieldExibir.setBounds(47, 411, 285, 31);
 		contentPane.add(textFieldExibir);
 		textFieldExibir.setColumns(10);
 		
 		btnVoltar = new JButton("Voltar");
-		btnVoltar.setBounds(10, 420, 89, 23);
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaADM.getInstance().setVisible(true);
+				dispose();
+			}
+		});
+		btnVoltar.setIcon(new ImageIcon(RelatorioDatas.class.getResource("/imagens/gtkgobackltr_104397.png")));
+		btnVoltar.setBackground(new Color(0, 128, 0));
+		btnVoltar.setForeground(Color.WHITE);
+		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnVoltar.setBounds(199, 453, 133, 42);
 		contentPane.add(btnVoltar);
+		
+		JLabel lblDigiteSeuCpf = new JLabel("Digite um CPF abaixo para consultar o relat\u00F3rio");
+		lblDigiteSeuCpf.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblDigiteSeuCpf.setBounds(47, 386, 263, 14);
+		contentPane.add(lblDigiteSeuCpf);
 	}
 }
