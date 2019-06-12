@@ -175,7 +175,7 @@ public class TelaInstrutor extends JFrame {
 				confirm = PopUps.ConfirmarVolta();
 				
 				if(confirm == true) {
-					if(TelaEntrar.instrutor == null) {
+					if(TelaEntrar.instrutor != null) {
 						TelaADM.getInstance().setVisible(true);
 						TelaADM.getInstance().setLocationRelativeTo(null);
 						dispose();
@@ -211,14 +211,13 @@ public class TelaInstrutor extends JFrame {
 		JButton btnCriarTreino = new JButton("Criar treino");
 		btnCriarTreino.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				boolean confirm;
-				confirm = PopUps.ConfirmarIda();
-				
-				if(confirm == true) {
-					TelaCriarTreino.getInstance().setVisible(true);
-					TelaCriarTreino.getInstance().setLocationRelativeTo(null);
-					dispose();
-				}
+				if(TelaEntrar.adm != null) {
+					PopUps.AcessoNegado();
+				}else {
+			AttPedido.getInstance().setVisible(true);
+			AttPedido.getInstance().setLocationRelativeTo(null);
+			dispose();	
+				}	
 				
 			}
 		});
@@ -234,15 +233,13 @@ public class TelaInstrutor extends JFrame {
 		btnMeusDados.setForeground(Color.WHITE);
 		btnMeusDados.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				boolean confirm;
-				confirm = PopUps.ConfirmarIda();
-				
-				if(confirm == true) {
-					TelaDadosInstrutor.getInstance().setVisible(true);
-					TelaDadosInstrutor.getInstance().setLocationRelativeTo(null);
-					dispose();
-				}
-				
+				if(TelaEntrar.adm != null) {
+					PopUps.AcessoNegado();
+				}else {
+			TelaDadosInstrutor.getInstance().setVisible(true);
+			TelaDadosInstrutor.getInstance().setLocationRelativeTo(null);
+			dispose();	
+				}	
 			}
 		});
 		btnMeusDados.setBounds(447, 256, 129, 38);

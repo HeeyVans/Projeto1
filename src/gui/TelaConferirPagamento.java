@@ -177,9 +177,14 @@ public class TelaConferirPagamento extends JFrame {
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				boolean confirm;
+				confirm = PopUps.ConfirmarVolta();
+				
+				if(confirm == true) {
 				TelaADM.getInstance().setVisible(true);
 				TelaADM.getInstance().setLocationRelativeTo(null);
 				dispose();
+				}
 			}
 		});
 		btnVoltar.setIcon(new ImageIcon(TelaConferirPagamento.class.getResource("/imagens/gtkgobackltr_104397.png")));

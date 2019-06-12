@@ -1,36 +1,35 @@
 package gui;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
 
-import sistema.Fachada;
-import sistema.ModeloTabelaData;
-import sistema.ModeloTabelaInstrutor;
-import javax.swing.JButton;
-import javax.swing.JTextField;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.awt.event.ActionEvent;
-
 import basicas.AtividadeDiaria;
-import java.awt.Toolkit;
-import java.awt.Color;
-import java.awt.Font;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import sistema.Fachada;
+import sistema.ModeloTabelaDataString;
 
 public class RelatorioDatas extends JFrame {
 
 	private JPanel contentPane;
-	private ModeloTabelaData modeloData;
+	private ModeloTabelaDataString modeloData;
 	private static RelatorioDatas instance;
 	private JTable tableCliente;
 	private JTextField textFieldExibir;
@@ -72,7 +71,7 @@ public class RelatorioDatas extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		modeloData = new ModeloTabelaData();
+		modeloData = new ModeloTabelaDataString();
 		contentPane.setLayout(null);
 		tableCliente = new JTable(modeloData);
 		tableCliente.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -95,12 +94,25 @@ public class RelatorioDatas extends JFrame {
 				}
 				
 				String cpf = textFieldExibir.getText();
+				int i = 0;
 				
 				ArrayList<AtividadeDiaria> atividade = new ArrayList<AtividadeDiaria>();
+				ArrayList<String> formataData = new ArrayList<String>();
 				
+				LocalDateTime agoraS;
+		        String agoraFormatadoS;
+			
 				atividade = (ArrayList<AtividadeDiaria>) Fachada.getInstance().listarAtividade(cpf);
 				
-				modeloData.addDataList(atividade);
+				while(i < atividade.size()) {
+					agoraS = atividade.get(i).getData();
+					DateTimeFormatter formatterS = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+					agoraFormatadoS = agoraS.format(formatterS);
+					formataData.add(agoraFormatadoS);
+					i++;
+				}
+				
+				modeloData.addDataList(formataData);
 			}
 		});
 		btnExibir.setBounds(47, 453, 133, 42);
@@ -114,8 +126,16 @@ public class RelatorioDatas extends JFrame {
 		btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				TelaADM.getInstance().setVisible(true);
-				dispose();
+				boolean confirm;
+				confirm = PopUps.ConfirmarVolta();
+				
+				if(confirm == true) {		
+						TelaADM.getInstance().setVisible(true);
+						TelaADM.getInstance().setLocationRelativeTo(null);
+						dispose();					
+					
+				}
+				
 			}
 		});
 		btnVoltar.setIcon(new ImageIcon(RelatorioDatas.class.getResource("/imagens/gtkgobackltr_104397.png")));

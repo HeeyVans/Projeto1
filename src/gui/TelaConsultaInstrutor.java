@@ -202,26 +202,6 @@ public class TelaConsultaInstrutor extends JFrame {
 		button.setBounds(123, 242, 116, 28);
 		contentPane.add(button);
 		
-		JButton btnMeusDados = new JButton("Dados");
-		btnMeusDados.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnMeusDados.setBackground(new Color(0, 128, 0));
-		btnMeusDados.setForeground(Color.WHITE);
-		btnMeusDados.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				boolean confirm;
-				confirm = PopUps.ConfirmarIda();
-				
-				if(confirm == true) {
-					TelaDadosInstrutor.getInstance().setVisible(true);
-					TelaDadosInstrutor.getInstance().setLocationRelativeTo(null);
-					dispose();
-				}
-				
-			}
-		});
-		btnMeusDados.setBounds(445, 206, 129, 38);
-		contentPane.add(btnMeusDados);
-		
 		JButton btnExibirTodos = new JButton("Exibir Todos ");
 		btnExibirTodos.setBackground(new Color(0, 128, 0));
 		btnExibirTodos.setForeground(new Color(255, 255, 255));
@@ -239,7 +219,7 @@ public class TelaConsultaInstrutor extends JFrame {
 					modeloConsultaInstrutor.addInstrutorList(lista);
 			}
 		});
-		btnExibirTodos.setBounds(306, 255, 129, 38);
+		btnExibirTodos.setBounds(447, 206, 129, 38);
 		contentPane.add(btnExibirTodos);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -257,10 +237,15 @@ public class TelaConsultaInstrutor extends JFrame {
 		JMenuItem mntmCadastrar = new JMenuItem("Cadastrar");
 		mntmCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(TelaEntrar.adm == null) {
+					PopUps.AcessoNegado();
+				}else {
+				
 				TelaCadastroInstrutor window = new TelaCadastroInstrutor();
 				window.frmTelaDeCadastro.setVisible(true);
 				window.frmTelaDeCadastro.setLocationRelativeTo(null);
 				dispose();
+				}
 			}
 		});
 		mnInstrutor.add(mntmCadastrar);

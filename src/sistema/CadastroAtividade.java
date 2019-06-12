@@ -11,12 +11,12 @@ public class CadastroAtividade {
 	private IRepositorioAtividadeDiaria repositorio;
 	
 	public CadastroAtividade() {
-		repositorio = new RepositorioAtividadeDiariaArray();
+		repositorio = RepositorioAtividadeDiariaArray.getInstance();
 	}
 	
 	public void inserir(AtividadeDiaria atividade) {
 		repositorio.inserir(atividade);
-		//RepositorioAtividadeDiariaArray.salvarArquivo();
+		RepositorioAtividadeDiariaArray.salvarArquivo();
 	}
 	
 	public AtividadeDiaria procurar(String cpf) {

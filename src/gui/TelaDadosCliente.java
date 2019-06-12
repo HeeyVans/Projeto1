@@ -66,9 +66,9 @@ public class TelaDadosCliente extends JFrame {
 	public void setDados(Cliente c) {
 		textFieldNome.setText(c.getNome());
 		textFieldCPF.setText(c.getCpf());
-        /*DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         String dataFormatada = dateFormat.format(c.getDataDeNasc());
-		textFieldData.setText(dataFormatada);*/
+		textFieldData.setText(dataFormatada);
 		textFieldMatricula.setText(c.getMatricula());
 		textFieldEmail.setText(c.getEmail());
 		textFieldTelefone.setText(c.getTelefone());
@@ -218,15 +218,13 @@ public class TelaDadosCliente extends JFrame {
 		btnAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				boolean confirm;
-				confirm = PopUps.ConfirmarIda();
-				
-				if(confirm == true) {		
-						AttPedido.getInstance().setVisible(true);
-						AttPedido.getInstance().setLocationRelativeTo(null);
-						dispose();					
-					
-				}
+				if(TelaEntrar.adm != null) {
+					PopUps.AcessoNegado();
+				}else {
+			AttPedido.getInstance().setVisible(true);
+			AttPedido.getInstance().setLocationRelativeTo(null);
+			dispose();	
+				}	
 			}
 		});
 		btnAtualizar.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -241,17 +239,11 @@ public class TelaDadosCliente extends JFrame {
 				boolean confirm;
 				confirm = PopUps.ConfirmarVolta();
 				
-				if(confirm == true) {
-					if(TelaEntrar.cliente != null) {
+				if(confirm == true) {				
 						TelaConsultaCliente.getInstance().setVisible(true);
 						TelaConsultaCliente.getInstance().setLocationRelativeTo(null);
 						dispose();
-					}else if(TelaEntrar.adm != null) {
-						TelaConsultaCliente.getInstance().setVisible(true);
-						TelaConsultaCliente.getInstance().setLocationRelativeTo(null);
-						dispose();
-					}
-					
+		
 				}
 				
 			}
@@ -269,8 +261,13 @@ public class TelaDadosCliente extends JFrame {
 		btnMostrarDados.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnMostrarDados.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				TelaEntrar.getInstance();
-				setDados(TelaEntrar.cliente);
+				if(TelaEntrar.adm != null) {
+					PopUps.AcessoNegado();
+				}else {
+					TelaEntrar.getInstance();
+					setDados(TelaEntrar.cliente);
+				}		
+				
 			}
 		});
 		btnMostrarDados.setBounds(483, 338, 142, 35);
@@ -349,7 +346,7 @@ public class TelaDadosCliente extends JFrame {
 		menuBar.setBounds(0, 0, 97, 21);
 		contentPane.add(menuBar);
 		
-		JMenu mnAtt = new JMenu("Att");
+		JMenu mnAtt = new JMenu("Atualiza\u00E7\u00E3o");
 		menuBar.add(mnAtt);
 		
 		JMenuItem mntmIniciarMatricula = new JMenuItem("Iniciar Matricula");
@@ -365,7 +362,9 @@ public class TelaDadosCliente extends JFrame {
 					}else {
 						TelaDadosCliente.getInstance().setDados(c);
 					}
-				}		
+				}else {
+					PopUps.AcessoNegado();
+				}
 			}
 		});
 		mnAtt.add(mntmIniciarMatricula);
@@ -373,18 +372,22 @@ public class TelaDadosCliente extends JFrame {
 		JMenuItem mntmAtualizar = new JMenuItem("Atualizar");
 		mntmAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String nome = textFieldNome.getText(), matricula = textFieldMatricula.getText(),
-						telefone = textFieldTelefone.getText(), genero = textFieldSexo.getText(),
-						pagamento = textFieldPagamento.getText(), objetivo = textFieldObjetivo.getText(),
-						rua = textFieldRua.getText(), bairro = textFieldBairro.getText(), 
-						numero = textFieldNumero.getText(), complemento = textFieldComplemento.getText(), 
-						cidade = textFieldCidade.getText(), cpf = textFieldCPF.getText(), email = textFieldEmail.getText();
-				Endereco end = new Endereco(rua, bairro, cidade, complemento, numero);
-				
-				Cliente c = new Cliente(nome, end, cpf, dataNascimento.getDate(), matricula, email, telefone, 
-						genero, pagamento, objetivo);
-				
-				Fachada.getInstance().atualizar(c);
+				if(TelaEntrar.adm != null) {
+					String nome = textFieldNome.getText(), matricula = textFieldMatricula.getText(),
+							telefone = textFieldTelefone.getText(), genero = textFieldSexo.getText(),
+							pagamento = textFieldPagamento.getText(), objetivo = textFieldObjetivo.getText(),
+							rua = textFieldRua.getText(), bairro = textFieldBairro.getText(), 
+							numero = textFieldNumero.getText(), complemento = textFieldComplemento.getText(), 
+							cidade = textFieldCidade.getText(), cpf = textFieldCPF.getText(), email = textFieldEmail.getText();
+					Endereco end = new Endereco(rua, bairro, cidade, complemento, numero);
+					
+					Cliente c = new Cliente(nome, end, cpf, dataNascimento.getDate(), matricula, email, telefone, 
+							genero, pagamento, objetivo);
+					
+					Fachada.getInstance().atualizar(c);
+				}else {
+					PopUps.AcessoNegado();
+				}				
 			}
 		});
 		mnAtt.add(mntmAtualizar);

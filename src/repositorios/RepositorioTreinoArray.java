@@ -15,7 +15,7 @@ import interfaces.IRepositorioTreino;
 
 public class RepositorioTreinoArray implements IRepositorioTreino, Serializable{
 
-	public static final int TAM = 1000000;
+	public static final int TAM = 1000;
 	private int indice;
 	private int i;
 	private Treino[] repositorio;

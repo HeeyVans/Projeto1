@@ -1,28 +1,34 @@
 package gui;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import javax.swing.JButton;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.awt.event.ActionEvent;
-import java.awt.Color;
-import java.awt.Toolkit;
-import java.awt.Font;
-import javax.swing.SwingConstants;
-import javax.swing.border.TitledBorder;
-
-import sistema.Assistente;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
+
+import basicas.Cliente;
+import basicas.Instrutor;
+import sistema.Assistente;
+import sistema.Fachada;
+import sistema.Mensagem;
 
 public class TelaDadosInstrutor extends JFrame {
 
@@ -50,24 +56,23 @@ public class TelaDadosInstrutor extends JFrame {
 		return instance;
 	}
 	
-	public void setDados() {
-		TelaEntrar.getInstance();
-		textFieldNome.setText(TelaEntrar.instrutor.getNome());
-		textFieldCPF.setText(TelaEntrar.instrutor.getCpf());
-		textFieldMatricula.setText(TelaEntrar.instrutor.getMatricula());
-		textFieldEmail.setText(TelaEntrar.instrutor.getEmail());
-		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        String dataFormatada = dateFormat.format(TelaEntrar.instrutor.getDataDeNasc());
-		textFieldData.setText(dataFormatada);	
-		textFieldTelefone.setText(TelaEntrar.instrutor.getTelefone());
-		textFieldSexo.setText(TelaEntrar.instrutor.getGenero());
-		textFieldCidade.setText(TelaEntrar.instrutor.getEndereco().getCidade());
-		textFieldRua.setText(TelaEntrar.instrutor.getEndereco().getRua());
-		textFieldBairro.setText(TelaEntrar.instrutor.getEndereco().getBairro());
-		textFieldNumero.setText(TelaEntrar.instrutor.getEndereco().getNumero());
-		textFieldComplemento.setText(TelaEntrar.instrutor.getEndereco().getComplemento());
-		textFieldCargo.setText(TelaEntrar.instrutor.getCargo());
-		textFieldHoraTrab.setText(TelaEntrar.instrutor.getHoraTrab());
+	public void setDados(Instrutor c) {
+		textFieldNome.setText(c.getNome());
+		textFieldCPF.setText(c.getCpf());
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String dataFormatada = dateFormat.format(c.getDataDeNasc());
+		textFieldData.setText(dataFormatada);
+		textFieldMatricula.setText(c.getMatricula());
+		textFieldEmail.setText(c.getEmail());
+		textFieldTelefone.setText(c.getTelefone());
+		textFieldSexo.setText(c.getGenero());
+		textFieldCidade.setText(c.getEndereco().getCidade());
+		textFieldRua.setText(c.getEndereco().getRua());
+		textFieldBairro.setText(c.getEndereco().getBairro());
+		textFieldNumero.setText(c.getEndereco().getNumero());
+		textFieldComplemento.setText(c.getEndereco().getComplemento());
+		textFieldCargo.setText(c.getCargo());
+		textFieldHoraTrab.setText(c.getHoraTrab());
 	}
 
 	/**
@@ -118,7 +123,12 @@ public class TelaDadosInstrutor extends JFrame {
 		btnDados.setBackground(new Color(0, 128, 0));
 		btnDados.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setDados();				
+				if(TelaEntrar.adm != null) {
+					PopUps.AcessoNegado();
+				}else {
+					setDados(TelaEntrar.instrutor);		
+				}	
+							
 			}
 		});
 		btnDados.setBounds(475, 354, 142, 35);
@@ -148,15 +158,15 @@ public class TelaDadosInstrutor extends JFrame {
 		JButton btnAtualizacao = new JButton("Solicitar Atualiza\u00E7\u00E3o");
 		btnAtualizacao.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				boolean confirm;
-				confirm = PopUps.ConfirmarIda();
 				
-				if(confirm == true) {		
-						AttPedido.getInstance().setVisible(true);
-						AttPedido.getInstance().setLocationRelativeTo(null);
-						dispose();					
-					
-				}
+				if(TelaEntrar.adm != null) {
+					PopUps.AcessoNegado();
+				}else {
+			AttPedido.getInstance().setVisible(true);
+			AttPedido.getInstance().setLocationRelativeTo(null);
+			dispose();	
+				}					
+				
 			}
 		});
 		btnAtualizacao.setForeground(new Color(255, 255, 255));
@@ -321,5 +331,35 @@ public class TelaDadosInstrutor extends JFrame {
 		textFieldHoraTrab.setColumns(10);
 		textFieldHoraTrab.setBounds(422, 303, 170, 28);
 		contentPane.add(textFieldHoraTrab);
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(0, 0, 97, 21);
+		contentPane.add(menuBar);
+		
+		JMenu mnAtualizar = new JMenu("Atualiza\u00E7\u00E3o");
+		menuBar.add(mnAtualizar);
+		
+		JMenuItem mntmIniciarMatricula = new JMenuItem("Iniciar Matr\u00EDcula");
+		mntmIniciarMatricula.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(TelaEntrar.adm != null) {
+					String matricula;
+					Instrutor c;
+					matricula = JOptionPane.showInputDialog(Mensagem.INFORMAMATRICULA);
+					c = Fachada.getInstance().procurarInstrutorMatricula(matricula);
+					if(c == null) {
+						PopUps.UsuarioNaoExiste();
+					}else {
+						TelaDadosInstrutor.getInstance().setDados(c);
+					}
+				}else {
+					PopUps.AcessoNegado();
+				}
+			}
+		});
+		mnAtualizar.add(mntmIniciarMatricula);
+		
+		JMenuItem mntmAtualizar = new JMenuItem("Atualizar");
+		mnAtualizar.add(mntmAtualizar);
 	}
 }

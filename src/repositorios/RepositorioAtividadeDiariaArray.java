@@ -15,7 +15,7 @@ import interfaces.IRepositorioAtividadeDiaria;
 
 public class RepositorioAtividadeDiariaArray implements IRepositorioAtividadeDiaria, Serializable{
 	
-	public static final int TAM = 1000000;
+	public static final int TAM = 1000;
 	private int indice;
 	private AtividadeDiaria[] repositorio;
 	private int i;
@@ -26,14 +26,14 @@ public class RepositorioAtividadeDiariaArray implements IRepositorioAtividadeDia
 		indice = 0;
 	}
 	
-	/*public static RepositorioAtividadeDiariaArray getInstance() {
+	public static RepositorioAtividadeDiariaArray getInstance() {
 	    if (instance == null) {
 	      instance = lerDoArquivo();
 	    }
 	    return instance;
 	  }
 	
-	/*public static RepositorioAtividadeDiariaArray lerDoArquivo() {
+	public static RepositorioAtividadeDiariaArray lerDoArquivo() {
 		RepositorioAtividadeDiariaArray instanciaLocal = null;
 	    //Criando um arquivo e passando o nome dele	
 	    File in = new File("atividade.dat");//criando um arquivo .dat na pasta do projeto
@@ -81,7 +81,7 @@ public class RepositorioAtividadeDiariaArray implements IRepositorioAtividadeDia
 	      }
 	    }
 	   }
-	} */
+	} 
 	
 	public int getIndice(String id) {
 		int i = 0;

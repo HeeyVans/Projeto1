@@ -208,7 +208,7 @@ public class TelaAtualizarPagamento extends JFrame {
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boolean confirm;
-				confirm = PopUps.ConfirmarIda();
+				confirm = PopUps.ConfirmarVolta();
 				
 				if(confirm == true) {
 				TelaInstrutor.getInstance().setVisible(true);

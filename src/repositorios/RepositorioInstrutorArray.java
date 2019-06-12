@@ -15,7 +15,7 @@ import interfaces.IRepositorioInstrutor;
 
 public class RepositorioInstrutorArray implements IRepositorioInstrutor, Serializable{
 
-	public static final int TAM = 1000000;
+	public static final int TAM = 100;
 	private int indice;
 	private int i;
 	private Instrutor[] repositorio;
