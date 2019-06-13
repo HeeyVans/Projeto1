@@ -178,12 +178,14 @@ public class TelaInstrutor extends JFrame {
 					if(TelaEntrar.instrutor != null) {
 						TelaADM.getInstance().setVisible(true);
 						TelaADM.getInstance().setLocationRelativeTo(null);
+						modeloInstrutor.onRemoveAll();
 						dispose();
 					}else {
 						
 					TelaEntrar window = new TelaEntrar();
 					window.TelaDeEntrada.setVisible(true);
 					window.TelaDeEntrada.setLocationRelativeTo(null);
+					modeloInstrutor.onRemoveAll();
 					dispose();
 					}
 				}
@@ -201,6 +203,7 @@ public class TelaInstrutor extends JFrame {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				limpar();
+				modeloInstrutor.onRemoveAll();
 			}
 		});
 		button.setIcon(new ImageIcon(TelaInstrutor.class.getResource("/imagens/delete_remove_bin_icon-icons.com_72400.png")));
@@ -286,6 +289,7 @@ public class TelaInstrutor extends JFrame {
 				TelaCadastroCliente window = new TelaCadastroCliente();
 				window.frmTelaDeCadastro.setVisible(true);
 				window.frmTelaDeCadastro.setLocationRelativeTo(null);
+				modeloInstrutor.onRemoveAll();
 				dispose();
 				}
 			}

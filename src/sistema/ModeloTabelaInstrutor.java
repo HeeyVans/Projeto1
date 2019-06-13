@@ -56,6 +56,11 @@ public class ModeloTabelaInstrutor extends AbstractTableModel{
 		fireTableDataChanged();
 		return c;
 	}
+	 
+	public void onRemoveAll() {
+	        dataList.clear();
+	        fireTableDataChanged();
+	}
 
 	@Override
 	public int getRowCount() {

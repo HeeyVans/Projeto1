@@ -160,12 +160,14 @@ public class TelaConsultaCliente extends JFrame {
 					if(TelaEntrar.cliente == null) {
 						TelaADM.getInstance().setVisible(true);
 						TelaADM.getInstance().setLocationRelativeTo(null);
+						modeloTreino.onRemoveAll();
 						dispose();
 					}else {
 						
 					TelaEntrar window = new TelaEntrar();
 					window.TelaDeEntrada.setVisible(true);
 					window.TelaDeEntrada.setLocationRelativeTo(null);
+					modeloTreino.onRemoveAll();
 					dispose();
 					}
 				}
