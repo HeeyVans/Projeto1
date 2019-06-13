@@ -104,7 +104,7 @@ public class TelaADM extends JFrame {
 		btnPginaInicial.setForeground(Color.WHITE);
 		btnPginaInicial.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnPginaInicial.setBackground(new Color(0, 128, 0));
-		btnPginaInicial.setBounds(154, 361, 176, 41);
+		btnPginaInicial.setBounds(158, 361, 176, 41);
 		contentPane.add(btnPginaInicial);
 		
 		JLabel label_1 = new JLabel("Escolha uma das op\u00E7\u00F5es acima para que possa prosseguir");
@@ -124,7 +124,7 @@ public class TelaADM extends JFrame {
 				dispose();
 			}
 		});
-		btnInstrutor.setBounds(154, 236, 176, 41);
+		btnInstrutor.setBounds(158, 236, 176, 41);
 		contentPane.add(btnInstrutor);
 		
 		JButton btnCliente = new JButton("Clientes");
@@ -138,7 +138,7 @@ public class TelaADM extends JFrame {
 				dispose();
 			}
 		});
-		btnCliente.setBounds(154, 170, 176, 41);
+		btnCliente.setBounds(158, 170, 176, 41);
 		contentPane.add(btnCliente);
 		
 		JButton btnRelatorios = new JButton("Relat\u00F3rios");
@@ -152,23 +152,8 @@ public class TelaADM extends JFrame {
 				dispose();
 			}
 		});
-		btnRelatorios.setBounds(154, 298, 176, 41);
+		btnRelatorios.setBounds(158, 298, 176, 41);
 		contentPane.add(btnRelatorios);
-		
-		JButton btnHorarios = new JButton("Hor\u00E1rios");
-		btnHorarios.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-		
-				
-					RelatorioDatas.getInstance().setVisible(true);
-					RelatorioDatas.getInstance().setLocationRelativeTo(null);
-					dispose();
-				
-				
-			}
-		});
-		btnHorarios.setBounds(39, 260, 89, 23);
-		contentPane.add(btnHorarios);
 		
 	}
 }

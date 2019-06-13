@@ -212,6 +212,7 @@ public class Assistente {
 						document.open();
 						document.setPageSize(PageSize.A1);
 						
+						document.add(new Paragraph("-------MFit Academia: Saúde em primeiro lugar-------"));
 						document.add(new Paragraph("Cliente:" + instrutor.getNome()));
 						document.add(new Paragraph(" "));
 						document.add(new Paragraph("_______________________________"));
@@ -261,7 +262,7 @@ public class Assistente {
 				
 				document.add(new Paragraph("-------MFit Academia: Saúde em primeiro lugar-------"));
 				document.add(new Paragraph("Treino realizado por: " +treino.getInstrutor().getNome()+ "\n E-mail: " +treino.getInstrutor().getEmail()));
-				document.add(new Paragraph("Autorizado por: Administração MFit Academia E-mail: Mfit.academia10@gmail.com"));
+				document.add(new Paragraph("Autorizado por: Administração MFit Academia \nE-mail: Mfit.academia10@gmail.com"));
 				document.add(new Paragraph(" "));
 				document.add(new Paragraph("Cliente: " + treino.getCliente().getNome()));
 				document.add(new Paragraph("Instrutor: " + treino.getInstrutor().getNome()));

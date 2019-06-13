@@ -130,8 +130,8 @@ public class RelatorioDatas extends JFrame {
 				confirm = PopUps.ConfirmarVolta();
 				
 				if(confirm == true) {		
-						TelaADM.getInstance().setVisible(true);
-						TelaADM.getInstance().setLocationRelativeTo(null);
+						TelaConferirPagamento.getInstance().setVisible(true);
+						TelaConferirPagamento.getInstance().setLocationRelativeTo(null);
 						dispose();					
 					
 				}

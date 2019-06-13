@@ -29,6 +29,10 @@ import java.awt.Font;
 import javax.swing.border.TitledBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.ImageIcon;
+import javax.swing.JTabbedPane;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.UIManager;
 
 public class TelaConferirPagamento extends JFrame {
 
@@ -41,6 +45,8 @@ public class TelaConferirPagamento extends JFrame {
 	private JButton btnPDFAtrasados;
 	private JButton btnEmDia;
 	private JButton btnTodos;
+	private JTabbedPane tabbedPane;
+	private JPanel panel_1;
 	
 	public static TelaConferirPagamento getInstance() {
 		if(instance == null) {
@@ -193,6 +199,28 @@ public class TelaConferirPagamento extends JFrame {
 		btnVoltar.setBackground(new Color(0, 128, 0));
 		btnVoltar.setBounds(45, 298, 119, 39);
 		contentPane.add(btnVoltar);
+		
+		panel_1 = new JPanel();
+		panel_1.setBackground(Color.WHITE);
+		panel_1.setBounds(10, 0, 100, 30);
+		contentPane.add(panel_1);
+		panel_1.setLayout(null);
+		
+		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBackground(Color.WHITE);
+		tabbedPane.setBounds(0, 0, 100, 30);
+		panel_1.add(tabbedPane);
+		tabbedPane.setToolTipText("Relat\u00F3rio dos hor\u00E1rios");
+		tabbedPane.setFont(new Font("Arial", Font.BOLD, 14));
+		tabbedPane.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Hor\u00E1rios", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		tabbedPane.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+					RelatorioDatas.getInstance().setVisible(true);
+					RelatorioDatas.getInstance().setLocationRelativeTo(null);
+					dispose();
+			}
+		});
 		btnTodos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Assistente.gerarPDFTodosClientes();
