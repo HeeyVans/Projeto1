@@ -189,6 +189,7 @@ public class TelaConferirPagamento extends JFrame {
 				if(confirm == true) {
 				TelaADM.getInstance().setVisible(true);
 				TelaADM.getInstance().setLocationRelativeTo(null);
+				modeloInstrutor.onRemoveAll();
 				dispose();
 				}
 			}

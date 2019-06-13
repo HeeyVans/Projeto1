@@ -74,6 +74,23 @@ public class TelaDadosInstrutor extends JFrame {
 		textFieldCargo.setText(c.getCargo());
 		textFieldHoraTrab.setText(c.getHoraTrab());
 	}
+	
+	public void limpar() {
+		 textFieldRua.setText("");
+		 textFieldBairro.setText("");
+		 textFieldComplemento.setText("");
+		 textFieldNumero.setText("");
+		 textFieldCidade.setText("");
+		 textFieldData.setText("");
+		 textFieldSexo.setText("");
+		 textFieldTelefone.setText("");
+		 textFieldEmail.setText("");
+		 textFieldMatricula.setText("");
+		 textFieldCPF.setText("");
+		 textFieldNome.setText("");
+		 textFieldCargo.setText("");
+		 textFieldHoraTrab.setText("");
+	}
 
 	/**
 	 * Launch the application.
@@ -147,6 +164,7 @@ public class TelaDadosInstrutor extends JFrame {
 				if(confirm == true) {					
 						TelaConsultaInstrutor.getInstance().setVisible(true);
 						TelaConsultaInstrutor.getInstance().setLocationRelativeTo(null);
+						limpar();
 						dispose();
 					}
 				

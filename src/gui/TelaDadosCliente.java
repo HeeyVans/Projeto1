@@ -81,6 +81,23 @@ public class TelaDadosCliente extends JFrame {
 		textFieldPagamento.setText(c.getPagamento());
 		textFieldObjetivo.setText(c.getObjetivo());
 	}
+	
+	public void limpar() {
+		 textFieldNome.setText("");
+		 textFieldCPF.setText("");
+		 textFieldData.setText("");
+		 textFieldMatricula.setText("");
+		 textFieldEmail.setText("");
+		 textFieldTelefone.setText("");
+		 textFieldSexo.setText("");
+		 textFieldCidade.setText("");
+		 textFieldRua.setText("");
+		 textFieldBairro.setText("");
+		 textFieldNumero.setText("");
+		 textFieldComplemento.setText("");
+		 textFieldPagamento.setText("");
+		 textFieldObjetivo.setText("");
+	}
 
 	/**
 	 * Launch the application.
@@ -239,11 +256,18 @@ public class TelaDadosCliente extends JFrame {
 				boolean confirm;
 				confirm = PopUps.ConfirmarVolta();
 				
-				if(confirm == true) {				
+				if(confirm == true) {	
+					if(TelaEntrar.adm == null) {
 						TelaConsultaCliente.getInstance().setVisible(true);
 						TelaConsultaCliente.getInstance().setLocationRelativeTo(null);
+						limpar();
 						dispose();
-		
+					}else {
+						TelaInstrutor.getInstance().setVisible(true);
+						TelaInstrutor.getInstance().setLocationRelativeTo(null);
+						limpar();
+						dispose();
+					}
 				}
 				
 			}

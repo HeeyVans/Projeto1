@@ -41,6 +41,11 @@ public class RelatorioDatas extends JFrame {
 		}
 		return instance;
 	}
+	
+	public void limpar() {
+		modeloData.onRemoveAll();
+		textFieldExibir.setText("");
+	}
 
 	/**
 	 * Launch the application.
@@ -132,6 +137,7 @@ public class RelatorioDatas extends JFrame {
 				if(confirm == true) {		
 						TelaConferirPagamento.getInstance().setVisible(true);
 						TelaConferirPagamento.getInstance().setLocationRelativeTo(null);
+						limpar();
 						dispose();					
 					
 				}

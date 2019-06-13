@@ -175,7 +175,7 @@ public class TelaInstrutor extends JFrame {
 				confirm = PopUps.ConfirmarVolta();
 				
 				if(confirm == true) {
-					if(TelaEntrar.instrutor != null) {
+					if(TelaEntrar.adm != null) {
 						TelaADM.getInstance().setVisible(true);
 						TelaADM.getInstance().setLocationRelativeTo(null);
 						modeloInstrutor.onRemoveAll();
