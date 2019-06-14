@@ -313,15 +313,9 @@ public class TelaInstrutor extends JFrame {
 		JMenuItem mntmRemover = new JMenuItem("Remover");
 		mntmRemover.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Instrutor instrutor = TelaEntrar.instrutor;
-				String matricula, matriculaCliente;
+				String matriculaCliente;
 				
-				if(instrutor == null) {
-					matricula = JOptionPane.showInputDialog(Mensagem.INFORMAMATRICULA);
-					Administrador adm;
-					adm = Fachada.getInstance().procurarADM(matricula);
-					
-					if(adm != null) {
+					if(TelaEntrar.adm != null) {
 						matriculaCliente = JOptionPane.showInputDialog(Mensagem.INFORMAMATRICULACLIENTE);
 						Cliente cliente = Fachada.getInstance().procurarClienteMatricula(matriculaCliente);
 						
@@ -337,11 +331,9 @@ public class TelaInstrutor extends JFrame {
 							PopUps.UsuarioNaoExiste();
 						}
 					}else {
-						PopUps.matriculaInvalida(new MatriculaNaoEncontradaException());
+						PopUps.AcessoNegado();
 					}
-				}else {
-					PopUps.AcessoNegado();
-				}
+				
 			}
 		});
 		mnCliente.add(mntmRemover);

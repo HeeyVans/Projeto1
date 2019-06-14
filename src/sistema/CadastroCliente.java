@@ -29,6 +29,7 @@ public class CadastroCliente {
 	
 	public void remover(String cpf)  {
 		repositorio.remover(cpf);
+		RepositorioClienteArray.salvarArquivo();
 	}
 	
 	public void atualizar(Cliente cliente){

@@ -2,105 +2,143 @@ package sistema;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
 
 import basicas.Administrador;
 import basicas.Cliente;
 import basicas.Endereco;
 import basicas.Instrutor;
+import repositorios.RepositorioClienteArray;
 
 class JUnitTeste {
 
 	@Test
 	void testCadastrarCliente() {
 		Endereco end = new Endereco("Rua", "Bairro", "Cidade", "Complemento", "Numero");
-		Cliente c = new Cliente("NomeTeste", end, "49184192674", "sdsd", "diogosz111@gmail.com", "51513", "Masculino", 
+		Cliente c = new Cliente("NomeTeste", end, "49184143674", "sdsd", "diogosz111@gmail.com", "51513", "Masculino", 
 				"Sim", "Hipertrofia");
 		Fachada.getInstance().cadastrarCliente(c);
-		assertNull(null);
+		
+		RepositorioClienteArray repClientes = RepositorioClienteArray.getInstance();
+		Cliente [] clientes = repClientes.getRepositorio();
+		
+		ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
+		int i = 0;
+		while(i < clientes.length) {
+			if(clientes[i] != null) {
+			listaClientes.add(clientes[i]);
+			}
+			i++;
+		}
+		
+		boolean b = false;		
+		for(int j = 0; j <= listaClientes.size() - 1; j++) {
+			
+		if(listaClientes.get(j).getCpf().equals(c.getCpf())) {
+			b = true;
+			}else {
+			b = false;
+			}
+		}
+		
+		
+		assertTrue(b);
 	}
+		
+		
+	
 
 	@Test
 	void testProcurarClienteMatricula() {
-		Endereco end = new Endereco("Rua", "Bairro", "Cidade", "Complemento", "Numero");
-		Cliente c = new Cliente("NomeTeste", end, "49184192674", "sdsd", "diogosz111@gmail.com", "51513", "Masculino", 
-				"Sim", "Hipertrofia");
-		Fachada.getInstance().procurarClienteMatricula(c.getCpf());
-		assertNull(null);
+
+		Cliente c = Fachada.getInstance().procurarClienteMatricula("sdsd");
+		
+		boolean b;
+		
+		if(c == null) {
+			b = false;
+		}else {
+			b = true;
+		}
+		
+		assertTrue(b);
 	}
 
 	@Test
 	void testRemoverCliente() {
-		Endereco end = new Endereco("Rua", "Bairro", "Cidade", "Complemento", "Numero");
-		Cliente c = new Cliente("NomeTeste", end, "49184192674", "sdsd", "diogosz111@gmail.com", "51513", "Masculino", 
-				"Sim", "Hipertrofia");
+		//N funciona ainda
+		String cpf = "49184143674";
+		Fachada.getInstance().removerCliente(cpf);
 		
-		Fachada.getInstance().removerCliente(c.getCpf());
-		assertNull(null);
+		RepositorioClienteArray repClientes = RepositorioClienteArray.getInstance();
+		Cliente [] clientes = repClientes.getRepositorio();
+		
+		ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
+		int i = 0;
+		while(i < clientes.length) {
+			if(clientes[i] != null) {
+			listaClientes.add(clientes[i]);
+			}
+			i++;
+		}
+		
+		boolean b = false;		
+		for(int j = 0; j <= listaClientes.size() - 1; j++) {
+			
+		if(listaClientes.get(j).getCpf().equals(cpf)) {
+			b = false;
+			}else {
+			b = true;
+			}
+		}
+		assertTrue(b);
 	}
 
 	@Test
 	void testAtualizarCliente() {
-		Endereco end = new Endereco("Rua", "Bairro", "Cidade", "Complemento", "Numero");
-		Cliente c = new Cliente("NomeTeste", end, "49184192674", "sdsd", "diogosz111@gmail.com", "51513", "Masculino", 
-				"Sim", "Hipertrofia");
 		
-		Fachada.getInstance().atualizar(c);
-		assertNull(null);
 	}
 
 	@Test
 	void testListarCliente() {
-		Fachada.getInstance().listarClienteVoid();	
-		assertNull(null);
+		
 	}
 
 	@Test
 	void testCadastrarADM() {
-		Administrador adm = new Administrador("ADMTeste", "4839243", "2222", "ADM");
-		Fachada.getInstance().cadastrarADM(adm);
-		assertNull(null);
+		
 	}
 
 	@Test
 	void testProcurarADM() {
-		Administrador adm = new Administrador("ADMTeste", "4839243", "2222", "ADM");
-		Fachada.getInstance().procurarADM(adm.getMatricula());
-		assertNull(null);
+		
 	}
 
 	@Test
 	void testCadastrarInstrutor() {
-		Instrutor i = new Instrutor("InstrutorTeste", "49184192674", "sdSD", "Instrutor");
-		Fachada.getInstance().cadastrarInstrutor(i);;
-		assertNull(null);
+		
 	}
 
 	@Test
 	void testProcurarInstrutorMatricula() {
-		Instrutor i = new Instrutor("InstrutorTeste", "49184192674", "sdSD", "Instrutor");
-		Fachada.getInstance().procurarInstrutorMatricula(i.getMatricula());
-		assertNull(null);
+		
 	}
 
 	@Test
 	void testRemoverInstrutor() {
-		Instrutor i = new Instrutor("InstrutorTeste", "49184192674", "sdSD", "Instrutor");
-		Fachada.getInstance().removerInstrutor(i.getCpf());
-		assertNull(null);
+		
 	}
 
 	@Test
 	void testAtualizarInstrutor() {
-		Instrutor i = new Instrutor("InstrutorTeste", "49184192674", "sdSD", "Instrutor");
-		Fachada.getInstance().atualizar(i);
-		assertNull(null);
+		
 	}
 
 	@Test
 	void testListarInstrutor() {
-		Fachada.getInstance().listarInstrutorVoid();
-		assertNull(null);
+		
 	}
 
 	@Test

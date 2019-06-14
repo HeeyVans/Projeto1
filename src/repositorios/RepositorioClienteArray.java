@@ -23,7 +23,11 @@ public class RepositorioClienteArray implements IRepositorioCliente, Serializabl
 	private int i;
 	private Cliente[] repositorio;
 	public static RepositorioClienteArray instance;
-	
+
+	public Cliente[] getRepositorio() {
+		return repositorio;
+	}
+
 	public RepositorioClienteArray(){
 		this.repositorio = new Cliente[TAM];
 		indice = 0;
