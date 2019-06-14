@@ -11,6 +11,7 @@ import basicas.Cliente;
 import basicas.Endereco;
 import basicas.Instrutor;
 import repositorios.RepositorioClienteArray;
+import repositorios.RepositorioInstrutorArray;
 
 class JUnitTeste {
 
@@ -68,7 +69,7 @@ class JUnitTeste {
 
 	@Test
 	void testRemoverCliente() {
-		//N funciona ainda
+		
 		String cpf = "49184143674";
 		Fachada.getInstance().removerCliente(cpf);
 		
@@ -98,7 +99,35 @@ class JUnitTeste {
 
 	@Test
 	void testAtualizarCliente() {
+		Endereco end = new Endereco("Rua", "Bairro", "Cidade", "Complemento", "Numero");
+		Cliente c = new Cliente("NomeTeste", end, "49184143674", "sdsasad", "diogosz111@gmail.com", "51513", "Masculino", 
+				"Sim", "Hipertrofia");
+		Fachada.getInstance().atualizar(c);
 		
+		RepositorioClienteArray repClientes = RepositorioClienteArray.getInstance();
+		Cliente [] clientes = repClientes.getRepositorio();
+		
+		ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
+		int i = 0;
+		while(i < clientes.length) {
+			if(clientes[i] != null) {
+			listaClientes.add(clientes[i]);
+			}
+			i++;
+		}
+		
+		boolean b = false;		
+		for(int j = 0; j <= listaClientes.size() - 1; j++) {
+			
+		if(listaClientes.get(j).getCpf().equals(c.getCpf())) {
+				b = true;
+			}else {
+				b = false;
+			}
+		}
+		
+		
+		assertTrue(b);
 	}
 
 	@Test
@@ -118,22 +147,103 @@ class JUnitTeste {
 
 	@Test
 	void testCadastrarInstrutor() {
+		Instrutor in = new Instrutor("InstrutorNomeTeste", "12345678", "abab","Instrutor");
+		Fachada.getInstance().cadastrarInstrutor(in);
 		
+		RepositorioInstrutorArray repInstrutores = RepositorioInstrutorArray.getInstance();
+		Instrutor [] instrutores = repInstrutores.getRepositorio();
+		
+		ArrayList<Instrutor> listaInstrutores = new ArrayList<Instrutor>();
+		int i = 0;
+		while(i < instrutores.length) {
+			if(instrutores[i] != null) {
+			listaInstrutores.add(instrutores[i]);
+			}
+			i++;
+		}
+		
+		boolean b = false;		
+		for(int j = 0; j <= listaInstrutores.size() - 1; j++) {
+			
+		if(listaInstrutores.get(j).getCpf().equals(in.getCpf())) {
+			b = true;
+			}else {
+			b = false;
+			}
+		}
+		assertTrue(b);
 	}
 
 	@Test
 	void testProcurarInstrutorMatricula() {
+		Instrutor in = Fachada.getInstance().procurarInstrutorMatricula("abab");
 		
+		boolean b;
+		
+		if(in == null) {
+			b = false;
+		}else {
+			b = true;
+		}
+		assertTrue(b);
 	}
 
 	@Test
 	void testRemoverInstrutor() {
+		String cpf = "12345678";
+		Fachada.getInstance().removerInstrutor(cpf);
 		
+		RepositorioInstrutorArray repInstrutores = RepositorioInstrutorArray.getInstance();
+		Instrutor [] instrutores = repInstrutores.getRepositorio();
+		
+		ArrayList<Instrutor> listaInstrutores = new ArrayList<Instrutor>();
+		int i = 0;
+		while(i < instrutores.length) {
+			if(instrutores[i] != null) {
+			listaInstrutores.add(instrutores[i]);
+			}
+			i++;
+		}
+		
+		boolean b = false;		
+		for(int j = 0; j <= listaInstrutores.size() - 1; j++) {
+			
+		if(listaInstrutores.get(j).getCpf().equals(cpf)) {
+			b = true;
+			}else {
+			b = false;
+			}
+		}
+		assertTrue(b);
 	}
 
 	@Test
 	void testAtualizarInstrutor() {
+		Instrutor in = new Instrutor("InstrutorNomeTeste", "12345678", "SSabab","Instrutor");
+		Fachada.getInstance().atualizar(in);
 		
+		RepositorioInstrutorArray repInstrutores = RepositorioInstrutorArray.getInstance();
+		Instrutor [] instrutores = repInstrutores.getRepositorio();
+		
+		ArrayList<Instrutor> listaInstrutores = new ArrayList<Instrutor>();
+		int i = 0;
+		while(i < instrutores.length) {
+			if(instrutores[i] != null) {
+			listaInstrutores.add(instrutores[i]);
+			}
+			i++;
+		}
+		
+		boolean b = false;		
+		for(int j = 0; j <= listaInstrutores.size() - 1; j++) {
+			
+		if(listaInstrutores.get(j).getCpf().equals(in.getCpf())) {
+			b = true;
+			}else {
+			b = false;
+			}
+		}
+		assertTrue(b);
 	}
 
 	@Test

@@ -3,11 +3,15 @@ package sistema;
 import java.util.ArrayList;
 
 import basicas.Cliente;
+import basicas.Endereco;
 import repositorios.RepositorioClienteArray;
 
 public class Teste {
 
 	public static void main(String[] args) {
+		String cpf = "49184143674";
+		Fachada.getInstance().removerCliente(cpf);
+		
 		RepositorioClienteArray repClientes = RepositorioClienteArray.getInstance();
 		Cliente [] clientes = repClientes.getRepositorio();
 		
@@ -18,14 +22,6 @@ public class Teste {
 			listaClientes.add(clientes[i]);
 			}
 			i++;
-		}
-				
-		String cpf = "49184143674";
-		for(int j = 0; j <= listaClientes.size() - 1; j++) {
-			
-		if(listaClientes.get(j).getCpf().equals(cpf)) {
-			
-			}
 		}
 	}
 

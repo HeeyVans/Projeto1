@@ -217,8 +217,8 @@ public class TelaInstrutor extends JFrame {
 				if(TelaEntrar.adm != null) {
 					PopUps.AcessoNegado();
 				}else {
-			AttPedido.getInstance().setVisible(true);
-			AttPedido.getInstance().setLocationRelativeTo(null);
+			TelaCriarTreino.getInstance().setVisible(true);
+			TelaCriarTreino.getInstance().setLocationRelativeTo(null);
 			dispose();	
 				}	
 				

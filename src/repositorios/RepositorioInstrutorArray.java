@@ -20,6 +20,10 @@ public class RepositorioInstrutorArray implements IRepositorioInstrutor, Seriali
 	private int i;
 	private Instrutor[] repositorio;
 	public static RepositorioInstrutorArray instance;
+
+	public Instrutor[] getRepositorio() {
+		return repositorio;
+	}
 	
 	public RepositorioInstrutorArray(){
 		this.repositorio = new Instrutor[TAM];
