@@ -46,7 +46,6 @@ public class TelaConferirPagamento extends JFrame {
 	private JButton btnEmDia;
 	private JButton btnTodos;
 	private JTabbedPane tabbedPane;
-	private JPanel panel_1;
 	
 	public static TelaConferirPagamento getInstance() {
 		if(instance == null) {
@@ -194,34 +193,36 @@ public class TelaConferirPagamento extends JFrame {
 				}
 			}
 		});
+		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBackground(new Color(255, 255, 255));
+		tabbedPane.setFont(new Font("Arial", Font.PLAIN, 12));
+		tabbedPane.setForeground(new Color(0, 128, 0));
+		tabbedPane.setBounds(4, 11, 73, 23);
+		tabbedPane.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tabbedPane.setSelectedIndex(-1);
+				RelatorioDatas.getInstance().setVisible(true);
+				RelatorioDatas.getInstance().setLocationRelativeTo(null);
+				dispose();
+			}
+		});
+		contentPane.add(tabbedPane);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setForeground(new Color(0, 128, 0));
+		panel_1.setBackground(Color.WHITE);
+		tabbedPane.addTab("Hor\u00E1rios", null, panel_1, null);
+		tabbedPane.setEnabledAt(0, true);
+		tabbedPane.setBackgroundAt(0, Color.WHITE);
+		tabbedPane.setForegroundAt(0, new Color(0, 128, 0));
+		panel_1.setLayout(null);
 		btnVoltar.setIcon(new ImageIcon(TelaConferirPagamento.class.getResource("/imagens/gtkgobackltr_104397.png")));
 		btnVoltar.setForeground(Color.WHITE);
 		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnVoltar.setBackground(new Color(0, 128, 0));
 		btnVoltar.setBounds(45, 298, 119, 39);
 		contentPane.add(btnVoltar);
-		
-		panel_1 = new JPanel();
-		panel_1.setBackground(Color.WHITE);
-		panel_1.setBounds(10, 0, 100, 30);
-		contentPane.add(panel_1);
-		panel_1.setLayout(null);
-		
-		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBackground(Color.WHITE);
-		tabbedPane.setBounds(0, 0, 100, 30);
-		panel_1.add(tabbedPane);
-		tabbedPane.setToolTipText("Relat\u00F3rio dos hor\u00E1rios");
-		tabbedPane.setFont(new Font("Arial", Font.BOLD, 14));
-		tabbedPane.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Hor\u00E1rios", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		tabbedPane.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-					RelatorioDatas.getInstance().setVisible(true);
-					RelatorioDatas.getInstance().setLocationRelativeTo(null);
-					dispose();
-			}
-		});
 		btnTodos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Assistente.gerarPDFTodosClientes();
