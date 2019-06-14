@@ -28,6 +28,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 //import com.toedter.calendar.JDateChooser;
 
 public class TelaCadastroInstrutor extends JFrame{
@@ -129,6 +132,42 @@ public class TelaCadastroInstrutor extends JFrame{
 		frmTelaDeCadastro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTelaDeCadastro.getContentPane().setLayout(null);
 		
+		JLabel lblSomenteNmeros = new JLabel("Somente n\u00FAmeros");
+		lblSomenteNmeros.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				lblSomenteNmeros.setText("");
+			}
+		});
+		lblSomenteNmeros.setForeground(Color.LIGHT_GRAY);
+		lblSomenteNmeros.setFont(new Font("Arial", Font.ITALIC, 12));
+		lblSomenteNmeros.setBounds(20, 240, 115, 14);
+		frmTelaDeCadastro.getContentPane().add(lblSomenteNmeros);
+		
+		JLabel lblExEstagirio = new JLabel("Ex: Estagi\u00E1rio");
+		lblExEstagirio.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				lblExEstagirio.setText("");
+			}
+		});
+		lblExEstagirio.setForeground(Color.LIGHT_GRAY);
+		lblExEstagirio.setFont(new Font("Arial", Font.ITALIC, 12));
+		lblExEstagirio.setBounds(20, 174, 99, 14);
+		frmTelaDeCadastro.getContentPane().add(lblExEstagirio);
+		
+		JLabel label = new JLabel(" Ex: Jo\u00E3o@gmail.com");
+		label.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				label.setText("");
+			}
+		});
+		label.setForeground(Color.LIGHT_GRAY);
+		label.setFont(new Font("Arial", Font.ITALIC, 12));
+		label.setBounds(231, 64, 138, 23);
+		frmTelaDeCadastro.getContentPane().add(label);
+		
 		JLabel lblTelefone = new JLabel("Telefone:");
 		lblTelefone.setBounds(10, 18, 59, 14);
 		frmTelaDeCadastro.getContentPane().add(lblTelefone);
@@ -210,6 +249,42 @@ public class TelaCadastroInstrutor extends JFrame{
 		panel_1.setBackground(Color.WHITE);
 		panel_1.setBounds(235, 110, 327, 215);
 		frmTelaDeCadastro.getContentPane().add(panel_1);
+		
+		JLabel label_3 = new JLabel(" Ex: Perto do Lafepe");
+		label_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				label_3.setText("");
+			}
+		});
+		label_3.setForeground(Color.LIGHT_GRAY);
+		label_3.setFont(new Font("Arial", Font.ITALIC, 12));
+		label_3.setBounds(20, 167, 146, 14);
+		panel_1.add(label_3);
+		
+		JLabel label_2 = new JLabel(" Ex: Dois irm\u00E3os");
+		label_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				label_2.setText("");
+			}
+		});
+		label_2.setForeground(Color.LIGHT_GRAY);
+		label_2.setFont(new Font("Arial", Font.ITALIC, 12));
+		label_2.setBounds(20, 107, 140, 14);
+		panel_1.add(label_2);
+		
+		JLabel label_1 = new JLabel(" Ex: Dom Manuel de Medeiros");
+		label_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				label_1.setText("");
+			}
+		});
+		label_1.setForeground(Color.LIGHT_GRAY);
+		label_1.setFont(new Font("Arial", Font.ITALIC, 12));
+		label_1.setBounds(20, 50, 173, 14);
+		panel_1.add(label_1);
 		
 		JLabel labelRua = new JLabel("Rua:");
 		labelRua.setBounds(10, 25, 46, 14);
