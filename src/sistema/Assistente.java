@@ -412,7 +412,12 @@ public class Assistente {
 		//GerarPDFHorariosCliente
 		public static void gerarPDFClienteHorario(String matricula) {
 			int i;
-			Cliente cliente = Fachada.getInstance().procurarClienteMatricula(matricula);
+			Cliente cliente = null;
+			try {
+				cliente = Fachada.getInstance().procurarClienteMatricula(matricula);
+			} catch (MatriculaNaoEncontradaException mnee) {
+				PopUps.matriculaInvalida(mnee);
+			}
 			Document document = new Document();
 			
 			ArrayList<AtividadeDiaria> ativ = new ArrayList<AtividadeDiaria>();

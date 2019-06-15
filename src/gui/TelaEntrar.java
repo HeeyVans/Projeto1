@@ -19,6 +19,7 @@ import basicas.Cliente;
 import basicas.Endereco;
 import basicas.Instrutor;
 import basicas.Treino;
+import excecoes.MatriculaNaoEncontradaException;
 import sistema.Assistente;
 import sistema.Fachada;
 import sistema.Mensagem;
@@ -144,8 +145,16 @@ public class TelaEntrar extends JFrame{
 				}else {					
 					
 						
-						cliente = Fachada.getInstance().procurarClienteMatricula(matricula);
-						instrutor = Fachada.getInstance().procurarInstrutorMatricula(matricula);
+						try {
+							cliente = Fachada.getInstance().procurarClienteMatricula(matricula);
+						} catch (MatriculaNaoEncontradaException e1) {
+							PopUps.matriculaInvalida(e1);
+						}
+						try {
+							instrutor = Fachada.getInstance().procurarInstrutorMatricula(matricula);
+						} catch (MatriculaNaoEncontradaException mnee) {
+							PopUps.matriculaInvalida(mnee);
+						}
 						adm = Fachada.getInstance().procurarADM(matricula);
 						
 						if(cliente != null) {

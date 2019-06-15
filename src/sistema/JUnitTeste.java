@@ -10,6 +10,7 @@ import basicas.Administrador;
 import basicas.Cliente;
 import basicas.Endereco;
 import basicas.Instrutor;
+import excecoes.MatriculaNaoEncontradaException;
 import repositorios.RepositorioClienteArray;
 import repositorios.RepositorioInstrutorArray;
 
@@ -52,7 +53,7 @@ class JUnitTeste {
 	
 
 	@Test
-	void testProcurarClienteMatricula() {
+	void testProcurarClienteMatricula() throws MatriculaNaoEncontradaException {
 
 		Cliente c = Fachada.getInstance().procurarClienteMatricula("sdsd");
 		
@@ -175,7 +176,7 @@ class JUnitTeste {
 	}
 
 	@Test
-	void testProcurarInstrutorMatricula() {
+	void testProcurarInstrutorMatricula() throws MatriculaNaoEncontradaException {
 		Instrutor in = Fachada.getInstance().procurarInstrutorMatricula("abab");
 		
 		boolean b;
@@ -189,7 +190,7 @@ class JUnitTeste {
 	}
 
 	@Test
-	void testRemoverInstrutor() {
+	void testRemoverInstrutor() throws MatriculaNaoEncontradaException {
 		String cpf = "12345678";
 		Fachada.getInstance().removerInstrutor(cpf);
 		

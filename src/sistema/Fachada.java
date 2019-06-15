@@ -5,21 +5,10 @@ import java.util.List;
 import basicas.Administrador;
 import basicas.AtividadeDiaria;
 import basicas.Cliente;
-import basicas.Exercicio;
 import basicas.Instrutor;
 import basicas.Treino;
-import excecoes.ClienteJaCadastradoException;
-import excecoes.ClienteNaoEncontradoException;
-import excecoes.InstrutorJaCadastradoException;
+import excecoes.InstrutorLotadoException;
 import excecoes.MatriculaNaoEncontradaException;
-import interfaces.IRepositorioADM;
-import interfaces.IRepositorioCliente;
-import interfaces.IRepositorioInstrutor;
-import interfaces.IRepositorioTreino;
-import repositorios.RepositorioADMArray;
-import repositorios.RepositorioClienteArray;
-import repositorios.RepositorioInstrutorArray;
-import repositorios.RepositorioTreinoArray;
 
 public class Fachada {
 	
@@ -59,7 +48,7 @@ public class Fachada {
 	public Cliente procurarCliente(String cpf) {
 		return cliente.procurar(cpf);
 	}
-	public Cliente procurarClienteMatricula(String matricula) {
+	public Cliente procurarClienteMatricula(String matricula) throws MatriculaNaoEncontradaException{
 		return cliente.procurarMatricula(matricula);
 	}
 	public void removerCliente(String cpf) {
@@ -99,11 +88,11 @@ public class Fachada {
 		return instrutor.procurar(cpf);
 	}
 	
-	public Instrutor procurarInstrutorMatricula(String matricula) {
+	public Instrutor procurarInstrutorMatricula(String matricula) throws MatriculaNaoEncontradaException{
 		return instrutor.procurarMatricula(matricula);
 	}
 
-	public void removerInstrutor(String cpf) {
+	public void removerInstrutor(String cpf) throws MatriculaNaoEncontradaException{
 		instrutor.remover(cpf);
 	}
 	
@@ -119,7 +108,7 @@ public class Fachada {
 	
 	//FIM DE CRUD DO INSTRUTOR
 	//INICIO DE CRUD TREINO
-	public void inserirTreino(Treino treino) throws MatriculaNaoEncontradaException {
+	public void inserirTreino(Treino treino) throws MatriculaNaoEncontradaException, InstrutorLotadoException {
 		this.treino.inserir(treino);
 	}
 	
@@ -131,6 +120,9 @@ public class Fachada {
 	}
 	public List listarTreino(String matricula, String categoria) {
 		return this.treino.listar(matricula, categoria);
+	}
+	public int contaInstrutorPorCliente(String matriculaInstrutor) {
+		return this.treino.contaInstrutorPorCliente(matriculaInstrutor);
 	}
 	//FIM DE CRUD TREINO
 	//INICIO CRUD ATIVIDADE

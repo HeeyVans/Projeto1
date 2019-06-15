@@ -26,6 +26,7 @@ import javax.swing.border.TitledBorder;
 
 import basicas.Cliente;
 import basicas.Instrutor;
+import excecoes.MatriculaNaoEncontradaException;
 import sistema.Assistente;
 import sistema.Fachada;
 import sistema.Mensagem;
@@ -160,12 +161,20 @@ public class TelaDadosInstrutor extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				boolean confirm;
 				confirm = PopUps.ConfirmarVolta();
-				
-				if(confirm == true) {					
+							
+				if(confirm == true) {	
+					if(TelaEntrar.instrutor != null) {
+						TelaInstrutor.getInstance().setVisible(true);
+						TelaInstrutor.getInstance().setLocationRelativeTo(null);
+						limpar();
+						dispose();
+					}else {
 						TelaConsultaInstrutor.getInstance().setVisible(true);
 						TelaConsultaInstrutor.getInstance().setLocationRelativeTo(null);
 						limpar();
 						dispose();
+					}
+						
 					}
 				
 			}
@@ -362,9 +371,13 @@ public class TelaDadosInstrutor extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if(TelaEntrar.adm != null) {
 					String matricula;
-					Instrutor c;
+					Instrutor c = null;
 					matricula = JOptionPane.showInputDialog(Mensagem.INFORMAMATRICULA);
-					c = Fachada.getInstance().procurarInstrutorMatricula(matricula);
+					try {
+						c = Fachada.getInstance().procurarInstrutorMatricula(matricula);
+					} catch (MatriculaNaoEncontradaException mnee) {
+						PopUps.matriculaInvalida(mnee);
+					}
 					if(c == null) {
 						PopUps.UsuarioNaoExiste();
 					}else {

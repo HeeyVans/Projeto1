@@ -3,6 +3,7 @@ package sistema;
 import java.util.List;
 
 import basicas.Cliente;
+import excecoes.MatriculaNaoEncontradaException;
 import interfaces.IRepositorioCliente;
 import repositorios.RepositorioClienteArray;
 
@@ -23,7 +24,7 @@ public class CadastroCliente {
 		return repositorio.procurar(cpf);
 	}
 	
-	public Cliente procurarMatricula(String matricula)  {
+	public Cliente procurarMatricula(String matricula) throws MatriculaNaoEncontradaException {
 		return repositorio.procurarMatricula(matricula);
 	}
 	

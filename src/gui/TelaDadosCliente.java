@@ -26,6 +26,7 @@ import com.toedter.calendar.JDateChooser;
 
 import basicas.Cliente;
 import basicas.Endereco;
+import excecoes.MatriculaNaoEncontradaException;
 import sistema.Assistente;
 import sistema.Fachada;
 import sistema.Mensagem;
@@ -378,9 +379,13 @@ public class TelaDadosCliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(TelaEntrar.adm != null) {
 					String matricula;
-					Cliente c;
+					Cliente c = null;
 					matricula = JOptionPane.showInputDialog(Mensagem.INFORMAMATRICULA);
-					c = Fachada.getInstance().procurarClienteMatricula(matricula);
+					try {
+						c = Fachada.getInstance().procurarClienteMatricula(matricula);
+					} catch (MatriculaNaoEncontradaException e1) {
+						PopUps.matriculaInvalida(e1);
+					}
 					if(c == null) {
 						PopUps.UsuarioNaoExiste();
 					}else {

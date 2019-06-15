@@ -10,6 +10,7 @@ public class Mensagem {
 	public static final String CPFINVALIDO = "Este CPF é inválido!";
 	public static final String EMAILINVALIDO = "Este email é inválido!";
 	public static final String CAMPOVAZIO = "Por favor, preencha todos os campos em branco!";
+	public static final String INSTRUTORLOTADO = "Instrutor já possui 10 treinos!";
 	
 	//Exceptions para PopUps
 	private static final String MSGALERT = "Mensagem de alerta";

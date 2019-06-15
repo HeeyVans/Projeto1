@@ -275,14 +275,24 @@ public class TelaConsultaInstrutor extends JFrame {
 				
 				if(TelaEntrar.adm != null) {
 					matriculaInstrutor = JOptionPane.showInputDialog(Mensagem.INFORMAMATRICULAINSTRUTOR);
-					Instrutor instrutor = Fachada.getInstance().procurarInstrutorMatricula(matriculaInstrutor);
+					Instrutor instrutor = null;
+					
+					try {
+						instrutor = Fachada.getInstance().procurarInstrutorMatricula(matriculaInstrutor);
+					} catch (MatriculaNaoEncontradaException mnee) {
+						PopUps.matriculaInvalida(mnee);
+					}
 					
 					if(instrutor != null) {
 						boolean confirm;
 						confirm = PopUps.ConfirmarExclusao();
 						
 						if(confirm == true) {
-						Fachada.getInstance().removerInstrutor(instrutor.getCpf());
+						try {
+							Fachada.getInstance().removerInstrutor(instrutor.getCpf());
+						} catch (MatriculaNaoEncontradaException mnee) {
+							PopUps.matriculaInvalida(mnee);
+						}
 						PopUps.instrutorRemovido();
 						}
 					}else {

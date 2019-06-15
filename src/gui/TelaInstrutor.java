@@ -1,46 +1,39 @@
 package gui;
 
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
-
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
 import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
-
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
-import basicas.Administrador;
 import basicas.Cliente;
-import basicas.Instrutor;
+import excecoes.InstrutorLotadoException;
 import excecoes.MatriculaNaoEncontradaException;
 import sistema.Fachada;
 import sistema.Mensagem;
 import sistema.ModeloTabelaInstrutor;
-
-import javax.swing.ListSelectionModel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
-import java.awt.event.ActionEvent;
-import java.awt.Toolkit;
-import java.awt.Color;
-import javax.swing.SwingConstants;
-import javax.swing.ImageIcon;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class TelaInstrutor extends JFrame {
 
@@ -217,9 +210,14 @@ public class TelaInstrutor extends JFrame {
 				if(TelaEntrar.adm != null) {
 					PopUps.AcessoNegado();
 				}else {
-			TelaCriarTreino.getInstance().setVisible(true);
-			TelaCriarTreino.getInstance().setLocationRelativeTo(null);
-			dispose();	
+					int clientesInstr = Fachada.getInstance().contaInstrutorPorCliente(TelaEntrar.instrutor.getMatricula());
+					if(clientesInstr >= 10) {
+						PopUps.instrutorLotado(new InstrutorLotadoException());
+					}else {
+						TelaCriarTreino.getInstance().setVisible(true);
+						TelaCriarTreino.getInstance().setLocationRelativeTo(null);
+						dispose();
+					}				
 				}	
 				
 			}
@@ -317,7 +315,12 @@ public class TelaInstrutor extends JFrame {
 				
 					if(TelaEntrar.adm != null) {
 						matriculaCliente = JOptionPane.showInputDialog(Mensagem.INFORMAMATRICULACLIENTE);
-						Cliente cliente = Fachada.getInstance().procurarClienteMatricula(matriculaCliente);
+						Cliente cliente = null;
+						try {
+							cliente = Fachada.getInstance().procurarClienteMatricula(matriculaCliente);
+						} catch (MatriculaNaoEncontradaException e1) {
+							PopUps.matriculaInvalida(e1);
+						}
 						
 						if(cliente != null) {
 							boolean confirm;

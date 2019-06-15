@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 import excecoes.CPFInvalidoException;
 import excecoes.CampoVazioException;
 import excecoes.EmailInvalidoException;
+import excecoes.InstrutorLotadoException;
 import excecoes.MatriculaNaoEncontradaException;
 import sistema.Mensagem;
 
@@ -27,6 +28,9 @@ public class PopUps {
 	
 	public static void emailInvalido(EmailInvalidoException eie) {
 		JOptionPane.showMessageDialog(null, eie.getMessage(), Mensagem.getMsgalert(), JOptionPane.WARNING_MESSAGE);
+	}
+	public static void instrutorLotado(InstrutorLotadoException ile) {
+		JOptionPane.showMessageDialog(null, ile.getMessage(), Mensagem.getMsgalert(), JOptionPane.WARNING_MESSAGE);
 	}
 	
 	//CONFIRMAÇÕES

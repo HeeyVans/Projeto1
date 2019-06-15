@@ -178,5 +178,19 @@ public class RepositorioTreinoArray implements IRepositorioTreino, Serializable{
 		}else {
 			return null;
 			}
-	}	
+	}
+	
+	public int contaInstrutorPorCliente(String matriculaInstrutor) {
+		
+		int i = 0, cont = 0;
+		
+		while(i < indice) {
+			if(repositorio[i].getInstrutor().getMatricula().equals(matriculaInstrutor)) {
+				cont++;
+			}
+			i++;
+		}
+		
+		return cont;
+	}
 }

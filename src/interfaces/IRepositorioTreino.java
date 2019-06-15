@@ -15,5 +15,6 @@ public interface IRepositorioTreino {
 	public Treino procurarIdTreino(int id, String categoria);
 	public void atualizar(Treino treino);
 	public List listar(String matricula, String categoria);
+	public int contaInstrutorPorCliente(String matriculaInstrutor);
 
 }

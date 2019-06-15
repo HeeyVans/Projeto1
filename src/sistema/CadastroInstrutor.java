@@ -4,8 +4,11 @@ import java.util.List;
 
 import basicas.Instrutor;
 import excecoes.InstrutorJaCadastradoException;
+import excecoes.MatriculaNaoEncontradaException;
 import interfaces.IRepositorioInstrutor;
+import interfaces.IRepositorioTreino;
 import repositorios.RepositorioInstrutorArray;
+import repositorios.RepositorioTreinoArray;
 
 public class CadastroInstrutor {
 	
@@ -16,19 +19,20 @@ public class CadastroInstrutor {
 	}
 	
 	public void inserir(Instrutor instrutor)  {
-		repositorio.inserir(instrutor);
-		RepositorioInstrutorArray.salvarArquivo();
+			repositorio.inserir(instrutor);
+			RepositorioInstrutorArray.salvarArquivo();
+				
 	}
 	
-	public Instrutor procurar(String cpf) /*throws MatriculaNaoEncontradaException*/  {
+	public Instrutor procurar(String cpf) {
 		return repositorio.procurar(cpf);
 	}
 	
-	public Instrutor procurarMatricula(String matricula)   {
+	public Instrutor procurarMatricula(String matricula) throws MatriculaNaoEncontradaException  {
 		return repositorio.procurarMatricula(matricula);
 	}
 	
-	public void remover(String matricula) /*throws MatriculaNaoEncontradaException*/   {
+	public void remover(String matricula) throws MatriculaNaoEncontradaException  {
 		repositorio.remover(matricula);
 	}
 	

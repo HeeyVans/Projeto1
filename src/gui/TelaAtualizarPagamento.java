@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 
 import basicas.Cliente;
 import basicas.Endereco;
+import excecoes.MatriculaNaoEncontradaException;
 import sistema.Fachada;
 
 import javax.swing.JLabel;
@@ -149,7 +150,12 @@ public class TelaAtualizarPagamento extends JFrame {
 		btnVerificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String matricula = textFieldMatricula.getText();
-				Cliente cliente = Fachada.getInstance().procurarClienteMatricula(matricula);
+				Cliente cliente = null;
+				try {
+					cliente = Fachada.getInstance().procurarClienteMatricula(matricula);
+				} catch (MatriculaNaoEncontradaException e) {
+					PopUps.matriculaInvalida(e);
+				}
 				
 				if(cliente == null) {
 					PopUps.UsuarioNaoExiste();
@@ -168,7 +174,12 @@ public class TelaAtualizarPagamento extends JFrame {
 		btnConcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String matricula = textFieldMatricula.getText();
-				Cliente cliente = Fachada.getInstance().procurarClienteMatricula(matricula);
+				Cliente cliente = null;
+				try {
+					cliente = Fachada.getInstance().procurarClienteMatricula(matricula);
+				} catch (MatriculaNaoEncontradaException e1) {
+					PopUps.matriculaInvalida(e1);
+				}
 				
 				if(cliente == null) {
 					PopUps.UsuarioNaoExiste();

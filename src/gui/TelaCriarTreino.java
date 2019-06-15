@@ -11,6 +11,7 @@ import basicas.Cliente;
 import basicas.Exercicio;
 import basicas.Instrutor;
 import basicas.Treino;
+import excecoes.InstrutorLotadoException;
 import excecoes.MatriculaNaoEncontradaException;
 import sistema.Assistente;
 import sistema.Fachada;
@@ -277,6 +278,8 @@ private String comboSelecionado() {
 							
 						}catch(MatriculaNaoEncontradaException mnee) {
 							PopUps.matriculaInvalida(mnee);
+						} catch (InstrutorLotadoException ile) {
+							PopUps.instrutorLotado(ile);
 						}
 						
 					}					
