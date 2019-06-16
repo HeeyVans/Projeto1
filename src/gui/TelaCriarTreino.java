@@ -103,7 +103,6 @@ public class TelaCriarTreino extends JFrame {
 		textFieldNome.setText("");
 		textFieldSeries.setText("");
 		textFieldDescanso.setText("");
-		textFieldMatricula.setText("");
 		textFieldObs.setText("");
 		textFieldNome2.setText("");
 		textFieldSeries2.setText("");

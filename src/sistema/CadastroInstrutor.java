@@ -34,6 +34,7 @@ public class CadastroInstrutor {
 	
 	public void remover(String matricula) throws MatriculaNaoEncontradaException  {
 		repositorio.remover(matricula);
+		RepositorioInstrutorArray.salvarArquivo();
 	}
 	
 	public void atualizar(Instrutor instrutor) {

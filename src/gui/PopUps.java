@@ -124,6 +124,9 @@ public class PopUps {
 	public static void treinoCriado() {
 		JOptionPane.showMessageDialog(null, Mensagem.TREINOCRIADO);
 	}
+	public static void usuarioAtualizado() {
+		JOptionPane.showMessageDialog(null, Mensagem.USUARIOATT);
+	}
 	
 	//ERROS
 	public static void ErroCadastro() {

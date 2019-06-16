@@ -20,7 +20,8 @@ public class CadastroTreino {
 	}
 
 	public void inserir(Treino treino) throws MatriculaNaoEncontradaException, InstrutorLotadoException {
-		if(repositorio.contaInstrutorPorCliente(treino.getInstrutor().getMatricula()) < 10) {
+		if(repositorio.contaInstrutorPorCliente(treino.getInstrutor().getMatricula()) < 10 
+				 ) {
 			this.repositorio.inserir(treino);
 			RepositorioTreinoArray.salvarArquivo();	
 		}
@@ -42,6 +43,7 @@ public class CadastroTreino {
 	public int contaInstrutorPorCliente(String matriculaInstrutor) {
 		return repositorio.contaInstrutorPorCliente(matriculaInstrutor);
 	}
+	
 	
 
 }

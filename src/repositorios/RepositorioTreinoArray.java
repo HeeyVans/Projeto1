@@ -182,7 +182,8 @@ public class RepositorioTreinoArray implements IRepositorioTreino, Serializable{
 	
 	public int contaInstrutorPorCliente(String matriculaInstrutor) {
 		
-		int i = 0, cont = 0;
+		i = 0;
+		int cont = 0;
 		
 		while(i < indice) {
 			if(repositorio[i].getInstrutor().getMatricula().equals(matriculaInstrutor)) {
@@ -191,6 +192,19 @@ public class RepositorioTreinoArray implements IRepositorioTreino, Serializable{
 			i++;
 		}
 		
+		return cont;
+	}
+	
+	public int contaClientePorInstrutor(String matriculaCliente) {
+		
+		i = 0;
+		int cont = 0;
+		
+		while(i < indice) {
+			if(repositorio[i].getCliente().getMatricula().equals(matriculaCliente)) {
+				cont++;
+			}
+		}
 		return cont;
 	}
 }

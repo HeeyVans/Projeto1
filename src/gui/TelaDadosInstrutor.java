@@ -24,7 +24,10 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
+import com.toedter.calendar.JDateChooser;
+
 import basicas.Cliente;
+import basicas.Endereco;
 import basicas.Instrutor;
 import excecoes.MatriculaNaoEncontradaException;
 import sistema.Assistente;
@@ -49,6 +52,7 @@ public class TelaDadosInstrutor extends JFrame {
 	private JTextField textFieldNome;
 	private JTextField textFieldCargo;
 	private JTextField textFieldHoraTrab;
+	private JDateChooser dataNascimento = new JDateChooser();
 	
 	public static TelaDadosInstrutor getInstance() {
 		if(instance == null) {
@@ -201,6 +205,9 @@ public class TelaDadosInstrutor extends JFrame {
 		btnAtualizacao.setBackground(new Color(0, 128, 0));
 		btnAtualizacao.setBounds(323, 400, 142, 35);
 		contentPane.add(btnAtualizacao);
+				
+		dataNascimento.setBounds(68, 354, 145, 29);
+		contentPane.add(dataNascimento);
 		
 		JButton btnGerarPDF = new JButton("Gerar PDF");
 		btnGerarPDF.addActionListener(new ActionListener() {
@@ -391,6 +398,27 @@ public class TelaDadosInstrutor extends JFrame {
 		mnAtualizar.add(mntmIniciarMatricula);
 		
 		JMenuItem mntmAtualizar = new JMenuItem("Atualizar");
+		mntmAtualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(TelaEntrar.adm != null) {
+					String nome = textFieldNome.getText(), matricula = textFieldMatricula.getText(),
+							telefone = textFieldTelefone.getText(), genero = textFieldSexo.getText(),
+							cargo = textFieldCargo.getText(), horaTrab = textFieldHoraTrab.getText(),
+							rua = textFieldRua.getText(), bairro = textFieldBairro.getText(), 
+							numero = textFieldNumero.getText(), complemento = textFieldComplemento.getText(), 
+							cidade = textFieldCidade.getText(), cpf = textFieldCPF.getText(), email = textFieldEmail.getText();
+					Endereco end = new Endereco(rua, bairro, cidade, complemento, numero);
+					
+					Instrutor in = new Instrutor(nome, end, cpf, dataNascimento.getDate(), matricula, email, telefone, 
+							genero, cargo, horaTrab);
+					
+					Fachada.getInstance().atualizar(in);
+					PopUps.usuarioAtualizado();
+				}else {
+					PopUps.AcessoNegado();
+				}
+			}
+		});
 		mnAtualizar.add(mntmAtualizar);
 	}
 }

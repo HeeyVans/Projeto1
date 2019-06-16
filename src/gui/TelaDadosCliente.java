@@ -55,7 +55,7 @@ public class TelaDadosCliente extends JFrame {
 	private JTextField textFieldComplemento;
 	private JTextField textFieldPagamento;
 	private JTextField textFieldObjetivo;
-	JDateChooser dataNascimento = new JDateChooser();
+	private JDateChooser dataNascimento = new JDateChooser();
 	
 	public static TelaDadosCliente getInstance() {
 		if(instance == null) {
@@ -414,11 +414,15 @@ public class TelaDadosCliente extends JFrame {
 							genero, pagamento, objetivo);
 					
 					Fachada.getInstance().atualizar(c);
+					PopUps.usuarioAtualizado();
 				}else {
 					PopUps.AcessoNegado();
 				}				
 			}
 		});
 		mnAtt.add(mntmAtualizar);
+		
+		dataNascimento.setBounds(68, 354, 145, 29);
+		contentPane.add(dataNascimento);
 	}
 }

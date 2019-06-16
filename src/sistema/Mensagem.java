@@ -33,6 +33,7 @@ public class Mensagem {
 	public static final String DESEJAPROX = "Você realmente deseja ir?";
 	public static final String PAGINAINICIAL = "Você realmente deseja ir para a página inicial?";
 	public static final String CONFENVIO = "Você confirma o envio?";
+	public static final String USUARIOATT = "Usuário atualizado com sucesso!";
 	
 	//Erros
 	public static final String ERROCADASTRO = "Erro ao Cadastrar!";
