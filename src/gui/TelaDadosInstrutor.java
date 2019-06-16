@@ -205,9 +205,6 @@ public class TelaDadosInstrutor extends JFrame {
 		btnAtualizacao.setBackground(new Color(0, 128, 0));
 		btnAtualizacao.setBounds(323, 400, 142, 35);
 		contentPane.add(btnAtualizacao);
-				
-		dataNascimento.setBounds(68, 354, 145, 29);
-		contentPane.add(dataNascimento);
 		
 		JButton btnGerarPDF = new JButton("Gerar PDF");
 		btnGerarPDF.addActionListener(new ActionListener() {
@@ -420,5 +417,8 @@ public class TelaDadosInstrutor extends JFrame {
 			}
 		});
 		mnAtualizar.add(mntmAtualizar);
+		
+		dataNascimento.setBounds(26, 385, 199, 29);
+		contentPane.add(dataNascimento);
 	}
 }

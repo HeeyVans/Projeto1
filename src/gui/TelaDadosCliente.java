@@ -198,7 +198,7 @@ public class TelaDadosCliente extends JFrame {
 		textFieldCPF.setColumns(10);
 		
 		textFieldData = new JTextField();
-		textFieldData.setBounds(40, 381, 170, 28);
+		textFieldData.setBounds(40, 378, 170, 28);
 		contentPane.add(textFieldData);
 		textFieldData.setColumns(10);
 		
@@ -422,7 +422,7 @@ public class TelaDadosCliente extends JFrame {
 		});
 		mnAtt.add(mntmAtualizar);
 		
-		dataNascimento.setBounds(68, 354, 145, 29);
+		dataNascimento.setBounds(40, 377, 202, 29);
 		contentPane.add(dataNascimento);
 	}
 }
