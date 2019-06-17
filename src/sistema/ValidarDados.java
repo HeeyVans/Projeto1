@@ -1,11 +1,13 @@
 package sistema;
 
+import java.text.ParseException;
 import java.util.InputMismatchException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
+import javax.swing.text.MaskFormatter;
 
 import basicas.Pessoa;
 import basicas.Administrador;
@@ -39,6 +41,18 @@ public class ValidarDados {
 		}
 		return true;
 	}
+	
+	//Validação de Telefone
+	  public static String formatString(String value, String pattern) {
+	        MaskFormatter mf;
+	        try {
+	            mf = new MaskFormatter(pattern);
+	            mf.setValueContainsLiteralCharacters(false);
+	            return mf.valueToString(value);
+	        } catch (ParseException ex) {
+	            return value;
+	        }
+	    }
 	
 	//VALIDAÇÃO DE CAMPOVAZIO COM 1 CAMPO
 			public static boolean validarCampoVazio(String arg0) {

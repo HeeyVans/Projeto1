@@ -171,6 +171,18 @@ public class TelaCadastroCliente extends JFrame{
 				lblNewLabel_2.setText("");
 			}
 		});
+		
+		JLabel lblDigiteComO = new JLabel("Digite com o DDD");
+		lblDigiteComO.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				lblDigiteComO.setText("");
+			}
+		});
+		lblDigiteComO.setForeground(Color.LIGHT_GRAY);
+		lblDigiteComO.setFont(new Font("Arial", Font.ITALIC, 11));
+		lblDigiteComO.setBounds(72, 15, 96, 14);
+		frmTelaDeCadastro.getContentPane().add(lblDigiteComO);
 		lblNewLabel_2.setForeground(Color.LIGHT_GRAY);
 		lblNewLabel_2.setFont(new Font("Arial", Font.ITALIC, 12));
 		lblNewLabel_2.setBounds(20, 172, 124, 14);
@@ -206,24 +218,6 @@ public class TelaCadastroCliente extends JFrame{
 		textFieldTelefone.setBounds(62, 8, 108, 29);
 		frmTelaDeCadastro.getContentPane().add(textFieldTelefone);
 		textFieldTelefone.setColumns(10);
-		/*
-		------------Código para a formatação de telefone------------
-		
-		Scanner ler = new Scanner(System.in);
-		System.out.println("informe seu numero: ");
-		String phone = ler.nextLine();
-		try {
-		MaskFormatter phoneFormatter = new MaskFormatter("(##) ####-####");
-		JFormattedTextField txtPhone = new JFormattedTextField(phoneFormatter);
-		txtPhone.setText(phone);
-
-				System.out.println("Seu numero eh: " + txtPhone.getText());
-			} catch (ParseException e) {
-				e.printStackTrace();
-				return;
-			} 
-		
-	}*/
 		
 		JLabel lblNome = new JLabel("Nome:");
 		lblNome.setBounds(180, 15, 47, 14);

@@ -72,7 +72,8 @@ public class TelaDadosCliente extends JFrame {
 		textFieldData.setText(dataFormatada);
 		textFieldMatricula.setText(c.getMatricula());
 		textFieldEmail.setText(c.getEmail());
-		textFieldTelefone.setText(c.getTelefone());
+		String tel = ValidarDados.formatString(c.getTelefone(),"(##) ####-####");
+		textFieldTelefone.setText(tel);
 		textFieldSexo.setText(c.getGenero());
 		textFieldCidade.setText(c.getEndereco().getCidade());
 		textFieldRua.setText(c.getEndereco().getRua());
