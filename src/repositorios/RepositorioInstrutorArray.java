@@ -189,7 +189,7 @@ public class RepositorioInstrutorArray implements IRepositorioInstrutor, Seriali
 		List instrutor = new ArrayList();
 		i = 0;
 		while(i < indice) {
-			if(repositorio[i].getNome().equalsIgnoreCase(nome)) {
+			if(repositorio[i].getNome().contains(nome)) {
 				instrutor.add(repositorio[i]);
 			}			 
 			 i++;
