@@ -66,14 +66,13 @@ public class TelaDadosCliente extends JFrame {
 	
 	public void setDados(Cliente c) {
 		textFieldNome.setText(c.getNome());
-		textFieldCPF.setText(c.getCpf());
+        textFieldCPF.setText(c.getCpf());
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         String dataFormatada = dateFormat.format(c.getDataDeNasc());
 		textFieldData.setText(dataFormatada);
 		textFieldMatricula.setText(c.getMatricula());
 		textFieldEmail.setText(c.getEmail());
-		String tel = ValidarDados.formatString(c.getTelefone(),"(##) ####-####");
-		textFieldTelefone.setText(tel);
+		textFieldTelefone.setText(c.getTelefone());
 		textFieldSexo.setText(c.getGenero());
 		textFieldCidade.setText(c.getEndereco().getCidade());
 		textFieldRua.setText(c.getEndereco().getRua());

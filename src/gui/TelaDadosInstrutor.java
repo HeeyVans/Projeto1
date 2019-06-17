@@ -33,6 +33,7 @@ import excecoes.MatriculaNaoEncontradaException;
 import sistema.Assistente;
 import sistema.Fachada;
 import sistema.Mensagem;
+import sistema.ValidarDados;
 
 public class TelaDadosInstrutor extends JFrame {
 
@@ -63,7 +64,7 @@ public class TelaDadosInstrutor extends JFrame {
 	
 	public void setDados(Instrutor c) {
 		textFieldNome.setText(c.getNome());
-		textFieldCPF.setText(c.getCpf());
+        textFieldCPF.setText(c.getCpf());
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         String dataFormatada = dateFormat.format(c.getDataDeNasc());
 		textFieldData.setText(dataFormatada);

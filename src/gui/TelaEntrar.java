@@ -239,7 +239,9 @@ public class TelaEntrar extends JFrame{
 				
 				do {
 					cpf = JOptionPane.showInputDialog(Mensagem.INFORMACPF);
-					if(ValidarDados.isCPF(cpf) == false) {
+					if(cpf == "" || cpf == null) {
+						PopUps.cpfInvalido();
+					}else if(ValidarDados.isCPF(cpf) == false) {
 						PopUps.cpfInvalido();
 					}
 				}while(!ValidarDados.isCPF(cpf));

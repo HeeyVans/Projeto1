@@ -158,6 +158,14 @@ public class Assistente {
 	        return new String(caracter);
 		}
 		
+		public static int gerarID() {
+			int id;
+			Random numero = new Random();
+			id = numero.nextInt(5000);
+
+			return id;
+		}
+		
 		//GerarPDF de Dados para Cliente
 		public static void gerarPDFCliente(Cliente cliente) throws FileNotFoundException {
 			
@@ -502,12 +510,6 @@ public class Assistente {
 		}*/
 		
 		//Gerador de números para o atributo ID.
-		public static int gerarID() {
-			int id;
-			Random numero = new Random();
-			id = numero.nextInt(5000);
-
-			return id;
-		}
+	
 
 }
