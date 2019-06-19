@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -28,9 +29,12 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import basicas.AtividadeDiaria;
 import basicas.Cliente;
+import basicas.Instrutor;
 import excecoes.InstrutorLotadoException;
 import excecoes.MatriculaNaoEncontradaException;
+import sistema.Assistente;
 import sistema.Fachada;
 import sistema.Mensagem;
 import sistema.ModeloTabelaInstrutor;
@@ -142,12 +146,18 @@ public class TelaInstrutor extends JFrame {
 				
 				String nome = textFieldNome.getText();
 				
+				if(textFieldNome.getText().isEmpty()) {
+					PopUps.campoVazio();
+				} 
+				else {
+				
 				ArrayList<Cliente> lista = new ArrayList();
 				
 				lista = (ArrayList<Cliente>) Fachada.getInstance().listarCliente(nome);
 						
 					modeloInstrutor.addClienteList(lista);
 				}
+			}
 			
 				
 			
@@ -354,6 +364,20 @@ public class TelaInstrutor extends JFrame {
 			}
 		});
 		mnCliente.add(mntmPagamento);
+		
+		JMenuItem mntmSaída = new JMenuItem("Dar Saída");
+		mntmSaída.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(TelaEntrar.adm == null) {
+					PopUps.AcessoNegado();
+				} else {
+				LocalDateTime localDate = LocalDateTime.now();
+				modeloInstrutor.onRemoveAll();
+				dispose();
+				}
+			}
+		});
+		mnCliente.add(mntmSaída);
 		
 		JLabel label_1 = new JLabel("D\u00FAvidas?");
 		label_1.addMouseListener(new MouseAdapter() {

@@ -170,6 +170,10 @@ public class TelaEntrar extends JFrame{
 								TelaDeEntrada.dispose();
 							}		
 						}else if(instrutor != null) {
+							LocalDateTime localDate = LocalDateTime.now();
+							AtividadeDiaria atividade = new AtividadeDiaria(instrutor.getCpf(), localDate, Assistente.gerarId());
+							Fachada.getInstance().inserirAtividade(atividade);
+							
 							TelaInstrutor.getInstance().setVisible(true);
 							TelaInstrutor.getInstance().setLocationRelativeTo(null);
 							TelaDeEntrada.dispose();
