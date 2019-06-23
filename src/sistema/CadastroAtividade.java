@@ -27,5 +27,9 @@ public class CadastroAtividade {
 	public List listar(String cpf) {
 		return repositorio.listar(cpf);
 	}
+	
+	public List listarHoras(String cpf) {
+		return repositorio.listarHoras(cpf);
+	}
 
 }

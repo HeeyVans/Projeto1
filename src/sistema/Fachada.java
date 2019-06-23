@@ -137,4 +137,8 @@ public class Fachada {
 		return this.atividade.listar(cpf);
 	}
 	
+	public List listarHoras(String cpf) {
+		return this.atividade.listarHoras(cpf);
+	}
+	
 }

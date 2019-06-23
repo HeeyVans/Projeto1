@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.chrono.ChronoLocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -137,5 +139,17 @@ public class RepositorioAtividadeDiariaArray implements IRepositorioAtividadeDia
 			i++;
 		}
 		return atividade;
+	}
+	
+	public List <LocalDateTime> listarHoras(String cpf) {
+		List <LocalDateTime> instrutor  = new ArrayList<LocalDateTime>();
+		i = 0;
+		while(i < indice) {
+			if(repositorio[i].getCpf().equals(cpf)) {
+				instrutor.add(repositorio[i].getData());
+			}			 
+			 i++;
+			}
+		return instrutor;
 	}
 }

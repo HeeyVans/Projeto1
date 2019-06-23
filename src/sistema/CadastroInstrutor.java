@@ -49,5 +49,5 @@ public class CadastroInstrutor {
 	public List listar() {
 		return repositorio.listar();
 	}
-
+	
 }

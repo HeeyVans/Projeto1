@@ -9,5 +9,6 @@ public interface IRepositorioAtividadeDiaria {
 	public void inserir(AtividadeDiaria atividade);
 	public AtividadeDiaria procurar(String cpf);
 	public List listar(String cpf);
+	public List listarHoras(String cpf);
 	
 }

@@ -1,16 +1,26 @@
 package gui;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
 import java.awt.Color;
-import javax.swing.JPanel;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.time.LocalDateTime;
-import java.util.Date;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.Date;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 
 import basicas.Administrador;
@@ -24,16 +34,6 @@ import sistema.Assistente;
 import sistema.Fachada;
 import sistema.Mensagem;
 import sistema.ValidarDados;
-
-import java.awt.Font;
-import javax.swing.JTextPane;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.ImageIcon;
-import java.awt.Toolkit;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.text.SimpleDateFormat;
 
 public class TelaEntrar extends JFrame{
 
@@ -170,7 +170,24 @@ public class TelaEntrar extends JFrame{
 								TelaDeEntrada.dispose();
 							}		
 						}else if(instrutor != null) {
+							ArrayList<LocalDateTime> lista = new ArrayList<LocalDateTime>();
+							lista = (ArrayList<LocalDateTime>) Fachada.getInstance().listarHoras(instrutor.getCpf());
+														
 							LocalDateTime localDate = LocalDateTime.now();
+							LocalDateTime horasInstrutor1 = lista.get(lista.size() - 1);
+							LocalDateTime horasInstrutor2 = lista.get(lista.size() - 2);
+							
+							Duration duracao = Duration.between(horasInstrutor2, horasInstrutor1);
+							long horas = duracao.toHours();
+							Duration d2 = duracao.minus(horas, ChronoUnit.HOURS);
+					        long min = d2.toMinutes();
+					        Duration d3 = d2.minus(min, ChronoUnit.MINUTES);
+					        long seg = d3.getSeconds();
+					        Duration d4 = d3.minus(seg, ChronoUnit.SECONDS);
+					     
+					        System.out.println("Total: " + horas + " horas, " + min + " minutos, " + seg + " segundos ");
+					        //Se o dia for diferente de 0 ele entra a primeira vez e salva, se for igual ele pode logar quantas
+					        //vezes quiser sem salvar
 							AtividadeDiaria atividade = new AtividadeDiaria(instrutor.getCpf(), localDate, Assistente.gerarId());
 							Fachada.getInstance().inserirAtividade(atividade);
 							

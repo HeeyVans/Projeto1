@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -207,5 +208,5 @@ public class RepositorioInstrutorArray implements IRepositorioInstrutor, Seriali
 			}
 		return instrutor;
 	}
-
+	
 }
