@@ -169,25 +169,9 @@ public class TelaEntrar extends JFrame{
 								TelaConsultaCliente.getInstance().setLocationRelativeTo(null);
 								TelaDeEntrada.dispose();
 							}		
-						}else if(instrutor != null) {
-							ArrayList<LocalDateTime> lista = new ArrayList<LocalDateTime>();
-							lista = (ArrayList<LocalDateTime>) Fachada.getInstance().listarHoras(instrutor.getCpf());
-														
+						}else if(instrutor != null) {														
 							LocalDateTime localDate = LocalDateTime.now();
-							LocalDateTime horasInstrutor1 = lista.get(lista.size() - 1);
-							LocalDateTime horasInstrutor2 = lista.get(lista.size() - 2);
 							
-							Duration duracao = Duration.between(horasInstrutor2, horasInstrutor1);
-							long horas = duracao.toHours();
-							Duration d2 = duracao.minus(horas, ChronoUnit.HOURS);
-					        long min = d2.toMinutes();
-					        Duration d3 = d2.minus(min, ChronoUnit.MINUTES);
-					        long seg = d3.getSeconds();
-					        Duration d4 = d3.minus(seg, ChronoUnit.SECONDS);
-					     
-					        System.out.println("Total: " + horas + " horas, " + min + " minutos, " + seg + " segundos ");
-					        //Se o dia for diferente de 0 ele entra a primeira vez e salva, se for igual ele pode logar quantas
-					        //vezes quiser sem salvar
 							AtividadeDiaria atividade = new AtividadeDiaria(instrutor.getCpf(), localDate, Assistente.gerarId());
 							Fachada.getInstance().inserirAtividade(atividade);
 							
