@@ -365,20 +365,6 @@ public class TelaInstrutor extends JFrame {
 		});
 		mnCliente.add(mntmPagamento);
 		
-		JMenuItem mntmSaída = new JMenuItem("Dar Saída");
-		mntmSaída.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if(TelaEntrar.adm == null) {
-					PopUps.AcessoNegado();
-				} else {
-				LocalDateTime localDate = LocalDateTime.now();
-				modeloInstrutor.onRemoveAll();
-				dispose();
-				}
-			}
-		});
-		mnCliente.add(mntmSaída);
-		
 		JLabel label_1 = new JLabel("D\u00FAvidas?");
 		label_1.addMouseListener(new MouseAdapter() {
 			@Override

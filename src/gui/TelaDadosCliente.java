@@ -380,7 +380,7 @@ public class TelaDadosCliente extends JFrame {
 				if(TelaEntrar.adm != null) {
 					String matricula;
 					Cliente c = null;
-					matricula = JOptionPane.showInputDialog(Mensagem.INFORMAMATRICULA);
+					matricula = JOptionPane.showInputDialog(Mensagem.INFORMAMATRICULACLIENTE);
 					try {
 						c = Fachada.getInstance().procurarClienteMatricula(matricula);
 					} catch (MatriculaNaoEncontradaException e1) {

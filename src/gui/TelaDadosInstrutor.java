@@ -377,7 +377,7 @@ public class TelaDadosInstrutor extends JFrame {
 				if(TelaEntrar.adm != null) {
 					String matricula;
 					Instrutor c = null;
-					matricula = JOptionPane.showInputDialog(Mensagem.INFORMAMATRICULA);
+					matricula = JOptionPane.showInputDialog(Mensagem.INFORMAMATRICULACLIENTE);
 					try {
 						c = Fachada.getInstance().procurarInstrutorMatricula(matricula);
 					} catch (MatriculaNaoEncontradaException mnee) {
