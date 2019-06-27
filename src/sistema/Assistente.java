@@ -123,6 +123,33 @@ public class Assistente {
 
 					      }   
 				}
+				//Mensagem por email 4
+				public static void enviarEmailVencimentoTreino(String email1, String matricula){
+					
+					final String MFitEmail = "MFit.Academia10@gmail.com";
+					final String MFitSenha = "mfit1010";
+					
+					SimpleEmail email = new SimpleEmail(); 
+					
+					try {  
+						
+						email.setHostName("smtp.gmail.com"); // o servidor SMTP para envio do e-mail
+						email.addTo(email1); //destinatário
+						email.setFrom(MFitEmail); // remetente
+						email.setSubject("Treino perto de vencer!"); // assunto do e-mail
+						email.setMsg("Seu treino está perto de vencer, contate seu instrutor para trocá-lo!"); //conteudo do e-mail
+						email.setAuthentication(MFitEmail, MFitSenha);
+						email.setSmtpPort(465);
+						email.setSSL(true);
+						email.setTLS(true);
+						email.send();
+
+					      } catch (EmailException e) {  
+
+					      System.out.println(e.getMessage());  
+
+					      }   
+				}
 		
 		
 		//Gera uma senha de 10 caracteres, através da conversão de 
@@ -258,6 +285,10 @@ public class Assistente {
 			Treino treino = Fachada.getInstance().procurarClienteTreino(matricula, categoria);
 			
 			Document document = new Document();
+			
+			if(treino.getContadorTreino() + 1 == treino.getNumeroTreinos()) {
+				enviarEmailVencimentoTreino(treino.getCliente().getEmail(), matricula);
+			}
 			
 			ArrayList<Exercicio> lista = new ArrayList<Exercicio>();
 			lista = ((ArrayList<Exercicio>) Fachada.getInstance().listarTreino(matricula, categoria));
