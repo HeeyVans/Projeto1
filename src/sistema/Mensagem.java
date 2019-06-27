@@ -11,6 +11,7 @@ public class Mensagem {
 	public static final String EMAILINVALIDO = "Este email é inválido!";
 	public static final String CAMPOVAZIO = "Por favor, preencha todos os campos em branco!";
 	public static final String INSTRUTORLOTADO = "Instrutor já possui 10 treinos!";
+	public static final String DATAVAZIA = "Por favor selecione uma data!";
 	
 	//Exceptions para PopUps
 	private static final String MSGALERT = "Mensagem de alerta";

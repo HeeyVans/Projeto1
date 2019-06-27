@@ -29,6 +29,7 @@ import com.toedter.calendar.JDateChooser;
 import basicas.Cliente;
 import basicas.Endereco;
 import basicas.Instrutor;
+import excecoes.DataVaziaException;
 import excecoes.MatriculaNaoEncontradaException;
 import sistema.Assistente;
 import sistema.Fachada;
@@ -65,9 +66,6 @@ public class TelaDadosInstrutor extends JFrame {
 	public void setDados(Instrutor c) {
 		textFieldNome.setText(c.getNome());
         textFieldCPF.setText(c.getCpf());
-        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        String dataFormatada = dateFormat.format(c.getDataDeNasc());
-		textFieldData.setText(dataFormatada);
 		textFieldMatricula.setText(c.getMatricula());
 		textFieldEmail.setText(c.getEmail());
 		textFieldTelefone.setText(c.getTelefone());
@@ -79,6 +77,9 @@ public class TelaDadosInstrutor extends JFrame {
 		textFieldComplemento.setText(c.getEndereco().getComplemento());
 		textFieldCargo.setText(c.getCargo());
 		textFieldHoraTrab.setText(c.getHoraTrab());
+		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String dataFormatada = dateFormat.format(c.getDataDeNasc());
+		textFieldData.setText(dataFormatada);
 	}
 	
 	public void limpar() {
@@ -377,7 +378,7 @@ public class TelaDadosInstrutor extends JFrame {
 				if(TelaEntrar.adm != null) {
 					String matricula;
 					Instrutor c = null;
-					matricula = JOptionPane.showInputDialog(Mensagem.INFORMAMATRICULACLIENTE);
+					matricula = JOptionPane.showInputDialog(Mensagem.INFORMAMATRICULAINSTRUTOR);
 					try {
 						c = Fachada.getInstance().procurarInstrutorMatricula(matricula);
 					} catch (MatriculaNaoEncontradaException mnee) {
@@ -407,11 +408,16 @@ public class TelaDadosInstrutor extends JFrame {
 							cidade = textFieldCidade.getText(), cpf = textFieldCPF.getText(), email = textFieldEmail.getText();
 					Endereco end = new Endereco(rua, bairro, cidade, complemento, numero);
 					
-					Instrutor in = new Instrutor(nome, end, cpf, dataNascimento.getDate(), matricula, email, telefone, 
-							genero, cargo, horaTrab);
-					
-					Fachada.getInstance().atualizar(in);
-					PopUps.usuarioAtualizado();
+					if(dataNascimento.getDate() == null) {
+						PopUps.dataVazia(new DataVaziaException());
+					}else {
+						Instrutor in = new Instrutor(nome, end, cpf, dataNascimento.getDate(), matricula, email, telefone, 
+								genero, cargo, horaTrab);
+						
+						Fachada.getInstance().atualizar(in);
+						PopUps.usuarioAtualizado();
+					}
+										
 				}else {
 					PopUps.AcessoNegado();
 				}

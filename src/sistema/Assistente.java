@@ -221,7 +221,7 @@ public class Assistente {
 						document.setPageSize(PageSize.A1);
 						
 						document.add(new Paragraph("-------MFit Academia: Saúde em primeiro lugar-------"));
-						document.add(new Paragraph("Cliente:" + instrutor.getNome()));
+						document.add(new Paragraph("Instrutor:" + instrutor.getNome()));
 						document.add(new Paragraph(" "));
 						document.add(new Paragraph("_______________________________"));
 						document.add(new Paragraph("Cidade:" + instrutor.getEndereco().getCidade()));

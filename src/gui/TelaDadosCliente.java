@@ -1,41 +1,38 @@
 package gui;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.JButton;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.awt.event.ActionEvent;
-import java.awt.Toolkit;
-import java.awt.Color;
-import java.awt.Font;
+
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
 import com.toedter.calendar.JDateChooser;
 
 import basicas.Cliente;
 import basicas.Endereco;
+import excecoes.DataVaziaException;
 import excecoes.MatriculaNaoEncontradaException;
 import sistema.Assistente;
 import sistema.Fachada;
 import sistema.Mensagem;
-import sistema.ValidarDados;
-
-import javax.swing.SwingConstants;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
 
 public class TelaDadosCliente extends JFrame {
 
@@ -67,9 +64,6 @@ public class TelaDadosCliente extends JFrame {
 	public void setDados(Cliente c) {
 		textFieldNome.setText(c.getNome());
         textFieldCPF.setText(c.getCpf());
-        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        String dataFormatada = dateFormat.format(c.getDataDeNasc());
-		textFieldData.setText(dataFormatada);
 		textFieldMatricula.setText(c.getMatricula());
 		textFieldEmail.setText(c.getEmail());
 		textFieldTelefone.setText(c.getTelefone());
@@ -81,6 +75,9 @@ public class TelaDadosCliente extends JFrame {
 		textFieldComplemento.setText(c.getEndereco().getComplemento());
 		textFieldPagamento.setText(c.getPagamento());
 		textFieldObjetivo.setText(c.getObjetivo());
+		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String dataFormatada = dateFormat.format(c.getDataDeNasc());
+		textFieldData.setText(dataFormatada);
 	}
 	
 	public void limpar() {
@@ -223,6 +220,7 @@ public class TelaDadosCliente extends JFrame {
 		textFieldSexo.setColumns(10);
 		
 		textFieldPagamento = new JTextField();
+		textFieldPagamento.setEditable(false);
 		textFieldPagamento.setBounds(247, 293, 170, 28);
 		contentPane.add(textFieldPagamento);
 		textFieldPagamento.setColumns(10);
@@ -410,11 +408,16 @@ public class TelaDadosCliente extends JFrame {
 							cidade = textFieldCidade.getText(), cpf = textFieldCPF.getText(), email = textFieldEmail.getText();
 					Endereco end = new Endereco(rua, bairro, cidade, complemento, numero);
 					
-					Cliente c = new Cliente(nome, end, cpf, dataNascimento.getDate(), matricula, email, telefone, 
-							genero, pagamento, objetivo);
+					if(dataNascimento.getDate() == null) {
+						PopUps.dataVazia(new DataVaziaException());
+					}else {
+						Cliente c = new Cliente(nome, end, cpf, dataNascimento.getDate(), matricula, email, telefone, 
+								genero, pagamento, objetivo);
+						
+						Fachada.getInstance().atualizar(c);
+						PopUps.usuarioAtualizado();
+					}					
 					
-					Fachada.getInstance().atualizar(c);
-					PopUps.usuarioAtualizado();
 				}else {
 					PopUps.AcessoNegado();
 				}				

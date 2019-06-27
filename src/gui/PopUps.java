@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 
 import excecoes.CPFInvalidoException;
 import excecoes.CampoVazioException;
+import excecoes.DataVaziaException;
 import excecoes.EmailInvalidoException;
 import excecoes.InstrutorLotadoException;
 import excecoes.MatriculaNaoEncontradaException;
@@ -31,6 +32,10 @@ public class PopUps {
 	}
 	public static void instrutorLotado(InstrutorLotadoException ile) {
 		JOptionPane.showMessageDialog(null, ile.getMessage(), Mensagem.getMsgalert(), JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public static void dataVazia(DataVaziaException dve) {
+		JOptionPane.showMessageDialog(null, dve.getMessage(), Mensagem.getMsgalert(), JOptionPane.WARNING_MESSAGE);
 	}
 	
 	//CONFIRMAÇÕES
